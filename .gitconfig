@@ -1,0 +1,41 @@
+[core]
+    editor= /usr/bin/vi
+
+[alias]
+    st = status
+    cl = clone
+    ci = commit
+    co = checkout
+    br = branch
+    ls = log --oneline --decorate
+    ll = log --oneline --decorate --numstat -15
+    diff = diff --word-diff
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[user]
+    email = durden@gmail.com
+    name = Nicola Paolucci
+[push]
+	default = current
+[pull]
+	default = current

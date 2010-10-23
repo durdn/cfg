@@ -1,0 +1,13 @@
+:ToggleRaibowParenthesis	rainbow_parenthsis.txt	/*:ToggleRaibowParenthesis*
+rainbow_parenthsis#Activate()	rainbow_parenthsis.txt	/*rainbow_parenthsis#Activate()*
+rainbow_parenthsis#Clear()	rainbow_parenthsis.txt	/*rainbow_parenthsis#Clear()*
+rainbow_parenthsis#LoadBraces()	rainbow_parenthsis.txt	/*rainbow_parenthsis#LoadBraces()*
+rainbow_parenthsis#LoadChevrons()	rainbow_parenthsis.txt	/*rainbow_parenthsis#LoadChevrons()*
+rainbow_parenthsis#LoadRound()	rainbow_parenthsis.txt	/*rainbow_parenthsis#LoadRound()*
+rainbow_parenthsis#LoadSquare()	rainbow_parenthsis.txt	/*rainbow_parenthsis#LoadSquare()*
+rainbow_parenthsis#Toggle()	rainbow_parenthsis.txt	/*rainbow_parenthsis#Toggle()*
+rainbow_parenthsis-about	rainbow_parenthsis.txt	/*rainbow_parenthsis-about*
+rainbow_parenthsis-commands	rainbow_parenthsis.txt	/*rainbow_parenthsis-commands*
+rainbow_parenthsis-configure	rainbow_parenthsis.txt	/*rainbow_parenthsis-configure*
+rainbow_parenthsis-functions	rainbow_parenthsis.txt	/*rainbow_parenthsis-functions*
+rainbow_parenthsis.txt	rainbow_parenthsis.txt	/*rainbow_parenthsis.txt*

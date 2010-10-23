@@ -1,0 +1,88 @@
+*rainbow_parenthsis.txt*	   Colorize Parenthsis
+
+Author: Martin Krischik (krischik@users.sourceforge.net)
+	John Gilmore
+	Luc Hermitte (hermitte@free.fr)
+
+For Vim version 7.0 and above
+Last change: 09 Oct, 2007
+
+1. Overview					|rainbow_parenthsis-about|
+2. Commands					|rainbow_parenthsis-commands|
+2. Functions					|rainbow_parenthsis-functions|
+3. Configuration				|rainbow_parenthsis-configure|
+
+==============================================================================
+						    *rainbow_parenthsis-about*
+1. Overview~
+
+rainbow_parenthsis allows you to view the contents of a file in real time.  When a
+change in the file is detected, the window displaying the file is updated and
+repositioned to the last line.
+
+The update is not exactly real time, but usually updates within a few seconds
+of the file change.  The update interval of the output is determined by the
+|updatetime| parameter, along with continued usage of Vim.  This means that if
+you are not doing any editing or motion commands, the preview window will not
+be updated.  See |CursorHold| for more information.
+
+Because this window becomes the preview window, it will accept all related
+commands.  For more information, see |preview-window|.
+
+==============================================================================
+						 *rainbow_parenthsis-commands*
+2. Commands~
+
+The rainbow_parenthsis plugin does not create any automatic mappings, but provides the
+following commands:
+
+						    *:ToggleRaibowParenthesis*
+|:ToggleRaibowParenthesis|
+	Manualy start rainbow parenthesis.. If no bracket type has been loaded
+	yet then round brackets will be loaded by default.
+
+==============================================================================
+						*rainbow_parenthsis-functions*
+2. Functions~
+
+|rainbow_parenthsis#Activate()|			*rainbow_parenthsis#Activate()*
+	Acticate the loaded parenthsis
+
+|rainbow_parenthsis#Clear()|			   *rainbow_parenthsis#Clear()*
+	Deactivate rainbow parenthesis
+
+|rainbow_parenthsis#Toggle()|			  *rainbow_parenthsis#Toggle()*
+	Toogles rainbow parenthesis status. If no bracket type has been loaded
+	yet then round brackets will be loaded.
+
+|rainbow_parenthsis#LoadRound()|	       *rainbow_parenthsis#LoadRound()*
+	Load syntax for parenthesis or round brackets '(' ')' - This will be 
+	loaded by default if nothing else has been loaded.
+
+|rainbow_parenthsis#LoadSquare()|	      *rainbow_parenthsis#LoadSquare()*
+	Load syntax for box brackets or square brackets '[' ']'
+
+|rainbow_parenthsis#LoadBraces()|	      *rainbow_parenthsis#LoadBraces()*
+	Load syntax for curly brackets or braces '{' '}'
+
+|rainbow_parenthsis#LoadChevrons()|	    *rainbow_parenthsis#LoadChevrons()*
+	Load syntax for  angle brackets or chevrons '<' '>'
+
+==============================================================================
+						 *rainbow_parenthsis-configure*
+3. Configuration~
+
+The best way to use rainbow_parenthsis is to add it to sytax plugin of any
+filetype used:
+>
+ >if exists("g:btm_rainbow_color") && g:btm_rainbow_color
+ >   call rainbow_parenthsis#LoadSquare ()
+ >   call rainbow_parenthsis#LoadRound ()
+ >   call rainbow_parenthsis#Activate ()
+ >endif
+>
+This way you don't need to load all options available but only those which
+are of importance to the actual filetype.
+
+==============================================================================
+vim:textwidth=78:tabstop=8:noexpandtab:filetype=help
