@@ -12,7 +12,7 @@ if has('syntax') && (&t_Co > 2)
 endif
 
 set nocompatible hidden ignorecase smartcase title expandtab autoindent
-set nobackup noswapfile showmode showcmd cursorline ttyfast gdefault
+set nobackup noswapfile showmode showcmd ttyfast gdefault
 set hlsearch visualbell shiftround incsearch nu gdefault wildmenu
 let mapleader = ","
 let maplocalleader = ";"
@@ -126,6 +126,7 @@ if has('gui_win32')
 endif
 if has('gui_running')
     syntax on
+    set cursorline 
     set ruler
     set lines=85
     set columns=119
