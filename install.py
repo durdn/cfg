@@ -8,9 +8,7 @@ from pprint import pprint
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
-ignored = ['shell.py',
-           'shell.pyc',
-           'install.py',
+ignored = ['install.py',
            'install.pyc',
            '.git',
            '.gitignore',
