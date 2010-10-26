@@ -96,6 +96,8 @@ if __name__ == '__main__':
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
+            print '|-> pulling origin master'
+            call("cd %s && git pull origin master" % (cfg_folder))
         else:
             print '|-> git tracking projects not found in %s, ending program in shame' % cfg_folder
 
