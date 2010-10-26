@@ -8,7 +8,14 @@ from pprint import pprint
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
-ignored = ['shell.py','shell.pyc','install.py','install.pyc','.git','.gitignore']
+ignored = ['shell.py',
+           'shell.pyc',
+           'install.py',
+           'install.pyc',
+           '.git',
+           '.gitignore',
+           'installcommand.txt'
+           ]
 
 home = normpath(os.environ['HOME'])
 backup_folder = normpath(join(home,bkpname)) 
