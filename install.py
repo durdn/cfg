@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import os
 import glob
+import sys
 from os.path import join,normpath,abspath
 from pprint import pprint
-import shell
 
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
@@ -13,7 +13,28 @@ ignored = ['shell.py','shell.pyc','install.py','install.pyc','.git','.gitignore'
 home = normpath(os.environ['HOME'])
 backup_folder = normpath(join(home,bkpname)) 
 cfg_folder = normpath(join(home,cfgname))
-sh = shell.Shell()
+
+def raw_call(command):
+    """
+        raw_call(command) --> (result, output)
+        Runs the command in the local shell returning a tuple 
+        containing :
+            - the return result (None for 0, otherwise an int), and
+            - the full, stripped standard output.
+
+        You wouldn't normally use this, instead consider call(), test() and system()
+    """
+    process = os.popen(command)
+    output = []
+    line = process.readline()
+
+    while not line == "":
+        sys.stdout.flush()
+        output.append(line)
+        line = process.readline()
+    result = process.close()
+
+    return (result, "".join(output).strip())
 
 def list_all(path):
     "lists all files in a folder, including dotfiles"
@@ -61,7 +82,7 @@ if __name__ == '__main__':
 
     if not os.path.exists(cfg_folder):
         #clone cfg repo
-        sh.call("git clone %s %s" % (gitrepo,cfgfolder))
+        raw_call("git clone %s %s" % (gitrepo,cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print 'cfg already cloned to',cfg_folder
