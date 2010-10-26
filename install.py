@@ -8,14 +8,12 @@ import shell
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
+ignored = ['shell.py','shell.pyc','install.py','install.pyc','.git','.gitignore']
 
 home = normpath(os.environ['HOME'])
 backup_folder = normpath(join(home,bkpname)) 
 cfg_folder = normpath(join(home,cfgname))
 sh = shell.Shell()
-
-if not os.path.exists(backup_folder):
-    os.mkdir(backup_folder)
 
 def list_all(path):
     "lists all files in a folder, including dotfiles"
@@ -29,7 +27,7 @@ def local_assets(flist,test):
     return assets(home,flist,test)
 
 def cfg_assets(flist,test):
-    return filter(lambda x: test(x) and os.path.split(x)[1] not in ['.git','.gitignore'], 
+    return filter(lambda x: test(x) and os.path.split(x)[1] not in ignored,
                   assets(cfg_folder,flist,test))
 
 def backup_affected_assets(cfg_folder, backup_folder):
@@ -57,6 +55,9 @@ if __name__ == '__main__':
     print 'home=',home
     print 'backup_folder=',backup_folder
     print 'cfg_folder=',cfg_folder
+
+    if not os.path.exists(backup_folder):
+        os.mkdir(backup_folder)
 
     if not os.path.exists(cfg_folder):
         #clone cfg repo
