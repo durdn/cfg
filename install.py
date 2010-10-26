@@ -57,25 +57,25 @@ def backup_affected_assets(cfg_folder, backup_folder):
     for f in files:
         if os.path.exists(f):
             name = os.path.split(f)[1]
-            print 'mv %s %s' % (f,join(backup_folder,name))
+            print '    $ mv %s %s' % (f,join(backup_folder,name))
 
 def install_tracked_assets(cfg_folder, destination_folder):
     "Install tracked configuration files into destination folder"
     files = cfg_assets(os.listdir(cfg_folder),os.path.isfile)
     for f in files:
         name = os.path.split(f)[1]
-        print 'ln %s %s' % (f,join(destination_folder,name))
+        print '    $ ln %s %s' % (f,join(destination_folder,name))
     dirs = cfg_assets(os.listdir(cfg_folder),os.path.isdir)
     for d in dirs:
         name = os.path.split(d)[1]
-        print 'ln -s %s %s' % (d,join(destination_folder,name))
+        print '    $ ln -s %s %s' % (d,join(destination_folder,name))
 
 
 if __name__ == '__main__':
-    print 'cfg 0.1'
-    print 'home=',home
-    print 'backup_folder=',backup_folder
-    print 'cfg_folder=',cfg_folder
+    print '|* cfg version 0.1'
+    print '|* home is ',home
+    print '|* backup folder is',backup_folder
+    print '|* cfg folder is',cfg_folder
 
     if not os.path.exists(backup_folder):
         os.mkdir(backup_folder)
@@ -85,9 +85,9 @@ if __name__ == '__main__':
         raw_call("git clone %s %s" % (gitrepo,cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
-            print 'cfg already cloned to',cfg_folder
+            print '|-> cfg already cloned to',cfg_folder
         else:
-            print 'git tracking projects not found in %s' % cfg_folder
+            print '|-> git tracking projects not found in %s, ending program in shame' % cfg_folder
     #print 'local assets'
     #pprint(local_assets(os.listdir(cfg_folder),os.path.isfile))
     #pprint(local_assets(os.listdir(cfg_folder),os.path.isdir))
@@ -95,8 +95,8 @@ if __name__ == '__main__':
     #pprint(cfg_assets(os.listdir(cfg_folder),os.path.isfile))
     #pprint(cfg_assets(os.listdir(cfg_folder),os.path.isdir))
     stats = cfg_assets(os.listdir(cfg_folder),lambda x: True)
-    print '* tracking %d assets in %s' % (len(stats),cfgname)
-    print '* backing up affected files...'
+    print '|* tracking %d assets in %s' % (len(stats),cfgname)
+    print '|* backing up affected files...'
     backup_affected_assets(cfg_folder,backup_folder)
     print '* installing tracked config files...'
     install_tracked_assets(cfg_folder,home)
