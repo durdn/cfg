@@ -5,6 +5,7 @@ import sys
 from os.path import join,normpath,abspath
 from pprint import pprint
 
+debug = False
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
@@ -19,9 +20,9 @@ home = normpath(os.environ['HOME'])
 backup_folder = normpath(join(home,bkpname)) 
 cfg_folder = normpath(join(home,cfgname))
 
-def raw_call(command):
+def call(command,fake = False):
     """
-        raw_call(command) --> (result, output)
+        call(command) --> (result, output)
         Runs the command in the local shell returning a tuple 
         containing :
             - the return result (None for 0, otherwise an int), and
@@ -29,6 +30,10 @@ def raw_call(command):
 
         You wouldn't normally use this, instead consider call(), test() and system()
     """
+    if fake:
+        print command
+        return
+    
     process = os.popen(command)
     output = []
     line = process.readline()
@@ -62,18 +67,18 @@ def backup_affected_assets(cfg_folder, backup_folder):
     for f in files:
         if os.path.exists(f):
             name = os.path.split(f)[1]
-            print '    $ mv %s %s' % (f,join(backup_folder,name))
+            call('mv %s %s' % (f,join(backup_folder,name)),fake=debug)
 
 def install_tracked_assets(cfg_folder, destination_folder):
     "Install tracked configuration files into destination folder"
     files = cfg_assets(os.listdir(cfg_folder),os.path.isfile)
     for f in files:
         name = os.path.split(f)[1]
-        print '    $ ln %s %s' % (f,join(destination_folder,name))
+        call('ln %s %s' % (f,join(destination_folder,name)),fake=debug)
     dirs = cfg_assets(os.listdir(cfg_folder),os.path.isdir)
     for d in dirs:
         name = os.path.split(d)[1]
-        print '    $ ln -s %s %s' % (d,join(destination_folder,name))
+        call('ln -s %s %s' % (d,join(destination_folder,name)),fake=debug)
 
 
 if __name__ == '__main__':
@@ -87,21 +92,18 @@ if __name__ == '__main__':
 
     if not os.path.exists(cfg_folder):
         #clone cfg repo
-        raw_call("git clone %s %s" % (gitrepo,cfg_folder))
+        call("git clone %s %s" % (gitrepo,cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
         else:
             print '|-> git tracking projects not found in %s, ending program in shame' % cfg_folder
-    #print 'local assets'
-    #pprint(local_assets(os.listdir(cfg_folder),os.path.isfile))
-    #pprint(local_assets(os.listdir(cfg_folder),os.path.isdir))
-    #print 'cfg assets'
-    #pprint(cfg_assets(os.listdir(cfg_folder),os.path.isfile))
-    #pprint(cfg_assets(os.listdir(cfg_folder),os.path.isdir))
+
     stats = cfg_assets(os.listdir(cfg_folder),lambda x: True)
     print '|* tracking %d assets in %s' % (len(stats),cfgname)
+    
     print '|* backing up affected files...'
     backup_affected_assets(cfg_folder,backup_folder)
-    print '* installing tracked config files...'
+
+    print '|* installing tracked config files...'
     install_tracked_assets(cfg_folder,home)
