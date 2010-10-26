@@ -1,0 +1,3 @@
+Install config tracking in your HOME by running:
+
+  curl http://localhost:9080/installdotfiles/install.py > ./install.py && chmod 755 ./install.py  && ./install.py && rm ./install.py
