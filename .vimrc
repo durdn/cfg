@@ -88,7 +88,10 @@ nmap <silent> <leader>x :hid<CR>
 nmap <silent> <leader>X :bd<CR>
 "edit the .vimrc"
 nmap <silent> <leader>e :e ~/.vimrc<CR>
+"open a scratch file
+nmap <silent> <leader>h :e ~/scratch.txt<CR>
 "reload the .vimrc"
+"
 nmap <silent> <leader>r :source ~/.vimrc<CR>
 " xml formatting
 map <F2> <Esc>:1,$!xmllint --format -<CR>
