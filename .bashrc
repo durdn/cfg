@@ -138,7 +138,7 @@ function proml {
  
 PS1="${TITLEBAR}\
 $LIGHT_GRAY2[$DARK_GRAY\$(date +%H:%M)$LIGHT_GRAY2]\
-$LIGHT_GRAY2[$BLUE\u@\h:\w$RED\$(parse_git_branch)$LIGHT_GRAY2]\
+$LIGHT_GRAY2[$CYAN\u@\h:$BLUE\w$RED\$(parse_git_branch)$LIGHT_GRAY2]\
 $LIGHT_GRAY\n\$ "
 PS2='> '
 PS4='+ '
