@@ -30,8 +30,8 @@ def call(command,fake = False):
 
         You wouldn't normally use this, instead consider call(), test() and system()
     """
+    print command
     if fake:
-        print command
         return
     
     process = os.popen(command)
