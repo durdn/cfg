@@ -93,12 +93,7 @@ nmap <silent> <leader>h :e ~/scratch.txt<CR>
 "reload the .vimrc"
 "
 nmap <silent> <leader>r :source ~/.vimrc<CR>
-" xml formatting
-map <F2> <Esc>:1,$!xmllint --format -<CR>
-"remap omny completion to Ctrl-n
-inoremap <C-n> <C-x><C-o>
-"write a read only file that needs sudo first
-cmap w!! w !sudo tee % >/dev/null
+
 " found as comment on reddit
 " don't show the preview pane for some omni completions
 set completeopt-=preview
@@ -115,6 +110,18 @@ endfunction
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
+if has('unix')
+    " xml formatting
+    map <F2> <Esc>:1,$!xmllint --format -<CR>
+    "remap omny completion to Ctrl-n
+    inoremap <C-n> <C-x><C-o>
+    "write a read only file that needs sudo first
+    cmap w!! w !sudo tee % >/dev/null
+    "greps entire word under cursor and you can go through the matches with "ctrl-n,p
+    map <silent> <leader>g "yyiw:grep -r <C-R>y *<CR>
+    map <C-N> :cn<CR>
+    map <C-P> :cp<CR>
+endif
 if has('gui_macvim')
     winpos 720 0
     " goes to real fullscreen on OS X
