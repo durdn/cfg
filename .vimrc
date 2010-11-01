@@ -119,8 +119,8 @@ if has('unix')
     cmap w!! w !sudo tee % >/dev/null
     "greps entire word under cursor and you can go through the matches with "ctrl-n,p
     map <silent> <leader>g "yyiw:grep -r <C-R>y *<CR>
-    map <C-N> :cn<CR>
-    map <C-P> :cp<CR>
+    "map <C-N> :cn<CR>
+    "map <C-P> :cp<CR>
 endif
 if has('gui_macvim')
     winpos 720 0
