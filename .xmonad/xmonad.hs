@@ -34,12 +34,12 @@ import XMonad.Actions.GridSelect
 modifiers x = maximize $ avoidStruts $ smartBorders x
 myLayout = modifiers (decoTCM ||| 
             -- decoCircle |||
-            Full)
-            -- decoTiled ||| 
+            Full |||
+            decoTiled )
             -- Mirror decoTiled ||| 
             -- ThreeCol 1 (3/100) (1/2) ||| 
   where
-    -- decoTiled = noFrillsDeco shrinkText myTheme tiled
+    decoTiled = noFrillsDeco shrinkText myTheme tiled
     -- decoCircle = noFrillsDeco shrinkText myTheme SmallerCircle
     decoTCM = noFrillsDeco shrinkText myTheme (ThreeColMid 1 (3/100) (1/2))
     tiled   = Tall nmaster delta ratio
