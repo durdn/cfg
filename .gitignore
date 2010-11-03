@@ -1,3 +1,7 @@
 .vim/doc/tags
 .vim/bundle/nerdcommenter/doc/tags
 .vim/bundle/nerdtree/doc/tags
+xmonad-i386-linux
+xmonad.errors
+xmonad.hi
+xmonad.o
