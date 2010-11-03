@@ -122,6 +122,9 @@ if has('unix')
     "map <C-N> :cn<CR>
     "map <C-P> :cp<CR>
 endif
+if has('gui_gtk')
+    set guifont=Terminus
+endif
 if has('gui_macvim')
     winpos 720 0
     " goes to real fullscreen on OS X
