@@ -13,8 +13,8 @@
 		<stringvalue>Default</stringvalue>
 	</entry>
 	<entry name="alternate_screen_scroll" mtime="1288818206" type="bool" value="true"/>
-	<entry name="palette" mtime="1288820375" type="string">
-		<stringvalue>#2E2E34343636:#E1E189896464:#A8A8FFFF6060:#FFFFFFFFB6B6:#66669999CCCC:#FFFF7373FDFD:#9696CBCBFEFE:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC</stringvalue>
+	<entry name="palette" mtime="1288821979" type="string">
+		<stringvalue>#7C7C7C7C7C7C:#E1E189896464:#A8A8FFFF6060:#FFFFFFFFB6B6:#66669999CCCC:#FFFF7373FDFD:#9696CBCBFEFE:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC</stringvalue>
 	</entry>
 	<entry name="background_color" mtime="1288818206" type="string">
 		<stringvalue>#000000000000</stringvalue>

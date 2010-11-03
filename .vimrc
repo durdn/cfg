@@ -32,6 +32,7 @@ set tabstop=4
 set ff=unix             " set file type to unix
 set foldmethod=marker   " sets the fold method to {{ }} markers
 set backspace=indent,eol,start
+colorscheme ir_black
 
 filetype plugin indent on
 
@@ -145,7 +146,6 @@ if has('gui_running')
     set columns=119
     set guioptions-=T  " no toolbar
     inoremap <C-space> <C-x><C-o>
-    colorscheme ir_black
 else
     inoremap <Nul> <C-x><C-o>
 endif
