@@ -74,7 +74,7 @@ def install_tracked_assets(cfg_folder, destination_folder):
     files = cfg_assets(os.listdir(cfg_folder),os.path.isfile)
     for f in files:
         name = os.path.split(f)[1]
-        call('ln %s %s' % (f,join(destination_folder,name)),fake=debug)
+        call('ln -s %s %s' % (f,join(destination_folder,name)),fake=debug)
     dirs = cfg_assets(os.listdir(cfg_folder),os.path.isdir)
     for d in dirs:
         name = os.path.split(d)[1]
