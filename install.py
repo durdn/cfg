@@ -9,6 +9,7 @@ debug = False
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
+gitrepo_ro = 'git://github.com/durdn/cfg.git'
 ignored = ['install.py',
            'install.pyc',
            '.git',
@@ -92,7 +93,7 @@ if __name__ == '__main__':
 
     if not os.path.exists(cfg_folder):
         #clone cfg repo
-        call("git clone %s %s" % (gitrepo,cfg_folder))
+        call("git clone %s %s" % (gitrepo_ro,cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
