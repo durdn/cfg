@@ -55,7 +55,7 @@ mrxvt.transparentMenubar:		False
 mrxvt.transparentTabbar:		False
 mrxvt.tabUsePixmap:			False
 mrxvt.utmpInhibit:			False
-mrxvt.visualBell:			False
+mrxvt.visualBell:			True
 mrxvt.currentTabVBell:			False
 mrxvt.mapAlert:				False
 mrxvt.meta8:				False
@@ -90,7 +90,7 @@ mrxvt.troughColor:			#202020
 mrxvt.highlightColor:			#303060
 mrxvt.cursorColor:			#00ff00
 mrxvt.cursorColor2:			#000000
-mrxvt.showMenu:				True
+mrxvt.showMenu:				False
 mrxvt.font:				    -*-terminus-medium-*-*-*-14-150-*-*-*-*-iso8859-1
 mrxvt.font1:				-*-terminus-medium-*-*-*-14-150-*-*-*-*-iso8859-1
 mrxvt.font2:				-*-terminus-medium-*-*-*-14-150-*-*-*-*-iso8859-1
