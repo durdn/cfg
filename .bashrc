@@ -144,3 +144,5 @@ PS2='> '
 PS4='+ '
 }
 proml
+
+PATH=$PATH:$HOME/dev/apps/node/bin

@@ -6,10 +6,11 @@
     cl = clone
     ci = commit
     co = checkout
-    br = branch
+    br = branch -ra
     ls = log --oneline --decorate
     ll = log --oneline --decorate --numstat -15
     diff = diff --word-diff
+    branch = branch -ra
 
 [color]
     branch = auto
