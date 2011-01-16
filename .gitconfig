@@ -9,6 +9,7 @@
     br = branch -ra
     ls = log --oneline --decorate
     ll = log --oneline --decorate --numstat -15
+    le = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
     diff = diff --word-diff
     branch = branch -ra
 
