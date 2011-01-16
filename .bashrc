@@ -81,6 +81,8 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias apt='sudo apt-get'
+alias cs='sudo apt-cache search'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
