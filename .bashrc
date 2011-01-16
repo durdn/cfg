@@ -77,13 +77,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias apt='sudo apt-get'
-alias cs='sudo apt-cache search'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -108,6 +101,10 @@ alias ls='ls --color'
 alias ll='ls -l --color'
 alias la='ls -al --color'
 alias less='less -R'
+
+#apt aliases
+alias apt='sudo apt-get'
+alias cs='sudo apt-cache search'
 
 #git aliases
 alias gs='git status '
