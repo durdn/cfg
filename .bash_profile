@@ -13,21 +13,21 @@ function parse_git_branch {
 }
  
 function proml {
-  local        WHITE="\[\033[1;37m\]"
-  local        BLACK="\[\033[0;30m\]"
-  local        BLUE="\[\033[0;34m\]"
-  local        LIGHT_BLUE="\[\033[1;34m\]"
-  local        CYAN="\[\033[0;36m\]"
-  local         RED="\[\033[0;31m\]"
-  local   LIGHT_RED="\[\033[1;31m\]"
-  local       GREEN="\[\033[0;32m\]"
-  local      GREEN2="\[\033[0;32m\]"
+  local WHITE="\[\033[1;37m\]"
+  local BLACK="\[\033[0;30m\]"
+  local BLUE="\[\033[0;34m\]"
+  local LIGHT_BLUE="\[\033[1;34m\]"
+  local CYAN="\[\033[0;36m\]"
+  local RED="\[\033[0;31m\]"
+  local LIGHT_RED="\[\033[1;31m\]"
+  local GREEN="\[\033[0;32m\]"
+  local GREEN2="\[\033[0;32m\]"
   local LIGHT_GREEN="\[\033[1;32m\]"
-  local       WHITE="\[\033[1;37m\]"
-  local  LIGHT_GRAY="\[\033[0;37m\]"
-  local  MAGENTA="\[\033[1;35m\]"
-  local  LIGHT_GRAY2="\[\033[0;37m\]"
-  local  DARK_GRAY="\[\033[1;30m\]"
+  local WHITE="\[\033[1;37m\]"
+  local LIGHT_GRAY="\[\033[0;37m\]"
+  local MAGENTA="\[\033[1;35m\]"
+  local LIGHT_GRAY2="\[\033[0;37m\]"
+  local DARK_GRAY="\[\033[1;30m\]"
   case $TERM in
     xterm*)
     TITLEBAR='\[\033]0;\u@\h:\w\007\]'
@@ -92,6 +92,9 @@ if [ $(uname) == "Linux" ]; then
   alias la='ls -al --color'
   alias less='less -R'
 
+  #project aliases
+  alias tarot="screen -c ./screen-tarot.config"
+
   PATH=$PATH:$HOME/dev/apps/node/bin
 fi
 
@@ -99,7 +102,7 @@ fi
 if [ $(uname) == "Darwin" ]; then
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
-  export PATH=$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/bin:$HOME/.homebrew/share/npm/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin
+  export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin:$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/share/npm/bin
   export MANPATH=/opt/local/share/man:$MANPATH
 
   #aliases 
@@ -121,6 +124,7 @@ if [ $(uname) == "Darwin" ]; then
   export PATH=/Users/nick/dev/apps/sqlplus-ic-10.2:$PATH
 
   #project aliases
+  alias tarot="screen -c ./screen-tarot.config"
   alias atg="screen -c ./screen-atg.config"
   alias ab="source ~/dev/envs/boi/bin/activate"
   alias as="source ~/dev/envs/boi/bin/activate"
