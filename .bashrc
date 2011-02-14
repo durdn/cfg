@@ -99,7 +99,7 @@ fi
 if [ $(uname) == "Darwin" ]; then
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
-  export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin:$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/share/npm/bin
+  export PATH=$HOME/.homebrew/Cellar/ruby/1.9.2-p136/bin:$HOME/.homebrew/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin:$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/share/npm/bin
   export MANPATH=/opt/local/share/man:$MANPATH
 
   #aliases 
