@@ -92,6 +92,9 @@ if [ $(uname) == "Linux" ]; then
   alias la='ls -al --color'
   alias less='less -R'
 
+  #project aliases
+  alias tarot="screen -c ./screen-tarot.config"
+
   PATH=$PATH:$HOME/dev/apps/node/bin
 fi
 
@@ -121,6 +124,7 @@ if [ $(uname) == "Darwin" ]; then
   export PATH=/Users/nick/dev/apps/sqlplus-ic-10.2:$PATH
 
   #project aliases
+  alias tarot="screen -c ./screen-tarot.config"
   alias atg="screen -c ./screen-atg.config"
   alias ab="source ~/dev/envs/boi/bin/activate"
   alias as="source ~/dev/envs/boi/bin/activate"
