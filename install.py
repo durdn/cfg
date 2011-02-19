@@ -77,9 +77,8 @@ def install_tracked_assets(cfg_folder, destination_folder):
     files = cfg_assets(os.listdir(cfg_folder),os.path.isfile)
     for f in files:
         name = os.path.split(f)[1]
-        hashsrc = hashlib.sha1(f).hexdigest()
-        hashdest = hashlib.sha1(join(destination_folder,name)).hexdigest()
-        print hashsrc, hashdest
+        hashsrc = hashlib.sha1(file(f).read()).hexdigest()
+        hashdest = hashlib.sha1(file(join(destination_folder,name)).read()).hexdigest()
         if (hashsrc == hashdest):
             call('already last version %s' % (join(destination_folder,name)),fake=True)
         else:
