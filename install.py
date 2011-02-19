@@ -6,7 +6,7 @@ from os.path import join,normpath,abspath
 from pprint import pprint
 import hashlib
 
-debug = True
+debug = False
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
@@ -35,7 +35,7 @@ def call(command,fake = False):
     print command
     if fake:
         return
-    
+
     process = os.popen(command)
     output = []
     line = process.readline()
@@ -80,13 +80,19 @@ def install_tracked_assets(cfg_folder, destination_folder):
         hashsrc = hashlib.sha1(file(f).read()).hexdigest()
         hashdest = hashlib.sha1(file(join(destination_folder,name)).read()).hexdigest()
         if (hashsrc == hashdest):
-            call('already last version %s' % (join(destination_folder,name)),fake=True)
+            call('F [unchanged] %s' % (join(destination_folder,name)),fake=True)
         else:
             call('ln -s %s %s' % (f,join(destination_folder,name)),fake=debug)
     dirs = cfg_assets(os.listdir(cfg_folder),os.path.isdir)
     for d in dirs:
         name = os.path.split(d)[1]
-        call('ln -s %s %s' % (d,join(destination_folder,name)),fake=debug)
+        destdir = join(destination_folder,name)
+        dest_linksto = os.readlink(destdir)
+        if  dest_linksto == d:
+            call('D [unchanged] %s linked to %s' % (destdir, d), fake=True)
+        else:
+            call('ln -s %s %s' % (d,destdir),fake=debug)
+
 
 
 if __name__ == '__main__':
@@ -107,13 +113,16 @@ if __name__ == '__main__':
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
             print '|-> pulling origin master'
-            call("cd %s && git pull origin master" % (cfg_folder))
+            if debug:
+                call("cd %s" % (cfg_folder))
+            else:
+                call("cd %s && git pull origin master" % (cfg_folder))
         else:
             print '|-> git tracking projects not found in %s, ending program in shame' % cfg_folder
 
     stats = cfg_assets(os.listdir(cfg_folder),lambda x: True)
     print '|* tracking %d assets in %s' % (len(stats),cfgname)
-    
+
     #print '|* backing up affected files...'
     #backup_affected_assets(cfg_folder,backup_folder)
 
