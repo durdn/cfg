@@ -110,7 +110,7 @@ if __name__ == '__main__':
     #clone config folder if not present, update if present
     if not os.path.exists(cfg_folder):
         #clone cfg repo
-        call("git clone %s %s" % (gitrepo_ro,cfg_folder))
+        call("git clone %s %s" % (gitrepo,cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
