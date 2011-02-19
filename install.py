@@ -82,6 +82,7 @@ def install_tracked_assets(cfg_folder, destination_folder):
         if (hashsrc == hashdest):
             call('F [unchanged] %s' % (join(destination_folder,name)),fake=True)
         else:
+            call('mv %s %s' % (f,join(backup_folder,name)),fake=debug)
             call('ln -s %s %s' % (f,join(destination_folder,name)),fake=debug)
     dirs = cfg_assets(os.listdir(cfg_folder),os.path.isdir)
     for d in dirs:
@@ -91,6 +92,7 @@ def install_tracked_assets(cfg_folder, destination_folder):
         if  dest_linksto == d:
             call('D [unchanged] %s linked to %s' % (destdir, d), fake=True)
         else:
+            call('mv %s %s' % (d,join(backup_folder,name)),fake=debug)
             call('ln -s %s %s' % (d,destdir),fake=debug)
 
 
