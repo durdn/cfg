@@ -177,11 +177,13 @@ endif
 " -- Snipmate Django extension --
 ":set ft=python.django
 ":set ft=html.django_template
+au BufRead,BufNewFile *.jsp set ft=jsp
 au BufRead,BufNewFile *.html set ft=html.django_template
 au BufRead,BufNewFile *.json set ft=json
 "au FileType html set ft=django_template.html
 au FileType python set ft=python.django " For SnipMate
-au FileType python setlocal sw=4 sts=4 et tw=90 sta
+au FileType python setlocal sw=4 sts=4 et tw=200 sta
+au FileType jsp setlocal sw=4 sts=4 noet tw=200 sta
 
 " -- VimClojure setup --
 let vimclojure#NailgunClient = "/Users/nick/bin/ng"
