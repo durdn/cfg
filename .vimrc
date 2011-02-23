@@ -11,27 +11,32 @@ if has('syntax') && (&t_Co > 2)
   syntax on
 endif
 
+set encoding=utf-8
 set nocompatible hidden ignorecase smartcase title expandtab autoindent
 set nobackup noswapfile showmode showcmd ttyfast gdefault
-set hlsearch visualbell shiftround incsearch nu gdefault wildmenu
+set hlsearch visualbell shiftround incsearch nu gdefault wildmenu nowrap
 let mapleader = ","
 let maplocalleader = ";"
 set copyindent          " copy the previous indentation on autoindenting
 set showmatch           " set show matching parenthesis
 set noerrorbells        " don't beep
+set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set history=1000
 set undolevels=1000     " use many levels of undo
-set wildmode=list:longest
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
 set scrolloff=3
 set shortmess=atI
 set guioptions=a        " get rid of stupid scrollbar/menu/tabs/etc
 set guifont=Terminus:h12
 set whichwrap=h,l,~,[,]
-set tabstop=4
 set ff=unix             " set file type to unix
 set foldmethod=marker   " sets the fold method to {{ }} markers
 set backspace=indent,eol,start
+set laststatus=2
+set noequalalways
 colorscheme ir_black
 
 filetype plugin indent on
@@ -41,8 +46,8 @@ filetype plugin indent on
 "==================================
 nnoremap ' `
 nnoremap ` '
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -68,7 +73,7 @@ nmap <silent> <leader>p "0p
 nmap <silent> <leader>P "0P
 "hide hightlight of searches"
 nmap <silent> <leader>n :silent :nohlsearch<CR>
-set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:\|\ ,trail:·,eol:$
 "show spaces"
 nmap <silent> <leader>s :set nolist!<CR>
 "show line numbers"
@@ -107,6 +112,20 @@ function! ToggleRelativeAbsoluteNumber()
     set number
   endif
 endfunction
+
+"picked up from carlhuda janus
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Opens a tab edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>t
+map <Leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+" Inserts the path of the currently edited file into a command
+" Command mode: Ctrl+P
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
 
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
@@ -149,12 +168,19 @@ if has('gui_running')
 else
     inoremap <Nul> <C-x><C-o>
 endif
+" Remember last location in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
+
 
 "}}}
 " Plugins configuration"{{{
 " ===================================================================
 
-" --- Nerdtree --- 
+" --- Nerdtree ---
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 if has('ruby')
