@@ -116,15 +116,15 @@ endfunction
 "picked up from carlhuda janus
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
-map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>nf :e <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 
 "}}}
