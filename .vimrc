@@ -37,6 +37,7 @@ set foldmethod=marker   " sets the fold method to {{ }} markers
 set backspace=indent,eol,start
 set laststatus=2
 set noequalalways
+set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ %{fugitive#statusline()}
 colorscheme ir_black
 
 filetype plugin indent on
