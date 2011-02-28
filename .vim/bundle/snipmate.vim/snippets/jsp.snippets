@@ -1,0 +1,23 @@
+snippet foreach
+	<dsp:droplet name="/atg/dynamo/droplet/ForEach">
+		<dsp:param name="array" bean="${1}" />
+		<dsp:setvalue param="${2}" paramvalue="element"/>
+		<dsp:oparam name="empty">
+		</dsp:oparam>
+		<dsp:oparam name="outputStart">
+		</dsp:oparam>
+		<dsp:oparam name="output">
+				<dsp:valueof param="${3}"/>
+		</dsp:oparam> <%-- output param --%>
+		<dsp:oparam name="outputEnd">
+		</dsp:oparam>
+	</dsp:droplet>
+snippet tags
+	<%@ taglib uri="/dspTaglib" prefix="dsp"%>
+	<%@ taglib uri="c" prefix="c"%>
+	<%@ taglib uri="fmt" prefix="fmt" %>
+snippet import
+	<dsp:importbean var="${1}" bean="${2}"/>
+snippet getvalueof
+	<dsp:getvalueof var="${1}" bean="${2}" />
+

@@ -204,7 +204,7 @@ endif
 " -- Snipmate Django extension --
 ":set ft=python.django
 ":set ft=html.django_template
-au BufRead,BufNewFile *.jsp set ft=jsp
+au BufRead,BufNewFile *.jsp set ft=jsp.html
 au BufRead,BufNewFile *.html set ft=html.django_template
 au BufRead,BufNewFile *.json set ft=json
 "au FileType html set ft=django_template.html
