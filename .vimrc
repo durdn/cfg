@@ -140,8 +140,9 @@ if has('unix')
     cmap w!! w !sudo tee % >/dev/null
     "greps entire word under cursor and you can go through the matches with "ctrl-n,p
     map <silent> <leader>g "yyiw:grep -r <C-R>y *<CR>
-    "map <C-N> :cn<CR>
-    "map <C-P> :cp<CR>
+    "c-n/p goes to the next prev match and list entries again
+    map <C-n> :cn<CR>:cl<CR>
+    map <C-p> :cp<CR>:cl<CR>
 endif
 if has('gui_gtk')
     set guifont=Terminus

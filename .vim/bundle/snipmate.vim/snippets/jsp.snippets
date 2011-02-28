@@ -12,7 +12,7 @@ snippet foreach
 		<dsp:oparam name="outputEnd">
 		</dsp:oparam>
 	</dsp:droplet>
-snippet tags
+snippet taglib
 	<%@ taglib uri="/dspTaglib" prefix="dsp"%>
 	<%@ taglib uri="c" prefix="c"%>
 	<%@ taglib uri="fmt" prefix="fmt" %>
@@ -20,4 +20,15 @@ snippet import
 	<dsp:importbean var="${1}" bean="${2}"/>
 snippet getvalueof
 	<dsp:getvalueof var="${1}" bean="${2}" />
+snippet if
+	<c:if test="${1}${!empty something/something eq somethingelse}">
+		${2}
+	</c:if>
+snippet choose
+	<c:choose>
+		<c:when test="${1}${planId eq null}">
+			${2}<c:set var="planId" value="" />
+		</c:when>
+		<c:otherwise>${3}</c:otherwise>
+	</c:choose>
 

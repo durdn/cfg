@@ -109,6 +109,7 @@ alias gb='git branch '
 alias gc='git commit '
 alias gd='git diff '
 alias go='git checkout '
+alias stashup='git stash && git svn rebase && git stash apply'
 
 #fixes hg/mercurial
 export LC_ALL=en_US.UTF-8
