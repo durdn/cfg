@@ -183,3 +183,14 @@ if [ $(uname) == "Darwin" ]; then
   #setup RVM on OSX
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 fi
+
+# >>> MINGW32_NT-5.1 (winxp) specific config <<<
+if [ $(uname) == "MINGW32_NT-5.1" ]; then
+  alias ls='ls --color'
+  alias ll='ls -l --color'
+  alias la='ls -al --color'
+  alias less='less -R'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
