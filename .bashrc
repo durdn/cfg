@@ -1,5 +1,4 @@
-[ -z "$PS1" ] && return
-
+#[ -z "$PS1" ] && return
 #history setup
 export HISTFILESIZE=999999
 export HISTSIZE=999999
@@ -12,7 +11,7 @@ shopt -s progcomp
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
- 
+
 function proml {
   local WHITE="\[\033[1;37m\]"
   local BLACK="\[\033[0;30m\]"
@@ -37,7 +36,7 @@ function proml {
     TITLEBAR=""
     ;;
   esac
- 
+
 PS1="${TITLEBAR}\
 $LIGHT_GRAY2[$DARK_GRAY\$(date +%H:%M)$LIGHT_GRAY2]\
 $LIGHT_GRAY2[$CYAN\u@\h:$BLUE\w$RED\$(parse_git_branch)$LIGHT_GRAY2]\
@@ -59,26 +58,26 @@ proml
 # save current directory to bookmarks
 touch ~/.sdirs
 function s {
-   cat ~/.sdirs | grep -v "export DIR_$1=" > ~/.sdirs1
-   mv ~/.sdirs1 ~/.sdirs
-   echo "export DIR_$1=$PWD" >> ~/.sdirs
+  cat ~/.sdirs | grep -v "export DIR_$1=" > ~/.sdirs1
+  mv ~/.sdirs1 ~/.sdirs
+  echo "export DIR_$1=$PWD" >> ~/.sdirs
 }
 
 # jump to bookmark
 function g {
-   source ~/.sdirs
-   cd $(eval $(echo echo $(echo \$DIR_$1)))
+  source ~/.sdirs
+  cd $(eval $(echo echo $(echo \$DIR_$1)))
 }
 
 # list bookmarks with dirnam
 function l {
-   source ~/.sdirs
-   env | grep "^DIR_" | cut -c5- | grep "^.*="
+  source ~/.sdirs
+  env | grep "^DIR_" | cut -c5- | grep "^.*="
 }
 # list bookmarks without dirname
 function _l {
-   source ~/.sdirs
-   env | grep "^DIR_" | cut -c5- | grep "^.*=" | cut -f1 -d "="
+  source ~/.sdirs
+  env | grep "^DIR_" | cut -c5- | grep "^.*=" | cut -f1 -d "="
 }
 
 # completion command for g
@@ -150,7 +149,7 @@ fi
 if [ $(uname) == "Darwin" ]; then
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
-  export PATH=$HOME/.homebrew/Cellar/ruby/1.9.2-p136/bin:$HOME/.homebrew/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin:$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/share/npm/bin
+  export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin:$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/share/npm/bin
   export MANPATH=/opt/local/share/man:$MANPATH
 
   #aliases 
@@ -180,4 +179,7 @@ if [ $(uname) == "Darwin" ]; then
   #sourcing
   #source /Users/nick/dev/envs/boi-env/bin/activate
   source /Users/nick/.philips
+
+  #setup RVM on OSX
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 fi
