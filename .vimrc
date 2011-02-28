@@ -139,7 +139,10 @@ if has('unix')
     "write a read only file that needs sudo first
     cmap w!! w !sudo tee % >/dev/null
     "greps entire word under cursor and you can go through the matches with "ctrl-n,p
-    map <silent> <leader>g "yyiw:grep -r <C-R>y *<CR>
+    map <silent> <leader>gw "yyiw:grep -r <C-R>y *<CR>
+    " grep shortcut to search recursively an extension
+    map <leader>gr :grep -r  **/*.jsp<left><left><left><left><left><left><left><left><left>
+
     "c-n/p goes to the next prev match and list entries again
     map <C-n> :cn<CR>:cl<CR>
     map <C-p> :cp<CR>:cl<CR>
