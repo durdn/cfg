@@ -157,10 +157,14 @@ if has('gui_macvim')
 endif
 if has('gui_win32')
   winpos 600 0
+  "status line does not work with fugitive on win32
+  set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ 
   "overwrite mapping to edit the .vimrc"
   nmap <silent> <leader>e :e ~/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
   nmap <silent> <leader>r :source ~/_vimrc<CR>
+  " has proper command-t compiled
+  map <leader>t :CommandT<CR>
 endif
 if has('gui_running')
     syntax on
@@ -190,10 +194,10 @@ map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 if has('ruby')
   " --- Fuzzy Finder --- 
-  let g:fuzzy_ignore = "*.log"
-  let g:fuzzy_matching_limit = 70
-  let g:fuzzy_ignore = "*.pyc,*.swp"
-  map <leader>t :FuzzyFinderTextMate<CR>
+  "let g:fuzzy_ignore = "*.log"
+  "let g:fuzzy_matching_limit = 70
+  "let g:fuzzy_ignore = "*.pyc,*.swp"
+  "map <leader>t :FuzzyFinderTextMate<CR>
   map <leader>b :FuzzyFinderBuffer<CR>
   "let g:fuzzy_roots
   "let g:fuzzy_ceiling
