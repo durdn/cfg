@@ -209,7 +209,7 @@ au BufRead,BufNewFile *.json set ft=json
 "au FileType html set ft=django_template.html
 au FileType python set ft=python.django " For SnipMate
 au FileType python setlocal sw=4 sts=4 et tw=200 sta
-au FileType jsp setlocal sw=4 sts=4 noet tw=200 sta
+au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
 
 " -- VimClojure setup --
 let vimclojure#NailgunClient = "/Users/nick/bin/ng"
