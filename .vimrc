@@ -99,7 +99,7 @@ nmap <silent> <leader>e :e ~/.vimrc<CR>
 nmap <silent> <leader>h :e ~/scratch.txt<CR>
 "reload the .vimrc"
 "
-nmap <silent> <leader>r :source ~/.vimrc<CR>
+nmap <silent> <leader>rv :source ~/.vimrc<CR>
 
 " found as comment on reddit
 " don't show the preview pane for some omni completions
@@ -126,6 +126,11 @@ map <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR> <BS>
+
+" Reload all snipmate snippets
+map <silent> <leader>rs :call ReloadAllSnippets()<cr>
+" Edit snippets
+map <silent> <leader>re :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
 
 
 "}}}
@@ -162,7 +167,7 @@ if has('gui_win32')
   "overwrite mapping to edit the .vimrc"
   nmap <silent> <leader>e :e ~/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
-  nmap <silent> <leader>r :source ~/_vimrc<CR>
+  nmap <silent> <leader>rv :source ~/_vimrc<CR>
   " has proper command-t compiled
   map <leader>t :CommandT<CR>
 endif

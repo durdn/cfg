@@ -21,7 +21,7 @@ snippet import
 snippet getvalueof
 	<dsp:getvalueof var="${1}" bean="${2}" />
 snippet if
-	<c:if test="${1}${!empty something/something eq somethingelse}">
+	<c:if test='${!empty ${1}/something eq "somethingelse"}'>
 		${2}
 	</c:if>
 snippet choose
@@ -31,4 +31,7 @@ snippet choose
 		</c:when>
 		<c:otherwise>${3}</c:otherwise>
 	</c:choose>
-
+snippet cout
+	<c:out value="${${1}}"/>
+snippet page
+	<%@ page contentType="text/html; charset=UTF-8"%>
