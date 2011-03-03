@@ -53,8 +53,8 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 " ease of use keyboard mappings (why do I care about top/bottom of screen?)
-map H ^
-map L $
+nnoremap H ^
+nnoremap L $
 " : changes with less keystrokes
 nnoremap ; :
 nnoremap j gj
@@ -116,21 +116,21 @@ endfunction
 
 "picked up from carlhuda janus
 " Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <leader>nf :e <C-R>=expand("%:p:h") . "/" <CR> <BS>
+" Normal mode: <Leader>nf
+nmap <leader>nf :e <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
+nmap <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Reload all snipmate snippets
-map <silent> <leader>rs :call ReloadAllSnippets()<cr>
+nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
 " Edit snippets
-map <silent> <leader>re :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
+nmap <silent> <leader>re :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
 
 
 "}}}
@@ -144,9 +144,9 @@ if has('unix')
     "write a read only file that needs sudo first
     cmap w!! w !sudo tee % >/dev/null
     "greps entire word under cursor and you can go through the matches with "ctrl-n,p
-    map <silent> <leader>gw "yyiw:grep -r <C-R>y *<CR>
+    nmap <silent> <leader>gw "yyiw:grep -r <C-R>y *<CR>
     " grep shortcut to search recursively an extension
-    map <leader>gr :grep -r  **/*.jsp<left><left><left><left><left><left><left><left><left>
+    nmap <leader>gr :grep -r  **/*.jsp<left><left><left><left><left><left><left><left><left>
 
     "c-n/p goes to the next prev match and list entries again
     map <C-n> :cn<CR>:cl<CR>
