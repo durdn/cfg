@@ -35,3 +35,22 @@ snippet cout
 	<c:out value="${${1}}"/>
 snippet page
 	<%@ page contentType="text/html; charset=UTF-8"%>
+snippet valueof
+	<dsp:valueof value="${${1}}"/>
+snippet rql
+	<dspel:importbean bean="/atg/dynamo/droplet/RQLQueryForEach"/>
+	<dspel:droplet name="RQLQueryForEach">
+	<dspel:param name="queryRQL" value='${1}'/>
+		<dspel:param name="repository"
+			value="${2}"/>
+		<dspel:param name="itemDescriptor" value="${3}"/>
+		<dspel:oparam name="output">
+			<dspel:tomap var="pItem" param="element"/>
+			${pItem}<br>
+		</dspel:oparam>
+	</dspel:droplet>
+snippet stringcutter
+	<%@ taglib uri="/philips" prefix="philips" %>
+	<philips:stringCutter inputString="${${1}}" inputLength="${2}" cutOnSpace="false" lenient="false">
+		<c:out value="${resultString}"/>
+	</philips:stringCutter>
