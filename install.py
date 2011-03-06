@@ -77,12 +77,12 @@ def install_tracked_assets(cfg_folder, destination_folder):
     files = cfg_assets(os.listdir(cfg_folder),os.path.isfile)
     for f in files:
         name = os.path.split(f)[1]
-	dest = join(destination_folder,name)
+        dest = join(destination_folder,name)
         if os.path.exists(dest):
             hashsrc = hashlib.sha1(file(f).read()).hexdigest()
-	    hashdest = hashlib.sha1(file(dest).read()).hexdigest()
+            hashdest = hashlib.sha1(file(dest).read()).hexdigest()
             if hashsrc != hashdest:
-                call('mv %s %s' % (f,join(backup_folder,name)),fake=debug)
+                call('mv %s %s' % (join(destination_folder,name),join(backup_folder,name)),fake=debug)
                 call('ln -s %s %s' % (f,join(destination_folder,name)),fake=debug)
             else:
                 call('F [unchanged] %s' % (join(destination_folder,name)),fake=True)
@@ -93,11 +93,14 @@ def install_tracked_assets(cfg_folder, destination_folder):
     for d in dirs:
         name = os.path.split(d)[1]
         destdir = join(destination_folder,name)
-        dest_linksto = os.readlink(destdir)
-        if  dest_linksto == d:
-            call('D [unchanged] %s linked to %s' % (destdir, d), fake=True)
+        if (os.path.exists(destdir)):
+            dest_linksto = os.readlink(destdir)
+            if  dest_linksto == d:
+                call('D [unchanged] %s linked to %s' % (destdir, d), fake=True)
+            else:
+                call('mv %s %s' % (d,join(backup_folder,name)),fake=debug)
+                call('ln -s %s %s' % (d,destdir),fake=debug)
         else:
-            call('mv %s %s' % (d,join(backup_folder,name)),fake=debug)
             call('ln -s %s %s' % (d,destdir),fake=debug)
 
 
