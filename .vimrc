@@ -132,6 +132,9 @@ nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
 " Edit snippets
 nmap <silent> <leader>re :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
 
+" capital W same as w in write commank
+cmap W w
+
 
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
