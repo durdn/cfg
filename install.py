@@ -119,6 +119,9 @@ if __name__ == '__main__':
     if not os.path.exists(cfg_folder):
         #clone cfg repo
         call("git clone %s %s" % (gitrepo,cfg_folder))
+        if not os.path.exists(cfg_folder):
+            print '!!! ssh key not available for this box, cloning read only repo'
+            call("git clone %s %s" % (gitrepo_ro,cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
