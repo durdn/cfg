@@ -120,8 +120,20 @@ if __name__ == '__main__':
         #clone cfg repo
         call("git clone %s %s" % (gitrepo,cfg_folder))
         if not os.path.exists(cfg_folder):
-            print '!!! ssh key not available for this box, cloning read only repo'
+            print '!!! ssh key not installed on github for this box, cloning read only repo'
             call("git clone %s %s" % (gitrepo_ro,cfg_folder))
+            print '|* changing remote origin to read/write repo: %s' % gitrepo
+            call("cd %s && git config remote.origin.url %s" % (cfg_folder, gitrepo))
+            if os.path.exists(join(home,'.ssh/id_rsa.pub')):
+                print "|* please copy your public key below to github or you won't be able to commit"
+                print
+                print file(join(home,'.ssh/id_rsa.pub')).read()
+            else:
+                print '|* please generate your public/private key pair with the command:'
+                print
+                print 'ssh-keygen'
+                print
+                print '|* and copy the public key to github'
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
