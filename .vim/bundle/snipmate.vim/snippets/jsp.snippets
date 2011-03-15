@@ -54,3 +54,30 @@ snippet stringcutter
 	<philips:stringCutter inputString="${${1}}" inputLength="${2}" cutOnSpace="false" lenient="false">
 		<c:out value="${resultString}"/>
 	</philips:stringCutter>
+snippet pageitem
+	<dsp:droplet name="/philips/droplet/PageItemLookupDroplet">
+		<dsp:param name="repositoryItem" bean="Profile.catalogRepo"/>
+		<dsp:param name="templateType" value="${1}"/>
+		<dsp:param name="elementName"  value="pageItem"/>
+		<dsp:oparam name="output">
+			<dsp:droplet name="/atg/dynamo/droplet/IsNull">
+				<dsp:param name="value" param="pageItem.targetUrl"/>
+				<dsp:oparam name="true"></dsp:oparam>
+				<dsp:oparam name="false">
+					<%-- We finally have a pageItem of template type ContactUsSteps with a target url, so we use it --%>
+					<dsp:getvalueof var="targetUrl" param="pageItem.targetUrl" scope="request"></dsp:getvalueof>
+					<c:set var="contactUsFragment" value="${targetUrl}"></c:set>
+				</dsp:oparam>
+			</dsp:droplet>
+		</dsp:oparam>
+		<dsp:oparam name="empty"></dsp:oparam>
+		<dsp:oparam name="error"></dsp:oparam>
+	</dsp:droplet>
+snippet isnull
+	<dspel:importbean bean="/atg/dynamo/droplet/IsNull"/>
+	<dspel:droplet name="IsNull">
+		<dspel:param value="${${1}}" name="value"/>
+			<dspel:oparam name="false">
+				${2}
+			</dspel:oparam>
+	</dspel:droplet>
