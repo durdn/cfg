@@ -3,15 +3,33 @@
 
 [alias]
     st = status
+
     cl = clone
+
     ci = commit
+    cm = commit -m
+    cma = commit -a -m
+    ca = commit --amend
+    caa = commit -a --amend -C HEAD
+
+    ai = add --interactive
+
     co = checkout
     br = branch -ra
     ls = log --oneline --decorate
     ll = log --oneline --decorate --numstat -15
     le = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
     diff = diff --word-diff
+    d = diff --word-diff
     branch = branch -ra
+    uiu = update-index --assume-unchanged
+
+    r = reset
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
 
 [color]
     branch = auto
@@ -19,8 +37,8 @@
     status = auto
 
 [color "branch"]
-    current = yellow reverse
-    local = yellow
+    current = red reverse
+    local = blue
     remote = green
 
 [color "diff"]
