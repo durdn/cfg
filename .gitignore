@@ -10,3 +10,4 @@ xmonad.o
 .vim/bundle/vim-indent-object/doc/tags
 .vim/bundle/vim-surround/doc/tags
 .vim/bundle/vim-unimpaired/doc/tags
+.vim/bundle/vim-matchit/doc/tags
