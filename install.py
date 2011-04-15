@@ -7,6 +7,7 @@ from pprint import pprint
 import hashlib
 
 debug = False
+version = '0.3'
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
@@ -106,8 +107,8 @@ def install_tracked_assets(cfg_folder, destination_folder):
 
 
 if __name__ == '__main__':
-    print '|* cfg version 0.2'
-    print '|* home is ',home
+    print '|* cfg version', version
+    print '|* home is', home
     print '|* backup folder is',backup_folder
     print '|* cfg folder is',cfg_folder
 
