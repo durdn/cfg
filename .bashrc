@@ -160,6 +160,7 @@ if [ $(uname) == "Darwin" ]; then
   alias gvim='open -a MacVim'
   alias less='less -R'
   alias fnd='open -a Finder'
+  alias gitx='open -a GitX'
   alias grp='grep -RIi'
   alias assumed="git ls-files -v | grep ^[a-z] | sed -e 's/^h\ //'"
 
