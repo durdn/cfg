@@ -1,3 +1,17 @@
+snippet foreachel
+	<dspel:droplet name="/atg/dynamo/droplet/ForEach">
+		<dspel:param name="array" bean="${1}" />
+		<dspel:setvalue param="${2}" paramvalue="element"/>
+		<dspel:oparam name="empty">
+		</dspel:oparam>
+		<dspel:oparam name="outputStart">
+		</dspel:oparam>
+		<dspel:oparam name="output">
+				<dspel:valueof param="${3}"/>
+		</dspel:oparam> <%-- output param --%>
+		<dspel:oparam name="outputEnd">
+		</dspel:oparam>
+	</dspel:droplet>
 snippet foreach
 	<dsp:droplet name="/atg/dynamo/droplet/ForEach">
 		<dsp:param name="array" bean="${1}" />
