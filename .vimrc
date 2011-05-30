@@ -163,6 +163,8 @@ if has('gui_macvim')
     winpos 720 0
     " goes to real fullscreen on OS X
     set fuoptions=maxvert,maxhorz
+    macmenu &File.New\ Tab key=<nop>
+    map <leader>t <Plug>PeepOpen
 endif
 if has('gui_win32')
   winpos 600 0
