@@ -200,8 +200,11 @@ endif
 " ===================================================================
 
 " --- Nerdtree ---
+set autochdir
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
+let NERDTreeChDirMode=2
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
 
 if has('ruby')
   " --- Fuzzy Finder --- 
