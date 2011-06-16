@@ -109,6 +109,7 @@ alias gc='git commit '
 alias gd='git diff '
 alias go='git checkout '
 alias stashup='git stash && git svn rebase && git stash apply'
+alias list-patch="git ll -1 | tail -n +2 | awk '{print \$3}'"
 
 #fixes hg/mercurial
 export LC_ALL=en_US.UTF-8
