@@ -45,6 +45,9 @@ filetype plugin indent on
 "}}}
 " Keyboard Shortcuts and remappings   "{{{
 "==================================
+
+" Repeat last command and put cursor at start of change 
+nnoremap . .`[
 nnoremap ' `
 nnoremap ` '
 "nnoremap / /\v

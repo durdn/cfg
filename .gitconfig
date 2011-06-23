@@ -56,6 +56,6 @@
     email = durden@gmail.com
     name = Nicola Paolucci
 [push]
-	default = current
+    default = current
 [pull]
-	default = current
+    default = current
