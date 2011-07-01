@@ -1,5 +1,5 @@
 Install config tracking in your HOME by running:
 
-  curl https://github.com/durdn/cfg/raw/master/install.py -o - | python
+  curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
 
 Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository
