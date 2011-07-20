@@ -154,7 +154,7 @@ fi
 if [ $(uname) == "Darwin" ]; then
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
-  export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/Cellar/python/2.7.1/bin:$PATH:/usr/local/mysql/bin:$HOME/bin:$HOME/.homebrew/share/npm/bin
+  export PATH=/usr/local/bin:/usr/local/Cellar/python/2.7.2/bin:/usr/local/share/python:$HOME/bin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 
   #aliases 
@@ -175,7 +175,7 @@ if [ $(uname) == "Darwin" ]; then
   #setup sqlplus
   export DYLD_LIBRARY_PATH="/opt/local/lib/oracle:/Users/nick/dev/apps/sqlplus-ic-10.2"
   export TNS_ADMIN="/Users/nick/dev/apps/sqlplus-ic-10.2"
-  export PATH=/Users/nick/dev/apps/sqlplus-ic-10.2:$PATH
+#  export PATH=/Users/nick/dev/apps/sqlplus-ic-10.2:$PATH
 
   #project aliases
   alias tarot="screen -c ./screen-tarot.config"
