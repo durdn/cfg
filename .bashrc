@@ -186,6 +186,8 @@ if [ $(uname) == "Darwin" ]; then
   #sourcing
   #source /Users/nick/dev/envs/boi-env/bin/activate
   source /Users/nick/.philips
+  #source git bash completion from homebrew on OSX
+  source /usr/local/etc/bash_completion.d/git-completion.bash
 
   #setup RVM on OSX
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
