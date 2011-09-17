@@ -47,6 +47,15 @@ PS4='+ '
 proml
 
 # --------------
+# create a git repository on durdn.com
+function createrepo {
+  ssh durdn@durdn.com "cd /home/durdn/git && mkdir $1.git && cd $1.git && git --bare init-db"
+}
+# list  git repositories on durdn.com
+function listrepos {
+  ssh durdn@durdn.com "cd /home/durdn/git && ls -1"
+}
+# --------------
 # bashmarks from https://github.com/huyng/bashmarks (see copyright there)
 
 # USAGE:
