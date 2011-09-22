@@ -87,9 +87,11 @@ nmap <silent> <leader>m :only<CR>
 "toggle minibuf explorer
 nmap <silent> <leader>M :TMiniBufExplorer<CR>
 "vertical split"
-nmap <silent> <leader>v :vsplit<CR>
+"nmap <silent> <leader>v :vsplit<CR>
+nmap <silent> <leader>v :bel :vne<CR>
 "horizontal split"
-nmap <silent> <leader>f :split<CR>
+"nmap <silent> <leader>f :split<CR>
+nmap <silent> <leader>f :bel :new<CR>
 "wrap lines"
 nmap <silent> <leader>w :set nowrap!<CR>
 "close viewport buffer"
