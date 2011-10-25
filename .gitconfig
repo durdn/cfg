@@ -1,5 +1,6 @@
 [core]
     editor= /usr/bin/vi
+	excludesfile = /Users/nick/.gitignore_global
 
 [alias]
     st = status
@@ -53,9 +54,15 @@
     untracked = cyan
 
 [user]
-    email = durden@gmail.com
-    name = Nicola Paolucci
+	email = nick@durdn.com
+	name = Nicola Paolucci
 [push]
     default = current
 [pull]
     default = current
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
