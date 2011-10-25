@@ -73,8 +73,9 @@ map <Left> :bprev<CR>
 imap <Left> <ESC>:bprev<CR>
 map <Del> :bd<CR>
 "paste last yanked string skipping deletes"
-nmap <silent> <leader>p "0p
-nmap <silent> <leader>P "0P
+" nmap <silent> <leader>p "0p
+" nmap <silent> <leader>P "0P
+
 "hide hightlight of searches"
 nmap <silent> <leader>n :silent :nohlsearch<CR>
 set listchars=tab:\|\ ,trail:·,eol:$
