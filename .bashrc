@@ -60,6 +60,12 @@ function listrepos {
 function cl {
   git clone ssh://durdn@durdn.com/~/git/$1.git
 }
+
+# cfg reinstall
+function cfg-reinstall {
+  curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
+}
+
 # --------------
 # bashmarks from https://github.com/huyng/bashmarks (see copyright there)
 
