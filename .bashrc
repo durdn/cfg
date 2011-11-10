@@ -49,26 +49,24 @@ proml
 # my own durdn/cfg related commands
 function dur {
   case $1 in
-  create)
+  create|cr)
     ssh durdn@durdn.com "cd /home/durdn/git && mkdir $2.git && cd $2.git && git --bare init-db"
     ;;
-  list)
+  list|li)
     ssh durdn@durdn.com "cd /home/durdn/git && ls -C"
     ;;
-  cl)
+  clone|cl)
     git clone ssh://durdn@durdn.com/~/git/$2.git
     ;;
-  clone)
-    git clone ssh://durdn@durdn.com/~/git/$2.git
-    ;;
-  install)
+  install|i)
     /usr/bin/env python $HOME/.cfg/install.py
     ;;
-  reinstall)
+  reinstall|re)
     curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
     ;;
-  help)
-    echo "commands available: create, list, [cl]one, install, reinstall"
+  help|h|*)
+    echo "[dur]dn shell automation tools - (c) 2011 Nicola Paolucci nick@durdn.com"
+    echo "commands available: [cr]eate, [li]st, [cl]one, [i]nstall, [re]install, [h]elp"
     ;;
   esac
 }
