@@ -68,7 +68,7 @@ function dur {
     curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
     ;;
   help)
-    echo "commands available: create, list, clone(cl), reinstall"
+    echo "commands available: create, list, [cl]one, install, reinstall"
     ;;
   esac
 }
