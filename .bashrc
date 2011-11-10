@@ -46,24 +46,31 @@ PS4='+ '
 }
 proml
 
-# --------------
-# create a git repository on durdn.com
-function createrepo {
-  ssh durdn@durdn.com "cd /home/durdn/git && mkdir $1.git && cd $1.git && git --bare init-db"
-}
-# list  git repositories on durdn.com
-function listrepos {
-  ssh durdn@durdn.com "cd /home/durdn/git && ls -1"
-}
-
-# clone a repo from durdn.com
-function cl {
-  git clone ssh://durdn@durdn.com/~/git/$1.git
-}
-
-# cfg reinstall
-function cfg-reinstall {
-  curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
+# my own durdn/cfg related commands
+function dur {
+  case $1 in
+  create)
+    ssh durdn@durdn.com "cd /home/durdn/git && mkdir $2.git && cd $2.git && git --bare init-db"
+    ;;
+  list)
+    ssh durdn@durdn.com "cd /home/durdn/git && ls -C"
+    ;;
+  cl)
+    git clone ssh://durdn@durdn.com/~/git/$2.git
+    ;;
+  clone)
+    git clone ssh://durdn@durdn.com/~/git/$2.git
+    ;;
+  install)
+    /usr/bin/env python $HOME/.cfg/install.py
+    ;;
+  reinstall)
+    curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
+    ;;
+  help)
+    echo "commands available: create, list, clone(cl), reinstall"
+    ;;
+  esac
 }
 
 # --------------
