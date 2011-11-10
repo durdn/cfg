@@ -9,7 +9,7 @@ shopt -s progcomp
 
 #prompt cleanup
 function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
 }
 
 function proml {
@@ -38,8 +38,8 @@ function proml {
   esac
 
 PS1="${TITLEBAR}\
-$LIGHT_GRAY2[$DARK_GRAY\$(date +%H:%M)$LIGHT_GRAY2]\
-$LIGHT_GRAY2[$CYAN\u@\h:$BLUE\w$RED\$(parse_git_branch)$LIGHT_GRAY2]\
+$LIGHT_GRAY2[$DARK_GRAY\u$LIGHT_GRAY2]\
+$LIGHT_GRAY2[$MAGENTA\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(parse_git_branch)$LIGHT_GRAY2\
 $LIGHT_GRAY\n\$ "
 PS2='> '
 PS4='+ '
