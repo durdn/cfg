@@ -2,12 +2,12 @@
 import os
 import glob
 import sys
-from os.path import join,normpath,abspath
+from os.path import join,normpath,abspath,islink
 from pprint import pprint
 import hashlib
 
 debug = False
-version = '0.3'
+version = '1.0'
 cfgname = '.cfg'
 bkpname = 'backup.cfg'
 gitrepo = 'git@github.com:durdn/cfg.git'
@@ -49,11 +49,6 @@ def call(command,fake = False):
 
     return (result, "".join(output).strip())
 
-def list_all(path):
-    "lists all files in a folder, including dotfiles"
-    tmp = sum([glob.glob(normpath(join(a[0],'*')))  for a in os.walk(path)],[])
-    return tmp + sum([glob.glob(normpath(join(a[0],'.*')))  for a in os.walk(path)],[])
-
 def assets(rootpath,flist,test):
     return filter(lambda x: test(x), [normpath(join(rootpath,f)) for f in flist])
 
@@ -63,15 +58,6 @@ def local_assets(flist,test):
 def cfg_assets(flist,test):
     return filter(lambda x: test(x) and os.path.split(x)[1] not in ignored,
                   assets(cfg_folder,flist,test))
-
-def backup_affected_assets(cfg_folder, backup_folder):
-    "Backup files that would be overwritten by config tracking into backup folder"
-    files = local_assets(os.listdir(cfg_folder),lambda x: True)
-    for f in files:
-        if os.path.exists(f):
-            name = os.path.split(f)[1]
-            hash = hashlib.sha1(f).hexdigest()
-            call('mv %s %s' % (f,join(backup_folder,name)),fake=debug)
 
 def install_tracked_assets(cfg_folder, destination_folder):
     "Install tracked configuration files into destination folder"
@@ -83,12 +69,18 @@ def install_tracked_assets(cfg_folder, destination_folder):
             hashsrc = hashlib.sha1(file(f).read()).hexdigest()
             hashdest = hashlib.sha1(file(dest).read()).hexdigest()
             if hashsrc != hashdest:
-                call('mv %s %s' % (join(destination_folder,name),join(backup_folder,name)),fake=debug)
-                call('ln -s %s %s' % (f,join(destination_folder,name)),fake=debug)
+                call('F [install/backup] %s' % dest,fake=True)
+                call('mv %s %s' % (dest,join(backup_folder,name)),fake=debug)
+                call('ln -s %s %s' % (f,dest),fake=debug)
             else:
-                call('F [unchanged] %s' % (join(destination_folder,name)),fake=True)
+                if islink(dest):
+                  call('F [unchanged] %s' % dest,fake=True)
+                else:
+                  call('F [unchanged/relink] %s' % dest,fake=True)
+                  call('mv %s %s' % (dest,join(backup_folder,name)),fake=debug)
+                  call('ln -s %s %s' % (f,dest),fake=debug)
         else:
-            call('ln -s %s %s' % (f,join(destination_folder,name)),fake=debug)
+            call('ln -s %s %s' % (f,dest),fake=debug)
 
     dirs = cfg_assets(os.listdir(cfg_folder),os.path.isdir)
     for d in dirs:
@@ -148,9 +140,6 @@ if __name__ == '__main__':
 
     stats = cfg_assets(os.listdir(cfg_folder),lambda x: True)
     print '|* tracking %d assets in %s' % (len(stats),cfgname)
-
-    #print '|* backing up affected files...'
-    #backup_affected_assets(cfg_folder,backup_folder)
 
     print '|* installing tracked config files...'
     install_tracked_assets(cfg_folder,home)
