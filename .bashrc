@@ -39,7 +39,7 @@ function proml {
 
 PS1="${TITLEBAR}\
 $LIGHT_GRAY2[$DARK_GRAY\u$LIGHT_GRAY2]\
-$LIGHT_GRAY2[$MAGENTA\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(parse_git_branch)$LIGHT_GRAY2\
+$LIGHT_GRAY2[$LIGHT_BLUE\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(parse_git_branch)$LIGHT_GRAY2\
 $LIGHT_GRAY\n\$ "
 PS2='> '
 PS4='+ '
@@ -70,6 +70,7 @@ function dur {
     ;;
   esac
 }
+
 
 # --------------
 # bashmarks from https://github.com/huyng/bashmarks (see copyright there)
@@ -134,7 +135,6 @@ alias gc='git commit '
 alias gd='git diff '
 alias go='git checkout '
 alias stashup='git stash && git svn rebase && git stash apply'
-#alias list-patch="git ll -1 | tail -n +2 | awk '{print \$3}'"
 function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
 }
@@ -186,12 +186,19 @@ if [ $(uname) == "Darwin" ]; then
   alias ls='ls -G'
   alias ll='ls -lG'
   alias la='ls -alG'
-  alias gvim='open -a MacVim'
   alias less='less -R'
   alias fnd='open -a Finder'
   alias gitx='open -a GitX'
   alias grp='grep -RIi'
   alias assumed="git ls-files -v | grep ^[a-z] | sed -e 's/^h\ //'"
+
+  #open macvim
+  function gvim {
+    if [ -e $1 ];
+      then open -a MacVim $1;
+      else touch $1 && open -a MacVim $1; 
+    fi
+  }
 
   #setup sqlplus
   export DYLD_LIBRARY_PATH="/opt/local/lib/oracle:/Users/nick/dev/apps/sqlplus-ic-10.2"
