@@ -182,10 +182,6 @@ if [ $(uname) == "Darwin" ]; then
   alias grp='grep -RIi'
   alias assumed="git ls-files -v | grep ^[a-z] | sed -e 's/^h\ //'"
 
-  #apt aliases
-  alias apt='sudo apt-get'
-  alias cs='sudo apt-cache search'
-
   #setup sqlplus
   export DYLD_LIBRARY_PATH="/opt/local/lib/oracle:/Users/nick/dev/apps/sqlplus-ic-10.2"
   export TNS_ADMIN="/Users/nick/dev/apps/sqlplus-ic-10.2"
@@ -194,12 +190,11 @@ if [ $(uname) == "Darwin" ]; then
   #project aliases
   alias tarot="screen -c ./screen-tarot.config"
   alias atg="screen -c ./screen-atg.config"
-  alias ab="source ~/dev/envs/boi/bin/activate"
-  alias as="source ~/dev/envs/boi/bin/activate"
 
   #sourcing
+
   #source /Users/nick/dev/envs/boi-env/bin/activate
-  source /Users/nick/.philips
+  #source /Users/nick/.philips
   #source git bash completion from homebrew on OSX
   source /usr/local/etc/bash_completion.d/git-completion.bash
 
