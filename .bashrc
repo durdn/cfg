@@ -55,6 +55,11 @@ function createrepo {
 function listrepos {
   ssh durdn@durdn.com "cd /home/durdn/git && ls -1"
 }
+
+# clone a repo from durdn.com
+function cl {
+  git clone ssh://durdn@durdn.com/~/git/$1.git
+}
 # --------------
 # bashmarks from https://github.com/huyng/bashmarks (see copyright there)
 
