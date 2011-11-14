@@ -64,9 +64,15 @@ function dur {
   reinstall|re)
     curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
     ;;
+  move|mv)
+    git remote add bitbucket git@bitbucket.org:durdn/$(basename $(pwd)).git
+    git push bitbucket
+    ;;
   help|h|*)
     echo "[dur]dn shell automation tools - (c) 2011 Nicola Paolucci nick@durdn.com"
-    echo "commands available: [cr]eate, [li]st, [cl]one, [i]nstall, [re]install, [h]elp"
+    echo "commands available:"
+    echo " [cr]eate, [li]st, [cl]one"
+    echo " [i]nstall,[m]o[v]e, [re]install, [h]elp"
     ;;
   esac
 }
