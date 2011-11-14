@@ -68,11 +68,16 @@ function dur {
     git remote add bitbucket git@bitbucket.org:durdn/$(basename $(pwd)).git
     git push bitbucket
     ;;
+  trackall|tr)
+    #track all remote branches of a project
+    for remote in $(git branch -r | grep -v master ); do git checkout --track $remote ; done
+    ;;
   help|h|*)
     echo "[dur]dn shell automation tools - (c) 2011 Nicola Paolucci nick@durdn.com"
     echo "commands available:"
     echo " [cr]eate, [li]st, [cl]one"
-    echo " [i]nstall,[m]o[v]e, [re]install, [h]elp"
+    echo " [i]nstall,[m]o[v]e, [re]install"
+    echo " [tr]ackall], [h]elp"
     ;;
   esac
 }
