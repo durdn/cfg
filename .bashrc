@@ -66,7 +66,7 @@ function dur {
     ;;
   move|mv)
     git remote add bitbucket git@bitbucket.org:durdn/$(basename $(pwd)).git
-    git push bitbucket
+    git push --all bitbucket
     ;;
   trackall|tr)
     #track all remote branches of a project
