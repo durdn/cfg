@@ -4,10 +4,10 @@ Install config tracking in your $HOME by running:
 
 Or in a shorter form:
 
-  curl -Ls http://j.mp/durdncfg | python
+  curl -Ls j.mp/durdncfg | python
 
 Or:
 
-  wget -q0 - http://j.mp/durdncfg | python
+  wget -q0 - j.mp/durdncfg | python
 
 Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository.
