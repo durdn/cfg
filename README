@@ -1,5 +1,13 @@
-Install config tracking in your HOME by running:
+Install config tracking in your $HOME by running:
 
   curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
 
-Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository
+Or in a shorter form:
+
+  curl -Ls http://j.mp/durdncfg | python
+
+Or:
+
+  wget -q0 - http://j.mp/durdncfg | python
+
+Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository.
