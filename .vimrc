@@ -1,16 +1,20 @@
-" Pathogen setup   "{{{
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
+" .vimrc
+" Author: Nicola Paolucci <nick@durdn.com>
+" Source: http://github.com/durdn/cfg/.vimrc
+
+" Preamble with Pathogen   "{{{
+
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
 
 "}}}
-" Global settings and variables"{{{
-"====================================================
+" Basic settings and variables"{{{
 if has('syntax') && (&t_Co > 2)
   syntax on
 endif
 
+colorscheme ir_black
 set encoding=utf-8
 set nocompatible hidden ignorecase smartcase title expandtab autoindent
 set nobackup noswapfile showmode showcmd ttyfast gdefault
@@ -25,8 +29,6 @@ set softtabstop=2
 set shiftwidth=2
 set history=1000
 set undolevels=1000     " use many levels of undo
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
 set scrolloff=3
 set shortmess=atI
 set guioptions=a        " get rid of stupid scrollbar/menu/tabs/etc
@@ -38,20 +40,79 @@ set backspace=indent,eol,start
 set laststatus=2
 set noequalalways
 set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ %{fugitive#statusline()}
-colorscheme ir_black
+set listchars=tab:\|\ ,trail:·,eol:¬
+set wildmenu
 
-filetype plugin indent on
+" Save when losing focus
+au FocusLost * :wa
+
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
+" Wildmenu completion {{{
+
+set wildmode=list:longest,list:full
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=classes
+set wildignore+=lib
+
+" }}}
+
+
+" }}}
+" Abbreviations {{{
+
+function! EatChar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunction
+
+function! MakeSpacelessIabbrev(from, to)
+    execute "iabbrev <silent> ".a:from." ".a:to."<C-R>=EatChar('\\s')<CR>"
+endfunction
+
+call MakeSpacelessIabbrev('drd/',  'http://durdn.com/')
+call MakeSpacelessIabbrev('bb/',  'http://bitbucket.org/')
+call MakeSpacelessIabbrev('bbd/', 'http://bitbucket.org/durdn/')
+call MakeSpacelessIabbrev('gh/',  'http://github.com/')
+call MakeSpacelessIabbrev('ghd/', 'http://github.com/durdn/')
+
+iabbrev np@ nick@durdn.com
 
 "}}}
+" Quick editing  {{{
+
+"edit the .vimrc"
+"nmap <silent> <leader>e :e ~/.vimrc<CR>
+nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
+"open a scratch file
+nmap <silent> <leader>eh :e ~/scratch.txt<CR>
+"reload the .vimrc"
+nmap <silent> <leader>rv :source ~/.vimrc<CR>
+" Reload all snipmate snippets
+nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
+" Edit snippets
+nmap <silent> <leader>es :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
+
+
+" }}}
 " Keyboard Shortcuts and remappings   "{{{
-"==================================
 
 " Repeat last command and put cursor at start of change 
 nnoremap . .`[
 nnoremap ' `
 nnoremap ` '
-"nnoremap / /\v
-"vnoremap / /\v
+nnoremap / /\v
+vnoremap / /\v
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -62,23 +123,25 @@ nnoremap L $
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
+" Don't move on *
+nnoremap * *<c-o>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+" capital W/Q same as w/q in command mode
+cnoreabbrev W w
+cnoreabbrev Q q
+
 " buffer switching/management, might as well use those keys for something useful
 map <Right> :bnext<CR>
 imap <Right> <ESC>:bnext<CR>
 map <Left> :bprev<CR>
 imap <Left> <ESC>:bprev<CR>
 map <Del> :bd<CR>
-"paste last yanked string skipping deletes"
-" nmap <silent> <leader>p "0p
-" nmap <silent> <leader>P "0P
 
 "hide hightlight of searches"
 nmap <silent> <leader>n :silent :nohlsearch<CR>
-set listchars=tab:\|\ ,trail:·,eol:$
 "show spaces"
 nmap <silent> <leader>s :set nolist!<CR>
 "show line numbers"
@@ -99,13 +162,9 @@ nmap <silent> <leader>w :set nowrap!<CR>
 nmap <silent> <leader>x :hid<CR>
 "close buffer"
 nmap <silent> <leader>X :bd<CR>
-"edit the .vimrc"
-nmap <silent> <leader>e :e ~/.vimrc<CR>
-"open a scratch file
-nmap <silent> <leader>h :e ~/scratch.txt<CR>
-"reload the .vimrc"
-"
-nmap <silent> <leader>rv :source ~/.vimrc<CR>
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
 
 " found as comment on reddit
 " don't show the preview pane for some omni completions
@@ -133,15 +192,11 @@ nmap <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
-" Reload all snipmate snippets
-nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
-" Edit snippets
-nmap <silent> <leader>re :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" capital W/Q same as w/q in command mode
-cnoreabbrev W w
-cnoreabbrev Q q
-
+" Clean whitespace
+map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
 
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
@@ -388,14 +443,5 @@ au FileType python setlocal sw=4 sts=4 et tw=200 sta
 au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
 au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
 
-" -- VimClojure setup --
-let vimclojure#NailgunClient = "/Users/nick/bin/ng"
-let clj_want_gorilla = 1
-
-"}}}
-"Source of vim wisdom "{{{
-"   http://items.sjbach.com/319/configuring-vim-right
-"   http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-"   http://weblog.jamisbuck.org/2008/11/17/vim-follow-up
 "}}}
 
