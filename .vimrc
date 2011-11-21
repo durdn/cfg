@@ -148,13 +148,9 @@ nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>l :set nonu!<CR>
 "maximize only this window"
 nmap <silent> <leader>m :only<CR>
-"toggle minibuf explorer
-nmap <silent> <leader>M :TMiniBufExplorer<CR>
 "vertical split"
-"nmap <silent> <leader>v :vsplit<CR>
 nmap <silent> <leader>v :bel :vne<CR>
 "horizontal split"
-"nmap <silent> <leader>f :split<CR>
 nmap <silent> <leader>f :bel :new<CR>
 "wrap lines"
 nmap <silent> <leader>w :set nowrap!<CR>
@@ -185,7 +181,7 @@ endfunction
 nmap <leader>nf :e <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
+" Normal mode: <Leader>nt
 nmap <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Inserts the path of the currently edited file into a command
