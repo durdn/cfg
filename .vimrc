@@ -91,6 +91,8 @@ iabbrev np@ nick@durdn.com
 "}}}
 " Quick editing  {{{
 
+"edit shortcuts list"
+nnoremap <leader>em <C-w>s<C-w>j<C-w>L:e ~/.vim/mappings.txt<cr>
 "edit the .vimrc"
 "nmap <silent> <leader>e :e ~/.vimrc<CR>
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
