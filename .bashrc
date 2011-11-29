@@ -225,14 +225,14 @@ if [ $(uname) == "Darwin" ]; then
   #source /Users/nick/dev/envs/boi-env/bin/activate
   #source /Users/nick/.philips
   #source git bash completion from homebrew on OSX
-  source /usr/local/etc/bash_completion.d/git-completion.bash
+  #source /usr/local/etc/bash_completion.d/git-completion.bash
 
   #setup RVM on OSX
   #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
   #setup rbenv
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  #export PATH="$HOME/.rbenv/bin:$PATH"
+  #eval "$(rbenv init -)"
 fi
 
 # >>> MINGW32_NT-5.1 (winxp) specific config <<<
