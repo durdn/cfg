@@ -181,9 +181,9 @@ if [ $(uname) == "Linux" ]; then
   alias less='less -R'
 
   #project aliases
-  alias tarot="screen -c ./screen-tarot.config"
+  #alias tarot="screen -c ./screen-tarot.config"
 
-  PATH=$PATH:$HOME/dev/apps/node/bin
+  #PATH=$PATH:$HOME/dev/apps/node/bin
 fi
 
 # >>> OSX specific config <<<
