@@ -16,7 +16,8 @@ ignored = ['install.py',
            'install.pyc',
            '.git',
            '.gitignore',
-           'README'
+           'README',
+           'bin'
            ]
 
 home = normpath(os.environ['HOME'])
