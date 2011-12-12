@@ -42,6 +42,8 @@ set noequalalways
 set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ %{fugitive#statusline()}
 set listchars=tab:\|\ ,trail:·,eol:¬
 set wildmenu
+" don't show the preview pane for some omni completions
+set completeopt-=preview
 
 " Save when losing focus
 au FocusLost * :wa
@@ -163,10 +165,10 @@ nmap <silent> <leader>X :bd<CR>
 " Space to toggle folds.
 nnoremap <Space> za
 vnoremap <Space> za
-
-" found as comment on reddit
-" don't show the preview pane for some omni completions
-set completeopt-=preview
+" leader leader alias ,, to go back to previous buffer
+nnoremap <leader><leader> <c-^>
+" use jk instead than <esc>
+inoremap jk <esc>
 " toggle between number and relative number on ,l
 nnoremap <leader>l :call ToggleRelativeAbsoluteNumber()<CR>
 function! ToggleRelativeAbsoluteNumber()
