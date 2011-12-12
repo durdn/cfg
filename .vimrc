@@ -223,7 +223,7 @@ if has('gui_macvim')
     " goes to real fullscreen on OS X
     set fuoptions=maxvert,maxhorz
     macmenu &File.New\ Tab key=<nop>
-    map <leader>t <Plug>PeepOpen
+"    map <leader>t <Plug>PeepOpen
 endif
 if has('gui_win32')
   winpos 600 0
@@ -257,6 +257,14 @@ endif
 "}}}
 " Plugins configuration"{{{
 " ===================================================================
+
+" --- ctrlp ---
+
+let g:ctrlp_map = '<leader>t'
+"let g:ctrlp_map = '<c-p>'
+let g:ctrlp_working_path_mode = 2
+" let g:ctrlp_user_command = 'find %s -type f'       " MacOSX/Linux
+" let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d' " Windows
 
 " --- Nerdtree ---
 " autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
