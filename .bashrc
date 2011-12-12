@@ -231,8 +231,8 @@ if [ $(uname) == "Darwin" ]; then
   #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
   #setup rbenv
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  #export PATH="$HOME/.rbenv/bin:$PATH"
+  #eval "$(rbenv init -)"
 fi
 
 # >>> MINGW32_NT-5.1 (winxp) specific config <<<
