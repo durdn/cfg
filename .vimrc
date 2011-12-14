@@ -58,6 +58,7 @@ set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.jar,*.war,*.ear                " java formats
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
@@ -66,6 +67,7 @@ set wildignore+=migrations                       " Django migrations
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=classes
 set wildignore+=lib
+set wildignore+=*/.m2/*                          " Maven
 
 " }}}
 
@@ -96,8 +98,8 @@ iabbrev np@ nick@durdn.com
 "edit shortcuts list"
 nnoremap <leader>em <C-w>s<C-w>j<C-w>L:e ~/.vim/mappings.txt<cr>
 "edit the .vimrc"
-"nmap <silent> <leader>e :e ~/.vimrc<CR>
-nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
+nmap <silent> <leader>ev :e ~/.vimrc<CR>
+"nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
 "open a scratch file
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
 "reload the .vimrc"
@@ -263,10 +265,11 @@ endif
 " --- ctrlp ---
 
 let g:ctrlp_map = '<leader>t'
-"let g:ctrlp_map = '<c-p>'
+let g:ctrlp_dotfiles = 0
 let g:ctrlp_working_path_mode = 2
-" let g:ctrlp_user_command = 'find %s -type f'       " MacOSX/Linux
-" let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d' " Windows
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*war$\|.*ear$|\.*zip$' " MacOSX/Linux
 
 " --- Nerdtree ---
 " autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
