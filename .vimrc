@@ -68,6 +68,7 @@ set wildignore+=*.pyc                            " Python byte code
 set wildignore+=classes
 set wildignore+=lib
 set wildignore+=*/.m2/*                          " Maven
+set wildignore+=*/target/*                       " Java target folders
 
 " }}}
 
@@ -271,7 +272,7 @@ let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*war$\|.*ear$|\.*zip$' " MacOSX/Linux
 
-" --- Nerdtree ---
+" Nerdtree "{{{
 " autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 autocmd FocusGained * call s:UpdateNERDTree()
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
@@ -422,6 +423,7 @@ set autochdir
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
 let NERDTreeChDirMode=2
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+"}}}
 
 
 if has('ruby')
