@@ -1,3 +1,51 @@
-[submodule ".vim/bundle/vim-ctrlp"]
-	path = .vim/bundle/vim-ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/scrooloose-nerdtree"]
+	path = .vim/bundle/scrooloose-nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/scrooloose-nerdcommenter"]
+	path = .vim/bundle/scrooloose-nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/replace-with-register"]
+	path = .vim/bundle/replace-with-register
+	url = https://github.com/vim-scripts/ReplaceWithRegister.git
+[submodule ".vim/bundle/search-fold"]
+	path = .vim/bundle/search-fold
+	url = https://github.com/vim-scripts/searchfold.vim.git
+[submodule ".vim/bundle/msanders-snipmate"]
+	path = .vim/bundle/msanders-snipmate
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule ".vim/bundle/kchmck-vim-coffee-script"]
+	path = .vim/bundle/kchmck-vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/tpope-vim-fugitive"]
+	path = .vim/bundle/tpope-vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/michaeljsmith-vim-indent-object"]
+	path = .vim/bundle/michaeljsmith-vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule ".vim/bundle/pangloss-vim-javascript"]
+	path = .vim/bundle/pangloss-vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule ".vim/bundle/mikewest-vimroom"]
+	path = .vim/bundle/mikewest-vimroom
+	url = https://github.com/mikewest/vimroom.git
+[submodule ".vim/bundle/tpope-vim-surround"]
+	path = .vim/bundle/tpope-vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/tpope-vim-unimpaired"]
+	path = .vim/bundle/tpope-vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule ".vim/bundle/airblade-vim-rooter"]
+	path = .vim/bundle/airblade-vim-rooter
+	url = https://github.com/airblade/vim-rooter.git
+[submodule ".vim/bundle/rainbow-parenthesis"]
+	path = .vim/bundle/rainbow-parenthesis
+	url = https://github.com/vim-scripts/Rainbow-Parenthesis.git
+[submodule ".vim/bundle/edsono-vim-matchit"]
+	path = .vim/bundle/edsono-vim-matchit
+	url = https://github.com/edsono/vim-matchit.git
+[submodule ".vim/bundle/shemerey-vim-peepopen"]
+	path = .vim/bundle/shemerey-vim-peepopen
+	url = https://github.com/shemerey/vim-peepopen.git
+[submodule ".vim/bundle/kien-vim-ctrlp"]
+	path = .vim/bundle/kien-vim-ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
