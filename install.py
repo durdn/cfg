@@ -129,8 +129,8 @@ if __name__ == '__main__':
                 print
                 print '|* and copy the public key to github'
         else:
-            call("git submodule init")
-            call("git submodule update")
+            call("cd %s && git submodule init" % (cfg_folder))
+            call("cd %s && git submodule update" % (cfg_folder))
     else:
         if os.path.exists(join(cfg_folder,'.git')):
             print '|-> cfg already cloned to',cfg_folder
@@ -140,9 +140,9 @@ if __name__ == '__main__':
             else:
                 call("cd %s && git pull origin master" % (cfg_folder))
                 print '|-> initializing submodules'
-                call("git submodule init")
+                call("cd %s && git submodule init" % (cfg_folder))
                 print '|-> updating submodules'
-                call("git submodule update")
+                call("cd %s && git submodule update" % (cfg_folder))
         else:
             print '|-> git tracking projects not found in %s, ending program in shame' % cfg_folder
 
