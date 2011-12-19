@@ -149,6 +149,7 @@ map <Del> :bd<CR>
 
 "hide hightlight of searches"
 nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> // :nohlsearch<CR>
 "show spaces"
 nmap <silent> <leader>s :set nolist!<CR>
 "show line numbers"
@@ -200,6 +201,21 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Clean whitespace
 map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+
+" Nerd tree find current file
+nnoremap <silent> <C-\> :NERDTreeFind<CR>
+
+"Go to last edit location with ,.
+nnoremap ,. '.
+
+" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
+nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
+
+" (c)opy (c)ommand - which allows us to execute
+" the line we're looking at (it does so by yy-copy, colon
+" to get to the command mode, C-f to get to history editing
+" p to paste it, C-c to return to command mode, and CR to execute
+nmap <silent> ,cc yy:<C-f>p<C-c><CR>
 
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
@@ -416,7 +432,7 @@ endfunction
 call s:DefineCommand("cd", "ChangeDirectory")
 call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
-call s:DefineCommand("e", "Edit")
+"call s:DefineCommand("e", "Edit")
 call s:DefineCommand("mkdir", "Mkdir")
 
 set autochdir
