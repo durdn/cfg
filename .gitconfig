@@ -1,6 +1,6 @@
 [core]
     editor= /usr/bin/vi
-	excludesfile = /Users/nick/.gitignore_global
+    excludesfile = /Users/nick/.gitignore_global
 
 [alias]
     st = status
@@ -11,7 +11,9 @@
     cm = commit -m
     cma = commit -a -m
     ca = commit --amend
+    amend = commit --amend
     caa = commit -a --amend -C HEAD
+    filelog = log -u
 
     ai = add --interactive
 
@@ -22,6 +24,7 @@
     le = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
     diff = diff --word-diff
     d = diff --word-diff
+    dc = diff --cached
     branch = branch -ra
     uiu = update-index --assume-unchanged
     uin = update-index --no-assume-unchanged
@@ -34,12 +37,16 @@
     rh2 = reset HEAD^^ --hard
 
     #git svn
-    sr = svn rebase
-    sd = svn dcommit
+    svnr = svn rebase
+    svnd = svn dcommit
+    svnl = svn log --oneline --show-commit
+
     #stash
     sl = stash list
     sa = stash apply
     ss = stash save
+
+    cp = cherry-pick
 
 [color]
     branch = auto
@@ -66,7 +73,7 @@
 	email = nick@durdn.com
 	name = Nicola Paolucci
 [push]
-    default = current
+    default = tracking
 [pull]
     default = current
 [difftool "sourcetree"]
@@ -75,3 +82,9 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[diff]
+  memonicprefix = true
+[branch]
+  autosetupmerge = true
+[apply]
+  whitespace = nowarn
