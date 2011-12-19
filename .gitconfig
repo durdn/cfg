@@ -24,6 +24,7 @@
     d = diff --word-diff
     branch = branch -ra
     uiu = update-index --assume-unchanged
+    uin = update-index --no-assume-unchanged
 
     r = reset
     r1 = reset HEAD^
@@ -31,6 +32,14 @@
     rh = reset --hard
     rh1 = reset HEAD^ --hard
     rh2 = reset HEAD^^ --hard
+
+    #git svn
+    sr = svn rebase
+    sd = svn dcommit
+    #stash
+    sl = stash list
+    sa = stash apply
+    ss = stash save
 
 [color]
     branch = auto
