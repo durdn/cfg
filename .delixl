@@ -1,0 +1,41 @@
+# If running bash then include ~/.bashrc if it exists
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+export EDITOR=vim
+
+export DELIXL_DIR=$HOME/delixl
+export DELIXL_SW_DIR=$HOME/delixl-sw
+
+export JBOSS_VERSION=5.0.0
+
+export ATG10_DIR=$DELIXL_SW_DIR/ATG10
+export DYNAMO_HOME=$ATG10_DIR/home
+export JBOSS_HOME=$DELIXL_SW_DIR/jboss-eap/jboss-as
+export GIGASPACES_HOME=$DELIXL_SW_DIR/gigaspaces
+export MAVEN_HOME=$DELIXL_SW_DIR/apache-maven
+export ANT_HOME=$DELIXL_SW_DIR/apache-ant
+export XINS_HOME=$DELIXL_DIR/xins
+
+PATH="$HOME/bin"
+PATH="$PATH:$HOME/delixl/bin"
+PATH="$PATH:$JAVA_HOME/bin"
+PATH="$PATH:$GIGASPACES_HOME/bin"
+PATH="$PATH:$MAVEN_HOME/bin"
+PATH="$PATH:$ANT_HOME/bin"
+PATH="$PATH:$XINS_HOME/bin"
+PATH="$PATH:/usr/local/bin"
+PATH="$PATH:/usr/bin"
+PATH="$PATH:/bin"
+PATH="$PATH:/sbin"
+PATH="$PATH:./bin"
+PATH="$PATH:../bin"
+export PATH
+
+export CDPATH=.:${HOME}/delixl:${HOME}/delixl/configs:${HOME}/delixl/jupiter:${HOME}/delixl/pluto:${HOME}/delixl/saturn:${HOME}/delixl/sol:${HOME}/delixl/voyager
+
+export http_proxy=http://accind:accind\!\@193.173.158.252:8080
+export https_proxy=${http_proxy}
