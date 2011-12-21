@@ -1,54 +1,72 @@
 [submodule ".vim/bundle/scrooloose-nerdtree"]
 	path = .vim/bundle/scrooloose-nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+	ignore = dirty
 [submodule ".vim/bundle/scrooloose-nerdcommenter"]
 	path = .vim/bundle/scrooloose-nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
+	ignore = dirty
 [submodule ".vim/bundle/replace-with-register"]
 	path = .vim/bundle/replace-with-register
 	url = git://github.com/vim-scripts/ReplaceWithRegister.git
+	ignore = dirty
 [submodule ".vim/bundle/search-fold"]
 	path = .vim/bundle/search-fold
 	url = git://github.com/vim-scripts/searchfold.vim.git
+	ignore = dirty
 [submodule ".vim/bundle/msanders-snipmate"]
 	path = .vim/bundle/msanders-snipmate
 	url = git://github.com/msanders/snipmate.vim.git
+	ignore = dirty
 [submodule ".vim/bundle/kchmck-vim-coffee-script"]
 	path = .vim/bundle/kchmck-vim-coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
+	ignore = dirty
 [submodule ".vim/bundle/tpope-vim-fugitive"]
 	path = .vim/bundle/tpope-vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+	ignore = dirty
 [submodule ".vim/bundle/michaeljsmith-vim-indent-object"]
 	path = .vim/bundle/michaeljsmith-vim-indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
+	ignore = dirty
 [submodule ".vim/bundle/pangloss-vim-javascript"]
 	path = .vim/bundle/pangloss-vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
+	ignore = dirty
 [submodule ".vim/bundle/mikewest-vimroom"]
 	path = .vim/bundle/mikewest-vimroom
 	url = git://github.com/mikewest/vimroom.git
+	ignore = dirty
 [submodule ".vim/bundle/tpope-vim-surround"]
 	path = .vim/bundle/tpope-vim-surround
 	url = git://github.com/tpope/vim-surround.git
+	ignore = dirty
 [submodule ".vim/bundle/tpope-vim-unimpaired"]
 	path = .vim/bundle/tpope-vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
+	ignore = dirty
 [submodule ".vim/bundle/airblade-vim-rooter"]
 	path = .vim/bundle/airblade-vim-rooter
 	url = git://github.com/airblade/vim-rooter.git
+	ignore = dirty
 [submodule ".vim/bundle/rainbow-parenthesis"]
 	path = .vim/bundle/rainbow-parenthesis
 	url = git://github.com/vim-scripts/Rainbow-Parenthesis.git
+	ignore = dirty
 [submodule ".vim/bundle/edsono-vim-matchit"]
 	path = .vim/bundle/edsono-vim-matchit
 	url = git://github.com/edsono/vim-matchit.git
+	ignore = dirty
 [submodule ".vim/bundle/shemerey-vim-peepopen"]
 	path = .vim/bundle/shemerey-vim-peepopen
 	url = git://github.com/shemerey/vim-peepopen.git
+	ignore = dirty
 [submodule ".vim/bundle/kien-vim-ctrlp"]
 	path = .vim/bundle/kien-vim-ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
+	ignore = dirty
 [submodule ".vim/bundle/tjennings-git-grep-vim"]
 	path = .vim/bundle/tjennings-git-grep-vim
 	url = git://github.com/tjennings/git-grep-vim.git
+	ignore = dirty
