@@ -1,5 +1,7 @@
 # my current vim mappings
 
+,gg         open up a git grep line, with a quote started for the search 
+K           git grep the current word using K (mnemonic Kurrent)
 ,cc         copy command to execute line we're looking at
 ,.          last edit location
 <Tab>       snippet autocomplete
