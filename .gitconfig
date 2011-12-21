@@ -47,6 +47,8 @@
     ss = stash save
 
     cp = cherry-pick
+    grep = grep -I
+    gr = grep -I
 
 [color]
     branch = auto
