@@ -217,6 +217,12 @@ nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
 " p to paste it, C-c to return to command mode, and CR to execute
 nmap <silent> ,cc yy:<C-f>p<C-c><CR>
 
+"open up a git grep line, with a quote started for the search
+nnoremap ,gg :GitGrep "
+
+"git grep the current word using K (mnemonic Kurrent)
+nnoremap <silent> K :GitGrep <cword><CR>
+
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
@@ -284,8 +290,8 @@ endif
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*war$\|.*ear$|\.*zip$' " MacOSX/Linux
 
 " Nerdtree "{{{

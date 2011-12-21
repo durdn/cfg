@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/kien-vim-ctrlp"]
 	path = .vim/bundle/kien-vim-ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/tjennings-git-grep-vim"]
+	path = .vim/bundle/tjennings-git-grep-vim
+	url = git://github.com/tjennings/git-grep-vim.git
