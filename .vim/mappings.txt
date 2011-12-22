@@ -4,15 +4,19 @@
 K           git grep the current word using K (mnemonic Kurrent)
 ,cc         copy command to execute line we're looking at
 ,.          last edit location
+,b          fuzzy finder buffer
+,d          nerdtree toggle
+<C-\>       nerdtree open directory tree and find current file
+,t          peep open / command-t
+,/          quickfix menu with all latest search matches
 <Tab>       snippet autocomplete
 <S-Tab>     backwards snippet autocomplete
-<C-H>       move to left buffer
-<C-J>       move to top buffer
-<C-K>       move to bottom buffer
-<C-L>       move to right buffer
+<C-h>       move to left buffer
+<C-j>       move to top buffer
+<C-k>       move to bottom buffer
+<C-l>       move to right buffer
 <Space>     expand/contract fold level
 ,V          vimroom toggle
-,t          peep open / command-t
 <F2>        beautify xml with xmllint
 ,cd         change to root directory
 ,z          searchfold normal
@@ -20,11 +24,7 @@ K           git grep the current word using K (mnemonic Kurrent)
 ,iz         searchfold inverse
 ,c<Space>   nerdcommenter toggle
 ,c<Space>   nerdcommenter toggle
-,b          fuzzy finder buffer
-,d          nerdtree toggle
-<C-\>       nerdtree open directory tree and find current file
 ,W          remove all trailing whitespace
-,/          quickfix menu with all latest search matches
 ,cf         put current file in system clipboard
 ,nf         put current folder in command prompt
 ,nt         put current folder in command prompt (with tab)
