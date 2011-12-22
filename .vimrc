@@ -218,7 +218,7 @@ nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
 nmap <silent> ,cc yy:<C-f>p<C-c><CR>
 
 "open up a git grep line, with a quote started for the search
-nnoremap ,gg :GitGrep "
+nnoremap ,gg :GitGrep ""<left>
 
 "git grep the current word using K (mnemonic Kurrent)
 nnoremap <silent> K :GitGrep <cword><CR>
@@ -233,10 +233,6 @@ if has('unix')
     inoremap <C-n> <C-x><C-o>
     "write a read only file that needs sudo first
     cmap w!! w !sudo tee % >/dev/null
-    "greps entire word under cursor and you can go through the matches with "ctrl-n,p
-    nmap <silent> <leader>gw "yyiw:grep -r <C-R>y *<CR>
-    " grep shortcut to search recursively an extension
-    nmap <leader>gr :grep -r  **/*.jsp<left><left><left><left><left><left><left><left><left>
 
     "c-n/p goes to the next prev match and list entries again
     map <C-n> :cn<CR>:cl<CR>
