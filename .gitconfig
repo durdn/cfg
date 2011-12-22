@@ -26,8 +26,6 @@
     d = diff --word-diff
     dc = diff --cached
     branch = branch -ra
-    uiu = update-index --assume-unchanged
-    uin = update-index --no-assume-unchanged
 
     r = reset
     r1 = reset HEAD^
@@ -47,8 +45,22 @@
     ss = stash save
 
     cp = cherry-pick
-    grep = grep -I
-    gr = grep -I
+    grep = grep -Ii
+    gr = grep -Ii
+
+    #grep on filename
+    f = !git ls-files | grep -i
+
+    #rename branch tree to done-
+    done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+
+    #assume aliases
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    #show assumed files
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    #unassume all the assumed files
+    unassumeall = "git assumed | xargs git update-index --no-assume-unchanged"
 
 [color]
     branch = auto
