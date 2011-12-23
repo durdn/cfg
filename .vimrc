@@ -286,7 +286,7 @@ endif
 " --- ctrlp ---
 
 let g:ctrlp_map = '<leader>t'
-let g:ctrlp_dotfiles = 0
+let g:ctrlp_dotfiles = 1
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
