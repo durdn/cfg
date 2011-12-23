@@ -242,6 +242,8 @@ if has('gui_gtk')
     set guifont=Terminus
 endif
 if has('gui_macvim')
+    "terminus on osx is slightly smaller so make it 14px
+    set guifont=Terminus:h14
     winpos 720 0
     " goes to real fullscreen on OS X
     set fuoptions=maxvert,maxhorz
