@@ -108,7 +108,7 @@ nmap <silent> <leader>rv :source ~/.vimrc<CR>
 " Reload all snipmate snippets
 nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
 " Edit snippets
-nmap <silent> <leader>es :e ~/.vim/bundle/snipmate.vim/snippets/<cr>
+nmap <silent> <leader>es :e ~/.vim/bundle/durdn-customisation/snippets/<cr>
 
 
 " }}}

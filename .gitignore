@@ -1,13 +1,6 @@
-.vim/doc/tags
-.vim/bundle/nerdcommenter/doc/tags
-.vim/bundle/nerdtree/doc/tags
+tags
 .vim/.netrwhist
 xmonad-i386-linux
 xmonad.errors
 xmonad.hi
 xmonad.o
-.vim/bundle/vim-fugitive/doc/tags
-.vim/bundle/vim-indent-object/doc/tags
-.vim/bundle/vim-surround/doc/tags
-.vim/bundle/vim-unimpaired/doc/tags
-.vim/bundle/vim-matchit/doc/tags
