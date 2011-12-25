@@ -106,6 +106,7 @@ fi
 #clone config folder if not present, update if present
 if [ ! -e $cfg_folder ];
   then 
+    echo "|-> git clone from repo $gitrepo"
     git clone $gitrepo $cfg_folder;
     if [ ! -e $cfg_folder ];
       then
