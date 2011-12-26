@@ -1,25 +1,33 @@
 #!/bin/bash
 
-debug=true;
-version="0.1";
+debug=false;
+version="0.2";
 home=$HOME;
 cfgname=".cfg";
 bkpname="backup.cfg";
-git_test_repo="/Users/nick/.cfg";
 gitrepo="git@github.com:durdn/cfg.git";
 gitrepo_ro="git://github.com/durdn/cfg.git";
 ignored="install.py|install.pyc|install.sh|.git|.gitignore|README|bin";
 
-#>>>>>>debug setup<<<<<<
-home="/Users/nick/dev/projects/test-env";
-git_test_repo="/Users/nick/dev/projects/cfg-fake-origin";
-gitrepo=$git_test_repo;
-#>>>>>>>><<<<<<<<<
+#----debug setup----
+#home=$1
+#gitrepo=$2;
+#------------------
 
 cfg_folder=$home/$cfgname;
 backup_folder=$home/$bkpname;
 
+function md5prog {
+  if [ $(uname) == "Darwin" ]; then
+    md5 -q
+  fi
+  if [ $(uname) == "Linux" ]; then
+    md5sum $1 | awk {'print $1'}
+  fi
+}
+
 function update_submodules {
+  return;
   if [ $debug == true ];
     then
       cd $cfg_folder
@@ -27,7 +35,7 @@ function update_submodules {
       echo "|-> updating submodules [fake]"
     else
       echo "|-> initializing submodules"
-      cd $cfg_folder && git submodule init
+      cd $cfg_folder && git submodule -q init
       echo "|-> updating submodules"
       cd $cfg_folder && git submodule update
   fi
@@ -56,8 +64,8 @@ function link_assets {
                 ln -s $cfg_folder/$asset $home/$asset;
             fi
           else
-            ha=$(md5 -q $home/$asset);
-            ca=$(md5 -q $cfg_folder/$asset);
+            ha=$(md5prog $home/$asset);
+            ca=$(md5prog $cfg_folder/$asset);
             if [ $ha == $ca ];
               #asset is exactly the same
               then
@@ -114,17 +122,17 @@ if [ ! -e $cfg_folder ];
         git clone $gitrepo_ro $cfg_folder
         echo "|* changing remote origin to read/write repo: $gitrepo"
         cd $cfg_folder && git config remote.origin.url $gitrepo
-        if [ ! -e $home/id_rsa.pub  ];
+        if [ -e $home/id_rsa.pub  ];
           then
-            echo "|* please copy your public key below to github or you won't be able to commit"
+            echo "|* please copy your public key below to github or you won't be able to commit";
             echo
             cat $home/.ssh/id_rsa.pub
           else
-            echo |* please generate your public/private key pair with the command:
+            echo "|* please generate your public/private key pair with the command:"
             echo
-            echo ssh-keygen
+            echo "ssh-keygen"
             echo
-            echo |* and copy the public key to github
+            echo "|* and copy the public key to github"
         fi
       else
         update_submodules

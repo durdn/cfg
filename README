@@ -1,13 +1,13 @@
 Install config tracking in your $HOME by running:
 
-  curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
+  curl https://raw.github.com/durdn/cfg/master/install.sh -o - | bash
 
 Or in a shorter form:
 
-  curl -Ls j.mp/durdncfg | python
+  curl -Ls j.mp/durdncfg | bash
 
 Or:
 
-  wget -q0 - j.mp/durdncfg | python
+  wget -q0 - j.mp/durdncfg | bash
 
 Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository.
