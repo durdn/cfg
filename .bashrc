@@ -2,7 +2,7 @@
 # Author: Nicola Paolucci <nick@durdn.com>
 # Source: http://github.com/durdn/cfg/.bashrc
 
-#global options {{{
+#Global options {{{
 export HISTFILESIZE=999999
 export HISTSIZE=999999
 export HISTCONTROL=ignoredups:ignorespace
@@ -19,7 +19,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # }}}
-#prompt cleanup {{{
+#Prompt customisation {{{
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
 }
@@ -59,7 +59,7 @@ PS4='+ '
 proml
 
 # }}}
-# my own durdn/cfg related commands {{{
+# durdn/cfg related commands {{{
 function dur {
   case $1 in
   create|cr)
@@ -96,7 +96,7 @@ function dur {
 }
 
 # }}}
-# bashmarks from https://github.com/huyng/bashmarks (see copyright there) {{{
+# Bashmarks from https://github.com/huyng/bashmarks (see copyright there) {{{
 
 # USAGE:
 # s bookmarkname - saves the curr dir as bookmarkname
@@ -141,7 +141,7 @@ function _gcomp {
 # bind completion command for g to _gcomp
 complete -F _gcomp g
 # }}}
-# fixes hg/mercurial {{{
+# Fixes hg/mercurial {{{
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 # }}}
