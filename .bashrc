@@ -1,5 +1,8 @@
-#[ -z "$PS1" ] && return
-#history setup
+# .bashrc
+# Author: Nicola Paolucci <nick@durdn.com>
+# Source: http://github.com/durdn/cfg/.bashrc
+
+#global options {{{
 export HISTFILESIZE=999999
 export HISTSIZE=999999
 export HISTCONTROL=ignoredups:ignorespace
@@ -7,7 +10,16 @@ shopt -s histappend
 shopt -s checkwinsize
 shopt -s progcomp
 
-#prompt cleanup
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+# }}}
+#prompt cleanup {{{
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
 }
@@ -46,7 +58,8 @@ PS4='+ '
 }
 proml
 
-# my own durdn/cfg related commands
+# }}}
+# my own durdn/cfg related commands {{{
 function dur {
   case $1 in
   create|cr)
@@ -82,9 +95,8 @@ function dur {
   esac
 }
 
-
-# --------------
-# bashmarks from https://github.com/huyng/bashmarks (see copyright there)
+# }}}
+# bashmarks from https://github.com/huyng/bashmarks (see copyright there) {{{
 
 # USAGE:
 # s bookmarkname - saves the curr dir as bookmarkname
@@ -128,17 +140,12 @@ function _gcomp {
 
 # bind completion command for g to _gcomp
 complete -F _gcomp g
-# --------------
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
-#global git aliases
+# }}}
+# fixes hg/mercurial {{{
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+# }}}
+#Global git aliases  {{{
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
@@ -150,11 +157,9 @@ function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
 }
 
-#fixes hg/mercurial
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
-# >>> Linux specific config <<<
+# }}}
+# Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
   [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -187,7 +192,9 @@ if [ $(uname) == "Linux" ]; then
   #PATH=$PATH:$HOME/dev/apps/node/bin
 fi
 
-# >>> OSX specific config <<<
+
+# }}}
+# OSX specific config {{{
 if [ $(uname) == "Darwin" ]; then
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
@@ -236,7 +243,8 @@ if [ $(uname) == "Darwin" ]; then
   #eval "$(rbenv init -)"
 fi
 
-# >>> MINGW32_NT-5.1 (winxp) specific config <<<
+# }}}
+# MINGW32_NT-5.1 (winxp) specific config {{{
 if [ $(uname) == "MINGW32_NT-5.1" ]; then
   alias ls='ls --color'
   alias ll='ls -l --color'
@@ -246,3 +254,4 @@ if [ $(uname) == "MINGW32_NT-5.1" ]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
+# }}}
