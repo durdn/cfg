@@ -70,3 +70,6 @@
 	path = .vim/bundle/tjennings-git-grep-vim
 	url = git://github.com/tjennings/git-grep-vim.git
 	ignore = dirty
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
