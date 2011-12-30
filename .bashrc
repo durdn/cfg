@@ -9,6 +9,7 @@ export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s progcomp
+shopt -s autocd
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
