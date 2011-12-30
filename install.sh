@@ -19,7 +19,7 @@ backup_folder=$home/$bkpname;
 
 function md5prog {
   if [ $(uname) == "Darwin" ]; then
-    md5 -q
+    md5 -q $1
   fi
   if [ $(uname) == "Linux" ]; then
     md5sum $1 | awk {'print $1'}
