@@ -283,7 +283,7 @@ endif
 " Plugins configuration"{{{
 " ===================================================================
 
-" --- ctrlp ---
+" ctrlp {{{
 
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_dotfiles = 1
@@ -292,6 +292,7 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*war$\|.*ear$|\.*zip$' " MacOSX/Linux
 
+" }}}
 " Nerdtree "{{{
 " autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 autocmd FocusGained * call s:UpdateNERDTree()
@@ -444,24 +445,23 @@ let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
 let NERDTreeChDirMode=2
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 "}}}
-
-
+" Fuzzy Finder {{{
 if has('ruby')
   " --- Fuzzy Finder --- 
   "let g:fuzzy_ignore = "*.log"
   "let g:fuzzy_matching_limit = 70
   "let g:fuzzy_ignore = "*.pyc,*.swp"
-  "map <leader>t :FuzzyFinderTextMate<CR>
   map <leader>b :FuzzyFinderBuffer<CR>
   "let g:fuzzy_roots
   "let g:fuzzy_ceiling
   "map <leader>t :FufFile<CR>
 endif
-
-" --- Minibuf --- 
+" }}}
+" Minibuf {{{
 " let g:miniBufExplMapWindowNavVim = 1 
 " let g:miniBufExplUseSingleClick = 1
 " let g:miniBufExplorerMoreThanOne=0
+" }}}
 
 " -- Snipmate Django extension --
 ":set ft=python.django
