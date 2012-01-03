@@ -60,7 +60,8 @@
     #show assumed files
     assumed = "!git ls-files -v | grep ^h | cut -c 3-"
     #unassume all the assumed files
-    unassumeall = "git assumed | xargs git update-index --no-assume-unchanged"
+    unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+    assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 
 [color]
     branch = auto
