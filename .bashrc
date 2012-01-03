@@ -146,7 +146,7 @@ complete -F _gcomp g
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 # }}}
-#Global git aliases  {{{
+#Global aliases  {{{
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
@@ -156,6 +156,14 @@ alias go='git checkout '
 alias stashup='git stash && git svn rebase && git stash apply'
 function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
+}
+
+function f {
+  find . -type f | grep -v .svn | grep -v .git | grep -i $1
+}
+
+function gr {
+  find . -type f | grep -v .svn | grep -v .git | xargs grep -i $1 | grep -v Binary
 }
 
 
