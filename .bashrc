@@ -9,7 +9,6 @@ export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s progcomp
-shopt -s autocd
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -170,6 +169,7 @@ function gr {
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
+  shopt -s autocd
   [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
   # enable color support of ls and also add handy aliases
