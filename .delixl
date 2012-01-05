@@ -44,4 +44,5 @@ alias rs='run-server.sh'
 alias rsl='run-server.sh localhost'
 alias rit='run-inttest.sh'
 alias ritl='run-inttest.sh localhost'
+alias gs='rlwrap neptune.sh shell 2> /dev/null'
 
