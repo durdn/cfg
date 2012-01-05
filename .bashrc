@@ -264,3 +264,11 @@ if [ $(uname) == "MINGW32_NT-5.1" ]; then
   alias egrep='egrep --color=auto'
 fi
 # }}}
+# Clients configs {{{
+# Delixl config {{{
+if [ $(uname -n) == "ubuntu" ] && [ $(whoami) == "developer" ]; 
+  then source ~/.delixl-aliases
+fi
+# }}}
+# }}}
+

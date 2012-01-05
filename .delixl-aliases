@@ -1,0 +1,10 @@
+alias np='neptune.sh'
+alias snp='start-neptune.sh'
+alias dnp='deploy-neptune.sh'
+alias unp='undeploy-neptune.sh'
+alias rs='run-server.sh'
+alias rsl='run-server.sh localhost'
+alias rit='run-inttest.sh'
+alias ritl='run-inttest.sh localhost'
+alias nps='rlwrap neptune.sh shell 2> /dev/null'
+
