@@ -98,6 +98,8 @@ iabbrev np@ nick@durdn.com
 
 "edit shortcuts list"
 nnoremap <leader>em <C-w>s<C-w>j<C-w>L:e ~/.vim/mappings.txt<cr>
+"edit the .bashrc"
+nmap <silent> <leader>eb :e ~/.bashrc<CR>
 "edit the .vimrc"
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
 "nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
@@ -300,7 +302,7 @@ autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
-function s:CloseIfOnlyNerdTreeLeft()
+function! s:CloseIfOnlyNerdTreeLeft()
   if exists("t:NERDTreeBufName")
     if bufwinnr(t:NERDTreeBufName) != -1
       if winnr("$") == 1
@@ -311,7 +313,7 @@ function s:CloseIfOnlyNerdTreeLeft()
 endfunction
 
 " If the parameter is a directory, cd into it
-function s:CdIfDirectory(directory)
+function! s:CdIfDirectory(directory)
   let explicitDirectory = isdirectory(a:directory)
   let directory = explicitDirectory || empty(a:directory)
 
@@ -337,7 +339,7 @@ function s:CdIfDirectory(directory)
 endfunction
 
 " NERDTree utility function
-function s:UpdateNERDTree(...)
+function! s:UpdateNERDTree(...)
   let stay = 0
 
   if(exists("a:1"))
@@ -361,11 +363,11 @@ function s:UpdateNERDTree(...)
 endfunction
 
 " Utility functions to create file commands
-function s:CommandCabbr(abbreviation, expansion)
+function! s:CommandCabbr(abbreviation, expansion)
   execute 'cabbrev ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
 endfunction
 
-function s:FileCommand(name, ...)
+function! s:FileCommand(name, ...)
   if exists("a:1")
     let funcname = a:1
   else
@@ -375,13 +377,13 @@ function s:FileCommand(name, ...)
   execute 'command -nargs=1 -complete=file ' . a:name . ' :call ' . funcname . '(<f-args>)'
 endfunction
 
-function s:DefineCommand(name, destination)
+function! s:DefineCommand(name, destination)
   call s:FileCommand(a:destination)
   call s:CommandCabbr(a:name, a:destination)
 endfunction
 
 " Public NERDTree-aware versions of builtin functions
-function ChangeDirectory(dir, ...)
+function! ChangeDirectory(dir, ...)
   execute "cd " . fnameescape(a:dir)
   let stay = exists("a:1") ? a:1 : 1
 
@@ -392,12 +394,12 @@ function ChangeDirectory(dir, ...)
   endif
 endfunction
 
-function Touch(file)
+function! Touch(file)
   execute "!touch " . shellescape(a:file, 1)
   call s:UpdateNERDTree()
 endfunction
 
-function Remove(file)
+function! Remove(file)
   let current_path = expand("%")
   let removed_path = fnamemodify(a:file, ":p")
 
@@ -410,12 +412,12 @@ function Remove(file)
   call s:UpdateNERDTree()
 endfunction
 
-function Mkdir(file)
+function! Mkdir(file)
   execute "!mkdir " . shellescape(a:file, 1)
   call s:UpdateNERDTree()
 endfunction
 
-function Edit(file)
+function! Edit(file)
   if exists("b:NERDTreeRoot")
     wincmd p
   endif
