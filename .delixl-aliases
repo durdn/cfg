@@ -7,4 +7,7 @@ alias rsl='run-server.sh localhost'
 alias rit='run-inttest.sh'
 alias ritl='run-inttest.sh localhost'
 alias nps='rlwrap neptune.sh shell 2> /dev/null'
+alias us='np exec undeploy saturn 2> /dev/null'
+alias up='np exec undeploy pluto 2> /dev/null'
+alias uj='np exec undeploy jupiter 2> /dev/null'
 
