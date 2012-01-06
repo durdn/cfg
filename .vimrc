@@ -469,6 +469,7 @@ endif
 ":set ft=python.django
 ":set ft=html.django_template
 au BufRead,BufNewFile *.jsp set ft=jsp.html
+au BufRead,BufNewFile *.jspf set ft=jsp.html
 au BufRead,BufNewFile *.html set ft=html.django_template
 au BufRead,BufNewFile *.json set ft=json
 au BufRead,BufNewFile *.java set ft=java
