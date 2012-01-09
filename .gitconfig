@@ -19,9 +19,9 @@
 
     co = checkout
     br = branch -ra
-    ls = log --oneline --decorate
-    ll = log --oneline --decorate --numstat
-    le = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+    le = log --oneline --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     diff = diff --word-diff
     d = diff --word-diff
     dc = diff --cached
