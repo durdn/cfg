@@ -1,0 +1,24 @@
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+"xvkbd -xsendevent -text "(""
+  control + bracketleft
+
+"xvkbd -xsendevent -text ")""
+  control + bracketright
+
+"xvkbd -xsendevent -text "-""
+  control + semicolon
+
+"xvkbd -xsendevent -text "_""
+  control + alt + semicolon
+
+"xvkbd -xsendevent -text "=""
+  control + apostrophe
+
+"xvkbd -xsendevent -text "+""
+  control + bar
