@@ -73,3 +73,9 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule ".vim/bundle/lokaltog-vim-easymotion"]
+	path = .vim/bundle/lokaltog-vim-easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/raimondi-delimitmate"]
+	path = .vim/bundle/raimondi-delimitmate
+	url = git://github.com/Raimondi/delimitMate.git
