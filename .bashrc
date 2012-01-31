@@ -18,6 +18,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+#path should have durdn config bin folder
+export PATH=$HOME/.cfg/bin:$PATH
+
 # }}}
 #Prompt customisation {{{
 function parse_git_branch {
