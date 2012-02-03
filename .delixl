@@ -37,5 +37,5 @@ export PATH
 
 export CDPATH=.:${HOME}/delixl:${HOME}/delixl/configs:${HOME}/delixl/jupiter:${HOME}/delixl/pluto:${HOME}/delixl/saturn:${HOME}/delixl/sol:${HOME}/delixl/voyager
 
-export http_proxy=http://accind:accind\!\@193.173.158.252:8080
-export https_proxy=${http_proxy}
+#export http_proxy=http://accind:accind\!\@193.173.158.252:8080
+#export https_proxy=${http_proxy}
