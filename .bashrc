@@ -9,6 +9,8 @@ export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s progcomp
+#!! sets vi mode for shell
+set -o vi
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
