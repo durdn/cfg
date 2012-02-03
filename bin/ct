@@ -2,6 +2,7 @@
 import os
 import glob
 import sys
+import argparse
 import logging as log
 from os.path import join,normpath,abspath,islink, split
 from pprint import pformat
@@ -82,12 +83,34 @@ def onepass(target, tosearch):
                 log.debug('currentsearch [%s]' % reverse(combination[1]))
                 currentsearch = combination[1]
 
+def get_options():
+    parser = argparse.ArgumentParser(description='command-t like shell command')
+    parser.add_argument('target', metavar='target', help='the target string to search')
+    parser.add_argument('-c', '--command', help='command to collect a list of files (default: git ls-files)')
+    parser.add_argument('-f', '--use-find', action='store_true', help='use find collect command (find . -type f)')
+    parser.add_argument('-m', '--max', type=int, help='stop at max results')
+    parser.add_argument('-v', '--verbose', action='store_true', help='verbose: print out debug information')
+    return parser.parse_args()
+
 if __name__ == '__main__':
     maxres = 20
-    log.basicConfig(level=log.INFO)
     collect_command = 'git ls-files'
+    find_collect_command = 'find . -type f'
 
-    target = sys.argv[1]
+    options = get_options()
+
+    target = options.target
+    if options.verbose:
+        log.basicConfig(level=log.DEBUG)
+    else:
+        log.basicConfig(level=log.INFO)
+
+    if options.command:
+        collect_command = options.command 
+
+    if options.max:
+        maxres = options.max
+
     files = call(collect_command)[1].split('\n')
 
     found, casemap = lowercase_list_and_casemap(files)
@@ -98,7 +121,7 @@ if __name__ == '__main__':
     i = 0
     while True:
         i = i + 1
-        log.debug('%s pass' % i)
+        log.debug('pass n.%s' % i)
         found, currentsearch = onepass(currentsearch, found)
         log.debug('found %s' % len(found))
         log.debug(pformat([casemap[f] for f in list(found)[:30]]))
