@@ -3,31 +3,14 @@ import os
 import glob
 import sys
 import argparse
+import subprocess
 import logging as log
 from os.path import join,normpath,abspath,islink, split
 from pprint import pformat
 from itertools import combinations
 
-def call(command,fake = False):
-    """ call(command) --> (result, output)
-        Runs the command in the local shell returning a tuple 
-        containing :
-            - the return result (None for 0, otherwise an int), and
-            - the full, stripped standard output.  """
-    if fake:
-        return
-
-    process = os.popen(command)
-    output = []
-    line = process.readline()
-
-    while not line == "":
-        sys.stdout.flush()
-        output.append(line)
-        line = process.readline()
-    result = process.close()
-
-    return (result, "".join(output).strip())
+def call(command):
+    return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
 
 def lowercase_list_and_casemap(files):
     found = []
@@ -84,35 +67,43 @@ def onepass(target, tosearch):
                 currentsearch = combination[1]
 
 def get_options():
-    parser = argparse.ArgumentParser(description='command-t like shell command')
-    parser.add_argument('target', metavar='target', help='the target string to search')
-    parser.add_argument('-c', '--command', help='command to collect a list of files (default: git ls-files)')
-    parser.add_argument('-f', '--use-find', action='store_true', help='use find collect command (find . -type f)')
-    parser.add_argument('-m', '--max', type=int, help='stop at max results')
-    parser.add_argument('-v', '--verbose', action='store_true', help='verbose: print out debug information')
-    return parser.parse_args()
-
-if __name__ == '__main__':
     maxres = 20
     collect_command = 'git ls-files'
     find_collect_command = 'find . -type f'
 
-    options = get_options()
+    parser = argparse.ArgumentParser(description='command-t like shell command')
+    parser.add_argument('target', metavar='target', help='the target pattern to search')
+    parser.add_argument('-c', '--command', help='command to collect a list of files (default: git ls-files)')
+    parser.add_argument('-f', '--find', action='store_true', help='use find collect command (find . -type f)')
+    parser.add_argument('-m', '--max', type=int, help='stop at max results')
+    parser.add_argument('-v', '--verbose', action='store_true', help='verbose: print out debug information')
+    options = parser.parse_args()
 
-    target = options.target
     if options.verbose:
         log.basicConfig(level=log.DEBUG)
     else:
         log.basicConfig(level=log.INFO)
 
-    if options.command:
+    if options.find:
+        collect_command = find_collect_command
+    elif options.command:
         collect_command = options.command 
 
     if options.max:
         maxres = options.max
 
-    files = call(collect_command)[1].split('\n')
+    return options.target, collect_command, maxres
 
+if __name__ == '__main__':
+
+    target, collect_command, maxres = get_options()
+
+    collected, exitcode = call(collect_command)
+    if not collected:
+        log.error('no results returned by %s' % collect_command)
+        sys.exit(1)
+
+    files = collected.split('\n')
     found, casemap = lowercase_list_and_casemap(files)
     found.sort()
 
