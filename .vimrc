@@ -257,7 +257,7 @@ if has('gui_win32')
   "status line does not work with fugitive on win32
   set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ 
   "overwrite mapping to edit the .vimrc"
-  nmap <silent> <leader>e :e ~/_vimrc<CR>
+  nmap <silent> <leader>ev :e ~/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
   nmap <silent> <leader>rv :source ~/_vimrc<CR>
   " has proper command-t compiled

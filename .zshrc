@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_TITLE="true"
 DISABLE_AUTO_UPDATE="true"
 # COMPLETION_WAITING_DOTS="true"
-plugins=(git)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
