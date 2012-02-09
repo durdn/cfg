@@ -292,7 +292,7 @@ let g:ctrlp_dotfiles = 1
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*war$\|.*ear$|\.*zip$' " MacOSX/Linux
+let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*ear$|\.*zip$' " MacOSX/Linux
 
 " }}}
 " Nerdtree "{{{
