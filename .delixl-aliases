@@ -12,4 +12,4 @@ alias up='np exec undeploy pluto 2> /dev/null'
 alias uj='np exec undeploy jupiter 2> /dev/null'
 alias mci='mvn clean install -q -Dmaven.test.skip=true'
 alias mcs='mvn checkstyle:checkstyle'
-
+alias mec='mvn -q -Dmaven.test.skip=true eclipse:clean eclipse:eclipse'
