@@ -3,7 +3,7 @@
     excludesfile = /Users/nick/.gitignore_global
 
 [alias]
-    st = status
+    st = status -s
 
     cl = clone
 
@@ -14,20 +14,28 @@
     amend = commit --amend
     caa = commit -a --amend -C HEAD
     filelog = log -u
+    fl = log -u
 
     ai = add --interactive
 
     co = checkout
     br = branch -ra
+    #list commands
     le = log --oneline --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    #list all aliases
     la = "!git config -l | grep alias | cut -c 7-"
     diff = diff --word-diff
     d = diff --word-diff
     dc = diff --cached
+    #list modified files in last commit
+    dl = "!git ll -1"
+    #diff last commit
+    dlc = diff HEAD^
     branch = branch -ra
 
+    #reset commands
     r = reset
     r1 = reset HEAD^
     r2 = reset HEAD^^
@@ -50,7 +58,7 @@
     gr = grep -Ii
 
     #grep on filename
-    f = !git ls-files | grep -i
+    f = "!git ls-files | grep -i"
 
     #rename branch tree to done-
     done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
