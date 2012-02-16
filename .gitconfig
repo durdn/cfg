@@ -1,7 +1,56 @@
+# core {{{
 [core]
     editor= /usr/bin/vi
     excludesfile = /Users/nick/.gitignore_global
+#}}}
+# user {{{
+[user]
+	email = nick@durdn.com
+	name = Nicola Paolucci
+#}}}
+# color {{{
+[color]
+    branch = auto
+    diff = auto
+    status = auto
 
+[color "branch"]
+    current = red reverse
+    local = blue
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+# }}}
+# push/pull/diff/options {{{
+[push]
+    default = tracking
+[pull]
+    default = current
+[diff]
+  memonicprefix = true
+[branch]
+  autosetupmerge = true
+[apply]
+  whitespace = nowarn
+#}}}
+# difftools {{{
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+# }}}
+# alias {{{
 [alias]
     st = status -s
 
@@ -71,44 +120,4 @@
     #unassume all the assumed files
     unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
     assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
-
-[color]
-    branch = auto
-    diff = auto
-    status = auto
-
-[color "branch"]
-    current = red reverse
-    local = blue
-    remote = green
-
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-
-[user]
-	email = nick@durdn.com
-	name = Nicola Paolucci
-[push]
-    default = tracking
-[pull]
-    default = current
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[diff]
-  memonicprefix = true
-[branch]
-  autosetupmerge = true
-[apply]
-  whitespace = nowarn
+# }}}
