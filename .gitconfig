@@ -2,11 +2,13 @@
 [core]
     editor= /usr/bin/vi
     excludesfile = /Users/nick/.gitignore_global
+
 #}}}
 # user {{{
 [user]
 	email = nick@durdn.com
 	name = Nicola Paolucci
+
 #}}}
 # color {{{
 [color]
@@ -29,6 +31,7 @@
     added = yellow
     changed = green
     untracked = cyan
+
 # }}}
 # push/pull/diff/options {{{
 [push]
@@ -41,6 +44,7 @@
   autosetupmerge = true
 [apply]
   whitespace = nowarn
+
 #}}}
 # difftools {{{
 [difftool "sourcetree"]
@@ -49,6 +53,7 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
 # }}}
 # alias {{{
 [alias]
@@ -68,11 +73,14 @@
     ai = add --interactive
 
     co = checkout
-    br = branch -ra
+    br = "!git branch -ra | grep -v done"
+    bra = branch -ra
     #list commands
     le = log --oneline --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     #list all aliases
     la = "!git config -l | grep alias | cut -c 7-"
     diff = diff --word-diff
@@ -81,7 +89,7 @@
     #list modified files in last commit
     dl = "!git ll -1"
     #diff last commit
-    dlc = diff HEAD^
+    dlc = diff --cached HEAD^
     branch = branch -ra
 
     #reset commands
