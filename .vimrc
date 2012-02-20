@@ -103,6 +103,8 @@ nmap <silent> <leader>eb :e ~/.bashrc<CR>
 "edit the .vimrc"
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
 "nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
+"edit the .gitconfig"
+nmap <silent> <leader>eg :e ~/.gitconfig<CR>
 "open a scratch file
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
 "reload the .vimrc"
