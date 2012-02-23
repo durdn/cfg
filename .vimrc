@@ -198,7 +198,7 @@ nmap <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR> <BS>
+cmap <C-P> <C-R>=expand("%:p")<CR> <BS>
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -222,7 +222,20 @@ nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
 nmap <silent> ,cc yy:<C-f>p<C-c><CR>
 
 "open up a git grep line, with a quote started for the search
-nnoremap ,gg :GitGrep ""<left>
+nnoremap <leader>gg :GitGrep ""<left>
+
+"git grep the current file name
+nnoremap <leader>gf :call GitGrepCurrentFile()<CR>
+let g:gitfullgrepprg="git\\ gra"
+function! GitGrepCurrentFile()
+    let current_filename = expand("%")
+    let grepprg_bak=&grepprg
+    exec "set grepprg=" . g:gitfullgrepprg
+    execute "silent! grep " . current_filename
+    botright copen
+    let &grepprg=grepprg_bak
+    exec "redraw!"
+endfunction
 
 "git grep the current word using K (mnemonic Kurrent)
 nnoremap <silent> K :GitGrep <cword><CR>
