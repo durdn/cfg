@@ -113,6 +113,8 @@
     cp = cherry-pick
     grep = grep -Ii
     gr = grep -Ii
+    #grep from root folder
+    gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
 
     #grep on filename
     f = "!git ls-files | grep -i"
