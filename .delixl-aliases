@@ -13,3 +13,33 @@ alias uj='np exec undeploy jupiter 2> /dev/null'
 alias mci='mvn clean install -q -Dmaven.test.skip=true'
 alias mcs='mvn checkstyle:checkstyle'
 alias mec='mvn -q -Dmaven.test.skip=true eclipse:clean eclipse:eclipse'
+alias acc-ca='ssh root@145.7.5.41'
+alias acc-atg1='ssh root@145.7.5.53'
+alias acc-atg2='ssh root@145.7.5.54'
+alias acc-gs1='ssh root@145.7.5.57'
+alias acc-gs2='ssh root@145.7.5.58'
+
+function acc-atg {
+  # 54 window
+  tmux new-window
+  tmux rename-window acc-54
+  tmux split-window -dh 'ssh root@145.7.5.54'
+  tmux send-keys -t right tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps4/log/server.log"
+"
+  tmux split-window -dv 'ssh root@145.7.5.54'
+  tmux send-keys -t bottom-left tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps3/log/server.log"
+"
+  # 53 window
+  tmux previous-window
+  tmux rename-window acc-53
+  tmux split-window -dh 'ssh root@145.7.5.53'
+  tmux send-keys -t right tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps1/log/server.log"
+"
+  tmux split-window -dv 'ssh root@145.7.5.53'
+  tmux send-keys -t bottom-left tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps2/log/server.log"
+"
+  tmux kill-pane -t:acc-54.top-left
+  tmux kill-pane -t:acc-53.top-left
+  #tmux select-window -t:acc-54
+}
+
