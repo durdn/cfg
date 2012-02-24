@@ -24,22 +24,32 @@ function acc-atg {
   tmux new-window
   tmux rename-window acc-54
   tmux split-window -dh 'ssh root@145.7.5.54'
-  tmux send-keys -t right tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps4/log/server.log"
-"
+  tmux send-keys -t right tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps4/log/server.log C-m
   tmux split-window -dv 'ssh root@145.7.5.54'
-  tmux send-keys -t bottom-left tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps3/log/server.log"
-"
+  tmux send-keys -t bottom-left tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps3/log/server.log C-m 
+
   # 53 window
   tmux previous-window
   tmux rename-window acc-53
   tmux split-window -dh 'ssh root@145.7.5.53'
-  tmux send-keys -t right tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps1/log/server.log"
-"
+  tmux send-keys -t right tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps1/log/server.log C-m
   tmux split-window -dv 'ssh root@145.7.5.53'
-  tmux send-keys -t bottom-left tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps2/log/server.log"
-"
+  tmux send-keys -t bottom-left tail\ -f\ /ATG/jboss/jboss-as/server/acc-ps-ps2/log/server.log C-m
+
+  # kill controlling panes
   tmux kill-pane -t:acc-54.top-left
   tmux kill-pane -t:acc-53.top-left
-  #tmux select-window -t:acc-54
 }
+
+function acc-nep {
+  tmux rename-window acc-57-58
+  tmux split-window -dh 'ssh root@145.7.5.58'
+  tmux send-keys -t right tail\ -f\ /ATG/neptune/logs/neptune-acc.out C-m
+  tmux split-window -dv 'ssh root@145.7.5.57'
+  tmux send-keys -t bottom-left tail\ -f\ /ATG/neptune/logs/neptune-acc.out C-m
+
+  # kill controlling pane
+  tmux kill-pane -t:acc-57-58.top-left
+}
+
 
