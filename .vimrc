@@ -105,6 +105,8 @@ nmap <silent> <leader>ev :e ~/.vimrc<CR>
 "nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
 "edit the .gitconfig"
 nmap <silent> <leader>eg :e ~/.gitconfig<CR>
+"edit the .tmux.conf"
+nmap <silent> <leader>et :e ~/.tmux.conf<CR>
 "open a scratch file
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
 "reload the .vimrc"
