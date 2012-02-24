@@ -11,6 +11,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=()
 
 source $ZSH/oh-my-zsh.sh
+bindkey -M menuselect '^M' .accept-line
 
 # }}}
 # Theme Prompt {{{
