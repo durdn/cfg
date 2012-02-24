@@ -170,6 +170,9 @@ function gr {
   find . -type f | grep -v .svn | grep -v .git | xargs grep -i $1 | grep -v Binary
 }
 
+function col {
+  awk -v col=$1 '{print $col}'
+}
 
 # }}}
 # Linux specific config {{{
