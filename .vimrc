@@ -491,6 +491,7 @@ au BufRead,BufNewFile *.tag set ft=jsp.html
 au BufRead,BufNewFile *.html set ft=html.django_template
 au BufRead,BufNewFile *.json set ft=json
 au BufRead,BufNewFile *.java set ft=java
+au BufRead,BufNewFile *.less set ft=less
 "au FileType html set ft=django_template.html
 au FileType python set ft=python.django " For SnipMate
 au FileType python setlocal sw=4 sts=4 et tw=200 sta

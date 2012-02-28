@@ -79,3 +79,6 @@
 [submodule ".vim/bundle/raimondi-delimitmate"]
 	path = .vim/bundle/raimondi-delimitmate
 	url = git://github.com/Raimondi/delimitMate.git
+[submodule ".vim/bundle/groenewege-vim-less.git"]
+	path = .vim/bundle/groenewege-vim-less.git
+	url = git://github.com/groenewege/vim-less.git

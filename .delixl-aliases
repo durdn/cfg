@@ -52,4 +52,11 @@ function acc-nep {
   tmux kill-pane -t:acc-57-58.top-left
 }
 
+function dxl-test {
+  tmux rename-window test-31-50
+  tmux split-window -dh 'ssh root@145.7.5.50'
+  tmux split-window -dv 'ssh root@145.7.5.31'
 
+  # kill controlling pane
+  tmux kill-pane -t:test-31-50.top-left
+}
