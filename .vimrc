@@ -145,7 +145,12 @@ map <C-l> <C-w>l
 " capital W/Q same as w/q in command mode
 cnoreabbrev W w
 cnoreabbrev Q q
+" select all
+map <leader>a ggVG
 
+" reselect visual block after indent/outdent 
+vnoremap < <gv
+vnoremap > >gv
 " buffer switching/management, might as well use those keys for something useful
 map <Right> :bnext<CR>
 imap <Right> <ESC>:bnext<CR>
@@ -247,7 +252,7 @@ nnoremap <silent> K :GitGrep <cword><CR>
 " ==================================
 if has('unix')
     " xml formatting
-    map <F2> <Esc>:1,$!xmllint --format -<CR>
+    nnoremap <F2> :silent 1,$!xmllint --format --recover - 2>/dev/null<cr>
     "remap omny completion to Ctrl-n
     inoremap <C-n> <C-x><C-o>
     "write a read only file that needs sudo first
