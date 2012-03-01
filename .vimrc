@@ -194,6 +194,9 @@ function! ToggleRelativeAbsoluteNumber()
   endif
 endfunction
 
+"retab and format the file with spaces
+nnoremap <leader>T :set expandtab<cr>:retab!<cr>
+
 "picked up from carlhuda janus
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>nf
@@ -246,6 +249,16 @@ endfunction
 
 "git grep the current word using K (mnemonic Kurrent)
 nnoremap <silent> K :GitGrep <cword><CR>
+
+"use tab for auto completion
+function! SuperTab()
+    if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+        return "\<Tab>"
+    else
+        return "\<C-n>"
+    endif
+endfunction
+imap <Tab> <C-R>=SuperTab()<CR>
 
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
