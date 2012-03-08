@@ -197,6 +197,8 @@ if [ $(uname) == "Linux" ]; then
   #apt aliases
   alias apt='sudo apt-get'
   alias cs='sudo apt-cache search'
+  alias pacman='sudo pacman'
+  alias pac='sudo pacman'
 
   alias ls='ls --color'
   alias ll='ls -l --color'
