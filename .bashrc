@@ -158,6 +158,7 @@ alias gc='git commit '
 alias gd='git diff '
 alias go='git checkout '
 alias stashup='git stash && git svn rebase && git stash apply'
+alias vimo='vim -O '
 function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
 }
