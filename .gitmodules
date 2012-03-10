@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/groenewege-vim-less.git"]
 	path = .vim/bundle/groenewege-vim-less.git
 	url = git://github.com/groenewege/vim-less.git
+[submodule ".vim/bundle/tpope-vim-repeat"]
+	path = .vim/bundle/tpope-vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
