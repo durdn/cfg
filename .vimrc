@@ -46,7 +46,7 @@ set wildmenu
 set completeopt-=preview
 
 " Save when losing focus
-au FocusLost * :wa
+" au FocusLost * :wa
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
