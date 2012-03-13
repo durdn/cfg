@@ -18,6 +18,11 @@ alias acc-atg1='ssh root@145.7.5.53'
 alias acc-atg2='ssh root@145.7.5.54'
 alias acc-gs1='ssh root@145.7.5.57'
 alias acc-gs2='ssh root@145.7.5.58'
+alias dxl-test-1='ssh root@145.7.5.31'
+alias dxl-test-2='ssh root@145.7.5.50'
+alias dxl-dev-1='ssh root@145.7.5.6'
+alias dxl-dev-2='ssh root@145.7.5.7'
+alias dxl-dev-3='ssh root@145.7.5.8'
 
 function acc-atg {
   # 54 window
