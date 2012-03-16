@@ -90,6 +90,8 @@
     dl = "!git ll -1"
     #diff last commit
     dlc = diff --cached HEAD^
+    dr  = "!f() { git diff "$1"^.."$1"; }; f"
+    diffr  = "!f() { git diff "$1"^.."$1"; }; f"
     branch = branch -ra
 
     #reset commands
