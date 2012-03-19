@@ -132,4 +132,7 @@
     #unassume all the assumed files
     unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
     assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+
+    lasttag = describe --tags --abbrev=0
+    lt = describe --tags --abbrev=0
 # }}}
