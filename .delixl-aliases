@@ -23,6 +23,8 @@ alias dxl-test-2='ssh root@145.7.5.50'
 alias dxl-dev-1='ssh nick@145.7.5.6'
 alias dxl-dev-2='ssh nick@145.7.5.7'
 alias dxl-dev-3='ssh nick@145.7.5.8'
+alias dxl-prod-nep1='ssh developer@10.10.13.141'
+alias dxl-prod-nep2='ssh developer@10.10.13.142'
 
 function acc-atg {
   # 54 window
@@ -65,3 +67,4 @@ function dxl-test {
   # kill controlling pane
   tmux kill-pane -t:test-31-50.top-left
 }
+

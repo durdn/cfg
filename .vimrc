@@ -115,6 +115,8 @@ nmap <silent> <leader>rv :source ~/.vimrc<CR>
 nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
 " Edit snippets
 nmap <silent> <leader>es :e ~/.vim/bundle/durdn-customisation/snippets/<cr>
+" Edit delixl aliases
+nmap <silent> <leader>ed :e ~/.delixl-aliases<cr>
 
 
 " }}}
