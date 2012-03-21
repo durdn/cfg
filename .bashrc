@@ -163,6 +163,14 @@ function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
 }
 
+function svnlnc {
+  paste -d\  <(git svn log --oneline --show-commit $1 | col 1) <(git log --pretty=format:%h\ %s\ [%cn] $1)
+}
+
+function svnl {
+  paste -d\  <(git svn log --oneline --show-commit $1 | col 1) <(git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" $1)
+}
+
 function f {
   find . -type f | grep -v .svn | grep -v .git | grep -i $1
 }
