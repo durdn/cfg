@@ -164,11 +164,11 @@ function list-patch {
 }
 
 function svnlnc {
-  paste -d\  <(git svn log --oneline --show-commit $1 | col 1) <(git log --pretty=format:%h\ %s\ [%cn] $1)
+  paste -d\  <(git svn log --oneline --show-commit $1 $2 $3 $4 | col 1) <(git log --pretty=format:%h\ %s\ [%cn] $1 $2 $3 $4)
 }
 
 function svnl {
-  paste -d\  <(git svn log --oneline --show-commit $1 | col 1) <(git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" $1)
+  paste -d\  <(git svn log --oneline --show-commit $1 $2 $3 $4 | col 1) <(git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" $1 $2 $3 $4)
 }
 
 function f {
