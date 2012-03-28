@@ -9,6 +9,9 @@ export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s progcomp
+#make sure the history is updated at every command
+export PROMPT_COMMAND="history -a; history -n;"
+
 #!! sets vi mode for shell
 set -o vi
 
