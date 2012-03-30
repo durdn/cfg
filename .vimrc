@@ -217,6 +217,8 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Clean whitespace
 map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+" Retab and format with spaces
+nnoremap <leader>T :set expandtab<cr>:retab!<cr>
 
 " Nerd tree find current file
 nnoremap <silent> <C-\> :NERDTreeFind<CR>
@@ -261,6 +263,12 @@ function! SuperTab()
     endif
 endfunction
 imap <Tab> <C-R>=SuperTab()<CR>
+
+" make C-a C-e work in command line mode
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
