@@ -28,6 +28,18 @@ alias dxl-dev-3='ssh nick@145.7.5.8'
 alias dxl-prod-nep1='ssh developer@10.10.13.141'
 alias dxl-prod-nep2='ssh developer@10.10.13.142'
 
+
+function tm {
+  tmux set default-path /home/developer/delixl
+  cd /home/developer/.cfg
+  tmux rename-window .cfg
+  tmux new-window
+  tmux rename-window neptune
+  tmux new-window
+  tmux rename-window sol
+  tmux select-window -t .cfg
+}
+
 function acc-atg {
   # 54 window
   tmux new-window
