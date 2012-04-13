@@ -115,10 +115,10 @@ nmap <silent> <leader>rv :source ~/.vimrc<CR>
 nmap <silent> <leader>rs :call ReloadAllSnippets()<cr>
 " Edit snippets
 nmap <silent> <leader>es :e ~/.vim/bundle/durdn-customisation/snippets/<cr>
+" Edit vim color scheme
+nmap <silent> <leader>ec :e ~/.vim/bundle/durdn-customisation/colors/ir_black.vim<cr>
 " Edit delixl aliases
 nmap <silent> <leader>ed :e ~/.delixl-aliases<cr>
-
-
 " }}}
 " Keyboard Shortcuts and remappings   "{{{
 
