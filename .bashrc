@@ -27,6 +27,17 @@ fi
 export PATH=$HOME/.cfg/bin:$PATH
 
 # }}}
+# Tmux startup {{{
+if which tmux 2>&1 >/dev/null; then
+    # if no session is started, start a new session
+    test -z ${TMUX} && tmux
+
+    # when quitting tmux, try to attach
+    while test -z ${TMUX}; do
+        tmux attach || break
+    done
+fi
+# }}}
 #Prompt customisation {{{
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
