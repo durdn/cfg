@@ -19,3 +19,17 @@ function colors2() {
     printf "\x1b[38;5;${i}mcolour${i}\n"
   done
 }
+
+function colors3() {
+  for i in {0..255} ; do
+    declare -i a="$i % 6";
+    if [ $a == '0' ]; then
+      printf "\x1b[38;5;${i}mcolour${i}\n";
+    else
+      printf "\x1b[38;5;${i}mcolour${i}  ";
+    fi
+  done
+}
+
+colors3
+
