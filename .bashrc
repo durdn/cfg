@@ -25,6 +25,9 @@ fi
 
 #path should have durdn config bin folder
 export PATH=$HOME/.cfg/bin:$PATH
+#set the terminal type to 256 colors
+export TERM=xterm-256color
+
 
 # }}}
 # Tmux startup {{{
