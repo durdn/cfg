@@ -39,7 +39,7 @@ set foldmethod=marker   " sets the fold method to {{ }} markers
 set backspace=indent,eol,start
 set laststatus=2
 set noequalalways
-set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ %{fugitive#statusline()}
+"REPLACED BY vim-powerline set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ %{fugitive#statusline()}
 set listchars=tab:\|\ ,trail:·,eol:¬
 set wildmenu
 " don't show the preview pane for some omni completions
@@ -300,7 +300,7 @@ endif
 if has('gui_win32')
   winpos 600 0
   "status line does not work with fugitive on win32
-  set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ 
+  "REPLACED BY vim-powerline set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ 
   "overwrite mapping to edit the .vimrc"
   nmap <silent> <leader>ev :e ~/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"

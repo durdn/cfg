@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/tpope-vim-repeat"]
 	path = .vim/bundle/tpope-vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
+[submodule ".vim/bundle/lokaltog-vim-powerline"]
+	path = .vim/bundle/lokaltog-vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
