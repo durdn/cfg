@@ -1,9 +1,14 @@
-while xsetroot -name "`date \"+%d %b [%a] %H:%M\"` `uptime | sed 's/.*,//'`"
-do
-  sleep 20
+#!/bin/bash
+
+setxbmap us
+xset r rate 250 120
+xrdb -merge ~/.Xresources
+xrandr --output default --mode 1440x900 &
+wmname LG3D &
+
+while true; do
+  xsetroot -name "$(date +"%F %R" )"
+  sleep 1m
 done &
 
-wmname LG3D &
-xrandr --output default --mode 1440x900 &
-
-/home/developer/dev/apps/dwm-6.0/dwm
+exec /home/developer/dev/apps/dwm-6.0/dwm
