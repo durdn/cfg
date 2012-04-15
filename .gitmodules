@@ -85,3 +85,6 @@
 [submodule ".vim/bundle/lokaltog-vim-powerline"]
 	path = .vim/bundle/lokaltog-vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule ".vim/bundle/altercation-vim-colors-solarized"]
+	path = .vim/bundle/altercation-vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

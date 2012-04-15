@@ -46,7 +46,8 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
 }
 
-function proml {
+# Prompt ir_black {{{
+function prompt-irblack {
   local WHITE="\[\033[1;37m\]"
   local BLACK="\[\033[0;30m\]"
   local BLUE="\[\033[0;34m\]"
@@ -78,7 +79,44 @@ $LIGHT_GRAY\n\$ "
 PS2='> '
 PS4='+ '
 }
-proml
+# }}}
+# Prompt solarized {{{
+function prompt-solarized {
+  local WHITE="\[\033[1;37m\]"
+  local BLACK="\[\033[0;30m\]"
+  local BLUE="\[\033[0;34m\]"
+  local LIGHT_BLUE="\[\033[1;34m\]"
+  local CYAN="\[\033[0;36m\]"
+  local RED="\[\033[1;31m\]"
+  local LIGHT_RED="\[\033[1;31m\]"
+  local GREEN="\[\033[0;32m\]"
+  local GREEN2="\[\033[0;32m\]"
+  local LIGHT_GREEN="\[\033[1;32m\]"
+  local WHITE="\[\033[1;37m\]"
+  local LIGHT_GRAY="\[\033[1;37m\]"
+  local MAGENTA="\[\033[1;35m\]"
+  local LIGHT_GRAY2="\[\033[1;36m\]"
+  local DARK_GRAY="\[\033[1;30m\]"
+  case $TERM in
+    xterm*)
+    TITLEBAR='\[\033]0;\u@\h:\w\007\]'
+    ;;
+    *)
+    TITLEBAR=""
+    ;;
+  esac
+
+PS1="${TITLEBAR}\
+$WHITE[$GREEN\u$WHITE]\
+$LIGHT_GRAY2[$LIGHT_BLUE\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(parse_git_branch)$LIGHT_GRAY2\
+$WHITE\n\$ "
+PS2='> '
+PS4='+ '
+export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+export LS_COLORS="di=34:ln=1;35:so=32:pi=33:ex=1;31:bd=34:cd=34:su=0;41:sg=0;46:tw=0;42:ow=0;43:fi=1;37:"
+}
+# }}}
+prompt-irblack
 
 # }}}
 # durdn/cfg related commands {{{

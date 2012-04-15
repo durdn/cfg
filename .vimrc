@@ -9,12 +9,17 @@ call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
 "}}}
+" Color Scheme "{{{
+colorscheme ir_black
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme solarized
+"}}}
 " Basic settings and variables"{{{
 if has('syntax') && (&t_Co > 2)
   syntax on
 endif
 
-colorscheme ir_black
 set encoding=utf-8
 set nocompatible hidden ignorecase smartcase title expandtab autoindent
 set nobackup noswapfile showmode showcmd ttyfast gdefault
