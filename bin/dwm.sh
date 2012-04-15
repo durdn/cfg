@@ -1,11 +1,17 @@
 #!/bin/bash
 
+#set us keyboard
 setxbmap us
-xset r rate 250 120
+#set keyboard repeat rate
+xset r rate 250 60
+#load X apps configs like urxvt
 xrdb -merge ~/.Xresources
+#set resolution to 1440x900
 xrandr --output default --mode 1440x900 &
+#make sure Java uses the right toolkit
 wmname LG3D &
 
+#set the status bar at the top
 while true; do
   xsetroot -name "$(date +"%F %R" )"
   sleep 1m
