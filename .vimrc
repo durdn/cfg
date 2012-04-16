@@ -337,12 +337,17 @@ endif
 
 " ctrlp {{{
 
-let g:ctrlp_map = '<leader>t'
+"let g:ctrlp_map = '<leader>t'
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_dotfiles = 1
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_mruf_exclude = 'build/.*\|/temp/.*\|.*jar$\|.*ear$|\.*zip$' " MacOSX/Linux
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'build/.*\|/temp/.*',
+  \ 'file': '\.jar$\|\.ear$|\.zip',
+  \ }
+let g:ctrlp_user_command = 'git ls-files %s'
 
 " }}}
 " Nerdtree "{{{
