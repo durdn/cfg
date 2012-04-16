@@ -238,6 +238,20 @@ function col {
   awk -v col=$1 '{print $col}'
 }
 
+function xr {
+  case $1 in
+  1)
+    xrandr -s 1680x1050
+    ;;
+  2)
+    xrandr -s 1440x900
+    ;;
+  3)
+    xrandr -s 1024x768
+    ;;
+  esac
+}
+
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
