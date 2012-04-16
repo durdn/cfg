@@ -7,7 +7,7 @@ xset r rate 250 60
 #load X apps configs like urxvt
 xrdb -merge ~/.Xresources
 #set resolution to 1440x900
-xrandr --output default --mode 1440x900 &
+xrandr --output default --mode 1680x1050 &
 #make sure Java uses the right toolkit
 wmname LG3D &
 
