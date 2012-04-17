@@ -1,0 +1,15 @@
+#!/bin/sh
+ORACLE_BIN=/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin
+
+if [ -z $1 ] ; then
+  echo "Parameters missing."
+  echo ""
+  echo "Usage example: run-sqlplus.sh CA/PASSWORD@testca"
+  exit 0;
+fi
+
+echo "------ Using db definitions (tnsnames.ora) at:"
+echo "/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/network/admin/tnsnames.ora"
+echo "------"
+
+ORACLE_HOME=/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/ rlwrap $ORACLE_BIN/sqlplus $1 $2 $3 $4 $5 $6

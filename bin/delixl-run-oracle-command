@@ -1,0 +1,13 @@
+#!/bin/sh
+ORACLE_BIN=/home/oracle/app/oracle/product/11.2.0/xe/bin/
+
+if [ -z $1 ] ; then
+  echo "Parameters missing."
+  exit 0;
+fi
+
+echo "------ Using db definitions (tnsnames.ora) at:"
+echo "/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/network/admin/tnsnames.ora"
+echo "------"
+
+ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/xe/ rlwrap $ORACLE_BIN/$1 $2 $3 $4 $5 $6 $7 $8

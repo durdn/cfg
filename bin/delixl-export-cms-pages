@@ -1,0 +1,18 @@
+#!/bin/sh
+ORACLE_BIN=/home/oracle/app/oracle/product/11.2.0/xe/bin/
+
+if [ -z $1 ] ; then
+  echo "Parameters missing."
+  echo ""
+  echo "Usage example: export-cms-pages.sh CA/PASSWORD@testca"
+  exit 0;
+fi
+
+echo "/delixl/cms/CmsRepository:cmsPage"
+echo "ID,pageName,pageUrl"
+ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/xe/ $ORACLE_BIN/sqlplus -S $1 <<ENDOFSQL
+set head off;
+set linesize 200;
+select id||',"'||page_name||'",'||html_url from dxl_cms_page where is_head=1 and version_deleted=0;
+exit;
+ENDOFSQL

@@ -1,0 +1,59 @@
+#!/bin/bash
+LAST_TAG=$(git describe --tags --abbrev=0)
+SHORT_DATE=$(date +%m-%d)
+MERGE_DATE=$(date "+%d/%m/%Y")
+
+git checkout r12
+echo "Generating list of changes and commit message since last tag: $LAST_TAG"
+echo
+rm $LAST_TAG-changes.txt
+git svn log --oneline --no-color --show-commit $LAST_TAG..HEAD > $LAST_TAG-changes.txt
+sed -i '1i NOJIRA [MERGE] From r1.2.0 for '$MERGE_DATE' \n' $LAST_TAG-changes.txt
+cat $LAST_TAG-changes.txt 
+echo
+
+echo "Creating daily merge branch merge-$SHORT_DATE"
+echo "Enter to continue..."
+read -n 1 go
+git checkout -b merge-$SHORT_DATE
+echo "Resetting to $LAST_TAG commit"
+git reset --hard $LAST_TAG
+
+echo "Squashing all changes into this branch..."
+echo "Enter to continue..."
+read -n 1 go
+git merge --squash r12 $LAST_TAG
+
+echo "Committing changes with previously generated commit message"
+echo "Enter to continue..."
+read -n 1 go
+git commit -F $LAST_TAG-changes.txt
+
+echo "Listing changes..."
+echo "Enter to continue..."
+read -n 1 go
+git dl
+
+echo "Tagging r12 branch for future operations"
+echo "Enter to continue..."
+read -n 1 go
+git checkout r12
+git tag dmerged-$SHORT_DATE
+CHERRY=$(git rev-parse --short merge-$SHORT_DATE)
+echo "Revision to cherry-pick to trunk: $CHERRY"
+echo "Enter to continue..."
+read -n 1 go
+echo "Checking out master/trunk"
+echo "Enter to continue..."
+read -n 1 go
+git co master
+git svn rebase
+echo "Cherry picking merged commit: $CHERRY"
+echo "Enter to continue..."
+read -n 1 go
+git cherry-pick $CHERRY
+echo "Tagging trunk: trunk-$SHORT_DATE"
+echo "Enter to continue..."
+read -n 1 go
+git tag trunk-$SHORT_DATE
+echo "Now just commit with: git svn dcommit. YOU DO IT."
