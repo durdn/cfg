@@ -10,6 +10,8 @@ xrdb -merge ~/.Xresources
 xrandr --output default --mode 1680x1050 &
 #make sure Java uses the right toolkit
 wmname LG3D &
+#start vmware-tools
+vmware-user
 
 #set the status bar at the top
 while true; do
