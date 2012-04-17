@@ -1,2 +1,17 @@
 [ui]
 username = Nicola Paolucci <nick@durdn.com>
+
+[alias]
+ls = log -l 10
+st = status
+
+[extensions]
+color =
+
+[color]
+status.modified = blue bold underline red_background
+status.added = green bold
+status.removed = red bold blue_background
+status.deleted = cyan bold
+status.unknown = magenta bold
+status.ignored = black bold
