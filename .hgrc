@@ -1,9 +1,11 @@
 [ui]
 username = Nicola Paolucci <nick@durdn.com>
+style = compact
 
 [alias]
-ls = log -l 10
+ls = log --template '{rev} {tags}{parents} {node|short} {desc|firstline|strip} [{author|user}]\n'
 st = status
+ci = commit
 
 [extensions]
 color =

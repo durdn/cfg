@@ -42,10 +42,16 @@ export TERM=xterm-256color
 #fi
 # }}}
 #Prompt customisation {{{
-function parse_git_branch {
+function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
 }
 
+hg_branch() {
+    hg branch 2> /dev/null | \
+        awk '{ printf "[\033[1;31m" $1 "]"}'
+    hg bookmarks 2> /dev/null | \
+        awk '/\*/ { printf "[\033[0;32m" $2 "]" }'
+}
 # Prompt ir_black {{{
 function prompt-irblack {
   local WHITE="\[\033[1;37m\]"
@@ -74,7 +80,7 @@ function prompt-irblack {
 
 PS1="${TITLEBAR}\
 $LIGHT_GRAY2[$DARK_GRAY\u$LIGHT_GRAY2]\
-$LIGHT_GRAY2[$LIGHT_BLUE\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(parse_git_branch)$LIGHT_GRAY2\
+$LIGHT_GRAY2[$LIGHT_BLUE\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(git_branch)\$(hg_branch)$LIGHT_GRAY2\
 $LIGHT_GRAY\n\$ "
 PS2='> '
 PS4='+ '
