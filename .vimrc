@@ -124,6 +124,8 @@ nmap <silent> <leader>es :e ~/.vim/bundle/durdn-customisation/snippets/<cr>
 nmap <silent> <leader>ec :e ~/.vim/bundle/durdn-customisation/colors/ir_black.vim<cr>
 " Edit delixl aliases
 nmap <silent> <leader>ed :e ~/.delixl-aliases<cr>
+" Edit mercurial configuration
+nmap <silent> <leader>em :e ~/.hgrc<cr>
 " }}}
 " Keyboard Shortcuts and remappings   "{{{
 
