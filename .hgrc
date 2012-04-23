@@ -11,6 +11,7 @@ rh = hg revert -a --no-backup
 
 [extensions]
 color =
+bookmarks =
 
 [color]
 status.modified = blue bold underline red_background
