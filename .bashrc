@@ -218,6 +218,7 @@ alias gb='git branch '
 alias gc='git commit '
 alias gd='git diff '
 alias go='git checkout '
+alias hla="cat ~/.hgrc | grep -m1 -A10000 alias | tail -n +2 | grep -m1 -B10000 '^\[' | sed '\$d'"
 alias stashup='git stash && git svn rebase && git stash apply'
 alias vimo='vim -O '
 function list-patch {
