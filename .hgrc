@@ -3,10 +3,11 @@ username = Nicola Paolucci <nick@durdn.com>
 style = compact
 
 [alias]
-ls = !hg log --template '{rev} {tags}{parents} {node|short} {desc|firstline|strip} [{author|user}]\n' | less
+ls = !hg log --template '{rev} {tags}{parents} {node|short} {desc|firstline|strip} [{author|user}]\n' $@ | less
 st = status
 ci = commit
 reset = hg revert -a --no-backup
+rh = hg revert -a --no-backup
 
 [extensions]
 color =
