@@ -114,7 +114,7 @@ function prompt-solarized {
 
 PS1="${TITLEBAR}\
 $WHITE[$GREEN\u$WHITE]\
-$LIGHT_GRAY2[$LIGHT_BLUE\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(parse_git_branch)$LIGHT_GRAY2\
+$LIGHT_GRAY2[$LIGHT_BLUE\h$LIGHT_GRAY2:$BLUE\w$LIGHT_GRAY2]$RED\$(git_branch)$LIGHT_GRAY2\
 $WHITE\n\$ "
 PS2='> '
 PS4='+ '
