@@ -129,19 +129,19 @@ prompt-irblack
 function dur {
   case $1 in
   create|cr)
-    ssh durdn@durdn.com "cd /home/durdn/git && mkdir $2.git && cd $2.git && git --bare init-db"
+    echo "disabled"
     ;;
   list|li)
-    ssh durdn@durdn.com "cd /home/durdn/git && ls -C"
+    echo "disabled"
     ;;
   clone|cl)
-    git clone ssh://durdn@durdn.com/~/git/$2.git
+    git clone git@bitbucket.org:durdn/$2.git
     ;;
   install|i)
-    /usr/bin/env python $HOME/.cfg/install.py
+    $HOME/.cfg/install.sh
     ;;
   reinstall|re)
-    curl https://raw.github.com/durdn/cfg/master/install.py -o - | python
+    curl -Ls https://raw.github.com/durdn/cfg/master/install.sh | bash
     ;;
   move|mv)
     git remote add bitbucket git@bitbucket.org:durdn/$(basename $(pwd)).git
