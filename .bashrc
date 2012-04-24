@@ -259,6 +259,12 @@ function xr {
   esac
 }
 
+# shows last modification dat for trunk and r1.2.0 branch
+function glm {
+  echo master $(git fl master $1 | grep -m1 Date:)
+  echo r1.2.0 $(git fl r12 $1 | grep -m1 Date:)
+}
+
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
