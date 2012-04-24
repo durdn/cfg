@@ -1,10 +1,13 @@
-!URxvt.background: #000000
-!URxvt.foreground: #ffffff
 URxvt.font: -*-terminus-medium-*-*-*-14-150-*-*-*-*-iso8859-1
 URxvt.boldFont: -*-terminus-medium-*-*-*-14-150-*-*-*-*-iso8859-1
 URxvt.intensityStyles: False
 URxvt.scrollBar: False
 URxvt.borderLess: True
+!-------------------------------------------------------------------------------
+! ir_black color scheme
+!-------------------------------------------------------------------------------
+!URxvt.background: #000000
+!URxvt.foreground: #ffffff
 !URxvt.color0: #7C7C7C
 !URxvt.color1: #e18964
 !URxvt.color2: #a8ff60
@@ -22,7 +25,7 @@ URxvt.borderLess: True
 !URxvt.color14: #96cdfe
 !URxvt.color15: #eeeeee
 
--------------------------------------------------------------------------------
+!-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
 
