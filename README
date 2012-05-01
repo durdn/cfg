@@ -1,6 +1,6 @@
 Install config tracking in your $HOME by running:
 
-  curl -Ls https://raw.github.com/durdn/cfg/master/install.sh | sh
+  curl -Lks https://raw.github.com/durdn/cfg/master/install.sh | bash
 
 Or in a shorter form:
 
