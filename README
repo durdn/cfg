@@ -4,7 +4,7 @@ Install config tracking in your $HOME by running:
 
 Or in a shorter form:
 
-  curl -Ls j.mp/durdnconfig | sh
+  curl -Lks j.mp/durdnconfig | bash
 
 Or:
 
