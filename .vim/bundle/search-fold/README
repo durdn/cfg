@@ -1,0 +1,52 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2521
+
+This script is an improved version of  f.vim  (vimscript #318).
+
+Improvements: folding depth is limited, previous fold settings can be restored, pattern is always the last search pattern.
+
+Script uses manual folds.  The user's manual folds are not preserved (unlike vimscript #2302 does it).
+
+
+Usage:
+
+<Leader>z
+fold away lines not matching the last search pattern.
+With [count], change the initial foldlevel to ([count] minus one).  The setting will be stored in g:searchfold_foldlevel and will be used when [count] is omitted.
+
+<Leader>iz
+fold away lines that do match the last search pattern (inverse folding).
+
+<Leader>Z
+try hard to restore the previous fold settings
+
+
+
+Customization:
+
+:let g:searchfold_maxdepth = 7
+(number) maximum fold depth
+
+:let g:searchfold_usestep = 1
+(boolean)
+Controls how folds are organized: If 1 (default), each "zr" (after "\z") unfolds the same amount of lines above and below a match.  If 0, only one more line is unfolded above a match.  This applies for next "\z" or "\iz".
+
+:let g:searchfold_postZ_do_zv = 1
+(boolean)
+If 1, execute "zv" (view cursor line) after <Leader>Z.
+
+:let g:searchfold_foldlevel = 0
+(number)
+Initial 'foldlevel' to set for <Leader>z and <Leader>iz
+
+:let g:searchfold_do_maps = 1
+(boolean)
+Whether to map the default keys or not.
+
+
+
+A few more links to check out:
+- http://www.noah.org/wiki/Vim#Folding
+- vimscript #158 (foldutil.vim)
+- vimscript #578 (allfold.tar.gz)
+
+2011 May 24

@@ -1,0 +1,145 @@
+*ReplaceWithRegister.txt*   Replace text with the contents of a register. 
+
+		   REPLACE WITH REGISTER    by Ingo Karkat
+						     *ReplaceWithRegister.vim*
+description			|ReplaceWithRegister-description|
+usage				|ReplaceWithRegister-usage|
+installation			|ReplaceWithRegister-installation|
+configuration			|ReplaceWithRegister-configuration|
+limitations			|ReplaceWithRegister-limitations|
+known problems			|ReplaceWithRegister-known-problems|
+todo				|ReplaceWithRegister-todo|
+history				|ReplaceWithRegister-history|
+
+==============================================================================
+DESCRIPTION				     *ReplaceWithRegister-description*
+
+Replacing an existing text with the contents of a register is a very common
+task during editing. One typically first deletes the existing text via the
+|d|, |D| or |dd| commands, then pastes the register with |p| or |P|. Most of
+the time, the unnamed register is involved, with the following pitfall: If you
+forget to delete into the black-hole register ("_), the replacement text is
+overwritten! 
+
+This plugin offers a two-in-one command that replaces text covered by a
+{motion}, entire line(s) or the current selection with the contents of a
+register; the old text is deleted into the black-hole register, i.e. it's
+gone. (But of course, the command can be easily undone.) 
+
+The replacement mode (characters or entire lines) is determined by the
+replacement command / selection, not by the register contents. This avoids
+surprises like when the replacement text was a linewise yank, but the
+replacement is characterwise: In this case, no additional newline is inserted. 
+
+RELATED WORKS								     *
+
+- regreplop.vim (vimscript #2702) provides an alternative implementation of
+  the same idea. 
+- operator-replace (vimscript #2782) provides replacement of {motion} only,
+  depends on another library of the author, and does not have a default
+  mapping. 
+
+==============================================================================
+USAGE						   *ReplaceWithRegister-usage*
+
+							     *gr* *grr* *v_gr*
+["x][count]gr{motion}	Replace {motion} text with the contents of register x. 
+			Especially when using the unnamed register, this is
+			quicker than "_d{motion}P or "_c{motion}<C-R>"
+["x][count]grr		Replace [count] lines with the contents of register x. 
+			To replace from the cursor position to the end of the
+			line use ["x]gr$ 
+{Visual}["x]gr		Replace the selection with the contents of register x. 
+
+==============================================================================
+INSTALLATION				    *ReplaceWithRegister-installation*
+
+This script is packaged as a |vimball|. If you have the "gunzip" decompressor
+in your PATH, simply edit the *.vba.gz package in Vim; otherwise, decompress
+the archive first, e.g. using WinZip. Inside Vim, install by sourcing the
+vimball or via the |:UseVimball| command. >
+    vim ReplaceWithRegister.vba.gz
+    :so %
+To uninstall, use the |:RmVimball| command. 
+
+DEPENDENCIES				    *ReplaceWithRegister-dependencies*
+
+- Requires Vim 7.0 or higher. 
+- repeat.vim (vimscript #2136) autoload script (optional). 
+
+==============================================================================
+CONFIGURATION				   *ReplaceWithRegister-configuration*
+
+The default mappings override the (rarely used, but somewhat related) |gr|
+command (replace virtual characters under the cursor with {char}). 
+If you want to use different mappings, map your keys to the
+<Plug>ReplaceWithRegister... mapping targets _before_ sourcing this script
+(e.g. in your |vimrc|): >
+    nmap <silent> <Leader>r  <Plug>ReplaceWithRegisterOperator
+    nmap <silent> <Leader>rr <Plug>ReplaceWithRegisterLine
+    vmap <silent> <Leader>r  <Plug>ReplaceWithRegisterVisual
+<
+==============================================================================
+LIMITATIONS				     *ReplaceWithRegister-limitations*
+
+- The commands don't work on the readonly registers ":, "., "% and "#. "E384:
+  Invalid register name" is printed. 
+- The commands don't work on the expression register "=. Nothing is pasted. 
+- The mode cannot be set for register "/; it will always be pasted
+  characterwise. Implement a special case for glp? 
+
+KNOWN PROBLEMS				  *ReplaceWithRegister-known-problems*
+
+TODO						    *ReplaceWithRegister-todo*
+
+IDEAS						   *ReplaceWithRegister-ideas*
+
+==============================================================================
+HISTORY						 *ReplaceWithRegister-history*
+
+1.20	26-Apr-2011
+- BUG: ReplaceWithRegisterOperator didn't work correctly with linewise motions
+  (like "+"); need to use a linewise visual selection in this case. 
+- BUG: Text duplicated from yanked previous lines is inserted on a replacement
+  of a visual blockwise selection. Switch replacement mechanism to a put in
+  visual mode in combination with a save and restore of the unnamed register.
+  This should handle all cases and doesn't require the autoindent workaround,
+  neither. 
+
+1.10	21-Apr-2011
+- The operator-pending mapping now also handles 'nomodifiable' and 'readonly'
+  buffers without function errors. 
+- Add experimental support for repeating the replacement also in visual mode
+  through visualrepeat.vim. Renamed vmap <Plug>ReplaceWithRegisterOperator to
+  <Plug>ReplaceWithRegisterVisual for that. 
+  *** PLEASE UPDATE YOUR CUSTOM MAPPINGS ***
+  A repeat in visual mode will now apply the previous line and operator
+  replacement to the selection text. A repeat in normal mode will apply the
+  previous visual mode replacement at the current cursor position, using the
+  size of the last visual selection. 
+
+1.03    07-Jan-2011
+- ENH: Better handling when buffer is 'nomodifiable' or 'readonly'. 
+- Added separate help file and packaging the plugin as a vimball. 
+
+1.02    25-Nov-2009
+Replaced the <SID>Count workaround with :map-expr and an intermediate
+s:ReplaceWithRegisterOperatorExpression. 
+
+1.01    06-Oct-2009
+Do not define "gr" mapping for select mode; printable characters should start
+insert mode. 
+
+1.00	05-Jal-2009
+First published version. 
+
+0.01	11-Aug-2008
+Started development. 
+
+==============================================================================
+Copyright: (C) 2008-2011 Ingo Karkat
+The VIM LICENSE applies to this script; see |copyright|. 
+
+Maintainer:	Ingo Karkat <ingo@karkat.de>
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:

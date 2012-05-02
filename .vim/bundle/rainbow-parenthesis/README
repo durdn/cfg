@@ -1,0 +1,3 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1230
+
+This script highlights matching parenthesis with a rainbow of colors. This make it visually very obvious which matches what. Most useful for Lisp.
