@@ -371,6 +371,11 @@ if [ $(uname -n) == "ubuntu" ] && [ $(whoami) == "developer" ];
   then source ~/.delixl-aliases
 fi
 # }}}
+# tinycore config {{{
+if [ $(uname -n) == "core45" ]; 
+  then source ~/.tinycore
+fi
+# }}}
 # }}}
 # rvm setup {{{
 if [ -e $HOME/.rvm/scripts/rvm ]; then 

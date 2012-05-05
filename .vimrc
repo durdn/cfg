@@ -499,7 +499,9 @@ call s:DefineCommand("rm", "Remove")
 "call s:DefineCommand("e", "Edit")
 call s:DefineCommand("mkdir", "Mkdir")
 
-set autochdir
+if has('autochdir')
+  set autochdir
+endif
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
 let NERDTreeChDirMode=2
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
