@@ -10,10 +10,9 @@ filetype plugin indent on
 
 "}}}
 " Color Scheme "{{{
-colorscheme ir_black
-" set background=dark
-" let g:solarized_termcolors=256
+set background=dark
 " colorscheme solarized
+colorscheme ir_black
 "}}}
 " Basic settings and variables"{{{
 if has('syntax') && (&t_Co > 2)
@@ -539,4 +538,7 @@ au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
 au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
 
 "}}}
-
+" DeliXL shortcuts {{{
+nmap <leader>sp :w<cr>:silent !cd /home/developer/delixl && ant -f sol/delixl-webshop/copyJSP.xml<cr>:redraw!<cr>
+nmap <leader>ht :w<cr>:silent !cd /home/developer/delixl && build-venus.sh && deploy-venus.sh<cr>:redraw!<cr>
+"}}}
