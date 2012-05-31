@@ -15,11 +15,11 @@ alias mcs='mvn checkstyle:checkstyle'
 alias mec='mvn -q -Dmaven.test.skip=true eclipse:clean eclipse:eclipse'
 
 #servers access
-alias acc-ca='ssh root@145.7.5.41'
-alias acc-atg1='ssh root@10.10.13.98'
-alias acc-atg2='ssh root@10.10.13.99'
-alias acc-gs1='ssh root@10.10.13.107'
-alias acc-gs2='ssh root@10.10.13.108'
+alias dxl-acc-ca='ssh root@145.7.5.41'
+alias dxl-acc-atg1='ssh root@10.10.13.98'
+alias dxl-acc-atg2='ssh root@10.10.13.99'
+alias dxl-acc-gs1='ssh root@10.10.13.107'
+alias dxl-acc-gs2='ssh root@10.10.13.108'
 alias dxl-test-1='ssh root@145.7.5.31'
 alias dxl-test-2='ssh root@145.7.5.50'
 alias dxl-dev-1='ssh nick@145.7.5.6'
@@ -40,7 +40,7 @@ function tm {
   tmux select-window -t .cfg
 }
 
-function acc-atg {
+function tm-acc-atg {
   # 54 window
   tmux new-window
   tmux rename-window acc-54
@@ -62,7 +62,7 @@ function acc-atg {
   tmux kill-pane -t:acc-53.top-left
 }
 
-function acc-nep {
+function tm-acc-nep {
   tmux rename-window acc-57-58
   tmux split-window -dh 'ssh root@145.7.5.58'
   tmux send-keys -t right tail\ -f\ /ATG/neptune/logs/neptune-acc.out C-m
@@ -73,7 +73,7 @@ function acc-nep {
   tmux kill-pane -t:acc-57-58.top-left
 }
 
-function dxl-test {
+function tm-test {
   tmux rename-window test-31-50
   tmux split-window -dh 'ssh root@145.7.5.50'
   tmux split-window -dv 'ssh root@145.7.5.31'
