@@ -265,6 +265,19 @@ function glm {
   echo r1.2.0 $(git fl r12 $1 | grep -m1 Date:)
 }
 
+# git rename current branch and backup if overwritten
+function gmb {
+  curr_branch_name=$(git branch | grep \* | cut -c 3-);
+  if [ -z $(git branch | cut -c 3- | grep -x $1) ]; then
+    git branch -m $curr_branch_name $1
+  else 
+    temp_branch_name=$1-old-$RANDOM;
+    echo target branch name already exists, renaming to $temp_branch_name
+    git branch -m $1 $temp_branch_name
+    git branch -m $curr_branch_name $1
+  fi
+}
+
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
