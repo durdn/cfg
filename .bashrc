@@ -383,6 +383,11 @@ fi
 if [ $(uname -n) == "ubuntu" ] && [ $(whoami) == "developer" ]; 
   then source ~/.delixl-aliases
 fi
+if [ $(cat /etc/resolv.conf | grep domain | col 2) == 'delixl.ext' ] && [ $(uname) == "Darwin" ]; then
+  echo "Setting route at DeliXL office";
+  sudo route add -net 145.7.5.0 -netmask 255.255.255.0 10.33.88.1
+  sudo route add -net 10.33.0.0 -netmask 255.255.0.0   10.33.88.1
+fi
 # }}}
 # }}}
 # rvm setup {{{
