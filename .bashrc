@@ -221,6 +221,7 @@ alias go='git checkout '
 alias hla="cat ~/.hgrc | grep -m1 -A10000 alias | tail -n +2 | grep -m1 -B10000 '^\[' | sed '\$d'"
 alias stashup='git stash && git svn rebase && git stash apply'
 alias vimo='vim -O '
+alias laste='tail -1000 ~/.bash_history | grep ^vim | col 2'
 function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
 }
@@ -276,6 +277,17 @@ function gmb {
     git branch -m $1 $temp_branch_name
     git branch -m $curr_branch_name $1
   fi
+}
+
+# git search for extension $1 and occurrence of string $2
+function gfe {
+  git f \.$1 | xargs grep -i $2 | less
+}
+
+#open with vim from a list of files, nth one (vim file number x)
+function vfn {
+  last_command=$(history 2 | head -1 | cut -d" " -f2- | cut -c 2-);
+  vim $($last_command | head -$1 | tail -1)
 }
 
 # }}}
