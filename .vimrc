@@ -48,6 +48,8 @@ set listchars=tab:\|\ ,trail:·,eol:¬
 set wildmenu
 " don't show the preview pane for some omni completions
 set completeopt-=preview
+" diff should ignore whitespace
+set diffopt+=iwhite
 
 " Save when losing focus
 " au FocusLost * :wa
