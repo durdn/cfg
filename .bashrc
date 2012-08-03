@@ -355,9 +355,9 @@ if [ $(uname) == "Darwin" ]; then
   }
 
   #setup sqlplus
-  export DYLD_LIBRARY_PATH="/opt/local/lib/oracle:/Users/nick/dev/apps/sqlplus-ic-10.2"
-  export TNS_ADMIN="/Users/nick/dev/apps/sqlplus-ic-10.2"
-#  export PATH=/Users/nick/dev/apps/sqlplus-ic-10.2:$PATH
+  #export DYLD_LIBRARY_PATH="/opt/local/lib/oracle:/Users/nick/dev/apps/sqlplus-ic-10.2"
+  #export TNS_ADMIN="/Users/nick/dev/apps/sqlplus-ic-10.2"
+  #export PATH=/Users/nick/dev/apps/sqlplus-ic-10.2:$PATH
 
   #project aliases
   alias tarot="screen -c ./screen-tarot.config"
@@ -374,8 +374,8 @@ if [ $(uname) == "Darwin" ]; then
   #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
   #setup rbenv
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  #export PATH="$HOME/.rbenv/bin:$PATH"
+  #eval "$(rbenv init -)"
 fi
 
 # }}}
