@@ -4,10 +4,14 @@ Install config tracking in your $HOME by running:
 
 Or in a shorter form:
 
-  curl -Lks j.mp/durdnconfig | bash
+  curl -Lks git.io/cfg | bash
+  
+  (older shortened url: curl -Lks j.mp/durdnconfig | bash)
 
 Or:
 
-  wget -q0 - j.mp/durdnconfig | sh
+  wget -q0 - git.io/cfg | sh
+
+  (older shortened url: wget -q0 - j.mp/durdnconfig | sh)
 
 Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository.
