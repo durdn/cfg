@@ -374,8 +374,10 @@ if [ $(uname) == "Darwin" ]; then
   #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
   #setup rbenv
-  #export PATH="$HOME/.rbenv/bin:$PATH"
-  #eval "$(rbenv init -)"
+  if which rbenv > /dev/null; then
+    eval "$(rbenv init -)";
+    export PATH="$HOME/.rbenv/bin:$PATH"
+  fi
 fi
 
 # }}}
@@ -398,6 +400,7 @@ fi
 if [ $(cat /etc/resolv.conf | grep domain | col 2) == 'delixl.ext' ] && [ $(uname) == "Darwin" ]; then
   echo "Setting route at DeliXL office";
   sudo route add -net 145.7.5.0 -netmask 255.255.255.0 10.33.88.1
+  sudo route add -net 145.7.0.0 -netmask 255.255.255.0 10.33.88.1
   sudo route add -net 10.33.0.0 -netmask 255.255.0.0   10.33.88.1
 fi
 # }}}
