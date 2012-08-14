@@ -333,7 +333,7 @@ fi
 if [ $(uname) == "Darwin" ]; then
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
-  export PATH=/usr/local/bin:/usr/local/Cellar/python/2.7.2/bin:/usr/local/share/python:$HOME/bin:$PATH
+  export PATH=/usr/local/bin:/usr/local/Cellar/python/2.7.3/bin:/usr/local/share/python:$HOME/bin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 
   #aliases 
