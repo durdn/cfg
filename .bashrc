@@ -151,11 +151,16 @@ function dur {
     #track all remote branches of a project
     for remote in $(git branch -r | grep -v master ); do git checkout --track $remote ; done
     ;;
+  key|k)
+    #track all remote branches of a project
+    ssh $2 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+    ;;
   help|h|*)
     echo "[dur]dn shell automation tools - (c) 2011 Nicola Paolucci nick@durdn.com"
     echo "commands available:"
     echo " [cr]eate, [li]st, [cl]one"
     echo " [i]nstall,[m]o[v]e, [re]install"
+    echo " [k]ey"
     echo " [tr]ackall], [h]elp"
     ;;
   esac
