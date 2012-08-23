@@ -2,6 +2,7 @@
 [core]
     editor= /usr/bin/vi
     excludesfile = /Users/nick/.gitignore_global
+    pager=less -x4
 
 #}}}
 # user {{{
