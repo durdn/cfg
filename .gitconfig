@@ -138,4 +138,8 @@
 
     lasttag = describe --tags --abbrev=0
     lt = describe --tags --abbrev=0
+
+    #merges
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 # }}}
