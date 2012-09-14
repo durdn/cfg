@@ -265,10 +265,10 @@ function xr {
   esac
 }
 
-# shows last modification dat for trunk and r1.2.0 branch
+# shows last modification dat for trunk and $1 branch
 function glm {
-  echo master $(git fl master $1 | grep -m1 Date:)
-  echo r1.2.0 $(git fl r12 $1 | grep -m1 Date:)
+  echo master $(git fl master $2 | grep -m1 Date:)
+  echo $1 $(git fl $1 $2 | grep -m1 Date:)
 }
 
 # git rename current branch and backup if overwritten
