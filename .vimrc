@@ -11,8 +11,8 @@ filetype plugin indent on
 "}}}
 " Color Scheme "{{{
 set background=dark
-" colorscheme solarized
-colorscheme ir_black
+colorscheme solarized
+" colorscheme ir_black
 "}}}
 " Basic settings and variables"{{{
 if has('syntax') && (&t_Co > 2)
@@ -36,7 +36,7 @@ set undolevels=1000     " use many levels of undo
 set scrolloff=3
 set shortmess=atI
 set guioptions=a        " get rid of stupid scrollbar/menu/tabs/etc
-set guifont=Terminus:h12
+set guifont=Terminus:h14
 set whichwrap=h,l,~,[,]
 set ff=unix             " set file type to unix
 set foldmethod=marker   " sets the fold method to {{ }} markers
