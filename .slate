@@ -2,6 +2,24 @@ config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
+# Position Aliases
+alias top-r    move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2
+alias top-l    move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2
+alias bot-l    move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/2;screenSizeY/2
+alias bot-r    move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2   screenSizeX/2;screenSizeY/2
+alias maximize push left  bar-resize:screenSizeX
+
+# Push Bindings
+bind h:alt           push left  bar-resize:screenSizeX/2
+bind h:alt;shift     ${top-l}
+bind h:alt;ctrl      ${bot-l}
+bind l:alt           push right bar-resize:screenSizeX/2
+bind l:alt;shift     ${top-r}
+bind l:alt;ctrl      ${bot-r}
+bind t:alt           push up    bar-resize:screenSizeY/2
+bind b:alt           push down  bar-resize:screenSizeY/2
+bind m:shift;alt     ${maximize}
+
 # Resize Bindings
 bind right:alt       resize +10% +0
 bind left:alt        resize -10% +0
@@ -11,12 +29,6 @@ bind right:ctrl;alt  resize -10% +0 bottom-right
 bind left:ctrl;alt   resize +10% +0 bottom-right
 bind up:ctrl;alt     resize +0   +10% bottom-right
 bind down:ctrl;alt   resize +0   -10% bottom-right
-
-# Push Bindings
-bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
-bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3
-bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
-bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
 
 # Nudge Bindings
 bind right:shift;alt nudge +10% +0
