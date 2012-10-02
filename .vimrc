@@ -127,6 +127,8 @@ nmap <silent> <leader>ec :e ~/.vim/bundle/durdn-customisation/colors/ir_black.vi
 nmap <silent> <leader>ed :e ~/.delixl-aliases<cr>
 " Edit mercurial configuration
 nmap <silent> <leader>em :e ~/.hgrc<cr>
+" Edit slate configuration
+nmap <silent> <leader>el :e ~/.slate<cr>
 " }}}
 " Keyboard Shortcuts and remappings   "{{{
 
