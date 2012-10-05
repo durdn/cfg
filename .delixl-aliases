@@ -84,4 +84,6 @@ function tm-test {
 }
 
 prompt-solarized
-/home/developer/delixl/bin/start-venus.sh
+if [ -z "$(netstat -lnt | awk '$1 == "tcp" && $6 == "LISTEN" && $4 ~ ".80"')" ]; then
+  /home/developer/delixl/bin/start-venus.sh
+fi
