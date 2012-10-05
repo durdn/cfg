@@ -11,8 +11,8 @@ filetype plugin indent on
 "}}}
 " Color Scheme "{{{
 set background=dark
-" colorscheme solarized
-colorscheme ir_black
+colorscheme solarized
+" colorscheme ir_black
 "}}}
 " Basic settings and variables"{{{
 if has('syntax') && (&t_Co > 2)
@@ -36,7 +36,7 @@ set undolevels=1000     " use many levels of undo
 set scrolloff=3
 set shortmess=atI
 set guioptions=a        " get rid of stupid scrollbar/menu/tabs/etc
-set guifont=Terminus:h12
+set guifont=Terminus:h14
 set whichwrap=h,l,~,[,]
 set ff=unix             " set file type to unix
 set foldmethod=marker   " sets the fold method to {{ }} markers
@@ -127,6 +127,8 @@ nmap <silent> <leader>ec :e ~/.vim/bundle/durdn-customisation/colors/ir_black.vi
 nmap <silent> <leader>ed :e ~/.delixl-aliases<cr>
 " Edit mercurial configuration
 nmap <silent> <leader>em :e ~/.hgrc<cr>
+" Edit slate configuration
+nmap <silent> <leader>el :e ~/.slate<cr>
 " }}}
 " Keyboard Shortcuts and remappings   "{{{
 
@@ -298,7 +300,7 @@ if has('gui_gtk')
 endif
 if has('gui_macvim')
     "terminus on osx is slightly smaller so make it 14px
-    set guifont=Terminus:h14
+    set guifont=Terminus:h17
     winpos 720 0
     " goes to real fullscreen on OS X
     set fuoptions=maxvert,maxhorz

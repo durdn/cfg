@@ -1,0 +1,65 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# Position Aliases
+alias top-r    move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2
+alias top-l    move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2
+alias bot-l    move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/2;screenSizeY/2
+alias bot-r    move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2   screenSizeX/2;screenSizeY/2
+alias maximize push left  bar-resize:screenSizeX
+alias h-left   push left  bar-resize:screenSizeX/2
+alias h-right  push right bar-resize:screenSizeX/2
+alias h-top    push up    bar-resize:screenSizeY/2
+alias h-bottom push down  bar-resize:screenSizeY/2
+
+# Push Bindings
+bind h:alt           ${h-left}
+bind h:alt;shift     ${top-l}
+bind h:cmd;shift     ${top-l}
+bind h:alt;ctrl      ${bot-l}
+bind h:cmd;ctrl      ${bot-l}
+bind l:alt           ${h-right}
+bind l:alt;shift     ${top-r}
+bind l:cmd;shift     ${top-r}
+bind l:alt;ctrl      ${bot-r}
+bind l:cmd;ctrl      ${bot-r}
+bind t:alt           ${h-top}
+bind b:alt           ${h-bottom}
+bind m:shift;alt     ${maximize}
+
+# Resize Bindings
+bind right:alt       resize +10% +0
+bind left:alt        resize -10% +0
+bind up:alt          resize +0   -10%
+bind down:alt        resize +0   +10%
+bind right:ctrl;alt  resize -10% +0 bottom-right
+bind left:ctrl;alt   resize +10% +0 bottom-right
+bind up:ctrl;alt     resize +0   +10% bottom-right
+bind down:ctrl;alt   resize +0   -10% bottom-right
+
+# Nudge Bindings
+bind right:shift;alt nudge +10% +0
+bind left:shift;alt  nudge -10% +0
+bind up:shift;alt    nudge +0   -10%
+bind down:shift;alt  nudge +0   +10%
+
+# Throw Bindings
+bind 1:ctrl;alt         throw 0 resize
+bind 2:ctrl;alt         throw 1 resize
+bind 3:ctrl;alt         throw 2 resize
+bind right:ctrl;alt;cmd throw right resize
+bind left:ctrl;alt;cmd  throw left  resize
+bind up:ctrl;alt;cmd    throw up    resize
+bind down:ctrl;alt;cmd  throw down  resize
+
+# Focus Bindings
+bind right:shift;cmd    focus right
+bind left:shift;cmd     focus left
+bind up:shift;cmd       focus up
+bind down:shift;cmd     focus down
+bind up:cmd;alt         focus behind
+bind down:cmd;alt       focus behind
+
+# Window Hints
+bind esc:cmd hint
