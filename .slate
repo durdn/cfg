@@ -2,16 +2,48 @@ config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
+# General aliases
+alias sox screenOriginX
+alias soy screenOriginY
+alias ssx screenSizeX
+alias ssy screenSizeY
+
+# Monitor Aliases
+alias mon-retina      2800x1800
+alias mon-delixl      1680x1050
+alias mon-dell-30     2560x1600
+
 # Position Aliases
-alias top-r    move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2
-alias top-l    move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2
-alias bot-l    move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/2;screenSizeY/2
-alias bot-r    move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2   screenSizeX/2;screenSizeY/2
-alias maximize push left  bar-resize:screenSizeX
-alias h-left   push left  bar-resize:screenSizeX/2
-alias h-right  push right bar-resize:screenSizeX/2
-alias h-top    push up    bar-resize:screenSizeY/2
-alias h-bottom push down  bar-resize:screenSizeY/2
+alias top-r         move ${sox}+${ssx}/2;${soy}                     ${ssx}/2;${ssy}/2
+alias top-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}            ${ssx}/4;${ssy}/2
+alias top-l         move ${sox};${soy}                              ${ssx}/2;${ssy}/2
+alias bot-l         move ${sox};${soy}+${ssy}/2                     ${ssx}/2;${ssy}/2
+alias bot-r         move ${sox}+${ssx}/2;${soy}+${ssy}/2            ${ssx}/2;${ssy}/2
+alias bot-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}+${ssy}/2   ${ssx}/4;${ssy}/2
+alias maximize      push left  bar-resize:${ssx}
+alias h-left        push left  bar-resize:${ssx}/2
+alias h-right       push right bar-resize:${ssx}/2
+alias h-top         push up    bar-resize:${ssy}/2
+alias h-bottom      push down  bar-resize:${ssy}/2
+
+# Default Layouts
+#default 2office resolutions:${mon-delixl};${mon-retina}
+#default 2home   resolutions:${mon-dell-30};${mon-retina}
+#default 1retina  resolutions:${mon-retina}
+
+# 2 Monitors DeliXL Layout
+layout 2office 'Safari':REPEAT ${h-left}
+
+layout 1retina 'Safari':REPEAT ${h-left} 0
+layout 1retina 'Chrome':REPEAT ${h-left} 0
+layout 1retina 'Terminal':REPEAT ${bot-r} 0
+layout 1retina 'nvALT':REPEAT ${top-r} 0
+layout 1retina 'MacVim':REPEAT ${h-left} 0
+layout 1retina 'Sublime Text 2':REPEAT ${h-left} 0
+layout 1retina 'iTunes':REPEAT ${h-right} 0
+layout 1retina 'Skype':REPEAT ${top-r-half} 0
+layout 1retina 'Transmission':REPEAT ${bot-r-half} 0
+layout 1retina 'Finder' ${top-r} | ${bot-r} 0
 
 # Push Bindings
 bind h:alt           ${h-left}
@@ -24,9 +56,10 @@ bind l:alt;shift     ${top-r}
 bind l:cmd;shift     ${top-r}
 bind l:alt;ctrl      ${bot-r}
 bind l:cmd;ctrl      ${bot-r}
-bind t:alt           ${h-top}
-bind b:alt           ${h-bottom}
+#bind t:alt           ${h-top}
+#bind b:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
+bind 7:alt           layout 1retina
 
 # Resize Bindings
 bind right:alt       resize +10% +0
