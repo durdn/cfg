@@ -21,10 +21,23 @@ alias bot-l         move ${sox};${soy}+${ssy}/2                     ${ssx}/2;${s
 alias bot-r         move ${sox}+${ssx}/2;${soy}+${ssy}/2            ${ssx}/2;${ssy}/2
 alias bot-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}+${ssy}/2   ${ssx}/4;${ssy}/2
 alias maximize      push left  bar-resize:${ssx}
+alias left-notch-0  move ${sox};${soy}                              ${ssx}/2-60;${ssy}-23
+alias left-notch-1  move ${sox};${soy}+23                           ${ssx}/2-30;${ssy}-23
+alias left-notch-2  move ${sox};${soy}+46                           ${ssx}/2;${ssy}-46
 alias h-left        push left  bar-resize:${ssx}/2
 alias h-right       push right bar-resize:${ssx}/2
 alias h-top         push up    bar-resize:${ssy}/2
 alias h-bottom      push down  bar-resize:${ssy}/2
+
+#position thirds
+alias 3c-right       move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}
+alias 3c-middle      move ${sox}+${ssx}/3;${soy}                    ${ssx}/3;${ssy}
+alias 3c-left        move ${sox};${soy}                             ${ssx}/3;${ssy}
+alias 3c-right-top   move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}/2
+alias 3c-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2         ${ssx}/3;${ssy}/2
+alias 3c-middle-top   move ${sox}+${ssx}/3;${soy}                   ${ssx}/3;${ssy}/2
+alias 3c-middle-bot   move ${sox}+${ssx}/3;${soy}+${ssy}/2          ${ssx}/3;${ssy}/2
+
 
 # Default Layouts
 #default 2office resolutions:${mon-delixl};${mon-retina}
@@ -34,16 +47,26 @@ alias h-bottom      push down  bar-resize:${ssy}/2
 # 2 Monitors DeliXL Layout
 layout 2office 'Safari':REPEAT ${h-left}
 
-layout 1retina 'Safari':REPEAT ${h-left} 0
-layout 1retina 'Chrome':REPEAT ${h-left} 0
-layout 1retina 'Terminal':REPEAT ${bot-r} 0
-layout 1retina 'nvALT':REPEAT ${top-r} 0
-layout 1retina 'MacVim':REPEAT ${h-left} 0
-layout 1retina 'Sublime Text 2':REPEAT ${h-left} 0
-layout 1retina 'iTunes':REPEAT ${h-right} 0
-layout 1retina 'Skype':REPEAT ${top-r-half} 0
-layout 1retina 'Transmission':REPEAT ${bot-r-half} 0
-layout 1retina 'Finder' ${top-r} | ${bot-r} 0
+# main layout
+layout main 'Safari':REPEAT ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
+layout main 'Chrome':REPEAT ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
+layout main 'Terminal':REPEAT ${bot-r} 0
+layout main 'MacVim':REPEAT ${h-right} 0
+layout main 'Sublime Text 2':REPEAT ${h-left} 0
+layout main 'iTunes':REPEAT ${h-right} 0
+layout main 'Skype':REPEAT ${top-r-half} 0
+layout main 'Transmission':REPEAT ${bot-r-half} 0
+layout main 'Finder' ${top-r} | ${bot-r} 0
+
+# column layout
+layout columns 'Safari':REPEAT ${3c-left} | ${3c-middle} 0
+layout columns 'Chrome':REPEAT ${h-left} 0
+layout columns 'Terminal':REPEAT ${3c-right-bot} 0
+layout columns 'MacVim':REPEAT ${3c-middle} 0
+layout columns 'Sublime Text 2':REPEAT ${h-left} 0
+layout columns 'Skype':REPEAT ${3c-right-top} 0
+layout columns 'Transmission':REPEAT ${3c-right-bot} 0
+layout columns 'Finder' ${3c-middle-top} | ${3c-middle-bot} 0
 
 # Push Bindings
 bind h:alt           ${h-left}
@@ -59,7 +82,8 @@ bind l:cmd;ctrl      ${bot-r}
 #bind t:alt           ${h-top}
 #bind b:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
-bind 7:alt           layout 1retina
+bind 7:alt           layout main
+bind 8:alt           layout columns
 
 # Resize Bindings
 bind right:alt       resize +10% +0
@@ -95,4 +119,4 @@ bind up:cmd;alt         focus behind
 bind down:cmd;alt       focus behind
 
 # Window Hints
-bind esc:cmd hint
+bind p:alt hint
