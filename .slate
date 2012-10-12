@@ -38,6 +38,12 @@ alias 3c-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2         ${ssx}/3;${s
 alias 3c-middle-top   move ${sox}+${ssx}/3;${soy}                   ${ssx}/3;${ssy}/2
 alias 3c-middle-bot   move ${sox}+${ssx}/3;${soy}+${ssy}/2          ${ssx}/3;${ssy}/2
 
+#position taller
+alias tl-main        move ${sox};${soy}                             ${ssx}*2/3;${ssy}
+alias tl-right-top   move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}/2
+alias tl-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2         ${ssx}/3;${ssy}/2
+alias tl-right       move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}
+
 
 # Default Layouts
 #default 2office resolutions:${mon-delixl};${mon-retina}
@@ -55,6 +61,7 @@ layout main 'MacVim':REPEAT ${h-right} 0
 layout main 'Sublime Text 2':REPEAT ${h-left} 0
 layout main 'iTunes':REPEAT ${h-right} 0
 layout main 'Skype':REPEAT ${top-r-half} 0
+layout main 'nvALT':REPEAT ${top-r-half} 0
 layout main 'Transmission':REPEAT ${bot-r-half} 0
 layout main 'Finder' ${top-r} | ${bot-r} 0
 
@@ -67,6 +74,18 @@ layout columns 'Sublime Text 2':REPEAT ${h-left} 0
 layout columns 'Skype':REPEAT ${3c-right-top} 0
 layout columns 'Transmission':REPEAT ${3c-right-bot} 0
 layout columns 'Finder' ${3c-middle-top} | ${3c-middle-bot} 0
+
+# taller layout
+layout taller 'Safari':REPEAT ${tl-main} 0
+layout taller 'Chrome':REPEAT ${tl-main} 0
+layout taller 'Terminal':REPEAT ${3c-right-bot} 0
+layout taller 'MacVim':REPEAT ${tl-main} 0
+layout taller 'Sublime Text 2':REPEAT ${tl-main} 0
+layout taller 'Skype':REPEAT ${tl-right-top} 0
+layout taller 'Transmission':REPEAT ${tl-right-bot} 0
+layout taller 'Finder' ${tl-right-top} | ${tl-right-bot} 0
+layout taller 'nvALT':REPEAT ${tl-right-top} 0
+
 
 # Push Bindings
 bind h:alt           ${h-left}
@@ -84,6 +103,7 @@ bind l:cmd;ctrl      ${bot-r}
 bind m:shift;alt     ${maximize}
 bind 7:alt           layout main
 bind 8:alt           layout columns
+bind 9:alt           layout taller
 
 # Resize Bindings
 bind right:alt       resize +10% +0
