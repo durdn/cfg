@@ -155,12 +155,22 @@ function dur {
     #track all remote branches of a project
     ssh $2 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub
     ;;
+  fun|f)
+    #list all custom bash functions defined
+    typeset -F | col 3 | grep -v _ | xargs | fold -sw 60
+    ;;
+  def|d)
+    #show definition of function $1
+    typeset -f $2
+    ;;
   help|h|*)
     echo "[dur]dn shell automation tools - (c) 2011 Nicola Paolucci nick@durdn.com"
     echo "commands available:"
     echo " [cr]eate, [li]st, [cl]one"
     echo " [i]nstall,[m]o[v]e, [re]install"
-    echo " [k]ey"
+    echo " [f]fun lists all bash functions defined in .bashrc"
+    echo " [def] <fun> lists definition of function defined in .bashrc"
+    echo " [k]ey <host> copies ssh key to target host"
     echo " [tr]ackall], [h]elp"
     ;;
   esac
