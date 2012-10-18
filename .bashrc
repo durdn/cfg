@@ -305,6 +305,25 @@ function vfn {
   vim $($last_command | head -$1 | tail -1)
 }
 
+#autocomplete list of possible files and ask which one to open
+function gv {
+  search_count=1
+  search_command="git f"
+  search_result=$($search_command $1)
+  editor=gvim
+
+  for f in $search_result; do echo $search_count. $f;search_count=$(($search_count+1)); done
+
+  arr=($search_result)
+  if [ ${#arr[@]} -ne 1 ]; then
+    echo "enter file number:"
+    read fn
+    nohup $editor ${arr[fn-1]} 2>/dev/null &
+  else 
+    nohup $editor ${search_result} 2>/dev/null &
+  fi
+}
+
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
