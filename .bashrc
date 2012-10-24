@@ -315,13 +315,16 @@ function gv {
   for f in $search_result; do echo $search_count. $f;search_count=$(($search_count+1)); done
 
   arr=($search_result)
-  if [ ${#arr[@]} -ne 1 ]; then
-    echo "enter file number:"
-    read fn
-    nohup $editor ${arr[fn-1]} 2>/dev/null &
-  else 
-    nohup $editor ${search_result} 2>/dev/null &
-  fi
+  case "${#arr[@]}" in
+    0)
+       ;;
+    1) nohup $editor ${search_result} 2>/dev/null &
+       ;;
+    *) echo "enter file number:"
+       read fn
+       nohup $editor ${arr[fn-1]} 2>/dev/null &
+       ;;
+  esac
 }
 
 # }}}

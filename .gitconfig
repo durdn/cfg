@@ -74,7 +74,8 @@
     ai = add --interactive
 
     co = checkout
-    br = "!git branch -ra | grep -v done"
+    br = branch 
+    #"!git branch -ra | grep -v done"
     bra = branch -ra
     #list commands
     le = log --oneline --decorate
