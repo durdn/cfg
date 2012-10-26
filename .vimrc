@@ -299,7 +299,7 @@ if has('gui_gtk')
     set guifont=Terminus
 endif
 if has('gui_macvim')
-    "terminus on osx is slightly smaller so make it 14px
+    "terminus on osx different because of retina display
     set guifont=Terminus:h17
     winpos 720 0
     " goes to real fullscreen on OS X
@@ -307,7 +307,14 @@ if has('gui_macvim')
     macmenu &File.New\ Tab key=<nop>
 "    map <leader>t <Plug>PeepOpen
 endif
+if has('gui_win64')
+  set guifont=Terminus:h14
+  nmap <silent> <leader>ev :e ~/_vimrc<CR>
+  "overwrite mapping to reload the .vimrc"
+  nmap <silent> <leader>rv :source ~/_vimrc<CR>
+endif
 if has('gui_win32')
+  set guifont=Terminus:h14
   winpos 600 0
   "status line does not work with fugitive on win32
   "REPLACED BY vim-powerline set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ 
