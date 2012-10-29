@@ -55,29 +55,32 @@ layout 2office 'Safari':REPEAT ${h-left}
 
 # main layout
 layout main 'Safari':REPEAT ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
-layout main 'Chrome':REPEAT ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
+layout main 'Google Chrome' ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
 layout main 'Terminal':REPEAT ${bot-r} 0
+layout main 'Evernote':REPEAT ${bot-r} 0
 layout main 'MacVim':REPEAT ${h-right} 0
 layout main 'Sublime Text 2':REPEAT ${h-left} 0
 layout main 'iTunes':REPEAT ${h-right} 0
 layout main 'Skype':REPEAT ${top-r-half} 0
 layout main 'nvALT':REPEAT ${top-r-half} 0
+layout main 'Twitter':REPEAT ${top-r-half} 0
 layout main 'Transmission':REPEAT ${bot-r-half} 0
 layout main 'Finder' ${top-r} | ${bot-r} 0
 
 # column layout
 layout columns 'Safari':REPEAT ${3c-left} | ${3c-middle} 0
-layout columns 'Chrome':REPEAT ${h-left} 0
+layout columns 'Google Chrome':REPEAT ${h-left} 0
 layout columns 'Terminal':REPEAT ${3c-right-bot} 0
 layout columns 'MacVim':REPEAT ${3c-middle} 0
 layout columns 'Sublime Text 2':REPEAT ${h-left} 0
 layout columns 'Skype':REPEAT ${3c-right-top} 0
 layout columns 'Transmission':REPEAT ${3c-right-bot} 0
 layout columns 'Finder' ${3c-middle-top} | ${3c-middle-bot} 0
+layout columns 'Twitter':REPEAT ${3c-right-top} 0
 
 # taller layout
 layout taller 'Safari':REPEAT ${tl-main} 0
-layout taller 'Chrome':REPEAT ${tl-main} 0
+layout taller 'Google Chrome':REPEAT ${tl-main} 0
 layout taller 'Terminal':REPEAT ${3c-right-bot} 0
 layout taller 'MacVim':REPEAT ${tl-main} 0
 layout taller 'Sublime Text 2':REPEAT ${tl-main} 0
@@ -85,6 +88,8 @@ layout taller 'Skype':REPEAT ${tl-right-top} 0
 layout taller 'Transmission':REPEAT ${tl-right-bot} 0
 layout taller 'Finder' ${tl-right-top} | ${tl-right-bot} 0
 layout taller 'nvALT':REPEAT ${tl-right-top} 0
+layout taller 'Twitter':REPEAT ${tl-right-top} 0
+layout taller 'Messages':REPEAT ${tl-right-top} 0
 
 
 # Push Bindings
