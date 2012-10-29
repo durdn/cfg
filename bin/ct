@@ -6,17 +6,28 @@ import argparse
 import subprocess
 import logging as log
 from os.path import join,normpath,abspath,islink, split
-from pprint import pformat
+from pprint import pformat, pprint
 from itertools import combinations
+
+def containsAll(str, set):
+    for c in set:
+        if c not in str: 
+            return 0
+        else:
+            lstr = list(str)
+            del(lstr[str.find(c)])
+            str = ''.join(lstr)
+
+    return 1;
 
 def call(command):
     return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
 
-def lowercase_list_and_casemap(files):
+def lowercase_list_and_casemap(files, target):
     found = []
     casemap = {}
     for f in files:
-        if set(f) and set(target).issubset(set(f)):
+        if f and containsAll(f,target):
             found.append(f.lower())
             casemap[f.lower()] = f
     return found, casemap
@@ -104,8 +115,11 @@ if __name__ == '__main__':
         sys.exit(1)
 
     files = collected.split('\n')
-    found, casemap = lowercase_list_and_casemap(files)
+    found, casemap = lowercase_list_and_casemap(files, target)
     found.sort()
+
+    pprint(found)
+    sys.exit(1)
 
     currentsearch = reverse(target)
 
