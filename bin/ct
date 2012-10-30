@@ -20,17 +20,12 @@ def containsAll(candidate, target):
 def call(command):
     return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
 
-def lowercase_list_and_casemap(files, target):
+def filter_files(files, target):
     found = []
-    casemap = {}
-    def _add(found, casemap, f):
-        found.append(f.lower())
-        casemap[f.lower()] = f
-
     for f in files:
         if containsAll(f.lower(),target):
-            _add(found, casemap, f)
-    return found, casemap
+            found.append(f)
+    return found
 
 def get_options():
     maxres = 10
@@ -123,8 +118,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     files = collected.split('\n')
-    found, casemap = lowercase_list_and_casemap(files, target)
-    found.sort()
+    found = filter_files(files, target)
 
     if debug:
         log.debug('troubleshooting: %s' % debug.lower())
@@ -133,9 +127,9 @@ if __name__ == '__main__':
     else:
         result = []
         for f in found:
-            score = calculate_score(target, f)
+            score = calculate_score(target, f.lower())
             if score < 1000:
-                result.append((score,casemap[f]))
+                result.append((score,f))
 
         log.debug('\n'.join([str(f) for f in sorted(result)[:maxres]]))
         print '\n'.join([f[1] for f in sorted(result)[:maxres]])
