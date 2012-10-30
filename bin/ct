@@ -5,24 +5,17 @@ import sys
 import argparse
 import subprocess
 import logging as log
-from os.path import join,normpath,abspath,islink, split
+from os.path import join, normpath, abspath, islink, split
 from pprint import pformat, pprint
-from itertools import combinations
+
+from itertools import dropwhile
 
 class Bunch:
     def __init__(self, **kwds):
         self.__dict__.update(kwds)
 
-def containsAll(str, set):
-    for c in set:
-        if c not in str: 
-            return 0
-        else:
-            lstr = list(str)
-            del(lstr[str.find(c)])
-            str = ''.join(lstr)
-
-    return 1;
+def containsAll(candidate, target):
+    return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
 
 def call(command):
     return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
@@ -30,16 +23,14 @@ def call(command):
 def lowercase_list_and_casemap(files, target):
     found = []
     casemap = {}
+    def _add(found, casemap, f):
+        found.append(f.lower())
+        casemap[f.lower()] = f
+
     for f in files:
         if containsAll(f.lower(),target):
-            found.append(f.lower())
-            casemap[f.lower()] = f
+            _add(found, casemap, f)
     return found, casemap
-
-def reverse(s):
-    ls = list(s)
-    ls.reverse()
-    return ''.join(ls)
 
 def get_options():
     maxres = 10
