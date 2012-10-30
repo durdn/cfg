@@ -31,7 +31,7 @@ def lowercase_list_and_casemap(files, target):
     found = []
     casemap = {}
     for f in files:
-        if f and containsAll(f,target):
+        if containsAll(f.lower(),target):
             found.append(f.lower())
             casemap[f.lower()] = f
     return found, casemap
