@@ -43,6 +43,7 @@ def reverse(s):
 
 def get_options():
     maxres = 10
+    debug = ''
     collect_command = 'git ls-files'
     find_collect_command = 'find . -type f'
 
@@ -51,6 +52,7 @@ def get_options():
     parser.add_argument('-c', '--command', help='command to collect a list of files (default: git ls-files)')
     parser.add_argument('-f', '--find', action='store_true', help='use find collect command (find . -type f)')
     parser.add_argument('-m', '--max', type=int, help='stop at max results')
+    parser.add_argument('-d', '--debug', type=str, help='file to debug expansion')
     parser.add_argument('-v', '--verbose', action='store_true', help='verbose: print out debug information')
     options = parser.parse_args()
 
@@ -67,7 +69,10 @@ def get_options():
     if options.max:
         maxres = options.max
 
-    return options.target, collect_command, maxres
+    if options.debug:
+        debug = options.debug
+
+    return options.target, collect_command, maxres, debug
 
 def positions_of_char(char, s):
     result = []
@@ -79,13 +84,15 @@ def positions_of_char(char, s):
 
 def build_chars_positions_matrix(target, candidate):
     char_matrix = []
-    min_pos = 0
+    #min_pos = 0
     for c in target:
         positions = positions_of_char(c, candidate)
-        positions = [p for p in positions if p > min_pos]
+        #log.debug('%s %s' % (c, positions))
+        #positions = [p for p in positions if p > min_pos]
         if not positions:
             return None
-        min_pos = positions[0]
+        #min_pos = positions[0]
+        #log.debug('updating min_pos to %s' % min_pos)
         char_matrix.append(Bunch(char=c,positions=positions))
     return char_matrix
 
@@ -95,14 +102,16 @@ def min_diff(a,b):
         for j in b:
             if j > i:
                 diffs.append(j-i)
-    return min(diffs)
+    if diffs:
+        return min(diffs)
+    else:
+        return 1000
 
 def calculate_min_diff(char_matrix):
     score = 0
     for i, b in enumerate(char_matrix):
-        log.debug('%s %s' % (b.char, b.positions))
         if i < len(char_matrix) - 1:
-          log.debug('%s %s = %s' % (b.positions, char_matrix[i+1].positions, min_diff(b.positions, char_matrix[i+1].positions)))
+          log.debug('%s-%s| %s %s = %s' % (b.char,char_matrix[i+1].char, b.positions, char_matrix[i+1].positions, min_diff(b.positions, char_matrix[i+1].positions)))
           score = score + min_diff(b.positions, char_matrix[i+1].positions)
     return score
 
@@ -115,7 +124,7 @@ def calculate_score(target, candidate):
 
 if __name__ == '__main__':
 
-    target, collect_command, maxres = get_options()
+    target, collect_command, maxres, debug = get_options()
 
     collected, exitcode = call(collect_command)
     if not collected:
@@ -126,11 +135,16 @@ if __name__ == '__main__':
     found, casemap = lowercase_list_and_casemap(files, target)
     found.sort()
 
-    result = []
-    for f in found:
-        score = calculate_score(target, f)
-        if score < 1000:
-            result.append((score,casemap[f]))
+    if debug:
+        log.debug('troubleshooting: %s' % debug.lower())
+        score = calculate_score(target, debug.lower())
+        log.debug('score: %s' % score)
+    else:
+        result = []
+        for f in found:
+            score = calculate_score(target, f)
+            if score < 1000:
+                result.append((score,casemap[f]))
 
-    log.debug('\n'.join([str(f) for f in sorted(result)[:maxres]]))
-    print '\n'.join([f[1] for f in sorted(result)[:maxres]])
+        log.debug('\n'.join([str(f) for f in sorted(result)[:maxres]]))
+        print '\n'.join([f[1] for f in sorted(result)[:maxres]])
