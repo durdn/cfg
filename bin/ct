@@ -14,14 +14,14 @@ class Bunch:
     def __init__(self, **kwds):
         self.__dict__.update(kwds)
 
-def containsAll(candidate, target):
+def contains_all(candidate, target):
     return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
 
 def call(command):
     return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
 
 def filter_files(files, target):
-    return [x for x in files if containsAll(x.lower(), target)]
+    return [x for x in files if contains_all(x.lower(), target)]
 
 def get_options():
     maxres = 10
@@ -38,10 +38,7 @@ def get_options():
     parser.add_argument('-v', '--verbose', action='store_true', help='verbose: print out debug information')
     options = parser.parse_args()
 
-    if options.verbose:
-        log.basicConfig(level=log.DEBUG)
-    else:
-        log.basicConfig(level=log.INFO)
+    log.basicConfig(level=log.DEBUG) if options.verbose else log.basicConfig(level=log.INFO)
 
     if options.find:
         collect_command = find_collect_command
