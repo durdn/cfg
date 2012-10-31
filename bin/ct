@@ -8,7 +8,7 @@ import logging as log
 from os.path import join, normpath, abspath, islink, split
 from pprint import pformat, pprint
 
-from itertools import dropwhile, product
+from itertools import dropwhile, product, takewhile
 
 def get_options():
     maxres = 10
@@ -36,10 +36,6 @@ def get_options():
 
     return options.target, collect_command, maxres, debug
 
-class Bunch:
-    def __init__(self, **kwds):
-        self.__dict__.update(kwds)
-
 def contains_all(candidate, target):
     return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
 
@@ -52,33 +48,23 @@ def filter_files(files, target):
 def positions_of_char(char, s):
     return [p[0] for p in enumerate(s) if p[1] == char]
 
-def build_chars_positions_matrix(target, candidate):
-    char_matrix = []
-    for c in target:
-        positions = positions_of_char(c, candidate)
-        if not positions:
-            return None
-        char_matrix.append(Bunch(char=c,positions=positions))
-    return char_matrix
-
 def min_diff(a,b):
     diffs = [p[1] - p[0] for p in product(a,b) if p[1] > p[0]]
     return min(diffs) if diffs else 1000
+
+def all_chars_positions_of(target, in_candidate):
+    return list(takewhile(lambda x: x != None, [positions_of_char(c, in_candidate) for c in target]))
 
 def calculate_min_diff(char_matrix):
     score = 0
     for i, b in enumerate(char_matrix):
         if i < len(char_matrix) - 1:
-          log.debug('%s-%s| %s %s = %s' % (b.char,char_matrix[i+1].char, b.positions, char_matrix[i+1].positions, min_diff(b.positions, char_matrix[i+1].positions)))
-          score = score + min_diff(b.positions, char_matrix[i+1].positions)
+          score = score + min_diff(b, char_matrix[i+1])
     return score
 
 def calculate_score(target, candidate):
-    char_matrix = build_chars_positions_matrix(target,candidate)
-    if char_matrix:
-        return calculate_min_diff(char_matrix)
-    else:
-        return 1000
+    char_matrix = all_chars_positions_of(target,candidate)
+    return calculate_min_diff(char_matrix) if char_matrix else 1000
 
 if __name__ == '__main__':
 
