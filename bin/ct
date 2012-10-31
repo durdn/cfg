@@ -21,11 +21,7 @@ def call(command):
     return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
 
 def filter_files(files, target):
-    found = []
-    for f in files:
-        if containsAll(f.lower(),target):
-            found.append(f)
-    return found
+    return [x for x in files if containsAll(x.lower(), target)]
 
 def get_options():
     maxres = 10
