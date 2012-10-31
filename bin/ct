@@ -9,6 +9,7 @@ from os.path import join, normpath, abspath, islink, split
 from pprint import pformat, pprint
 
 from itertools import dropwhile, product, takewhile
+import operator
 
 def get_options():
     maxres = 10
@@ -36,11 +37,11 @@ def get_options():
 
     return options.target, collect_command, maxres, debug
 
-def contains_all(candidate, target):
-    return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
-
 def call(command):
     return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
+
+def contains_all(candidate, target):
+    return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
 
 def filter_files(files, target):
     return [x for x in files if contains_all(x.lower(), target)]
@@ -56,11 +57,7 @@ def all_chars_positions_of(target, in_candidate):
     return list(takewhile(lambda x: x != None, [positions_of_char(c, in_candidate) for c in target]))
 
 def calculate_min_diff(char_matrix):
-    score = 0
-    for i, b in enumerate(char_matrix):
-        if i < len(char_matrix) - 1:
-          score = score + min_diff(b, char_matrix[i+1])
-    return score
+    return reduce(operator.add, [min_diff(a,b) for a,b in zip(char_matrix, char_matrix[1:])])
 
 def calculate_score(target, candidate):
     char_matrix = all_chars_positions_of(target,candidate)
