@@ -8,20 +8,7 @@ import logging as log
 from os.path import join, normpath, abspath, islink, split
 from pprint import pformat, pprint
 
-from itertools import dropwhile
-
-class Bunch:
-    def __init__(self, **kwds):
-        self.__dict__.update(kwds)
-
-def contains_all(candidate, target):
-    return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
-
-def call(command):
-    return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
-
-def filter_files(files, target):
-    return [x for x in files if contains_all(x.lower(), target)]
+from itertools import dropwhile, product
 
 def get_options():
     maxres = 10
@@ -39,52 +26,44 @@ def get_options():
     options = parser.parse_args()
 
     log.basicConfig(level=log.DEBUG) if options.verbose else log.basicConfig(level=log.INFO)
+    maxres = options.max if options.max else maxres
+    debug = options.debug if options.debug else debug
 
     if options.find:
         collect_command = find_collect_command
     elif options.command:
         collect_command = options.command 
 
-    if options.max:
-        maxres = options.max
-
-    if options.debug:
-        debug = options.debug
-
     return options.target, collect_command, maxres, debug
 
+class Bunch:
+    def __init__(self, **kwds):
+        self.__dict__.update(kwds)
+
+def contains_all(candidate, target):
+    return len(list(dropwhile(lambda x: candidate.count(x) > 0, target))) == 0
+
+def call(command):
+    return subprocess.Popen(command.split(),stdout=subprocess.PIPE, stderr=open(os.devnull, 'w')).communicate()
+
+def filter_files(files, target):
+    return [x for x in files if contains_all(x.lower(), target)]
+
 def positions_of_char(char, s):
-    result = []
-    pos = 0
-    for i in range(s.count(char)):
-        pos = s.find(char,pos + 1)
-        result.append(pos)
-    return result
+    return [p[0] for p in enumerate(s) if p[1] == char]
 
 def build_chars_positions_matrix(target, candidate):
     char_matrix = []
-    #min_pos = 0
     for c in target:
         positions = positions_of_char(c, candidate)
-        #log.debug('%s %s' % (c, positions))
-        #positions = [p for p in positions if p > min_pos]
         if not positions:
             return None
-        #min_pos = positions[0]
-        #log.debug('updating min_pos to %s' % min_pos)
         char_matrix.append(Bunch(char=c,positions=positions))
     return char_matrix
 
 def min_diff(a,b):
-    diffs = []
-    for i in a:
-        for j in b:
-            if j > i:
-                diffs.append(j-i)
-    if diffs:
-        return min(diffs)
-    else:
-        return 1000
+    diffs = [p[1] - p[0] for p in product(a,b) if p[1] > p[0]]
+    return min(diffs) if diffs else 1000
 
 def calculate_min_diff(char_matrix):
     score = 0
