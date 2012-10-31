@@ -22,7 +22,7 @@ def get_options():
     parser.add_argument('-c', '--command', help='command to collect a list of files (default: git ls-files)')
     parser.add_argument('-f', '--find', action='store_true', help='use find collect command (find . -type f)')
     parser.add_argument('-m', '--max', type=int, help='stop at max results')
-    parser.add_argument('-d', '--debug', type=str, help='file to debug expansion')
+    parser.add_argument('-d', '--debug', type=str, help='filename expansion to debug')
     parser.add_argument('-v', '--verbose', action='store_true', help='verbose: print out debug information')
     options = parser.parse_args()
 
@@ -67,6 +67,12 @@ if __name__ == '__main__':
 
     target, collect_command, maxres, debug = get_options()
 
+    if debug:
+        log.debug('troubleshooting: %s' % debug.lower())
+        score = calculate_score(target, debug.lower())
+        log.debug('score: %s' % score)
+        sys.exit(0)
+
     collected, exitcode = call(collect_command)
     if not collected:
         log.error('no results returned by %s' % collect_command)
@@ -75,16 +81,11 @@ if __name__ == '__main__':
     files = collected.split('\n')
     found = filter_files(files, target)
 
-    if debug:
-        log.debug('troubleshooting: %s' % debug.lower())
-        score = calculate_score(target, debug.lower())
-        log.debug('score: %s' % score)
-    else:
-        result = []
-        for f in found:
-            score = calculate_score(target, f.lower())
-            if score < 1000:
-                result.append((score,f))
+    result = []
+    for f in found:
+        score = calculate_score(target, f.lower())
+        if score < 1000:
+            result.append((score,f))
 
-        log.debug('\n'.join([str(f) for f in sorted(result)[:maxres]]))
-        print '\n'.join([f[1] for f in sorted(result)[:maxres]])
+    log.debug('\n'.join([str(f) for f in sorted(result)[:maxres]]))
+    print '\n'.join([f[1] for f in sorted(result)[:maxres]])
