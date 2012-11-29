@@ -7,7 +7,7 @@ cfgname=".cfg";
 bkpname="backup.cfg";
 gitrepo="git@github.com:durdn/cfg.git";
 gitrepo_ro="git://github.com/durdn/cfg.git";
-ignored="install.py|install.pyc|install.sh|.git|.gitignore|README|bin";
+ignored="install.py|install.pyc|install.sh|.git$|.gitmodule|.gitignore|README|bin";
 
 #----debug setup----
 #home=$1
