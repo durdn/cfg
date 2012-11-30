@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/altercation-vim-colors-solarized"]
 	path = .vim/bundle/altercation-vim-colors-solarized
 	url = https://github.com/durdn/vim-colors-solarized.git
+[submodule ".vim/bundle/tpope-vim-markdown"]
+	path = .vim/bundle/tpope-vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
