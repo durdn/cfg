@@ -361,6 +361,11 @@ if [ $(uname) == "Linux" ]; then
   #project aliases
   #alias tarot="screen -c ./screen-tarot.config"
 
+  if [ -d $HOME/.rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)";
+  fi
+
   #PATH=$PATH:$HOME/dev/apps/node/bin
 fi
 
