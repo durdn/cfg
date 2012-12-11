@@ -115,11 +115,11 @@ fi
 if [ ! -e $cfg_folder ];
   then 
     echo "|-> git clone from repo $gitrepo"
-    git clone $gitrepo $cfg_folder;
+    git clone --recursive $gitrepo $cfg_folder;
     if [ ! -e $cfg_folder ];
       then
         echo "!!! ssh key not installed on github for this box, cloning read only repo"
-        git clone $gitrepo_ro $cfg_folder
+        git clone --recursive $gitrepo_ro $cfg_folder
         echo "|* changing remote origin to read/write repo: $gitrepo"
         cd $cfg_folder && git config remote.origin.url $gitrepo
         if [ -e $home/id_rsa.pub  ];
