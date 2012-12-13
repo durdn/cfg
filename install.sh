@@ -107,6 +107,8 @@ echo "|* home is" $home
 echo "|* backup folder is" $backup_folder
 echo "|* cfg folder is" $cfg_folder
 
+command -v git >/dev/null 2>&1 || { echo >&2 "git is not installed. Please install git before running the install script."; exit 1; }
+
 if [ ! -e $backup_folder ];
   then mkdir -p $backup_folder;
 fi
