@@ -107,8 +107,6 @@ echo "|* home is" $home
 echo "|* backup folder is" $backup_folder
 echo "|* cfg folder is" $cfg_folder
 
-command -v git >/dev/null 2>&1 || { echo >&2 "git is not installed. Please install git before running the install script."; exit 1; }
-
 if [ ! -e $backup_folder ];
   then mkdir -p $backup_folder;
 fi
@@ -116,28 +114,39 @@ fi
 #clone config folder if not present, update if present
 if [ ! -e $cfg_folder ];
   then 
-    echo "|-> git clone from repo $gitrepo"
-    git clone --recursive $gitrepo $cfg_folder;
-    if [ ! -e $cfg_folder ];
+    if [[ -z $(command -v git) ]]
       then
-        echo "!!! ssh key not installed on github for this box, cloning read only repo"
-        git clone --recursive $gitrepo_ro $cfg_folder
-        echo "|* changing remote origin to read/write repo: $gitrepo"
-        cd $cfg_folder && git config remote.origin.url $gitrepo
-        if [ -e $home/id_rsa.pub  ];
-          then
-            echo "|* please copy your public key below to github or you won't be able to commit";
-            echo
-            cat $home/.ssh/id_rsa.pub
-          else
-            echo "|* please generate your public/private key pair with the command:"
-            echo
-            echo "ssh-keygen"
-            echo
-            echo "|* and copy the public key to github"
-        fi
-      else
-        update_submodules
+        #git is not available, juzt unpack the zip file
+        echo "|* git not available downloading zip file..."
+        curl -LsO https://github.com/durdn/cfg/archive/master.zip
+        unzip master.zip
+        mv cfg-master $home/.cfg
+        rm master.zip
+    else
+      #git is available, clone from repo
+      echo "|-> git clone from repo $gitrepo"
+      git clone --recursive $gitrepo $cfg_folder;
+      if [ ! -e $cfg_folder ];
+        then
+          echo "!!! ssh key not installed on github for this box, cloning read only repo"
+          git clone --recursive $gitrepo_ro $cfg_folder
+          echo "|* changing remote origin to read/write repo: $gitrepo"
+          cd $cfg_folder && git config remote.origin.url $gitrepo
+          if [ -e $home/id_rsa.pub  ];
+            then
+              echo "|* please copy your public key below to github or you won't be able to commit";
+              echo
+              cat $home/.ssh/id_rsa.pub
+            else
+              echo "|* please generate your public/private key pair with the command:"
+              echo
+              echo "ssh-keygen"
+              echo
+              echo "|* and copy the public key to github"
+          fi
+        else
+          update_submodules
+      fi
     fi
   else
     echo "|-> cfg already cloned to $cfg_folder"
