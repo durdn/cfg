@@ -50,6 +50,7 @@ set wildmenu
 set completeopt-=preview
 " diff should ignore whitespace
 set diffopt+=iwhite
+set colorcolumn=80
 
 " Save when losing focus
 " au FocusLost * :wa
