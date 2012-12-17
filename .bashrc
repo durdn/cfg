@@ -132,7 +132,7 @@ function dur {
     echo "disabled"
     ;;
   list|li)
-    echo "disabled"
+    curl --user $2:$3 https://api.bitbucket.org/1.0/user/repositories 2> /dev/null | grep "name" | sed -e 's/\"//g' | col 2 | sort | uniq | column
     ;;
   clone|cl)
     git clone git@bitbucket.org:durdn/$2.git
