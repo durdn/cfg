@@ -82,12 +82,12 @@
 [submodule ".vim/bundle/tpope-vim-repeat"]
 	path = .vim/bundle/tpope-vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/lokaltog-vim-powerline"]
-	path = .vim/bundle/lokaltog-vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule ".vim/bundle/altercation-vim-colors-solarized"]
 	path = .vim/bundle/altercation-vim-colors-solarized
 	url = https://github.com/durdn/vim-colors-solarized.git
 [submodule ".vim/bundle/tpope-vim-markdown"]
 	path = .vim/bundle/tpope-vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/durdn-vim-powerline"]
+	path = .vim/bundle/durdn-vim-powerline
+	url = https://github.com/durdn/vim-powerline.git
