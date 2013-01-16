@@ -57,7 +57,9 @@ set colorcolumn=80
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
-
+" Powerline customization"{{{
+call Pl#Theme#InsertSegment('wordcount', 'after', 'lineinfo')
+"}}}
 " Wildmenu completion {{{
 
 set wildmode=list:longest,list:full
