@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/durdn-vim-powerline"]
 	path = .vim/bundle/durdn-vim-powerline
 	url = https://github.com/durdn/vim-powerline.git
+[submodule ".vim/bundle/nelstrom-vim-markdown-folding"]
+	path = .vim/bundle/nelstrom-vim-markdown-folding
+	url = git://github.com/nelstrom/vim-markdown-folding.git

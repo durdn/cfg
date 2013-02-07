@@ -19,6 +19,9 @@ if has('syntax') && (&t_Co > 2)
   syntax on
 endif
 
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+set colorcolumn=80
+
 set encoding=utf-8
 set nocompatible hidden ignorecase smartcase title expandtab autoindent
 set nobackup noswapfile showmode showcmd ttyfast gdefault
@@ -50,7 +53,6 @@ set wildmenu
 set completeopt-=preview
 " diff should ignore whitespace
 set diffopt+=iwhite
-set colorcolumn=80
 
 " Save when losing focus
 " au FocusLost * :wa
@@ -534,10 +536,14 @@ endif
 " let g:miniBufExplUseSingleClick = 1
 " let g:miniBufExplorerMoreThanOne=0
 " }}}
+" vim markdown folding {{{
+let g:markdown_fold_style = 'nested'
+"}}}
 
 " -- Snipmate Django extension --
 ":set ft=python.django
 ":set ft=html.django_template
+au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.jsp set ft=jsp.html
 au BufRead,BufNewFile *.jspf set ft=jsp.html
 au BufRead,BufNewFile *.tag set ft=jsp.html
