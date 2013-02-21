@@ -14,6 +14,7 @@ alias mon-delixl      1680x1050
 alias mon-dell-30     2560x1600
 
 # Position Aliases
+alias center-normal move ${sox}+${ssx}/4;${soy}                     ${ssx}/2;${ssy}
 alias top-r         move ${sox}+${ssx}/2;${soy}                     ${ssx}/2;${ssy}/2
 alias top-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}            ${ssx}/4;${ssy}/2
 alias top-l         move ${sox};${soy}                              ${ssx}/2;${ssy}/2
@@ -99,6 +100,7 @@ bind h:cmd;shift     ${top-l}
 bind h:alt;ctrl      ${bot-l}
 bind h:cmd;ctrl      ${bot-l}
 bind l:alt           ${h-right}
+bind c:alt           ${center-normal}
 bind l:alt;shift     ${top-r}
 bind l:cmd;shift     ${top-r}
 bind l:alt;ctrl      ${bot-r}
