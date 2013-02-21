@@ -1,14 +1,14 @@
 # core {{{
 [core]
-    editor= /usr/bin/vi
+    editor = /usr/bin/vim
     excludesfile = /Users/nick/.gitignore_global
     pager=less -x4
 
 #}}}
 # user {{{
 [user]
-	email = nick@durdn.com
-	name = Nicola Paolucci
+    email = nick@durdn.com
+    name = Nicola Paolucci
 
 #}}}
 # color {{{
@@ -49,11 +49,11 @@
 #}}}
 # difftools {{{
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 # }}}
 # alias {{{
