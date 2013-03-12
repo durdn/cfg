@@ -94,3 +94,6 @@
 [submodule ".vim/bundle/nelstrom-vim-markdown-folding"]
 	path = .vim/bundle/nelstrom-vim-markdown-folding
 	url = git://github.com/nelstrom/vim-markdown-folding.git
+[submodule ".vim/bundle/rodjek-vim-puppet"]
+	path = .vim/bundle/rodjek-vim-puppet
+	url = git://github.com/rodjek/vim-puppet.git
