@@ -557,6 +557,7 @@ au FileType python set ft=python.django " For SnipMate
 au FileType python setlocal sw=4 sts=4 et tw=200 sta
 au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
 au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
+au FileType markdown set spell
 
 "}}}
 " DeliXL shortcuts {{{
