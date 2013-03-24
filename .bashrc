@@ -439,7 +439,7 @@ fi
 if [[ $(uname -n) == "ubuntu" && $(whoami) == "developer" ]]; then
   source ~/.delixl-aliases
 fi
-if [[ $(cat /etc/resolv.conf | grep domain | col 2 | head -1) == 'delixl.ext' && $(uname) == "Darwin" ]]; then
+if [[ -e /etc/resolv.conf && $(cat /etc/resolv.conf | grep domain | col 2 | head -1) == 'delixl.ext' && $(uname) == "Darwin" ]]; then
   echo "Setting route at DeliXL office";
   sudo route add -net 145.7.5.0 -netmask 255.255.255.0 10.33.88.1
   sudo route add -net 145.7.0.0 -netmask 255.255.255.0 10.33.88.1
@@ -451,6 +451,7 @@ if [[ $(uname -n) == "nick-macbook-air.ams.atlassian.com" ]]; then
   export PATH="$HOME/dev/apps/maven2/bin:$PATH"
   MAVEN_OPTS="-Xms256m -Xmx1g -XX:PermSize=128m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
   export MAVEN_OPTS
+  source ~/.atlassian
 fi
 # }}}
 # }}}
