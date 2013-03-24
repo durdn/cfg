@@ -451,7 +451,9 @@ if [[ $(hostname | cut -d. -f1) == "nick-macbook-air" ]]; then
   export PATH="$HOME/dev/apps/maven2/bin:$PATH"
   MAVEN_OPTS="-Xms256m -Xmx1g -XX:PermSize=128m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
   export MAVEN_OPTS
-  source ~/.atlassian
+  source $HOME/.atlassian
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
+  source $HOME/dev/envs/generic/bin/activate
 fi
 # }}}
 # }}}
