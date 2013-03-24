@@ -26,6 +26,8 @@ set encoding=utf-8
 set nocompatible hidden ignorecase smartcase title expandtab autoindent
 set nobackup noswapfile showmode showcmd ttyfast gdefault
 set hlsearch visualbell shiftround incsearch nu wildmenu nowrap
+"default foldlevel 1 to see headings
+set foldlevel=1
 set noantialias
 let mapleader = ","
 let maplocalleader = ";"
@@ -352,7 +354,6 @@ endif
 "}}}
 " Plugins configuration"{{{
 " ===================================================================
-
 " ctrlp {{{
 
 "let g:ctrlp_map = '<leader>t'
@@ -549,28 +550,42 @@ map <silent> <localleader>d :py get_doc_buffer()<CR>
 map <silent> <localleader>r :python run_this_file()<CR>
 
 "}}}
-
-" -- Snipmate Django extension --
+" -- Snipmate Django extension -- {{{
 ":set ft=python.django
 ":set ft=html.django_template
-au BufRead,BufNewFile *.md set ft=markdown
-au BufRead,BufNewFile *.jsp set ft=jsp.html
-au BufRead,BufNewFile *.jspf set ft=jsp.html
-au BufRead,BufNewFile *.tag set ft=jsp.html
-au BufRead,BufNewFile *.html set ft=html.django_template
-au BufRead,BufNewFile *.json set ft=json
-au BufRead,BufNewFile *.java set ft=java
-au BufRead,BufNewFile *.less set ft=less
-"au FileType html set ft=django_template.html
-au FileType python set ft=python.django " For SnipMate
-au FileType python setlocal sw=4 sts=4 et tw=200 sta
-au FileType gitconfig setlocal sw=4 sts=4 ts=4 et tw=200 sta
-au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
-au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
-au FileType markdown set spell
-
+"}}}
+"}}}
+" Autocommands {{{
+:augrp nick
+  :au!	" Remove ALL autocommands for the current group.
+  :au BufRead,BufNewFile *.md set ft=markdown foldlevel=1
+  :au BufRead,BufNewFile *.jsp set ft=jsp.html
+  :au BufRead,BufNewFile *.jspf set ft=jsp.html
+  :au BufRead,BufNewFile *.tag set ft=jsp.html
+  :au BufRead,BufNewFile *.html set ft=html.django_template
+  :au BufRead,BufNewFile *.json set ft=json
+  :au BufRead,BufNewFile *.java set ft=java
+  :au BufRead,BufNewFile *.less set ft=less
+  "au FileType html set ft=django_template.html
+  :au FileType python set ft=python.django " For SnipMate
+  :au FileType python setlocal sw=4 sts=4 et tw=200 sta
+  "use 4 spaces for tab in gitconfig
+  :au FileType gitconfig setlocal sw=4 sts=4 ts=4 et tw=200 sta
+  :au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
+  :au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
+  "vim should not break lines
+  :au FileType vim setlocal tw=0 wm=0
+  " autocorrect markdown
+  :au FileType markdown set spell
+:augrp END
 "}}}
 " DeliXL shortcuts {{{
 nmap <leader>sp :w<cr>:silent !cd /home/developer/delixl && ant -f sol/delixl-webshop/copyJSP.xml<cr>:redraw!<cr>
 nmap <leader>ht :w<cr>:silent !cd /home/developer/delixl && build-venus.sh && deploy-venus.sh<cr>:redraw!<cr>
+"}}}
+" Atlassian shortcuts {{{
+" generates confluence style from markdown
+nmap <localleader>cf :!python md2wiki.py % | pbcopy<cr>
+" generates wordpress ready version from markdown
+nmap <localleader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/<cr>:sav! wordpress/%<cr>:bd<cr>:redraw!<cr>:undo<cr>
 "}}}
