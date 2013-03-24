@@ -447,7 +447,7 @@ if [[ -e /etc/resolv.conf && $(cat /etc/resolv.conf | grep domain | col 2 | head
 fi
 # }}}
 # Atlassian config {{{
-if [[ $(uname -n) == "nick-macbook-air.ams.atlassian.com" ]]; then
+if [[ $(hostname | cut -d. -f1) == "nick-macbook-air" ]]; then
   export PATH="$HOME/dev/apps/maven2/bin:$PATH"
   MAVEN_OPTS="-Xms256m -Xmx1g -XX:PermSize=128m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
   export MAVEN_OPTS
