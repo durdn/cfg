@@ -1,13 +1,13 @@
 # core {{{
 [core]
     editor = /usr/bin/vim
-    excludesfile = /Users/nick/.gitignore_global
+    excludesfile = /Users/npaolucci/.gitignore_global
     pager=less -x4
 
 #}}}
 # user {{{
 [user]
-    email = nick@durdn.com
+    email = npaolucci@atlassian.com
     name = Nicola Paolucci
 
 #}}}
