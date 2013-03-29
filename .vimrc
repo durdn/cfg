@@ -556,28 +556,29 @@ map <silent> <localleader>r :python run_this_file()<CR>
 "}}}
 "}}}
 " Autocommands {{{
-:augrp nick
-  :au!	" Remove ALL autocommands for the current group.
-  :au BufRead,BufNewFile *.md set ft=markdown foldlevel=1
-  :au BufRead,BufNewFile *.jsp set ft=jsp.html
-  :au BufRead,BufNewFile *.jspf set ft=jsp.html
-  :au BufRead,BufNewFile *.tag set ft=jsp.html
-  :au BufRead,BufNewFile *.html set ft=html.django_template
-  :au BufRead,BufNewFile *.json set ft=json
-  :au BufRead,BufNewFile *.java set ft=java
-  :au BufRead,BufNewFile *.less set ft=less
-  "au FileType html set ft=django_template.html
-  :au FileType python set ft=python.django " For SnipMate
-  :au FileType python setlocal sw=4 sts=4 et tw=200 sta
-  "use 4 spaces for tab in gitconfig
-  :au FileType gitconfig setlocal sw=4 sts=4 ts=4 et tw=200 sta
-  :au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
-  :au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
-  "vim should not break lines
-  :au FileType vim setlocal tw=0 wm=0
-  " autocorrect markdown
+aug nick
+" Remove ALL autocommands for the current group.
+  au!
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=1
+  au BufRead,BufNewFile *.jsp set ft=jsp.html
+  au BufRead,BufNewFile *.jspf set ft=jsp.html
+  au BufRead,BufNewFile *.tag set ft=jsp.html
+  au BufRead,BufNewFile *.html set ft=html.django_template
+  au BufRead,BufNewFile *.json set ft=json
+  au BufRead,BufNewFile *.java set ft=java
+  au BufRead,BufNewFile *.less set ft=less
+"au FileType html set ft=django_template.html
+  au FileType python set ft=python.django " For SnipMate
+  au FileType python setlocal sw=4 sts=4 et tw=200 sta
+"use 4 spaces for tab in gitconfig
+  au FileType gitconfig setlocal sw=4 sts=4 ts=4 et tw=200 sta
+  au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
+  au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
+"vim should not break lines
+  au FileType vim setlocal tw=0 wm=0
+" autocorrect markdown
   :au FileType markdown set spell
-:augrp END
+:aug END
 "}}}
 " DeliXL shortcuts {{{
 nmap <leader>sp :w<cr>:silent !cd /home/developer/delixl && ant -f sol/delixl-webshop/copyJSP.xml<cr>:redraw!<cr>
@@ -585,7 +586,7 @@ nmap <leader>ht :w<cr>:silent !cd /home/developer/delixl && build-venus.sh && de
 "}}}
 " Atlassian shortcuts {{{
 " generates confluence style from markdown
-nmap <localleader>cf :!python md2wiki.py % | pbcopy<cr>
+" nmap <localleader>cf :!python md2wiki.py % | pbcopy<cr>
 " generates wordpress ready version from markdown
-nmap <localleader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/<cr>:sav! wordpress/%<cr>:bd<cr>:redraw!<cr>:undo<cr>
+" nmap <localleader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/<cr>:sav! wordpress/%<cr>:bd<cr>:redraw!<cr>:undo<cr>
 "}}}
