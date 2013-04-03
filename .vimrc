@@ -139,7 +139,7 @@ nmap <silent> <leader>em :e ~/.hgrc<cr>
 nmap <silent> <leader>el :e ~/.slate<cr>
 " }}}
 " Keyboard Shortcuts and remappings   "{{{
-
+" core keyboard tweaks {{{
 " Repeat last command and put cursor at start of change 
 nnoremap . .`[
 nnoremap ' `
@@ -177,10 +177,22 @@ imap <Right> <ESC>:bnext<CR>
 map <Left> :bprev<CR>
 imap <Left> <ESC>:bprev<CR>
 map <Del> :bd<CR>
-
-"hide hightlight of searches"
-nmap <silent> <leader>n :silent :nohlsearch<CR>
-nmap <silent> // :nohlsearch<CR>
+" use jk instead than <esc>
+inoremap jk <esc>
+"Go to last edit location with ,.
+nnoremap ,. '.
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+" leader leader alias ,, to go back to previous buffer
+nnoremap <leader><leader> <c-^>
+" make C-a C-e work in command line mode
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+" }}}
+" buffer operations: show spaces, splits, del, maximize, line numbers {{{
 "show spaces"
 nmap <silent> <leader>s :set nolist!<CR>
 "show line numbers"
@@ -197,13 +209,6 @@ nmap <silent> <leader>w :set nowrap!<CR>
 nmap <silent> <leader>x :hid<CR>
 "close buffer"
 nmap <silent> <leader>X :bd<CR>
-" Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
-" leader leader alias ,, to go back to previous buffer
-nnoremap <leader><leader> <c-^>
-" use jk instead than <esc>
-inoremap jk <esc>
 " toggle between number and relative number on ,l
 nnoremap <leader>l :call ToggleRelativeAbsoluteNumber()<CR>
 function! ToggleRelativeAbsoluteNumber()
@@ -213,10 +218,21 @@ function! ToggleRelativeAbsoluteNumber()
     set number
   endif
 endfunction
-
-"retab and format the file with spaces
+"}}}
+" search stuff {{{
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+"hide hightlight of searches"
+nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> // :nohlsearch<CR>
+" }}}
+" Quick edits: clean whitespace, retab: ,W ,T {{{
+" Clean whitespace
+map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+" Retab and format with spaces
 nnoremap <leader>T :set expandtab<cr>:retab!<cr>
-
+"}}}
+" cool path completions {{{
 "picked up from carlhuda janus
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>nf
@@ -229,21 +245,6 @@ nmap <leader>nt :tabe <C-R>=expand("%:p:h") . "/" <CR> <BS>
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p")<CR> <BS>
-
-" Open a Quickfix window for the last search.
-nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
-" Clean whitespace
-map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
-" Retab and format with spaces
-nnoremap <leader>T :set expandtab<cr>:retab!<cr>
-
-" Nerd tree find current file
-nnoremap <silent> <C-\> :NERDTreeFind<CR>
-
-"Go to last edit location with ,.
-nnoremap ,. '.
-
 " copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
 nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
 
@@ -252,7 +253,20 @@ nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
 " to get to the command mode, C-f to get to history editing
 " p to paste it, C-c to return to command mode, and CR to execute
 nmap <silent> ,cc yy:<C-f>p<C-c><CR>
+" Nerd tree find current file
+nnoremap <silent> <C-\> :NERDTreeFind<CR>
+"use tab for auto completion
+"function! SuperTab()
+    "if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+        "return "\<Tab>"
+    "else
+        "return "\<C-n>"
+    "endif
+"endfunction
+"imap <Tab> <C-R>=SuperTab()<CR>
 
+" }}}
+" various greps {{{
 "open up a git grep line, with a quote started for the search
 nnoremap <leader>gg :GitGrep ""<left>
 
@@ -271,23 +285,7 @@ endfunction
 
 "git grep the current word using K (mnemonic Kurrent)
 nnoremap <silent> K :GitGrep <cword><CR>
-
-"use tab for auto completion
-function! SuperTab()
-    if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
-        return "\<Tab>"
-    else
-        return "\<C-n>"
-    endif
-endfunction
-imap <Tab> <C-R>=SuperTab()<CR>
-
-" make C-a C-e work in command line mode
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-
+" }}}
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
@@ -340,6 +338,7 @@ if has('gui_running')
     set lines=85
     set columns=119
     set guioptions-=T  " no toolbar
+    "remap omny completion to Ctrl-space
     inoremap <C-space> <C-x><C-o>
 else
     inoremap <Nul> <C-x><C-o>
