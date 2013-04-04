@@ -15,41 +15,41 @@ alias ssy screenSizeY
 alias 80cols 675
 # }}}
 # Position Aliases {{{
-alias center-normal move ${sox}+${ssx}/4;${soy}                     ${ssx}/2;${ssy}
-alias cntr-80-cols  move (${sox}+${ssx}/2)-${80cols}/2;${soy}       ${80cols};${ssy}
-alias top-r         move ${sox}+${ssx}/2;${soy}                     ${ssx}/2;${ssy}/2
-alias top-r-80      move (${sox}+${ssx}/2)+${80cols}/2;${soy}       (${ssx}/2)+${80cols}/2;${ssy}/2
-alias top-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}            ${ssx}/4;${ssy}/2
-alias top-l         move ${sox};${soy}                              ${ssx}/2;${ssy}/2
-alias top-l-80      move ${sox};${soy}                              (${ssx}/2)-${80cols}/2;${ssy}/2
-alias bot-l         move ${sox};${soy}+${ssy}/2                     ${ssx}/2;${ssy}/2
-alias bot-r         move ${sox}+${ssx}/2;${soy}+${ssy}/2            ${ssx}/2;${ssy}/2
-alias bot-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}+${ssy}/2   ${ssx}/4;${ssy}/2
+alias center-normal move ${sox}+${ssx}/4;${soy}                   ${ssx}/2;${ssy}
+alias cntr-80-cols  move (${sox}+${ssx}/2)-${80cols}/2;${soy}     ${80cols};${ssy}
+alias top-r         move ${sox}+${ssx}/2;${soy}                   ${ssx}/2;${ssy}/2
+alias top-r-80      move (${sox}+${ssx}/2)+${80cols}/2;${soy}     (${ssx}/2)-${80cols}/2;${ssy}/2
+alias top-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}          ${ssx}/4;${ssy}/2
+alias top-l         move ${sox};${soy}                            ${ssx}/2;${ssy}/2
+alias top-l-80      move ${sox};${soy}                            (${ssx}/2)-${80cols}/2;${ssy}/2
+alias bot-l         move ${sox};${soy}+${ssy}/2                   ${ssx}/2;${ssy}/2
+alias bot-r         move ${sox}+${ssx}/2;${soy}+${ssy}/2          ${ssx}/2;${ssy}/2
+alias bot-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}+${ssy}/2 ${ssx}/4;${ssy}/2
 alias maximize      push left  bar-resize:${ssx}
-alias left-notch-0  move ${sox};${soy}                              ${ssx}/2-60;${ssy}-23
-alias left-notch-1  move ${sox};${soy}+23                           ${ssx}/2-30;${ssy}-23
-alias left-notch-2  move ${sox};${soy}+46                           ${ssx}/2;${ssy}-46
+alias left-notch-0  move ${sox};${soy}                            ${ssx}/2-60;${ssy}-23
+alias left-notch-1  move ${sox};${soy}+23                         ${ssx}/2-30;${ssy}-23
+alias left-notch-2  move ${sox};${soy}+46                         ${ssx}/2;${ssy}-46
 alias h-left        push left  bar-resize:${ssx}/2
 alias h-right       push right bar-resize:${ssx}/2
 alias h-top         push up    bar-resize:${ssy}/2
 alias h-bottom      push down  bar-resize:${ssy}/2
 alias h-left-80     push left  bar-resize:(${ssx}/2)-${80cols}/2
-alias h-right-80    push right bar-resize:(${ssx}/2)+${80cols}/2
+alias h-right-80    move (${sox}+${ssx}/2)+${80cols}/2;${soy}     (${ssx}/2)-${80cols}/2;${ssy}
 
 #position thirds
-alias 3c-right       move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}
-alias 3c-middle      move ${sox}+${ssx}/3;${soy}                    ${ssx}/3;${ssy}
-alias 3c-left        move ${sox};${soy}                             ${ssx}/3;${ssy}
-alias 3c-right-top   move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}/2
-alias 3c-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2         ${ssx}/3;${ssy}/2
-alias 3c-middle-top   move ${sox}+${ssx}/3;${soy}                   ${ssx}/3;${ssy}/2
-alias 3c-middle-bot   move ${sox}+${ssx}/3;${soy}+${ssy}/2          ${ssx}/3;${ssy}/2
+alias 3c-right       move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy}
+alias 3c-middle      move ${sox}+${ssx}/3;${soy}                  ${ssx}/3;${ssy}
+alias 3c-left        move ${sox};${soy}                           ${ssx}/3;${ssy}
+alias 3c-right-top   move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy}/2
+alias 3c-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2       ${ssx}/3;${ssy}/2
+alias 3c-middle-top   move ${sox}+${ssx}/3;${soy}                 ${ssx}/3;${ssy}/2
+alias 3c-middle-bot   move ${sox}+${ssx}/3;${soy}+${ssy}/2        ${ssx}/3;${ssy}/2
 
 #position taller
-alias tl-main        move ${sox};${soy}                             ${ssx}*2/3;${ssy}
-alias tl-right-top   move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}/2
-alias tl-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2         ${ssx}/3;${ssy}/2
-alias tl-right       move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}
+alias tl-main        move ${sox};${soy}                           ${ssx}*2/3;${ssy}
+alias tl-right-top   move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy}/2
+alias tl-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2       ${ssx}/3;${ssy}/2
+alias tl-right       move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy}
 
 # }}}
 # Layouts {{{
@@ -71,6 +71,7 @@ layout main 'Finder' ${top-r} | ${bot-r} 0
 # column layout {{{
 layout columns 'Safari':REPEAT ${3c-left} | ${3c-middle} 0
 layout columns 'Google Chrome':REPEAT ${h-left} 0
+layout columns 'Firefox':REPEAT ${3c-left} | ${3c-middle} | ${3c-right}  0
 layout columns 'Terminal':REPEAT ${3c-right-bot} 0
 layout columns 'MacVim':REPEAT ${3c-middle} 0
 layout columns 'Sublime Text 2':REPEAT ${h-left} 0
@@ -94,17 +95,17 @@ layout taller 'Messages':REPEAT ${tl-right-top} 0
 # }}}
 # }}}
 # Push Bindings {{{
-bind h:alt           chain ${h-left} | ${h-left-80}
+bind h:alt           chain ${h-left} | ${top-l} | ${bot-l} | ${h-left-80}
 bind h:alt;shift     chain ${top-l} | ${top-l-80}
-bind h:cmd;shift     ${top-l}
-bind h:alt;ctrl      ${bot-l}
-bind h:cmd;ctrl      ${bot-l}
-bind l:alt           chain ${h-right} | ${h-right-80}
+#bind h:cmd;shift     ${top-l}
+#bind h:alt;ctrl      ${bot-l}
+#bind h:cmd;ctrl      ${bot-l}
+bind l:alt           chain ${h-right} | ${top-r} | ${bot-r} | ${h-right-80}
 bind l:alt;shift     chain ${top-r} | ${top-r-80}
 bind c:alt           chain ${center-normal} | ${cntr-80-cols}
-bind l:cmd;shift     ${top-r}
-bind l:alt;ctrl      ${bot-r}
-bind l:cmd;ctrl      ${bot-r}
+#bind l:cmd;shift     ${top-r}
+#bind l:alt;ctrl      ${bot-r}
+#bind l:cmd;ctrl      ${bot-r}
 #bind t:alt           ${h-top}
 #bind b:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
@@ -135,12 +136,12 @@ bind down:shift;alt  nudge +0   +10%
 bind o:alt chain throw next
 # }}}
 # Focus Bindings {{{
-bind right:shift;cmd    focus right
-bind left:shift;cmd     focus left
-bind up:shift;cmd       focus up
-bind down:shift;cmd     focus down
-bind up:cmd;alt         focus behind
-bind down:cmd;alt       focus behind
+bind l:ctrl;alt focus right
+bind h:ctrl;alt focus left
+bind k:ctrl;alt focus up
+bind j:ctrl;alt focus down
+bind j:alt      focus behind
+bind k:alt      focus behind
 # }}}
 # Snapshot Bindings {{{
 bind ]:alt       snapshot coding save-to-disk
@@ -152,4 +153,10 @@ bind p:alt hint
 # }}}
 # Relaunch {{{
 bind 7:ctrl;alt relaunch
+# }}}
+# Grid {{{
+bind g:alt grid padding:5 0:3,3 1:3,3
+# }}}
+# Switcher {{{
+bind tab:cmd switch
 # }}}
