@@ -143,4 +143,7 @@
     #merges
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+    #list remotes
+    rem="!git config -l | grep remote.*url | tail -n +2"
 # }}}
