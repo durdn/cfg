@@ -1,20 +1,20 @@
+# .slate
+# Author: Nicola Paolucci <nick@durdn.com>
+# Source: http://github.com/durdn/cfg/.slate
+
+# Configs {{{
 config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
-
-# General aliases
+# }}}
+# General aliases {{{
 alias sox screenOriginX
 alias soy screenOriginY
 alias ssx screenSizeX
 alias ssy screenSizeY
 alias 80cols 675
-
-# Monitor Aliases
-alias mon-retina      2800x1800
-alias mon-delixl      1680x1050
-alias mon-dell-30     2560x1600
-
-# Position Aliases
+# }}}
+# Position Aliases {{{
 alias center-normal move ${sox}+${ssx}/4;${soy}                     ${ssx}/2;${ssy}
 alias cntr-80-cols  move (${sox}+${ssx}/2)-${80cols}/2;${soy}       ${80cols};${ssy}
 alias top-r         move ${sox}+${ssx}/2;${soy}                     ${ssx}/2;${ssy}/2
@@ -51,16 +51,9 @@ alias tl-right-top   move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${s
 alias tl-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2         ${ssx}/3;${ssy}/2
 alias tl-right       move ${sox}+${ssx}*2/3;${soy}                  ${ssx}/3;${ssy}
 
-
-# Default Layouts
-#default 2office resolutions:${mon-delixl};${mon-retina}
-#default 2home   resolutions:${mon-dell-30};${mon-retina}
-#default 1retina  resolutions:${mon-retina}
-
-# 2 Monitors DeliXL Layout
-layout 2office 'Safari':REPEAT ${h-left}
-
-# main layout
+# }}}
+# Layouts {{{
+# main layout {{{
 layout main 'Safari':REPEAT ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
 layout main 'Google Chrome' ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
 layout main 'Terminal':REPEAT ${bot-r} 0
@@ -74,7 +67,8 @@ layout main 'Twitter':REPEAT ${top-r-half} 0
 layout main 'Transmission':REPEAT ${bot-r-half} 0
 layout main 'Finder' ${top-r} | ${bot-r} 0
 
-# column layout
+# }}}
+# column layout {{{
 layout columns 'Safari':REPEAT ${3c-left} | ${3c-middle} 0
 layout columns 'Google Chrome':REPEAT ${h-left} 0
 layout columns 'Terminal':REPEAT ${3c-right-bot} 0
@@ -84,19 +78,8 @@ layout columns 'Skype':REPEAT ${3c-right-top} 0
 layout columns 'Transmission':REPEAT ${3c-right-bot} 0
 layout columns 'Finder' ${3c-middle-top} | ${3c-middle-bot} 0
 layout columns 'Twitter':REPEAT ${3c-right-top} 0
-#
-# center vim layout
-layout columns 'Safari':REPEAT ${3c-left} | ${3c-middle} 0
-layout columns 'Google Chrome':REPEAT ${h-left} 0
-layout columns 'Terminal':REPEAT ${3c-right-bot} 0
-layout columns 'MacVim':REPEAT ${3c-middle} 0
-layout columns 'Sublime Text 2':REPEAT ${h-left} 0
-layout columns 'Skype':REPEAT ${3c-right-top} 0
-layout columns 'Transmission':REPEAT ${3c-right-bot} 0
-layout columns 'Finder' ${3c-middle-top} | ${3c-middle-bot} 0
-layout columns 'Twitter':REPEAT ${3c-right-top} 0
-
-# taller layout
+# }}}
+# taller layout {{{
 layout taller 'Safari':REPEAT ${tl-main} 0
 layout taller 'Google Chrome':REPEAT ${tl-main} 0
 layout taller 'Terminal':REPEAT ${3c-right-bot} 0
@@ -108,9 +91,9 @@ layout taller 'Finder' ${tl-right-top} | ${tl-right-bot} 0
 layout taller 'nvALT':REPEAT ${tl-right-top} 0
 layout taller 'Twitter':REPEAT ${tl-right-top} 0
 layout taller 'Messages':REPEAT ${tl-right-top} 0
-
-
-# Push Bindings
+# }}}
+# }}}
+# Push Bindings {{{
 bind h:alt           chain ${h-left} | ${h-left-80}
 bind h:alt;shift     chain ${top-l} | ${top-l-80}
 bind h:cmd;shift     ${top-l}
@@ -129,7 +112,8 @@ bind 7:alt           layout main
 bind 8:alt           layout columns
 bind 9:alt           layout taller
 
-# Resize Bindings
+# }}}
+# Resize Bindings {{{
 bind right:alt       resize +10% +0
 bind left:alt        resize -10% +0
 bind up:alt          resize +0   -10%
@@ -139,32 +123,33 @@ bind left:ctrl;alt   resize +10% +0 bottom-right
 bind up:ctrl;alt     resize +0   +10% bottom-right
 bind down:ctrl;alt   resize +0   -10% bottom-right
 
-# Nudge Bindings
+# }}}
+# Nudge Bindings {{{
 bind right:shift;alt nudge +10% +0
 bind left:shift;alt  nudge -10% +0
 bind up:shift;alt    nudge +0   -10%
 bind down:shift;alt  nudge +0   +10%
 
-# Throw Bindings
-bind 1:ctrl;alt         throw 0 resize
-bind 2:ctrl;alt         throw 1 resize
-bind 3:ctrl;alt         throw 2 resize
-bind right:ctrl;alt;cmd throw right resize
-bind left:ctrl;alt;cmd  throw left  resize
-bind up:ctrl;alt;cmd    throw up    resize
-bind down:ctrl;alt;cmd  throw down  resize
-
-# Focus Bindings
+# }}}
+# Throw Bindings {{{
+bind o:alt chain throw next
+# }}}
+# Focus Bindings {{{
 bind right:shift;cmd    focus right
 bind left:shift;cmd     focus left
 bind up:shift;cmd       focus up
 bind down:shift;cmd     focus down
 bind up:cmd;alt         focus behind
 bind down:cmd;alt       focus behind
-
-# Snapshot Bindings
-#bind ]:alt snapshot coding save-to-disk;stack
-#bind =:alt activate-snapshot coding delete
-
-# Window Hints
+# }}}
+# Snapshot Bindings {{{
+bind ]:alt       snapshot coding save-to-disk
+bind ]:cmd;shift delete-snapshot coding all
+bind =:alt       activate-snapshot coding
+# }}}
+# Window Hints {{{
 bind p:alt hint
+# }}}
+# Relaunch {{{
+bind 7:ctrl;alt relaunch
+# }}}
