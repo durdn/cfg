@@ -54,44 +54,6 @@ alias tl-right       move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy
 # }}}
 # Layouts {{{
 # main layout {{{
-layout main 'Safari':REPEAT ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
-layout main 'Google Chrome' ${left-notch-2} | ${left-notch-1} | ${left-notch-0} 0
-layout main 'Terminal':REPEAT ${bot-r} 0
-layout main 'Evernote':REPEAT ${bot-r} 0
-layout main 'MacVim':REPEAT ${h-right} 0
-layout main 'Sublime Text 2':REPEAT ${h-left} 0
-layout main 'iTunes':REPEAT ${h-right} 0
-layout main 'Skype':REPEAT ${top-r-half} 0
-layout main 'nvALT':REPEAT ${top-r-half} 0
-layout main 'Twitter':REPEAT ${top-r-half} 0
-layout main 'Transmission':REPEAT ${bot-r-half} 0
-layout main 'Finder' ${top-r} | ${bot-r} 0
-
-# }}}
-# column layout {{{
-layout columns 'Safari':REPEAT ${3c-left} | ${3c-middle} 0
-layout columns 'Google Chrome':REPEAT ${h-left} 0
-layout columns 'Firefox':REPEAT ${3c-left} | ${3c-middle} | ${3c-right}  0
-layout columns 'Terminal':REPEAT ${3c-right-bot} 0
-layout columns 'MacVim':REPEAT ${3c-middle} 0
-layout columns 'Sublime Text 2':REPEAT ${h-left} 0
-layout columns 'Skype':REPEAT ${3c-right-top} 0
-layout columns 'Transmission':REPEAT ${3c-right-bot} 0
-layout columns 'Finder' ${3c-middle-top} | ${3c-middle-bot} 0
-layout columns 'Twitter':REPEAT ${3c-right-top} 0
-# }}}
-# taller layout {{{
-layout taller 'Safari':REPEAT ${tl-main} 0
-layout taller 'Google Chrome':REPEAT ${tl-main} 0
-layout taller 'Terminal':REPEAT ${3c-right-bot} 0
-layout taller 'MacVim':REPEAT ${tl-main} 0
-layout taller 'Sublime Text 2':REPEAT ${tl-main} 0
-layout taller 'Skype':REPEAT ${tl-right-top} 0
-layout taller 'Transmission':REPEAT ${tl-right-bot} 0
-layout taller 'Finder' ${tl-right-top} | ${tl-right-bot} 0
-layout taller 'nvALT':REPEAT ${tl-right-top} 0
-layout taller 'Twitter':REPEAT ${tl-right-top} 0
-layout taller 'Messages':REPEAT ${tl-right-top} 0
 # }}}
 # }}}
 # Push Bindings {{{
@@ -109,10 +71,6 @@ bind c:alt           chain ${center-normal} | ${cntr-80-cols}
 #bind t:alt           ${h-top}
 #bind b:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
-bind 7:alt           layout main
-bind 8:alt           layout columns
-bind 9:alt           layout taller
-
 # }}}
 # Resize Bindings {{{
 bind right:alt       resize +10% +0
@@ -152,7 +110,7 @@ bind =:alt       activate-snapshot coding
 bind p:alt hint
 # }}}
 # Relaunch {{{
-bind 7:ctrl;alt relaunch
+bind 7:alt relaunch
 # }}}
 # Grid {{{
 bind g:alt grid padding:5 0:3,3 1:3,3
