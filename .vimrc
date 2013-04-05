@@ -152,6 +152,8 @@ vnoremap <F1> <ESC>
 " ease of use keyboard mappings (why do I care about top/bottom of screen?)
 nnoremap H ^
 nnoremap L $
+" go to the bottom of file with ;;
+nnoremap ;; G
 " : changes with less keystrokes
 nnoremap ; :
 nnoremap j gj
@@ -307,7 +309,7 @@ endif
 if has('gui_macvim')
     "terminus on osx different because of retina display
     set guifont=Terminus:h16
-    winpos 720 0
+    "winpos 720 0
     " goes to real fullscreen on OS X
     set fuoptions=maxvert,maxhorz
     macmenu &File.New\ Tab key=<nop>
@@ -321,7 +323,7 @@ if has('gui_win64')
 endif
 if has('gui_win32')
   set guifont=Terminus:h14
-  winpos 600 0
+  "winpos 600 0
   "status line does not work with fugitive on win32
   "REPLACED BY vim-powerline set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [ascii=\%03.3b]\ [hex=\%02.2B]\ [%04l,%04v][%p%%]\ [len=%L]\ 
   "overwrite mapping to edit the .vimrc"
@@ -558,7 +560,7 @@ map <silent> <localleader>r :python run_this_file()<CR>
 aug nick
   " Remove ALL autocommands for the current group.
   au!
-  au BufRead,BufNewFile *.md set ft=markdown foldlevel=1
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2
   au BufRead,BufNewFile *.jsp set ft=jsp.html
   au BufRead,BufNewFile *.jspf set ft=jsp.html
   au BufRead,BufNewFile *.tag set ft=jsp.html
@@ -591,3 +593,5 @@ nmap <leader>ht :w<cr>:silent !cd /home/developer/delixl && build-venus.sh && de
 " generates wordpress ready version from markdown
 " nmap <localleader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/<cr>:sav! wordpress/%<cr>:bd<cr>:redraw!<cr>:undo<cr>
 "}}}
+" redraw when reloading .vimrc
+:redraw!
