@@ -556,7 +556,7 @@ map <silent> <localleader>r :python run_this_file()<CR>
 "}}}
 " Autocommands {{{
 aug nick
-" Remove ALL autocommands for the current group.
+  " Remove ALL autocommands for the current group.
   au!
   au BufRead,BufNewFile *.md set ft=markdown foldlevel=1
   au BufRead,BufNewFile *.jsp set ft=jsp.html
@@ -566,17 +566,19 @@ aug nick
   au BufRead,BufNewFile *.json set ft=json
   au BufRead,BufNewFile *.java set ft=java
   au BufRead,BufNewFile *.less set ft=less
-"au FileType html set ft=django_template.html
+  "au FileType html set ft=django_template.html
   au FileType python set ft=python.django " For SnipMate
   au FileType python setlocal sw=4 sts=4 et tw=200 sta
-"use 4 spaces for tab in gitconfig
+  "use 4 spaces for tab in gitconfig
   au FileType gitconfig setlocal sw=4 sts=4 ts=4 et tw=200 sta
   au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
   au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
-"vim should not break lines
+  "vim should not break lines
   au FileType vim setlocal tw=0 wm=0
-" autocorrect markdown
+  " autocorrect markdown
   :au FileType markdown set spell
+  "empty scratch.txt when it's unloaded
+  :autocmd BufDelete scratch.txt :execute "normal!1GdG" | :execute ":w!"
 :aug END
 "}}}
 " DeliXL shortcuts {{{
