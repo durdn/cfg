@@ -134,7 +134,7 @@ nmap <silent> <leader>ec :e ~/.vim/bundle/durdn-customisation/colors/ir_black.vi
 " Edit delixl aliases
 nmap <silent> <leader>ed :e ~/.delixl-aliases<cr>
 " Edit mercurial configuration
-nmap <silent> <leader>em :e ~/.hgrc<cr>
+nmap <silent> <leader>er :e ~/.hgrc<cr>
 " Edit slate configuration
 nmap <silent> <leader>el :e ~/.slate<cr>
 " }}}
@@ -544,11 +544,11 @@ let g:markdown_fold_style = 'nested'
 "}}}
 " vim-ipython mappings {{{
 let g:ipy_perform_mappings = 0
-map <silent> <C-i> :python run_this_line()<CR>
-imap <silent> <C-i> <C-O>:python run_this_line()<CR>
-vmap <silent> <C-i> :python run_these_lines()<CR>
-map <silent> <localleader>d :py get_doc_buffer()<CR>
-map <silent> <localleader>r :python run_this_file()<CR>
+"map <silent> <C-i> :python run_this_line()<CR>
+"imap <silent> <C-i> <C-O>:python run_this_line()<CR>
+"vmap <silent> <C-i> :python run_these_lines()<CR>
+"map <silent> <localleader>d :py get_doc_buffer()<CR>
+"map <silent> <localleader>r :python run_this_file()<CR>
 
 "}}}
 " -- Snipmate Django extension -- {{{
