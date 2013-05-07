@@ -288,6 +288,10 @@ endfunction
 "git grep the current word using K (mnemonic Kurrent)
 nnoremap <silent> K :GitGrep <cword><CR>
 " }}}
+" capitalize shortcuts {{{
+" In visual-mode, capitalize all words in selection
+nmap gcgc 0gUlV:s/\s\(\a\)/ \U\1/p<cr>:set nohlsearch<CR>
+" }}}
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
@@ -575,6 +579,7 @@ aug nick
   au FileType gitconfig setlocal sw=4 sts=4 ts=4 et tw=200 sta
   au FileType jsp setlocal sw=4 sts=4 ts=4 noet tw=200 sta
   au FileType java setlocal sw=4 sts=4 ts=4 noet tw=200 sta
+  au FileType go setlocal sw=4 sts=4 ts=4 noet tw=200 sta
   "vim should not break lines
   au FileType vim setlocal tw=0 wm=0
   " autocorrect markdown
