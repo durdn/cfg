@@ -102,9 +102,9 @@ bind j:alt      focus behind
 bind k:alt      focus behind
 # }}}
 # Snapshot Bindings {{{
-bind ]:alt       snapshot coding save-to-disk
-bind ]:cmd;shift delete-snapshot coding all
-bind =:alt       activate-snapshot coding
+#bind ]:alt       snapshot coding save-to-disk
+#bind ]:cmd;shift delete-snapshot coding all
+#bind =:alt       activate-snapshot coding
 # }}}
 # Window Hints {{{
 bind p:alt hint
@@ -116,5 +116,5 @@ bind 7:alt relaunch
 bind g:alt grid padding:5 0:3,3 1:3,3
 # }}}
 # Switcher {{{
-bind tab:cmd switch
+#bind tab:cmd switch
 # }}}
