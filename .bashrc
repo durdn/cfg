@@ -122,7 +122,7 @@ export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43
 export LS_COLORS="di=34:ln=1;35:so=32:pi=33:ex=1;31:bd=34:cd=34:su=0;41:sg=0;46:tw=0;42:ow=0;43:fi=1;37:"
 }
 # }}}
-prompt-irblack
+# prompt-irblack
 
 # }}}
 # durdn/cfg related commands {{{
@@ -453,7 +453,7 @@ if [[ $(hostname | cut -d. -f1) == "nick-macbook-air" ]]; then
   export MAVEN_OPTS
   source $HOME/.atlassian
   export VIRTUAL_ENV_DISABLE_PROMPT=1
-  source $HOME/dev/envs/generic/bin/activate
+  #source $HOME/dev/envs/generic/bin/activate
 fi
 # }}}
 # }}}
@@ -463,3 +463,14 @@ if [ -e $HOME/.rvm/scripts/rvm ]; then
   PATH=$PATH:$HOME/.rvm/bin
 fi
 # }}}
+# liquid prompt {{{
+source $HOME/.liquidprompt
+LP_ENABLE_SVN=0
+LP_ENABLE_FOSSIL=0
+LP_ENABLE_BZR=0
+LP_ENABLE_BATT=0
+LP_ENABLE_LOAD=0
+LP_ENABLE_PROXY=0
+LP_USER_ALWAYS=0
+# }}}
+
