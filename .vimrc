@@ -292,6 +292,10 @@ nnoremap <silent> K :GitGrep <cword><CR>
 " In visual-mode, capitalize all words in selection
 nmap gcgc 0gUlV:s/\s\(\a\)/ \U\1/p<cr>:set nohlsearch<CR>
 " }}}
+" enrich/derich markdown with wordpress trick {{{
+nmap <leader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/p<cr>:set nohlsearch<CR>
+nmap <leader>pu :%s/<span.\{-}>\(.\{-}\)<\/span>/`\1`/p<cr>:set nohlsearch<CR>
+" }}}
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
