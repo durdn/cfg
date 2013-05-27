@@ -420,6 +420,11 @@ if [ $(uname) == "Darwin" ]; then
     eval "$(rbenv init -)";
     export PATH="$HOME/.rbenv/bin:$PATH"
   fi
+
+  #homebrew git autocompletions
+  if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+  fi
 fi
 
 # }}}
