@@ -94,7 +94,7 @@
     dl = "!git ll -1"
     #diff last commit
     dlc = diff --cached HEAD^
-    dr  = "!f() { git diff "$1"^.."$1"; }; f"
+    dr  = "!f() { git diff -w "$1"^.."$1"; }; f"
     diffr  = "!f() { git diff "$1"^.."$1"; }; f"
     branch = branch -ra
 
@@ -148,5 +148,5 @@
     rem="!git config -l | grep remote.*url | tail -n +2"
 
     #apply patch from other local repo
-    lap = "!f() { git --git-dir=$1.git format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
+    lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
 # }}}
