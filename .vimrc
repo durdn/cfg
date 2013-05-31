@@ -599,8 +599,6 @@ nmap <leader>ht :w<cr>:silent !cd /home/developer/delixl && build-venus.sh && de
 " Atlassian shortcuts {{{
 " generates confluence style from markdown
 " nmap <localleader>cf :!python md2wiki.py % | pbcopy<cr>
-" generates wordpress ready version from markdown
-" nmap <localleader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/<cr>:sav! wordpress/%<cr>:bd<cr>:redraw!<cr>:undo<cr>
 "}}}
 " redraw when reloading .vimrc
 :redraw!
