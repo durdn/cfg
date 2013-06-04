@@ -2,7 +2,13 @@
 
 debug=false;
 version="0.2";
-home=$HOME;
+#fixing installation folder if user is root
+if [ $(whoami) == "root" ];
+  then
+    home="/root";
+  else
+    home=$HOME;
+fi
 cfgname=".cfg";
 bkpname="backup.cfg";
 gitrepo="git@github.com:durdn/cfg.git";
