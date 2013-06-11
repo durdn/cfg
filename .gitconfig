@@ -149,4 +149,7 @@
 
     #apply patch from other local repo
     lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
+
+    #subtree add
+    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
 # }}}
