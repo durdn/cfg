@@ -1,0 +1,76 @@
+*markdown-folding.txt*	For Vim version 7.3	Last change: 2012 Oct 26
+
+CONTENTS						    *markdown-folding*
+
+Introduction			|markdown-folding-introduction|
+  Stacked folding			|markdown-folding-stacked|
+  Nested folding			|markdown-folding-nested|
+Configuration			|markdown-folding-configuration|
+  Overriding the default style		|g:markdown_fold_style|
+  Switching fold style			|markdown-folding-:FoldToggle|
+
+============================================================================
+INTRODUCTION				       *markdown-folding-introduction*
+
+This plugins enables you to fold markdown documents by section headings. It
+recognizes both styles of heading that markdown permits, namely:
+
+    # h1 signaled by one hash symbol
+
+    ## h2 signaled by two hash symbols
+
+    ### h3 etc. (up to h6)
+
+As well as:
+
+    h1 signaled by '=' underline
+    ============================
+
+    h2 signaled by '-' underline
+    ----------------------------
+
+Two different folding styles are supported: stacked (the default) and nested.
+
+						    *markdown-folding-stacked*
+The stacked folding style creates a flat list of sections. When all folds are
+closed, the outline resembles a fully expanded table of contents. That is, h1,
+h2, h3 etc. headings are all represented equally.
+
+Implementation details: all sections (h1, h2, h3 etc.) initiate a fold with
+foldlevel=1.
+
+						     *markdown-folding-nested*
+The nested folding style creates a heirarchical list of sections. When all
+folds are closed (by pressing |zM| or running :set foldlevel=0), the outline
+resembles a table of contents (ToC) that only shows h1 sections.
+
+Opening the h1 folds (by running :set foldlevel=1) reveals the content of that
+section, with any h2 sections outlined as a ToC.
+
+Opening an h2 fold (by running :set foldlevel=2) reveals the content of that
+section, with any h3 sections outlined as a ToC. And so on...
+
+Implementation details: h1 sections initiate a fold with foldlevel=1, h2
+sections initiate a fold with foldlevel=2, and so on.
+
+============================================================================
+CONFIGURATION				      *markdown-folding-configuration*
+
+The stacked folding style is the default.
+						       *g:markdown_fold_style*
+To make the nested folding style the default, put this in your |vimrc|
+file:>
+    let g:markdown_fold_style = 'nested'
+<
+
+						*markdown-folding-:FoldToggle*
+You can switch between the stacked and nested folding styles by running
+the command:>
+    :FoldToggle
+<
+
+The fold style is scoped to each window, which means it's possible to use the
+stacked folding style in one split window, and the nested folding style in
+another.
+
+ vim:tw=78:ts=8:ft=help:norl:
