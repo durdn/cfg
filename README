@@ -4,10 +4,10 @@ Install config tracking in your $HOME by running:
 
 Or in a shorter form:
   
-  curl -Lks j.mp/bbcfg | bash
+  curl -Lks j.mp/durdn-cfg | bash
 
 Or:
 
-  wget -q0 - j.mp/bbcfg | sh
+  wget -q0 - j.mp/durdn-cfg | sh
 
 Your configuration is stored by default in ~/.cfg where it can be committed back to your git repository.
