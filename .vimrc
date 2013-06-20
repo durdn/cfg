@@ -1,6 +1,6 @@
 " .vimrc
 " Author: Nicola Paolucci <nick@durdn.com>
-" Source: http://github.com/durdn/cfg/.vimrc
+" Source: https://bitbucket.org/durdn/cfg/src
 
 " Preamble with Pathogen   "{{{
 
@@ -210,7 +210,7 @@ nmap <silent> <leader>w :set nowrap!<CR>
 "close viewport buffer"
 nmap <silent> <leader>x :hid<CR>
 "close buffer"
-nmap <silent> <leader>X :bd<CR>
+nmap <silent> <leader>X :BD<CR>
 " toggle between number and relative number on ,l
 nnoremap <leader>l :call ToggleRelativeAbsoluteNumber()<CR>
 function! ToggleRelativeAbsoluteNumber()
