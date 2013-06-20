@@ -1,0 +1,103 @@
+*textobj-word-column.txt*  Adds text-objects for word-based columns.
+
+===============================================================================
+CONTENTS                                         *textobj-word-column-contents*
+
+    1. Intro...............................|textobj-word-column-intro|
+    2. Commands............................|textobj-word-column-mappings|
+    3. Mappings............................|textobj-word-column-examples|
+    4. Contributing........................|textobj-word-column-contributing|
+    5. Credits.............................|textobj-word-column-credits|
+    6. Changelog...........................|textobj-word-column-changelog|
+
+===============================================================================
+INTRO                                               *textobj-word-column-intro*
+
+The word-based column |text-object| makes operating on columns of code
+conceptually simpler and reduces keystrokes.
+
+The common task of deleting, changing, or adding to a vertical column of code
+can be achieved using |visual-blocks|, however the first step is to establish
+the visual block itself.  This typically involves moving the cursor to the
+start of the block, and then using vim motions to move the cursor to the end of
+the block, and finally doing the appropriate operation.
+
+With a text object for columns, establishing the visual block is much easier,
+and even unecessary for certain operations.
+
+===============================================================================
+WORD-BASED COLUMN                                *textobj-word-column-mappings*
+
+                                                   *ac* *cac* *dac* *vac* *yac*
+ac               "a column", a column based on "a word" |aw|.
+
+                                                   *ic* *cic* *dic* *vic* *yic*
+ic               "inner column", a column based on the "inner word" |iw|.
+
+                                                   *aC* *caC* *daC* *vaC* *yaC*
+aC               "a COLUMN", a column based on "a WORD" |aW|.
+
+                                                   *iC* *ciC* *diC* *viC* *yiC*
+iC               "inner COLUMN", a column based on "inner WORD" |iW|.
+
+===============================================================================
+USAGE EXAMPLES                                   *textobj-word-column-examples*
+
+vic                      Visually select a column.
+
+cic                      Change a column.
+
+dac                      Delete a column.
+
+vicI                     Prepend new text to a column.
+
+vicA                     Append new text to a column.
+
+viC                      Visually select a WORD based colunn.
+
+===============================================================================
+CONTRIBUTING                                 *textobj-word-column-contributing*
+
+The goal of this plugin is to be able to operate on conceptual columns of code
+without the hassle of manually demarcating their boundaries.  If you find a
+case where the selected column wasn't what you expected AND there's a logical
+way to fix or add a boundary condition for that case, then submit an issue via
+github.  If you'd like to add the fix yourself, please fork the plugin, make
+your changes in a branch, and then submit a pull request for that branch.
+
+===============================================================================
+CREDITS                                           *textobj-word-column-credits*
+
+Developed by Jim Garvin <http://github.com/coderifous>.
+
+Git repository: https://github.com/coderifous/textobj-word-column.vim
+
+===============================================================================
+CHANGELOG                                       *textobj-word-column-changelog*
+
+2012/06/18: First Public Release.
+
+2012/06/23: Added smart-column-boundaries:
+
+  Smart boundaries do a better job of figuring out where the visual block
+  should start and stop for columns with variable length words, and are
+  smarter about when to do when whitespace is in the mix.
+
+>
+  * Cursor position | vic Without Smart Boundaries | vic With Smart Boundaries
+  ------------------+------------------------------+---------------------------
+
+      ab*c   omg              |abc|    omg                |abc   | omg
+      abcdef omg              |abc|def omg                |abcdef| omg
+      abc    omg              |abc|    omg                |abc   | omg
+
+      abc *  omg              abc|    |omg                |abc   | omg
+      abcdef omg              abc|def |omg                |abcdef| omg
+      abc    omg              abc|    |omg                |abc   | omg
+
+      abc   *omg              abc|    |omg                abc   | |omg
+      abcdef omg              abc|def |omg                abcdef| |omg
+      abc    omg              abc|    |omg                abc   | |omg
+<
+
+2012/08/05: Bug fix: Switched recursive function with iteration.
