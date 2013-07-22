@@ -46,6 +46,13 @@ function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/'
 }
 
+function ahead_behind {
+    curr_branch=$(git rev-parse --abbrev-ref HEAD);
+    curr_remote=$(git config branch.master.remote);
+    curr_merge_branch=$(git config branch.$curr_branch.merge | cut -d / -f 3);
+    git rev-list --left-right --count $curr_branch...$curr_remote/$curr_merge_branch | tr -s '\t' '|';
+}
+
 hg_branch() {
     hg branch 2> /dev/null | \
         awk '{ printf "[\033[1;31m" $1 "]"}'
@@ -452,7 +459,7 @@ if [[ -e /etc/resolv.conf && $(cat /etc/resolv.conf | grep domain | col 2 | head
 fi
 # }}}
 # Atlassian config {{{
-if [[ $(hostname | cut -d. -f1) == "nick-macbook-air" ]]; then
+if [[ $(hostname | cut -d. -f1) == "pother" ]]; then
   export PATH="$HOME/dev/apps/maven2/bin:$PATH"
   MAVEN_OPTS="-Xms256m -Xmx1g -XX:PermSize=128m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
   export MAVEN_OPTS
