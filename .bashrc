@@ -485,4 +485,8 @@ LP_ENABLE_LOAD=0
 LP_ENABLE_PROXY=0
 LP_USER_ALWAYS=0
 # }}}
+# golang setup {{{
+export GOPATH=$HOME/dev/projects/go/
+export PATH=$PATH:$GOPATH/bin
+# }}}
 
