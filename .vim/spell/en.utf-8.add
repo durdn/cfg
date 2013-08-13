@@ -24,3 +24,8 @@ DVCS
 Jira
 VM
 workflows
+svn
+reflog
+timestamp
+UI
+rebase
