@@ -559,7 +559,7 @@ let g:ipy_perform_mappings = 0
 "map <silent> <localleader>r :python run_this_file()<CR>
 
 "}}}
-" -- Snipmate Django extension -- {{{
+" Snipmate Django extension {{{
 ":set ft=python.django
 ":set ft=html.django_template
 "}}}
@@ -578,6 +578,7 @@ aug nick
   au BufRead,BufNewFile *.less set ft=less
   au BufRead,BufNewFile *.pp set ft=puppet
   au BufRead,BufNewFile *.go set filetype=go
+  au BufRead,BufNewFile Vagrantfile set filetype=ruby
   "au FileType html set ft=django_template.html
   au FileType python set ft=python.django " For SnipMate
   au FileType python setlocal sw=4 sts=4 et tw=200 sta
