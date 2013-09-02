@@ -29,3 +29,5 @@ reflog
 timestamp
 UI
 rebase
+ClearCase
+CVS
