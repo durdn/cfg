@@ -52,24 +52,14 @@ alias tl-right-bot   move ${sox}+${ssx}*2/3;${soy}+${ssy}/2       ${ssx}/3;${ssy
 alias tl-right       move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy}
 
 # }}}
-# Layouts {{{
-# main layout {{{
-# }}}
-# }}}
 # Push Bindings {{{
 bind h:alt           chain ${h-left} | ${top-l} | ${bot-l} | ${h-left-80}
 bind h:alt;shift     chain ${top-l} | ${top-l-80}
-#bind h:cmd;shift     ${top-l}
-#bind h:alt;ctrl      ${bot-l}
-#bind h:cmd;ctrl      ${bot-l}
 bind l:alt           chain ${h-right} | ${top-r} | ${bot-r} | ${h-right-80}
 bind l:alt;shift     chain ${top-r} | ${top-r-80}
 bind c:alt           chain ${center-normal} | ${cntr-80-cols}
-#bind l:cmd;shift     ${top-r}
-#bind l:alt;ctrl      ${bot-r}
-#bind l:cmd;ctrl      ${bot-r}
-#bind t:alt           ${h-top}
-#bind b:alt           ${h-bottom}
+bind 8:alt           ${h-top}
+bind 9:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
 # }}}
 # Resize Bindings {{{
@@ -101,11 +91,6 @@ bind j:ctrl;alt focus down
 bind j:alt      focus behind
 bind k:alt      focus behind
 # }}}
-# Snapshot Bindings {{{
-#bind ]:alt       snapshot coding save-to-disk
-#bind ]:cmd;shift delete-snapshot coding all
-#bind =:alt       activate-snapshot coding
-# }}}
 # Window Hints {{{
 bind p:alt hint
 # }}}
@@ -114,7 +99,4 @@ bind 7:alt relaunch
 # }}}
 # Grid {{{
 bind g:alt grid padding:5 0:3,3 1:3,3
-# }}}
-# Switcher {{{
-#bind tab:cmd switch
 # }}}
