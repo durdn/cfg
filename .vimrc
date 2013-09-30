@@ -296,6 +296,9 @@ nmap gcgc 0gUlV:s/\s\(\a\)/ \U\1/p<cr>:set nohlsearch<CR>
 nmap <leader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/p<cr>:set nohlsearch<CR>
 nmap <leader>pu :%s/<span.\{-}>\(.\{-}\)<\/span>/`\1`/p<cr>:set nohlsearch<CR>
 " }}}
+" unwrap paragraphs selected {{{
+nmap <leader>7 :'<,'>/\(\S\)\n/\1\ /<cr>:'<,'>/\n/&&<CR>
+" }}}
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
@@ -568,7 +571,7 @@ let g:ipy_perform_mappings = 0
 aug nick
   " Remove ALL autocommands for the current group.
   au!
-  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
   au BufRead,BufNewFile *.jsp set ft=jsp.html
   au BufRead,BufNewFile *.jspf set ft=jsp.html
   au BufRead,BufNewFile *.tag set ft=jsp.html
