@@ -127,7 +127,7 @@ if [ ! -e $cfg_folder ];
         curl -LsO https://github.com/durdn/cfg/archive/master.tar.gz
         tar zxvf master.tar.gz
         mv cfg-master $home/.cfg
-        rm cfg-master.tar.gz
+        rm master.tar.gz
     else
       #git is available, clone from repo
       echo "|-> git clone from repo $gitrepo"
