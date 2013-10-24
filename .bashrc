@@ -264,9 +264,17 @@ function gr {
   find . -type f | grep -v .svn | grep -v .git | xargs grep -i $1 | grep -v Binary
 }
 
+# print only column x of output
 function col {
   awk -v col=$1 '{print $col}'
 }
+
+# skip first x words in line
+function skip {
+    n=$(($1 + 1))
+    cut -d' ' -f$n-
+}
+
 
 function xr {
   case $1 in
