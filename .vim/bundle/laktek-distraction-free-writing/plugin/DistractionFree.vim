@@ -37,6 +37,7 @@ function! DistractionFreeWriting()
 		" (AmaruCoder)
 		exec "set gfn=".escape(g:fullscreen_font,' ')
 
+		set antialias											 " set antialias if unset
 		set background=light
 		set lines=40 columns=100  				 " size of the editable area
 		set linespace=5 									 " spacing between lines
@@ -72,6 +73,7 @@ function! ToggleDistractionFreeWriting()
     endif
     let g:distractionFreeFullscreen = 'off'
 		set linebreak!
+		set antialias!
 
 		exec "colorscheme ".g:normal_colorscheme
 		" added escape function to allow for multiword font names
