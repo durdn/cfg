@@ -406,8 +406,8 @@ if [ $(uname) == "Darwin" ]; then
   #open macvim
   function gvim {
     if [ -e $1 ];
-      then open -a MacVim $1;
-      else touch $1 && open -a MacVim $1; 
+      then open -a MacVim $@;
+      else touch $@ && open -a MacVim $@; 
     fi
   }
 
