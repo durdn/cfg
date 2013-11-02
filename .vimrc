@@ -567,6 +567,13 @@ let g:ipy_perform_mappings = 0
 ":set ft=html.django_template
 "}}}
 "}}}
+" Distraction Free Writing extension {{{
+
+let g:normal_colorscheme = "solarized"
+let g:normal_font = "Terminus:h16"
+:map <leader>0 :call ToggleDistractionFreeWriting()<CR>
+"}}}
+"}}}
 " Autocommands {{{
 aug nick
   " Remove ALL autocommands for the current group.
