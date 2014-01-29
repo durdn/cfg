@@ -40,6 +40,8 @@ nmap <silent> <leader>w :set nowrap!<CR>
 nmap <silent> // :nohlsearch<CR>
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
+set background=dark
+colorscheme solarized
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 " End Theme and Color }}}
