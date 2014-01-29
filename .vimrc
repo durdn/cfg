@@ -11,9 +11,13 @@ syntax on
 set encoding=utf-8
 set visualbell noerrorbells " don't beep
 set hlsearch incsearch      " hightlight search and incremental search
+set gdefault                " global replace by default
 set nowrap                  " not wrap lines
 set nu                      " show line numbers
 set foldlevel=1             " default foldlevel 1 to see headings
+set nobackup noswapfile     " stop backup and swap files
+set nocompatible ignorecase smartcase expandtab autoindent
+set showmode showcmd ttyfast
 let mapleader = ","
 let maplocalleader = ";"
 set foldmethod=marker       " sets the fold method to {{{ }}} markers
