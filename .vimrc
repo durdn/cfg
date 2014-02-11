@@ -299,6 +299,9 @@ nmap <leader>pu :%s/<span.\{-}>\(.\{-}\)<\/span>/`\1`/p<cr>:set nohlsearch<CR>
 " unwrap paragraphs selected {{{
 nmap <leader>7 :'<,'>/\(\S\)\n/\1\ /<cr>:'<,'>/\n/&&<CR>
 " }}}
+" giant fonts for webinars and demos {{{
+nmap <leader>6 :set antialias<cr>:set guifont=Monaco:h20<cr>
+"}}}
 "}}}
 " Conditional configuration (macvim,gui,etc)"{{{
 " ==================================
@@ -566,7 +569,6 @@ let g:ipy_perform_mappings = 0
 ":set ft=python.django
 ":set ft=html.django_template
 "}}}
-"}}}
 " Distraction Free Writing extension {{{
 
 let g:normal_colorscheme = "solarized"
@@ -614,4 +616,8 @@ nmap <leader>ht :w<cr>:silent !cd /home/developer/delixl && build-venus.sh && de
 " nmap <localleader>cf :!python md2wiki.py % | pbcopy<cr>
 "}}}
 " redraw when reloading .vimrc
+"
+" for demoing webinars uncomment this section
+" set antialias
+" set guifont=Monaco:h20
 :redraw!
