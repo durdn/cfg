@@ -39,6 +39,20 @@ nmap <silent> <leader>l :set nonu!<CR>
 nmap <silent> <leader>w :set nowrap!<CR>
 "hide hightlight of searches"
 nmap <silent> // :nohlsearch<CR>
+" Movements shortcuts {{{
+" C-h/j/k/l to move between buffers
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" Buffer switching/management, might as well use those keys for something useful
+map <Right> :bnext<CR>
+imap <Right> <ESC>:bnext<CR>
+map <Left> :bprev<CR>
+imap <Left> <ESC>:bprev<CR>
+" Maximize only this window"
+nmap <silent> <leader>m :only<CR>
+" }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
 set background=dark
@@ -47,7 +61,6 @@ colorscheme solarized
 set noantialias
 set guifont=Terminus:h14
 "draw vertical column at 80
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 " End Theme and Color }}}
 " Plugins configuration"{{{
