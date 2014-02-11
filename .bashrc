@@ -498,3 +498,5 @@ export GOPATH=$HOME/dev/projects/go/
 export PATH=$PATH:$GOPATH/bin
 # }}}
 
+export JAVA_HOME=$(/usr/libexec/java_home)
+
