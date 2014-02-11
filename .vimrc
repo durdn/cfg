@@ -49,3 +49,8 @@ set guifont=Terminus:h14
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 " End Theme and Color }}}
+" Plugins configuration"{{{
+" Nerdtree "{{{
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+"}}}
+" End Plugins configuration"}}}
