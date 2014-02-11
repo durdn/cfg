@@ -4,10 +4,11 @@
 
 " Preamble with Pathogen   "{{{
 execute pathogen#infect()
-filetype plugin indent on
 "}}}
 " Basic settings and variables"{{{
+filetype plugin indent on
 syntax on
+set encoding=utf-8
 set visualbell noerrorbells " don't beep
 set hlsearch incsearch      " hightlight search and incremental search
 set nowrap                  " not wrap lines
