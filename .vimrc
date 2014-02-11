@@ -18,6 +18,7 @@ set foldlevel=1             " default foldlevel 1 to see headings
 set nobackup noswapfile     " stop backup and swap files
 set nocompatible ignorecase smartcase expandtab autoindent
 set showmode showcmd ttyfast
+set guioptions=a            " hide scrollbars/menu/tabs
 let mapleader = ","
 let maplocalleader = ";"
 set foldmethod=marker       " sets the fold method to {{{ }}} markers
