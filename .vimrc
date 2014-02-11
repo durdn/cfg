@@ -42,6 +42,10 @@ nmap <silent> // :nohlsearch<CR>
 " Theme and Color {{{
 set background=dark
 colorscheme solarized
+"font is antialiased Terminus
+set noantialias
+set guifont=Terminus:h14
+"draw vertical column at 80
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 " End Theme and Color }}}
