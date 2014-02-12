@@ -81,4 +81,7 @@ nmap <silent> <leader>eh :e ~/scratch.txt<CR>
 " Nerdtree "{{{
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 "}}}
+" Vim Airline {{{
+set laststatus=2
+" }}}
 " End Plugins configuration"}}}
