@@ -7,6 +7,7 @@
 execute pathogen#infect()
 "}}}
 " Basic settings and variables"{{{
+
 filetype plugin indent on
 syntax on
 set encoding=utf-8
@@ -105,5 +106,18 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+" }}}
+" ctrlp {{{
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_dotfiles = 1
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'build/.*\|/temp/.*',
+  \ 'file': '\.jar$\|\.ear$|\.zip',
+  \ }
+let g:ctrlp_user_command = 'git ls-files %s'
 " }}}
 " End Plugins configuration"}}}
