@@ -63,6 +63,20 @@ set guifont=Terminus:h14
 "draw vertical column at 80
 set colorcolumn=80
 " End Theme and Color }}}
+" Quick editing  {{{
+" Edit the .bashrc"
+nmap <silent> <leader>eb :e ~/.bashrc<CR>
+" Edit the .vimrc"
+nmap <silent> <leader>ev :e ~/.vimrc<CR>
+" Edit the .gitconfig"
+nmap <silent> <leader>eg :e ~/.gitconfig<CR>
+" Edit the .tmux.conf"
+nmap <silent> <leader>et :e ~/.tmux.conf<CR>
+" Edit slate configuration
+nmap <silent> <leader>el :e ~/.slate<cr>
+" Open a scratch file
+nmap <silent> <leader>eh :e ~/scratch.txt<CR>
+" }}}
 " Plugins configuration"{{{
 " Nerdtree "{{{
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
