@@ -23,6 +23,16 @@ let mapleader = ","
 let maplocalleader = ";"
 set foldmethod=marker       " sets the fold method to {{{ }}} markers
 " End Basic settings and variables}}}
+" Auto-commands {{{
+aug nick
+  " Remove all autocommands for the current group.
+  au!
+  " .md extension is markdown
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
+  " Spelling on markdown
+  au FileType markdown set spell
+aug END
+" End Auto-commands }}}
 " Keyboard Shortcuts and remappings   "{{{
 "changes with less keystrokes
 nnoremap ; :
@@ -76,7 +86,7 @@ nmap <silent> <leader>et :e ~/.tmux.conf<CR>
 nmap <silent> <leader>el :e ~/.slate<cr>
 " Open a scratch file
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
-" }}}
+" End Quick editing  {{{
 " Plugins configuration"{{{
 " Nerdtree "{{{
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
