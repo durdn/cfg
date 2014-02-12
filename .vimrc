@@ -3,6 +3,7 @@
 " Source: https://bitbucket.org/durdn/cfg/src
 
 " Preamble with Pathogen   "{{{
+
 execute pathogen#infect()
 "}}}
 " Basic settings and variables"{{{
@@ -24,6 +25,7 @@ let maplocalleader = ";"
 set foldmethod=marker       " sets the fold method to {{{ }}} markers
 " End Basic settings and variables}}}
 " Auto-commands {{{
+
 aug nick
   " Remove all autocommands for the current group.
   au!
@@ -34,6 +36,7 @@ aug nick
 aug END
 " End Auto-commands }}}
 " Keyboard Shortcuts and remappings   "{{{
+
 "changes with less keystrokes
 nnoremap ; :
 " Space to toggle folds.
@@ -50,6 +53,7 @@ nmap <silent> <leader>w :set nowrap!<CR>
 "hide hightlight of searches"
 nmap <silent> // :nohlsearch<CR>
 " Movements shortcuts {{{
+
 " C-h/j/k/l to move between buffers
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -65,6 +69,7 @@ nmap <silent> <leader>m :only<CR>
 " }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
+
 set background=dark
 colorscheme solarized
 "font is antialiased Terminus
@@ -74,6 +79,7 @@ set guifont=Terminus:h14
 set colorcolumn=80
 " End Theme and Color }}}
 " Quick editing  {{{
+
 " Edit the .bashrc"
 nmap <silent> <leader>eb :e ~/.bashrc<CR>
 " Edit the .vimrc"
@@ -88,6 +94,7 @@ nmap <silent> <leader>el :e ~/.slate<cr>
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
 " End Quick editing  }}}
 " Plugins configuration"{{{
+
 " Nerdtree "{{{
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 "}}}
