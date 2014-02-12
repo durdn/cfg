@@ -24,6 +24,7 @@ set guioptions=a            " hide scrollbars/menu/tabs
 let mapleader = ","
 let maplocalleader = ";"
 set foldmethod=marker       " sets the fold method to {{{ }}} markers
+set shortmess=atI           " disable welcome screen
 " End Basic settings and variables}}}
 " Auto-commands {{{
 
