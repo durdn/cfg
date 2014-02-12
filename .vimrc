@@ -122,3 +122,20 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_user_command = 'git ls-files %s'
 " }}}
 " End Plugins configuration"}}}
+" Platform specific configuration {{{
+if has('gui_win64')
+  set noantialias
+  set guifont=Terminus:h12
+  nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
+  "overwrite mapping to reload the .vimrc"
+  nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
+endif
+if has('gui_win32')
+  set noantialias
+  set guifont=Terminus:h12
+  "overwrite mapping to edit the .vimrc"
+  nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
+  "overwrite mapping to reload the .vimrc"
+  nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
+endif
+" End Platform specific configuration }}}
