@@ -86,12 +86,17 @@ nmap <silent> <leader>et :e ~/.tmux.conf<CR>
 nmap <silent> <leader>el :e ~/.slate<cr>
 " Open a scratch file
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
-" End Quick editing  {{{
+" End Quick editing  }}}
 " Plugins configuration"{{{
 " Nerdtree "{{{
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 "}}}
 " Vim Airline {{{
 set laststatus=2
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 " }}}
 " End Plugins configuration"}}}
