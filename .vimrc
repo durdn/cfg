@@ -33,6 +33,7 @@ aug nick
   au!
   " .md extension is markdown
   au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
+  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
   " Spelling on markdown
   au FileType markdown set spell
 aug END
@@ -138,4 +139,10 @@ if has('gui_win32')
   "overwrite mapping to reload the .vimrc"
   nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
 endif
+if has("gui_macvim")
+  set fuopt=maxvert
+  command! ToggleFullScreen if &fu|set noantialias|set gfn=Terminus:h14|set co=80|set nofu|else|set antialias|set gfn=Inconsolata:h22|set co=100|set fu|endif
+  an <silent> Window.Toggle\ Full\ Screen\ Mode :ToggleFullScreen<CR>
+endif
+
 " End Platform specific configuration }}}
