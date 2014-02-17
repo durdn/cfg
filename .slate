@@ -34,7 +34,9 @@ alias h-right       push right bar-resize:${ssx}/2
 alias h-top         push up    bar-resize:${ssy}/2
 alias h-bottom      push down  bar-resize:${ssy}/2
 alias h-left-80     push left  bar-resize:(${ssx}/2)-${80cols}/2
+alias h-left-80rev  push left  bar-resize:(${ssx}/2)+${80cols}/2
 alias h-right-80    move (${sox}+${ssx}/2)+${80cols}/2;${soy}     (${ssx}/2)-${80cols}/2;${ssy}
+alias h-right-80rev move (${sox}+${ssx}/2)-${80cols}/2;${soy}     (${ssx}/2)+${80cols}/2;${ssy}
 
 #position thirds
 alias 3c-right       move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy}
@@ -53,10 +55,10 @@ alias tl-right       move ${sox}+${ssx}*2/3;${soy}                ${ssx}/3;${ssy
 
 # }}}
 # Push Bindings {{{
-bind h:alt           chain ${h-left} | ${top-l} | ${bot-l} | ${h-left-80}
-bind h:alt;shift     chain ${top-l} | ${top-l-80}
-bind l:alt           chain ${h-right} | ${top-r} | ${bot-r} | ${h-right-80}
-bind l:alt;shift     chain ${top-r} | ${top-r-80}
+bind h:alt           chain ${h-left} | ${h-left-80} | ${h-left-80rev}
+bind h:alt;shift     chain ${top-l} | ${top-l-80} | ${bot-l}
+bind l:alt           chain ${h-right} | ${h-right-80} | ${h-right-80rev}
+bind l:alt;shift     chain ${top-r} | ${top-r-80} | ${bot-r}
 bind c:alt           chain ${center-normal} | ${cntr-80-cols}
 bind 8:alt           ${h-top}
 bind 9:alt           ${h-bottom}
