@@ -69,6 +69,12 @@ map <Left> :bprev<CR>
 imap <Left> <ESC>:bprev<CR>
 " Maximize only this window"
 nmap <silent> <leader>m :only<CR>
+"vertical split"
+nmap <silent> <leader>v :bel :vne<CR>
+"horizontal split"
+nmap <silent> <leader>f :bel :new<CR>
+"close viewport buffer"
+nmap <silent> <leader>x :hid<CR>
 " }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
