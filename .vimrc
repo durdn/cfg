@@ -122,6 +122,10 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_user_command = 'git ls-files %s'
 " }}}
+" Orgmode {{{
+" hide stars
+let g:org_heading_shade_leading_stars = 1
+" }}}
 " End Plugins configuration"}}}
 " Platform specific configuration {{{
 if has('gui_win64')
