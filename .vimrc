@@ -36,6 +36,8 @@ aug nick
   au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
   " Spelling on markdown
   au FileType markdown set spell
+  " javascript tabstop 2 expandtab
+  au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 expandtab textwidth=79 colorcolumn=80
 aug END
 " End Auto-commands }}}
 " Keyboard Shortcuts and remappings   "{{{
