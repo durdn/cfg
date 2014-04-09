@@ -78,6 +78,10 @@ nmap <silent> <leader>f :bel :new<CR>
 "close viewport buffer"
 nmap <silent> <leader>x :hid<CR>
 " }}}
+" Wordpress workarounds {{{
+nmap <leader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/p<cr>:set nohlsearch<CR>
+nmap <leader>pu :%s/<span.\{-}>\(.\{-}\)<\/span>/`\1`/p<cr>:set nohlsearch<CR>
+" }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
 
