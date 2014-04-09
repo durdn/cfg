@@ -342,6 +342,14 @@ function gv {
   esac
 }
 
+#open a scratch file in Dropbox
+function sc {
+  gvim ~/Dropbox/$(openssl rand -base64 10 | tr -dc 'a-zA-Z').txt
+}
+function scratch {
+  gvim ~/Dropbox/$(openssl rand -base64 10 | tr -dc 'a-zA-Z').txt
+}
+
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
