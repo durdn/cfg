@@ -448,6 +448,9 @@ if [ $(uname) == "Darwin" ]; then
   if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
   fi
+
+  #Java home setting
+  export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
 # }}}
@@ -505,4 +508,3 @@ LP_USER_ALWAYS=0
 export GOPATH=$HOME/dev/projects/go/
 export PATH=$PATH:$GOPATH/bin
 # }}}
-
