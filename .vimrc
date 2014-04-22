@@ -82,6 +82,22 @@ nmap <silent> <leader>x :hid<CR>
 nmap <leader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/p<cr>:set nohlsearch<CR>
 nmap <leader>pu :%s/<span.\{-}>\(.\{-}\)<\/span>/`\1`/p<cr>:set nohlsearch<CR>
 " }}}
+" Writing environment {{{
+nnoremap <silent> <leader>0 :call ToggleWritingEnvironment()<CR>
+let g:writing_environment_on = 0
+function! ToggleWritingEnvironment()
+  set fuopt=maxvert
+  if g:writing_environment_on
+    set noantialias|set gfn=Terminus:h14|set co=80
+"    set foldcolumn=0
+    let g:writing_environment_on = 0
+  else
+    set antialias|set gfn=Inconsolata:h22|set co=180
+"    set foldcolumn=12
+    let g:writing_environment_on = 1
+  endif
+endfunction
+" }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
 
