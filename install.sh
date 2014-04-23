@@ -72,7 +72,7 @@ link_assets() {
           else
             ha=$(md5prog $home/$asset);
             ca=$(md5prog $cfg_folder/$asset);
-            if [ $ha == $ca ];
+            if [ $ha = $ca ];
               #asset is exactly the same
               then
                 if [ -h $home/$asset ];
@@ -81,7 +81,7 @@ link_assets() {
                   else
                     #asset must be relinked
                     echo "L [re-link] $home/$asset";
-                    if [ $debug == false ];
+                    if [ $debug = false ];
                       then
                         mv $home/$asset $backup_folder/$asset;
                         ln -s $cfg_folder/$asset $home/$asset;
@@ -93,7 +93,7 @@ link_assets() {
               else
                 #asset exist but is different, must back it up
                 echo "C [conflict] $home/$asset";
-                if [ $debug == false ];
+                if [ $debug = false ];
                   then
                     mv $home/$asset $backup_folder/$asset;
                     ln -s $cfg_folder/$asset $home/$asset;
