@@ -23,7 +23,7 @@ ignored="install.py|install.pyc|install.sh|.git$|.gitmodule|.gitignore|README|bi
 cfg_folder=$home/$cfgname;
 backup_folder=$home/$bkpname;
 
-function md5prog {
+md5prog() {
   if [ $(uname) == "Darwin" ]; then
     md5 -q $1
   fi
@@ -32,7 +32,7 @@ function md5prog {
   fi
 }
 
-function update_submodules {
+update_submodules() {
   return;
   if [ $debug == true ];
     then
@@ -47,7 +47,7 @@ function update_submodules {
   fi
 }
 
-function link_assets {
+link_assets() {
   for asset in $assets ;
   do
     if [ ! -e $home/$asset ];
