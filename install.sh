@@ -3,7 +3,7 @@
 debug=false;
 version="0.2";
 #fixing installation folder if user is root
-if [ $(whoami) == "root" ];
+if [ $(whoami) = "root" ];
   then
     home="/root";
   else
@@ -24,10 +24,10 @@ cfg_folder=$home/$cfgname;
 backup_folder=$home/$bkpname;
 
 md5prog() {
-  if [ $(uname) == "Darwin" ]; then
+  if [ $(uname) = "Darwin" ]; then
     md5 -q $1
   fi
-  if [ $(uname) == "Linux" ]; then
+  if [ $(uname) = "Linux" ]; then
     md5sum $1 | awk {'print $1'}
   fi
 }
@@ -54,7 +54,7 @@ link_assets() {
       then
         #asset does not exist, can just copy it
         echo "N [new] $home/$asset";
-        if [ $debug == false ];
+        if [ $debug = false ];
           then ln -s $cfg_folder/$asset $home/$asset;
           else echo ln -s $cfg_folder/$asset $home/$asset;
         fi
@@ -120,7 +120,7 @@ fi
 #clone config folder if not present, update if present
 if [ ! -e $cfg_folder ];
   then 
-    if [[ -z $(command -v git) ]]
+    if [ -z $(command -v git) ]
       then
         #git is not available, juzt unpack the zip file
         echo "|* git not available downloading zip file..."
