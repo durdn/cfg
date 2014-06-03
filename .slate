@@ -63,6 +63,7 @@ bind c:alt           chain ${center-normal} | ${cntr-80-cols}
 bind 8:alt           ${h-top}
 bind 9:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
+bind m:alt           ${maximize}
 # }}}
 # Resize Bindings {{{
 bind right:alt       resize +10% +0
