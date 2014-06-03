@@ -123,6 +123,8 @@ nmap <silent> <leader>et :e ~/.tmux.conf<CR>
 nmap <silent> <leader>el :e ~/.slate<cr>
 " Open a scratch file
 nmap <silent> <leader>eh :e ~/scratch.txt<CR>
+" Open dev tools content folder
+nmap <silent> <leader>ec :e ~/c/source<CR>
 " End Quick editing  }}}
 " Plugins configuration"{{{
 
