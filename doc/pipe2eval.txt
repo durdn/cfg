@@ -1,0 +1,42 @@
+*pipe2eval.txt*  simple REPL inside vim
+Author:  zweifisch <https://github.com/zweifisch>
+License: Same terms as Vim itself (see |license|)
+
+================================================================================
+INTRODUCTION                                                         *pipe2eval*
+
+Supports: python, php, coffee, mysql, mongodb, redis, sh, go, javascript, ruby,
+elixir ...
+
+================================================================================
+USAGE                                                          *pipe2eval-usage*
+
+Press V<Space> to evaluate current line, vip<space> to evaluate a paragraph.
+
+Evaluate an empty line to clear the buffer's context.
+
+pipe2eval will set the evaluation language based on each buffer's |filetype|.
+
+--------------------------------------------------------------------------------
+                                                              *pipe2eval-:Pipe2*
+:Pipe2 [filetype]       To specify a different filetype
+                        Examples:
+                          :Pipe2 redis
+                          :Pipe2 mongo
+
+--------------------------------------------------------------------------------
+KEY MAPPINGS                                            *pipe2eval-key-mappings*
+By default, pipe2eval maps <Space> in |Visual| mode with:
+  vmap <buffer> <Space> ':![pipe2eval dir]/plugin/pipe2eval.sh text<CR><CR>'
+This mapping can be customized by setting the |g:pipe2eval_map_key|
+
+g:pipe2eval_map_key                                          *pipe2eval-map_key*
+                        Change the key to be mapped by pipe2eval
+                        Example:
+                          let g:pipe2eval_map_key = '<Leader>p2e'
+
+================================================================================
+ABOUT                                                          *pipe2eval-about*
+
+Grab the latest version or report a bug on GitHub:
+http://github.com/zweifisch/pipe2eval
