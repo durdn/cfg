@@ -155,6 +155,9 @@
     sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
+
+    #add bitbucket remote
+    ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
 # }}}
 [rerere]
 	enabled = true
