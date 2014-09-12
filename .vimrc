@@ -171,6 +171,8 @@ if has('gui_win32')
 endif
 if has("gui_macvim")
   set fuopt=maxvert
+  set noantialias
+  set guifont=Terminus:h16
   command! ToggleFullScreen if &fu|set noantialias|set gfn=Terminus:h14|set co=80|set nofu|else|set antialias|set gfn=Inconsolata:h22|set co=100|set fu|endif
   an <silent> Window.Toggle\ Full\ Screen\ Mode :ToggleFullScreen<CR>
 endif
