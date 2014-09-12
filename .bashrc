@@ -294,6 +294,7 @@ if [ $(uname) == "Linux" ]; then
   #alias tarot="screen -c ./screen-tarot.config"
 
   if [ -d $HOME/.rbenv ]; then
+    export RBENV_ROOT=/usr/local/var/rbenv
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)";
   fi
@@ -349,6 +350,7 @@ if [ $(uname) == "Darwin" ]; then
 
   #setup rbenv
   if which rbenv > /dev/null; then
+    export RBENV_ROOT=/usr/local/var/rbenv
     eval "$(rbenv init -)";
     export PATH="$HOME/.rbenv/bin:$PATH"
   fi
@@ -360,6 +362,8 @@ if [ $(uname) == "Darwin" ]; then
 
   #Java home setting
   export JAVA_HOME=$(/usr/libexec/java_home)
+  #Pipe2Eval folder for vim extension
+  export PIP2EVAL_TMP_FILE_PATH=/tmp/shms
 fi
 
 # }}}
