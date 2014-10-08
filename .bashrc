@@ -422,3 +422,6 @@ source $HOME/.liquidprompt
 export GOPATH=$HOME/dev/projects/go/
 export PATH=$PATH:$GOPATH/bin
 # }}}
+export WORKON_HOME="/Users/npaolucci/dev/envs"
+export VIRTUALENV_USE_DISTRIBUTE=1
+[[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
