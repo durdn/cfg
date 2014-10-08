@@ -32,8 +32,8 @@ aug nick
   " Remove all autocommands for the current group.
   au!
   " .md extension is markdown
-  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
-  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 textwidth=79 colorcolumn=80
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 wrap linebreak textwidth=0 colorcolumn=80 wrapmargin=0
+  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 wrap linebreak textwidth=0 colorcolumn=80 wrapmargin=0
   " Spelling on markdown
   au FileType markdown set spell
   " javascript tabstop 2 expandtab
