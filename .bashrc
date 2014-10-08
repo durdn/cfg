@@ -408,7 +408,6 @@ if [ -e $HOME/.rvm/scripts/rvm ]; then
 fi
 # }}}
 # liquid prompt {{{
-source $HOME/.liquidprompt
 LP_ENABLE_SVN=0
 LP_ENABLE_FOSSIL=0
 LP_ENABLE_BZR=0
@@ -416,6 +415,8 @@ LP_ENABLE_BATT=0
 LP_ENABLE_LOAD=0
 LP_ENABLE_PROXY=0
 LP_USER_ALWAYS=0
+LP_HOSTNAME_ALWAYS=0
+source $HOME/.liquidprompt
 # }}}
 # golang setup {{{
 export GOPATH=$HOME/dev/projects/go/
