@@ -5,3 +5,12 @@ xmonad.errors
 xmonad.hi
 xmonad.o
 .DS_Store
+bin/terraform
+bin/terraform-provider-aws
+bin/terraform-provider-consul
+bin/terraform-provider-digitalocean
+bin/terraform-provider-dnsimple
+bin/terraform-provider-heroku
+bin/terraform-provisioner-file
+bin/terraform-provisioner-local-exec
+bin/terraform-provisioner-remote-exec
