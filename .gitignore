@@ -4,3 +4,4 @@ xmonad-i386-linux
 xmonad.errors
 xmonad.hi
 xmonad.o
+.DS_Store
