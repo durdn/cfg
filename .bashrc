@@ -25,9 +25,6 @@ fi
 
 #path should have durdn config bin folder
 export PATH=$HOME/.cfg/bin:$PATH
-#set the terminal type to 256 colors
-export TERM=xterm-256color
-
 
 # }}}
 # Tmux startup {{{
@@ -306,6 +303,9 @@ fi
 # }}}
 # OSX specific config {{{
 if [ $(uname) == "Darwin" ]; then
+  #set the terminal type to 256 colors
+  export TERM=xterm-256color
+
   #export PATH=/usr/local/mysql/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:$PATH
   #export PATH=/Users/nick/.clj/bin:$PATH
   export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python3/3.4.1/bin:$HOME/bin:$PATH
@@ -364,6 +364,10 @@ if [ $(uname) == "Darwin" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   #Pipe2Eval folder for vim extension
   export PIP2EVAL_TMP_FILE_PATH=/tmp/shms
+
+  export WORKON_HOME="/Users/npaolucci/dev/envs"
+  export VIRTUALENV_USE_DISTRIBUTE=1
+  [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
 fi
 
 # }}}
@@ -376,6 +380,11 @@ if [ $(uname) == "MINGW32_NT-5.1" ]; then
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
+fi
+# }}}
+# Boot2docker specific config {{{
+if [[ $(uname -a | col 2) == "boot2docker" ]]; then
+  export TERM=xterm
 fi
 # }}}
 # Clients configs {{{
@@ -422,6 +431,3 @@ source $HOME/.liquidprompt
 export GOPATH=$HOME/dev/projects/go/
 export PATH=$PATH:$GOPATH/bin
 # }}}
-export WORKON_HOME="/Users/npaolucci/dev/envs"
-export VIRTUALENV_USE_DISTRIBUTE=1
-[[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
