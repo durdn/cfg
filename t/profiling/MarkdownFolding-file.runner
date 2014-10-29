@@ -1,0 +1,4 @@
+vim --cmd 'profile start MarkdownFolding-file.result' \
+    --cmd 'profile! file *markdown/folding.vim' \
+    -c 'profdel file *markdown/folding.vim' \
+    1.5_kilos.md

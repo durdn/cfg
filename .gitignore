@@ -1,10 +1,7 @@
-tags
-.vim/.netrwhist
-xmonad-i386-linux
-xmonad.errors
-xmonad.hi
-xmonad.o
 .DS_Store
+.vim-flavor/
+.vim/.netrwhist
+VimFlavor.lock
 bin/terraform
 bin/terraform-provider-aws
 bin/terraform-provider-consul
@@ -14,3 +11,9 @@ bin/terraform-provider-heroku
 bin/terraform-provisioner-file
 bin/terraform-provisioner-local-exec
 bin/terraform-provisioner-remote-exec
+doc/tags
+tags
+xmonad-i386-linux
+xmonad.errors
+xmonad.hi
+xmonad.o
