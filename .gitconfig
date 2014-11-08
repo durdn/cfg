@@ -41,7 +41,7 @@
 [pull]
     default = current
 [diff]
-  memonicprefix = true
+  mnemonicprefix = true
 [branch]
   autosetuprebase = always
 [apply]
