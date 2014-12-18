@@ -1,6 +1,8 @@
+*.pyc
 .DS_Store
 .vim-flavor/
 .vim/.netrwhist
+/doc/tags
 VimFlavor.lock
 bin/terraform
 bin/terraform-provider-aws
