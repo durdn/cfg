@@ -1,10 +1,8 @@
 *.pyc
 .DS_Store
 .vim-flavor/
-.vim-flavor/
 .vim/.netrwhist
 /doc/tags
-VimFlavor.lock
 VimFlavor.lock
 bin/terraform
 bin/terraform-provider-aws
@@ -15,7 +13,6 @@ bin/terraform-provider-heroku
 bin/terraform-provisioner-file
 bin/terraform-provisioner-local-exec
 bin/terraform-provisioner-remote-exec
-doc/tags
 doc/tags
 tags
 xmonad-i386-linux
