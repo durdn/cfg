@@ -1,0 +1,185 @@
+*fireplace.txt*  Clojure REPL support
+
+Author:  Tim Pope <http://tpo.pe/>
+License: Same terms as Vim itself (see |license|)
+
+This plugin is only available if 'compatible' is not set.
+
+                                                *fireplace*
+While not strictly necessary, this plugin works best with the middleware
+provided by <https://github.com/clojure-emacs/cider-nrepl>.
+
+CONNECTING TO A REPL                            *fireplace-connect*
+
+Connecting to lein repl happens automatically.  If you have a different setup,
+you can connect by hand.
+
+                                                *fireplace-:Connect*
+:Connect {proto}://{host}:{port} {path}
+                        Connect to a REPL server.  The path is the root of the
+                        project that the REPL applies to.
+
+:Connect                Interactively prompt for the options to connect to a
+                        REPL server.
+
+The REPL is used for the commands below. If no REPL is found for the current
+buffer and 'path' contains at least one jar file, java (or $JAVA_CMD) is
+invoked directly, which can be quite slow depending on your setup.
+
+The only adapter shipped with fireplace.vim is for nREPL.  You need either
+|if_pyth| or the python command in your PATH.
+
+                        *fireplace-piggieback* *fireplace-clojurescript*
+ClojureScript can be evaled with Piggieback if the appropriate nREPL
+middleware is loaded: https://github.com/cemerick/piggieback.  Be aware that
+your ClojureScript files must be available on the classpath for this to work
+properly, and that not all operations are supported.
+
+                                                *fireplace-:Piggieback*
+:Piggieback [{env}]     Create a new nREPL session and invoke
+                        cemerick.piggieback/cljs-repl with the given or
+                        default (Rhino) environment.  This will also happen
+                        automatically on first eval in a ClojureScript buffer
+                        if not invoked explicitly. If {env} is a number, the
+                        piggieback repl-env will will use a cljs.repl.browser
+                        (rather than a Rhino) env with the port set to the
+                        number provided.
+
+:Piggieback!            Terminate the most recently created piggieback
+                        session.
+
+DOCUMENTATION                                   *fireplace-documentation*
+
+                                                *fireplace-:Doc*
+:Doc {symbol}           Show the docs for the given symbol.
+
+                                                *fireplace-:Javadoc*
+:Javadoc {class}        Open the java docs for the given class in a browser.
+
+                                                *fireplace-K*
+K                       Look up docs for symbol under cursor.
+
+                                                *fireplace-:FindDoc*
+:FindDoc {arg}          Wrapper around (clojure.repl/find-doc ...).
+
+                                                *fireplace-:Source*
+:Source {symbol}        Show the source for the given symbol.
+
+                                                *fireplace-[d*
+[d                      Show source for symbol under cursor.
+]d
+
+NAVIGATING                                      *fireplace-navigating*
+
+These commands will never use a remote REPL, only a local one, as file paths
+on a remote server wouldn't be very useful locally.
+
+                                                *fireplace-[_CTRL-D*
+[<C-D>                  Jump to the source of the symbol under the cursor.
+]<C-D>
+
+                                                *fireplace-CTRL-W_CTRL-D*
+<C-W><C-D>              Jump to the source of the symbol under the cursor in
+<C-W>d                  a split.
+
+                                                *fireplace-gf*
+gf                      Go to the file for the namespace under the cursor.
+
+                                                *fireplace-:Djump*
+:Djump {symbol}         Jump to the definition for the given symbol.
+
+                                                *fireplace-:Dsplit*
+:Dsplit {symbol}        Jump to the definition for the given symbol in a
+                        split.
+
+EVALUATING CODE                                 *fireplace-eval*
+
+All code is evaluated in the namespace of the current file, requiring it if
+necessary.  If the current file sits outside the class path (project.clj, for
+example), the user namespace is used instead.  If an exception occurs, the
+stack trace is loaded into the |location-list|.  Use |:lopen| to view it.
+
+                                                *fireplace-:Require*
+:Require [ns]           Require :reload the given/current namespace.
+
+                                                *fireplace-:Require!*
+:Require! [ns]          Require :reload-all the given/current namespace.
+
+                                                *fireplace-:Eval*
+:Eval                   Eval/print the outermost form for the current line.
+
+:{range}Eval            Eval/print the given range.
+
+:Eval {expr}            Eval/print the given expression.
+
+                                                *fireplace-:Eval!*
+:[range]Eval!           Eval the given range or outermost expression and
+                        replace it with its result.
+
+:[range]Eval! {expr}    Eval the given expression and insert it after
+                        the given range or current line.
+
+                                                *fireplace-:RunTests*
+:RunTests [ns] [...]    Call clojure.test/run-tests on the given namespaces
+                        and load the results into the quickfix list.
+
+:RunAllTests [pattern]  Call clojure.test/run-all-tests with the given pattern
+                        and load the results into the quickfix list.
+
+                                                *fireplace-cp*
+cp{motion}              Eval/print the code indicated by {motion}.
+
+cpp                     Eval/print the innermost form at the cursor.
+
+                                                *fireplace-cpr*
+cpr                     :Require|RunTests
+
+                                                *fireplace-c!*
+c!{motion}              Eval/replace the code indicated by {motion}.
+
+c!!                     Eval/replace the innermost form at the cursor.
+
+                                                *fireplace-cm*
+cm{motion}              Fully macroexpand the code indicated by {motion}.
+
+                                                *fireplace-cmm*
+cmm                     Fully macroexpand the innermost form at the cursor.
+
+                                                *fireplace-c1m*
+c1m{motion}             Macroexpand the code indicated by {motion} once.
+
+                                                *fireplace-c1mm*
+c1mm                    Macroexpand the innermost form at the cursor once.
+
+                                                *fireplace-cqp*
+cqp                     Bring up a prompt for code to eval/print.
+
+                                                *fireplace-cqc*
+cqc                     Bring up a |command-line-window| for code to
+                        eval/print.  Equivalent to cqp<C-F>i.
+
+                                                *fireplace-cq*
+cq{motion}              Bring up a |command-line-window| with text indicated
+                        by {motion} prepopulated.
+
+                                                *fireplace-:Last*
+:Last                   Open the result of the last evaluation in the preview
+                        window.  Use :2Last to get the next-to-last result,
+                        and so on.  Once the window is open, cycle to older
+                        and newer entries with |:lprevious| and |:lnext|.
+
+And insert mode:
+
+                                                *fireplace-i_CTRL-R_(*
+<C-R>(                  Evaluate the given expression and insert the result.
+
+There's omnicomplete on |CTRL-X_CTRL-O|, which works in Clojure buffers and
+in the |command-line-window|, and tab complete at the cqp prompt.
+
+ABOUT                                           *fireplace-about*
+
+Grab the latest version or report a bug on GitHub:
+
+http://github.com/tpope/vim-fireplace
+
+ vim:tw=78:et:ft=help:norl:
