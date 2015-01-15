@@ -1,8 +1,5 @@
-*.pyc
-.DS_Store
 .DS_Store
 .vim-flavor/
-.vim/.netrwhist
 .vim/.netrwhist
 /doc/tags
 VimFlavor.lock
