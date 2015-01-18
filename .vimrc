@@ -99,6 +99,10 @@ function! ToggleWritingEnvironment()
   endif
 endfunction
 " }}}
+" Magic c-space OmniComplete "{{{
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+" }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
 
