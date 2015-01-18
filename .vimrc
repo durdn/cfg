@@ -36,6 +36,7 @@ aug nick
   au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 wrap linebreak textwidth=0 colorcolumn=80 wrapmargin=0
   " Spelling on markdown
   au FileType markdown set spell
+  au FileType go set ts=4
   " javascript tabstop 2 expandtab
   au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 expandtab textwidth=79 colorcolumn=80
 aug END
@@ -157,6 +158,7 @@ let g:ctrlp_user_command = 'git ls-files %s'
 if has('gui_win64')
   set noantialias
   set guifont=Terminus:h12
+  set lines=85
   nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
   nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
@@ -164,6 +166,7 @@ endif
 if has('gui_win32')
   set noantialias
   set guifont=Terminus:h12
+  set lines=85
   "overwrite mapping to edit the .vimrc"
   nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
