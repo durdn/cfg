@@ -1,0 +1,28 @@
+" Copyright 2013 The Go Authors. All rights reserved.
+" Use of this source code is governed by a BSD-style
+" license that can be found in the LICENSE file.
+"
+" go.vim: Vim filetype plugin for Go.
+
+if exists("b:did_ftplugin")
+    finish
+endif
+let b:did_ftplugin = 1
+
+setlocal comments=s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//\ %s
+
+let b:undo_ftplugin = "setl com< cms<"
+
+" Set gocode completion
+setlocal omnifunc=go#complete#Complete
+
+" Set b:gopackage if any
+if type(go#package#FromPath(@%)) == type('')
+    let b:gopackage = go#package#FromPath(@%)
+endif
+
+" Set compiler for :make command
+compiler go
+
+" vim:sw=4:et
