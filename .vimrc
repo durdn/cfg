@@ -32,13 +32,21 @@ aug nick
   " Remove all autocommands for the current group.
   au!
   " .md extension is markdown
-  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 wrap linebreak textwidth=0 colorcolumn=80 wrapmargin=0
-  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 wrap linebreak textwidth=0 colorcolumn=80 wrapmargin=0
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 wrap linebreak textwidth=0 wrapmargin=0
+  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 wrap linebreak textwidth=0 wrapmargin=0
+  if v:version > 703
+    au BufRead,BufNewFile *.md set colorcolumn=80
+    au BufRead,BufNewFile *.wp set colorcolumn=80
+  endif
+
   " Spelling on markdown
   au FileType markdown set spell
   au FileType go set ts=4
   " javascript tabstop 2 expandtab
-  au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 expandtab textwidth=79 colorcolumn=80
+  au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 expandtab textwidth=79
+  if v:version > 703
+    au BufRead,BufNewFile *.js set colorcolumn=80
+  endif
 aug END
 " End Auto-commands }}}
 " Keyboard Shortcuts and remappings   "{{{
@@ -112,7 +120,9 @@ colorscheme solarized
 set noantialias
 set guifont=Terminus:h14
 "draw vertical column at 80
-set colorcolumn=80
+if v:version > 703
+  set colorcolumn=80
+endif
 " End Theme and Color }}}
 " Quick editing  {{{
 
