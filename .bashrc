@@ -313,7 +313,7 @@ if [ $(uname) == "Darwin" ]; then
 
   #aliases 
   alias ls='ls -G'
-  alias ll='ls -lG'
+  alias ll='ls -ltrG'
   alias la='ls -alG'
   alias less='less -R'
   alias fnd='open -a Finder'
