@@ -372,6 +372,14 @@ if [ $(uname) == "Darwin" ]; then
   export WORKON_HOME="/Users/npaolucci/dev/envs"
   export VIRTUALENV_USE_DISTRIBUTE=1
   [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
+
+  # golang setup {{{
+  # export GOPATH=$HOME/dev/projects/go/
+  # export PATH=$PATH:$GOPATH/bin
+  export GOPATH=/usr/local/opt/go/libexec
+  export PATH=$PATH:$GOPATH/bin
+  export PATH=$HOME/dev/apps/go_appengine:$PATH
+  # }}}
 fi
 
 # }}}
@@ -431,7 +439,5 @@ LP_USER_ALWAYS=0
 LP_HOSTNAME_ALWAYS=0
 source $HOME/.liquidprompt
 # }}}
-# golang setup {{{
-export GOPATH=$HOME/dev/projects/go/
-export PATH=$PATH:$GOPATH/bin
-# }}}
+export PATH=$HOME/jdk1.8.0_31/bin:$PATH
+export JAVA_HOME=$HOME/jdk1.8.0_31/
