@@ -181,6 +181,10 @@ function skip {
     cut -d' ' -f$n-
 }
 
+# global search and replace OSX
+function sr {
+    find . -type f -exec sed -i '' s/$1/$2/g {} +
+}
 
 function xr {
   case $1 in
