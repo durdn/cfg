@@ -160,6 +160,9 @@
     ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
 # }}}
 [rerere]
-	enabled = true
+  enabled = true
 [rebase]
-	autosquash = true
+  autosquash = true
+[filter "lob"]
+  clean = "$GOPATH/bin/git-lob filter-clean %f"
+  smudge = "$GOPATH/bin/git-lob filter-smudge %f"
