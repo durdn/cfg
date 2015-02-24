@@ -370,8 +370,8 @@ if [ $(uname) == "Darwin" ]; then
   export PIP2EVAL_TMP_FILE_PATH=/tmp/shms
 
   export WORKON_HOME="/Users/npaolucci/dev/envs"
-  export VIRTUALENV_USE_DISTRIBUTE=1
-  [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
+#  export VIRTUALENV_USE_DISTRIBUTE=1
+#  [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
 
   # golang setup {{{
   # export GOPATH=$HOME/dev/projects/go/
