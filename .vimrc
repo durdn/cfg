@@ -167,6 +167,17 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_user_command = 'git ls-files %s'
 " }}}
+" vim-go {{{
+let g:go_fmt_command = "goimports"
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>rr <Plug>(go-run)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" }}}
 " End Plugins configuration"}}}
 " Platform specific configuration {{{
 if has('gui_win64')
