@@ -378,7 +378,7 @@ if [ $(uname) == "Darwin" ]; then
   # export PATH=$PATH:$GOPATH/bin
   export GOPATH=/usr/local/opt/go/libexec
   export PATH=$PATH:$GOPATH/bin
-  export PATH=$HOME/dev/apps/go_appengine:$PATH
+  #export PATH=$HOME/dev/apps/go_appengine:$PATH
   # }}}
 fi
 
