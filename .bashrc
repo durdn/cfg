@@ -364,8 +364,10 @@ if [ $(uname) == "Darwin" ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
   fi
 
-  #Java home setting
-  export JAVA_HOME=$(/usr/libexec/java_home)
+#  if [[ -f "/usr/libexec/java_home" ]]; then
+    #Java home setting
+#    export JAVA_HOME=$(/usr/libexec/java_home)
+#  fi
   #Pipe2Eval folder for vim extension
   export PIP2EVAL_TMP_FILE_PATH=/tmp/shms
 
@@ -373,11 +375,13 @@ if [ $(uname) == "Darwin" ]; then
 #  export VIRTUALENV_USE_DISTRIBUTE=1
 #  [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
 
-  # golang setup {{{
+# golang setup {{{
   # export GOPATH=$HOME/dev/projects/go/
   # export PATH=$PATH:$GOPATH/bin
-  export GOPATH=/usr/local/opt/go/libexec
+  # export GOPATH=/usr/local/opt/go/libexec
+  export GOPATH=$HOME/go
   export PATH=$PATH:$GOPATH/bin
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin
   #export PATH=$HOME/dev/apps/go_appengine:$PATH
   # }}}
 fi
