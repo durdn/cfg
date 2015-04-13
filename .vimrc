@@ -97,8 +97,11 @@ let g:writing_environment_on = 0
 function! ToggleWritingEnvironment()
   set fuopt=maxvert
   if g:writing_environment_on
-    set noantialias|set gfn=Terminus:h14|set co=80
-"    set foldcolumn=0
+    if has('gui_macvim')
+      set noantialias|set gfn=Terminus:h16|set co=80
+    else
+      set noantialias|set gfn=Terminus:h14|set co=80
+    endif
     let g:writing_environment_on = 0
   else
     set antialias|set gfn=Inconsolata:h22|set co=180
@@ -145,6 +148,7 @@ nmap <silent> <leader>ec :e ~/c/source<CR>
 
 " Nerdtree "{{{
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+let NERDTreeIgnore=['node_modules$[[dir]]', '\.git$[[dir]]']
 "}}}
 " Vim Airline {{{
 set laststatus=2
