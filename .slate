@@ -15,8 +15,10 @@ alias ssy screenSizeY
 alias 80cols 675
 # }}}
 # Position Aliases {{{
-alias center-normal move ${sox}+${ssx}/4;${soy}                   ${ssx}/2;${ssy}
-alias cntr-80-cols  move (${sox}+${ssx}/2)-${80cols}/2;${soy}     ${80cols};${ssy}
+alias center-normal move ${sox}+${ssx}/4;${soy}                        ${ssx}/2;${ssy}
+alias cntr-80-cols  move (${sox}+${ssx}/2)-${80cols}/2;${soy}          ${80cols};${ssy}
+alias center-half   move (${sox}+${ssx}/2)-${80cols}/2;${soy}          ${80cols};${ssy}/2
+alias cen-half-bot  move (${sox}+${ssx}/2)-${80cols}/2;${soy}+${ssy}/2 ${80cols};${ssy}/2
 alias top-r         move ${sox}+${ssx}/2;${soy}                   ${ssx}/2;${ssy}/2
 alias top-r-80      move (${sox}+${ssx}/2)+${80cols}/2;${soy}     (${ssx}/2)-${80cols}/2;${ssy}/2
 alias top-r-half    move ${sox}+${ssx}/2+${ssx}/4;${soy}          ${ssx}/4;${ssy}/2
@@ -59,7 +61,7 @@ bind h:alt           chain ${h-left} | ${h-left-80} | ${h-left-80rev}
 bind h:alt;shift     chain ${top-l} | ${top-l-80} | ${bot-l}
 bind l:alt           chain ${h-right} | ${h-right-80} | ${h-right-80rev}
 bind l:alt;shift     chain ${top-r} | ${top-r-80} | ${bot-r}
-bind c:alt           chain ${center-normal} | ${cntr-80-cols}
+bind c:alt           chain ${center-normal} | ${cntr-80-cols} | ${center-half} | ${cen-half-bot}
 bind 8:alt           ${h-top}
 bind 9:alt           ${h-bottom}
 bind m:shift;alt     ${maximize}
