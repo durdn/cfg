@@ -150,6 +150,8 @@ alias hla="cat ~/.hgrc | grep -m1 -A10000 alias | tail -n +2 | grep -m1 -B10000 
 alias stashup='git stash && git svn rebase && git stash apply'
 alias vimo='vim -O '
 alias laste='tail -1000 ~/.bash_history | grep ^vim | col 2'
+# }}}
+# Global functions (aka complex aliases) {{{
 function list-patch {
   git log --oneline --decorate --numstat -1 $1 | tail -n +2 | awk {'print $3'}
 }
@@ -260,6 +262,10 @@ function scratch {
   gvim ~/Dropbox/$(openssl rand -base64 10 | tr -dc 'a-zA-Z').txt
 }
 
+# Convert a Confluence page on EAC to markdown
+function markdowneac {
+curl -Lks -u npaolucci https://@extranet.atlassian.com/rest/prototype/1/content/$1  | xmlstarlet sel -I -t -v "/content/body" | xmlstarlet unesc | pandoc -f html -t markdown --atx-headers --no-wrap --reference-links
+}
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
