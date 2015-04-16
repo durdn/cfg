@@ -11,8 +11,8 @@ if [ $(whoami) = "root" ];
 fi
 cfgname=".cfg";
 bkpname="backup.cfg";
-gitrepo="git@github.com:durdn/cfg.git";
-gitrepo_ro="git://github.com/durdn/cfg.git";
+gitrepo="git@bitbucket.org:durdn/cfg.git";
+gitrepo_ro="git://bitbucket.org/durdn/cfg.git";
 ignored="install.py|install.pyc|install.sh|.git$|.gitmodule|.gitignore|README|bin";
 
 #----debug setup----
@@ -123,7 +123,7 @@ if [ ! -e $cfg_folder ];
     if [ -z $(command -v git) ]
       then
         #git is not available, juzt unpack the zip file
-        echo "|* git not available downloading zip file..."
+        echo "|* git not available downloading zip file from backup repo..."
         curl -LsO https://github.com/durdn/cfg/archive/master.tar.gz
         tar zxvf master.tar.gz
         mv cfg-master $home/.cfg
@@ -134,13 +134,13 @@ if [ ! -e $cfg_folder ];
       git clone --recursive $gitrepo $cfg_folder;
       if [ ! -e $cfg_folder ];
         then
-          echo "!!! ssh key not installed on github for this box, cloning read only repo"
+          echo "!!! ssh key not installed on Bitbucket for this box, cloning read only repo"
           git clone --recursive $gitrepo_ro $cfg_folder
           echo "|* changing remote origin to read/write repo: $gitrepo"
           cd $cfg_folder && git config remote.origin.url $gitrepo
           if [ -e $home/id_rsa.pub  ];
             then
-              echo "|* please copy your public key below to github or you won't be able to commit";
+              echo "|* please copy your public key below to Bitbucket or you won't be able to commit";
               echo
               cat $home/.ssh/id_rsa.pub
             else
@@ -148,7 +148,7 @@ if [ ! -e $cfg_folder ];
               echo
               echo "ssh-keygen"
               echo
-              echo "|* and copy the public key to github"
+              echo "|* and copy the public key to Bitbucket"
           fi
         else
           update_submodules
