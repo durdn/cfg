@@ -14,4 +14,4 @@ xmonad-i386-linux
 xmonad.errors
 xmonad.hi
 xmonad.o
-bin/docker-machine*
+bin/docker*
