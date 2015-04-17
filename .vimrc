@@ -91,6 +91,24 @@ nmap <silent> <leader>x :hid<CR>
 nmap <leader>pr :%s/\`\([^`]\+\)`/\<span class=\"text codecolorer\"\>\1<\/span>/p<cr>:set nohlsearch<CR>
 nmap <leader>pu :%s/<span.\{-}>\(.\{-}\)<\/span>/`\1`/p<cr>:set nohlsearch<CR>
 " }}}
+" Code on retina {{{
+nnoremap <silent> <leader>9 :call CodeOnRetina()<CR>
+let g:retina_code_environment_on = 0
+function! CodeOnRetina()
+  set fuopt=maxvert
+  if g:retina_code_environment_on
+    if has('gui_macvim')
+      set noantialias|set gfn=Terminus\ (TTF):h14|set co=80
+    else
+      set noantialias|set gfn=Terminus\ (TTF):h14|set co=80
+    endif
+    let g:retina_code_environment_on = 0
+  else
+    set antialias|set gfn=Inconsolata:h16|set co=80
+    let g:retina_code_environment_on = 1
+  endif
+endfunction
+" }}}
 " Writing environment {{{
 nnoremap <silent> <leader>0 :call ToggleWritingEnvironment()<CR>
 let g:writing_environment_on = 0
