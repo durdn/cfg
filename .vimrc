@@ -18,7 +18,9 @@ set nowrap                  " not wrap lines
 set nu                      " show line numbers
 set foldlevel=1             " default foldlevel 1 to see headings
 set nobackup noswapfile     " stop backup and swap files
-set nocompatible ignorecase smartcase expandtab autoindent
+set nocompatible ignorecase smartcase
+set nocindent noautoindent nosmartindent indentexpr= "disable autoindents
+set tabstop=4 shiftwidth=4 expandtab "setup default tab/shift/expand
 set showmode showcmd ttyfast
 set guioptions=a            " hide scrollbars/menu/tabs
 let mapleader = ","
@@ -43,7 +45,7 @@ aug nick
   au FileType markdown set spell
   au FileType go set ts=4
   " javascript tabstop 2 expandtab
-  au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 expandtab textwidth=79
+  au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 sw=2 expandtab textwidth=79
   if v:version > 703
     au BufRead,BufNewFile *.js set colorcolumn=80
   endif
