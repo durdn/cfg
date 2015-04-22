@@ -1,11 +1,13 @@
-" MIT License. Copyright (c) 2013-2014 Bailey Ling.
+" MIT License. Copyright (c) 2013-2015 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
+
+scriptencoding utf-8
 
 let s:skip_symbol = '…'
 
-function! airline#extensions#tabline#unique_tail_improved#format(bufnr, buffers)
+function! airline#extensions#tabline#formatters#unique_tail_improved#format(bufnr, buffers)
   if len(a:buffers) <= 1 " don't need to compare bufnames if has less than one buffer opened
-    return airline#extensions#tabline#default#format(a:bufnr, a:buffers)
+    return airline#extensions#tabline#formatters#default#format(a:bufnr, a:buffers)
   endif
 
   let curbuf_tail = fnamemodify(bufname(a:bufnr), ':t')
@@ -14,11 +16,12 @@ function! airline#extensions#tabline#unique_tail_improved#format(bufnr, buffers)
 
   for nr in a:buffers
     let name = bufname(nr)
-    if !empty(name) && nr != a:bufnr && fnamemodify(name, ':t') == curbuf_tail
+    if !empty(name) && nr != a:bufnr && fnamemodify(name, ':t') == curbuf_tail " only perform actions if curbuf_tail isn't unique
       let do_deduplicate = 1
-      let tokens = reverse(split(substitute(fnamemodify(name, ':p:.:h'), '\\', '/', 'g'), '/'))
+      let tokens = reverse(split(substitute(fnamemodify(name, ':p:h'), '\\', '/', 'g'), '/'))
       let token_index = 0
       for token in tokens
+        if token == '' | continue | endif
         if token == '.' | break | endif
         if !has_key(path_tokens, token_index)
           let path_tokens[token_index] = {}
@@ -32,7 +35,7 @@ function! airline#extensions#tabline#unique_tail_improved#format(bufnr, buffers)
   if do_deduplicate == 1
     let path = []
     let token_index = 0
-    for token in reverse(split(substitute(fnamemodify(bufname(a:bufnr), ':p:.:h'), '\\', '/', 'g'), '/'))
+    for token in reverse(split(substitute(fnamemodify(bufname(a:bufnr), ':p:h'), '\\', '/', 'g'), '/'))
       if token == '.' | break | endif
       let duplicated = 0
       let uniq = 1
@@ -81,8 +84,8 @@ function! airline#extensions#tabline#unique_tail_improved#format(bufnr, buffers)
       call insert(buf_name, s:skip_symbol)
     endif
 
-    return airline#extensions#tabline#default#wrap_name(a:bufnr, join(buf_name, '/'))
+    return airline#extensions#tabline#formatters#default#wrap_name(a:bufnr, join(buf_name, '/'))
   else
-    return airline#extensions#tabline#default#format(a:bufnr, a:buffers)
+    return airline#extensions#tabline#formatters#default#format(a:bufnr, a:buffers)
   endif
 endfunction

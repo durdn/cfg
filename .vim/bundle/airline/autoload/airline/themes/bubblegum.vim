@@ -54,9 +54,17 @@ let g:airline#themes#bubblegum#palette.visual = airline#themes#generate_color_ma
 let g:airline#themes#bubblegum#palette.visual_modified = copy(g:airline#themes#bubblegum#palette.insert_modified)
 
 " Inactive window
-let s:IA = [s:gui_dark_gray, s:gui_med_gray_hi, s:cterm_dark_gray, s:cterm_med_gray_hi, '']
+let s:IA = [s:gui_light_gray, s:gui_med_gray_hi, s:cterm_light_gray, s:cterm_med_gray_hi, '']
 let g:airline#themes#bubblegum#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)
 let g:airline#themes#bubblegum#palette.inactive_modified = {
       \ 'airline_c': [s:gui_orange, '', s:cterm_orange, '', ''],
       \ }
 
+" CtrlP
+if !get(g:, 'loaded_ctrlp', 0)
+  finish
+endif
+let g:airline#themes#bubblegum#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
+      \ [ s:gui_orange, s:gui_med_gray_hi, s:cterm_orange, s:cterm_med_gray_hi, '' ] ,
+      \ [ s:gui_orange, s:gui_med_gray_lo, s:cterm_orange, s:cterm_med_gray_lo, '' ] ,
+      \ [ s:gui_dark_gray, s:gui_green, s:cterm_dark_gray, s:cterm_green, 'bold' ] )
