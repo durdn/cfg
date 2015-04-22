@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2014 Bailey Ling.
+" MIT License. Copyright (c) 2013-2015 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 let s:ext = {}
@@ -22,10 +22,10 @@ let s:script_path = tolower(resolve(expand('<sfile>:p:h')))
 let s:filetype_overrides = {
       \ 'nerdtree': [ 'NERD', '' ],
       \ 'gundo': [ 'Gundo', '' ],
-      \ 'diff': [ 'diff', '' ],
       \ 'vimfiler': [ 'vimfiler', '%{vimfiler#get_status_string()}' ],
       \ 'minibufexpl': [ 'MiniBufExplorer', '' ],
       \ 'startify': [ 'startify', '' ],
+      \ 'vim-plug': [ 'Plugins', '' ],
       \ }
 
 let s:filetype_regex_overrides = {}
@@ -121,6 +121,13 @@ function! airline#extensions#load()
   " non-trivial number of external plugins use eventignore=all, so we need to account for that
   autocmd CursorMoved * call <sid>sync_active_winnr()
 
+  if exists('g:airline_extensions')
+    for ext in g:airline_extensions
+      call airline#extensions#{ext}#init(s:ext)
+    endfor
+    return
+  endif
+
   call airline#extensions#quickfix#init(s:ext)
 
   if get(g:, 'loaded_unite', 0)
@@ -139,6 +146,10 @@ function! airline#extensions#load()
     call airline#extensions#ctrlp#init(s:ext)
   endif
 
+  if get(g:, 'ctrlspace_loaded', 0)
+    call airline#extensions#ctrlspace#init(s:ext)
+  endif
+
   if get(g:, 'command_t_loaded', 0)
     call airline#extensions#commandt#init(s:ext)
   endif
@@ -148,7 +159,7 @@ function! airline#extensions#load()
   endif
 
   if (get(g:, 'airline#extensions#hunks#enabled', 1) && get(g:, 'airline_enable_hunks', 1))
-        \ && (exists('g:loaded_signify') || exists('g:loaded_gitgutter'))
+        \ && (exists('g:loaded_signify') || exists('g:loaded_gitgutter') || exists('g:loaded_changes'))
     call airline#extensions#hunks#init(s:ext)
   endif
 
@@ -168,7 +179,8 @@ function! airline#extensions#load()
   endif
 
   if (get(g:, 'airline#extensions#branch#enabled', 1) && get(g:, 'airline_enable_branch', 1))
-        \ && (exists('*fugitive#head') || exists('*lawrencium#statusline'))
+        \ && (exists('*fugitive#head') || exists('*lawrencium#statusline') ||
+        \     (get(g:, 'airline#extensions#branch#use_vcscommand', 0) && exists('*VCSCommandGetStatusLine')))
     call airline#extensions#branch#init(s:ext)
   endif
 
@@ -177,7 +189,7 @@ function! airline#extensions#load()
     call airline#extensions#bufferline#init(s:ext)
   endif
 
-  if get(g:, 'virtualenv_loaded', 0) && get(g:, 'airline#extensions#virtualenv#enabled', 1)
+  if isdirectory($VIRTUAL_ENV) && get(g:, 'airline#extensions#virtualenv#enabled', 1)
     call airline#extensions#virtualenv#init(s:ext)
   endif
 
@@ -206,21 +218,36 @@ function! airline#extensions#load()
     call airline#extensions#promptline#init(s:ext)
   endif
 
-  " load all other extensions not part of the default distribution
-  for file in split(globpath(&rtp, "autoload/airline/extensions/*.vim"), "\n")
-    " we have to check both resolved and unresolved paths, since it's possible
-    " that they might not get resolved properly (see #187)
-    if stridx(tolower(resolve(fnamemodify(file, ':p'))), s:script_path) < 0
-          \ && stridx(tolower(fnamemodify(file, ':p')), s:script_path) < 0
-      let name = fnamemodify(file, ':t:r')
-      if !get(g:, 'airline#extensions#'.name.'#enabled', 1)
-        continue
+  if get(g:, 'airline#extensions#nrrwrgn#enabled', 1) && exists(':NR') == 2
+      call airline#extensions#nrrwrgn#init(s:ext)
+  endif
+
+  if (get(g:, 'airline#extensions#capslock#enabled', 1) && exists('*CapsLockStatusline'))
+    call airline#extensions#capslock#init(s:ext)
+  endif
+
+  if (get(g:, 'airline#extensions#windowswap#enabled', 1) && get(g:, 'loaded_windowswap', 0))
+    call airline#extensions#windowswap#init(s:ext)
+  endif
+
+  if !get(g:, 'airline#extensions#disable_rtp_load', 0)
+    " load all other extensions, which are not part of the default distribution.
+    " (autoload/airline/extensions/*.vim outside of our s:script_path).
+    for file in split(globpath(&rtp, "autoload/airline/extensions/*.vim"), "\n")
+      " we have to check both resolved and unresolved paths, since it's possible
+      " that they might not get resolved properly (see #187)
+      if stridx(tolower(resolve(fnamemodify(file, ':p'))), s:script_path) < 0
+            \ && stridx(tolower(fnamemodify(file, ':p')), s:script_path) < 0
+        let name = fnamemodify(file, ':t:r')
+        if !get(g:, 'airline#extensions#'.name.'#enabled', 1)
+          continue
+        endif
+        try
+          call airline#extensions#{name}#init(s:ext)
+        catch
+        endtry
       endif
-      try
-        call airline#extensions#{name}#init(s:ext)
-      catch
-      endtry
-    endif
-  endfor
+    endfor
+  endif
 endfunction
 
