@@ -382,9 +382,6 @@ if [ $(uname) == "Darwin" ]; then
 #  [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
 
 # golang setup {{{
-  # export GOPATH=$HOME/dev/projects/go/
-  # export PATH=$PATH:$GOPATH/bin
-  # export GOPATH=/usr/local/opt/go/libexec
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOPATH/bin
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
