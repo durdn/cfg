@@ -23,14 +23,4 @@ bind n screen -t bash bash
 bind r title 
 
 hardstatus alwayslastline
-#hardstatus string '%{= kw}[%{= kb}%H%{= kw}][%=%{= kw}%?%-Lw%?%{= kW}%n*%f %t%?%?%{= kw}%?%+Lw%?%?%=][%{r}%l%{w}]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
-#hardstatus string  '%{= kw}[%{= kb}%H%{= kw}][%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<][%{r}%l%{w}]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
-#hardstatus string  '%{= kw}[%{= kb}%H%{= kw}][%=%-Lw%{= BW}%50>|%n %t|%{-}%+Lw%=][%{r}%l%{w}]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
-#hardstatus string  '%{= dr}[%{= dr}%H%{= dr}]%{= dw} %-Lw%{= kb}|%n %t|%{-}%+Lw%0> [%{b}%l%{w}]%{w}[%{b} %d/%m/%y %C %A %{w}]%{w}'
 hardstatus string  '%{= dr}[%{= dr}%H%{= dr}]%{= dw} %-Lw%{= kg}|%n %t|%{-}%+Lw%0> %=[%{b}%l%{w}]%{w}[%{b} %d/%m/%y %C %A %{w}]%{w}'
-
-#screen -t bash1 bash
-#screen -t bash2 bash
-#screen -t daredu-shell ./manage.py shell
-#screen -t ipython ipython
-#screen -t server ./manage.py runserver
