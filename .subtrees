@@ -1,9 +1,44 @@
+#!/bin/env bash
+#
+# Add subtree aliases for manually doing this:
+#
+# [alias]
+#   sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+#   sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+#
 # Source this to update your vim git subtrees:
+#
 # cd $HOME/.cfg
-# git subtree pull --prefix .vim/bundle/project $vim_project master --squash 
+# source .subtrees
+# git subtree pull --prefix .vim/bundle/project $vim_project master --squash
 
-export GH_ROOT="https://github.com/"
-export vim_airline="$GH_ROOTbling/vim-airline.git"
-export vim_dispatch="$GH_ROOTtpope/vim-dispatch.git"
-export vim_nerdtre="$GO_ROOTscrooloose/nerdtree.git"
-export vim_ctrlp="$GO_ROOTkien/ctrlp.vim.git"
+# Global {{{
+export GH_ROOT="https://github.com"
+# }}}
+# Must have {{{
+subtrees="                  \
+  bling/vim-airlinej        \
+  tpope/vim-dispatch        \
+  scrooloose/nerdtree       \
+  kien/ctrlp.vim            \
+  kienairblade/vim-gitgutter"
+# Functions {{{
+function update_subtrees {
+  for t in $subtrees; do
+    folder_name=$(echo $t | sed -e s/\\//\-/)
+    echo git subtree pull --prefix .vim/bundle/$folder_name $GH_ROOT/$t.git master --squash
+  done
+}
+# }}}
+
+# File types {{{
+# solarized
+# slim
+# less
+# go
+# coffee
+# markdown-folding
+# markdown
+# writingsyntax
+# gocode
+# }}}
