@@ -1,0 +1,33 @@
+#!/bin/env bash
+#
+# Add subtree aliases for manually doing this:
+#
+# [alias]
+#   sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+#   sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+#
+# Source this to update your vim git subtrees:
+#
+# cd $HOME/.cfg
+# source .subtrees
+# git subtree pull --prefix .vim/bundle/project $vim_project master --squash
+
+# Functions {{{
+function pull_subtree {
+  GH_ROOT="https://github.com"
+  BUNDLE_DIR=".vim/bundle"
+  BRANCH="master"
+  folder_name=$(echo $1 | sed -e s/\\//\-/)
+  echo git subtree pull --prefix $BUNDLE_DIR/$folder_name $GH_ROOT/$1.git $BRANCH --squash
+}
+
+function pull_subtrees {
+  while read -r t
+  do
+    if [[ $t != \#* ]] ;
+    then
+      pull_subtree $t
+    fi
+  done < "$HOME/.subtrees"
+}
+# }}}
