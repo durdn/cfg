@@ -6,11 +6,8 @@
 export HISTFILESIZE=999999
 export HISTSIZE=999999
 export HISTCONTROL=ignoredups:ignorespace
-shopt -s histappend
 shopt -s checkwinsize
 shopt -s progcomp
-#make sure the history is updated at every command
-export PROMPT_COMMAND="history -a; history -n;"
 
 #!! sets vi mode for shell
 set -o vi
@@ -445,6 +442,9 @@ LP_ENABLE_PROXY=0
 LP_USER_ALWAYS=0
 LP_HOSTNAME_ALWAYS=0
 source $HOME/.liquidprompt
+#make sure the history is updated at every command
+shopt -s histappend
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 # }}}
 export PATH=$HOME/jdk1.8.0_31/bin:$PATH
 export JAVA_HOME=$HOME/jdk1.8.0_31/
