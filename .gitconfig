@@ -158,6 +158,9 @@
 
     #add bitbucket remote
     ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
+
+    #open files edited in last commit
+    last = "!gvim $(git show HEAD --format="" --name-only | xargs)"
 # }}}
 [rerere]
   enabled = true
