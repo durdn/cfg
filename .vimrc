@@ -27,6 +27,7 @@ let mapleader = ","
 let maplocalleader = ";"
 set foldmethod=marker       " sets the fold method to {{{ }}} markers
 set shortmess=atI           " disable welcome screen
+set listchars=tab:\|\ ,trail:·,eol:¬
 " End Basic settings and variables}}}
 " Auto-commands {{{
 
