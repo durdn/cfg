@@ -141,8 +141,9 @@ inoremap <C-@> <C-Space>
 set background=dark
 colorscheme solarized
 "font is antialiased Terminus
-set noantialias
-set guifont=Terminus\ (TTF):h14
+" set noantialias
+" set guifont=Terminus\ (TTF):h14
+set guifont=Hack:h14
 "draw vertical column at 80
 if v:version > 703
   set colorcolumn=80
@@ -206,16 +207,18 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 " End Plugins configuration"}}}
 " Platform specific configuration {{{
 if has('gui_win64')
-  set noantialias
-  set guifont=Terminus:h12
+  "set noantialias
+  "set guifont=Terminus:h12
+  set guifont=Hack:h12
   set lines=85
   nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
   nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
 endif
 if has('gui_win32')
-  set noantialias
-  set guifont=Terminus:h12
+  "set noantialias
+  "set guifont=Terminus:h12
+  set guifont=Hack:h12
   set lines=85
   "overwrite mapping to edit the .vimrc"
   nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
@@ -224,8 +227,9 @@ if has('gui_win32')
 endif
 if has("gui_macvim")
   set fuopt=maxvert
-  set noantialias
-  set guifont=Terminus\ (TTF):h14
+  "set noantialias
+  "set guifont=Terminus\ (TTF):h14
+  set guifont=Hack:h14
   command! ToggleFullScreen if &fu|set noantialias|set gfn=Terminus\ (TTF):h14|set co=80|set nofu|else|set antialias|set gfn=Inconsolata:h22|set co=100|set fu|endif
   an <silent> Window.Toggle\ Full\ Screen\ Mode :ToggleFullScreen<CR>
 endif
