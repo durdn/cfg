@@ -45,6 +45,8 @@ aug nick
   " Spelling on markdown
   au FileType markdown set spell
   au FileType go set ts=4
+  " run go test on Dispatch
+  au FileType go let b:dispatch = 'go build'
   " javascript tabstop 2 expandtab
   au BufRead,BufNewFile *.js set ft=javascript foldlevel=2 ts=2 sw=2 expandtab textwidth=79
   if v:version > 703
@@ -135,6 +137,22 @@ endfunction
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 " }}}
+" Paste and visual paste improvments {{{
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+" }}}
 " End Keyboard Shortcuts}}}
 " Theme and Color {{{
 
@@ -203,6 +221,9 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" }}}
+" Vim Dispatch {{{
+nnoremap <leader>gt :Dispatch<CR>
 " }}}
 " End Plugins configuration"}}}
 " Platform specific configuration {{{

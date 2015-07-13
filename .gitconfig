@@ -50,11 +50,11 @@
 #}}}
 # difftools {{{
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 # }}}
 # alias {{{
@@ -163,7 +163,7 @@
     last = "!gvim $(git show HEAD --format="" --name-only | xargs)"
 # }}}
 [rerere]
-  enabled = true
+  enabled = false
 [rebase]
   autosquash = true
 [filter "lob"]
