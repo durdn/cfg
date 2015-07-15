@@ -299,7 +299,8 @@ if [ $(uname) == "Linux" ]; then
 
   if [ -d $HOME/.rbenv ]; then
     export RBENV_ROOT=/usr/local/var/rbenv
-    export PATH="$HOME/.rbenv/shims:$PATH"
+    #export PATH="$HOME/.rbenv/shims:$PATH"
+    export PATH="/usr/local/var/rbenv/shims:$PATH"
     eval "$(rbenv init -)";
   fi
 
@@ -359,7 +360,8 @@ if [ $(uname) == "Darwin" ]; then
   if which rbenv > /dev/null; then
     export RBENV_ROOT=/usr/local/var/rbenv
     eval "$(rbenv init -)";
-    export PATH="$HOME/.rbenv/shims:$PATH"
+    #export PATH="$HOME/.rbenv/shims:$PATH"
+    export PATH="/usr/local/var/rbenv/shims:$PATH"
   fi
 
   #homebrew git autocompletions
