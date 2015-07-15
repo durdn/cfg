@@ -210,7 +210,7 @@ function gmb {
   curr_branch_name=$(git branch | grep \* | cut -c 3-);
   if [ -z $(git branch | cut -c 3- | grep -x $1) ]; then
     git branch -m $curr_branch_name $1
-  else 
+  else
     temp_branch_name=$1-old-$RANDOM;
     echo target branch name already exists, renaming to $temp_branch_name
     git branch -m $1 $temp_branch_name
@@ -299,7 +299,7 @@ if [ $(uname) == "Linux" ]; then
 
   if [ -d $HOME/.rbenv ]; then
     export RBENV_ROOT=/usr/local/var/rbenv
-    export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/shims:$PATH"
     eval "$(rbenv init -)";
   fi
 
@@ -318,7 +318,7 @@ if [ $(uname) == "Darwin" ]; then
   export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python3/3.4.1/bin:$HOME/bin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 
-  #aliases 
+  #aliases
   alias ls='ls -G'
   alias ll='ls -ltrG'
   alias la='ls -alG'
@@ -332,7 +332,7 @@ if [ $(uname) == "Darwin" ]; then
   function gvim {
     if [ -e $1 ];
       then open -a MacVim $@;
-      else touch $@ && open -a MacVim $@; 
+      else touch $@ && open -a MacVim $@;
     fi
   }
 
@@ -359,7 +359,7 @@ if [ $(uname) == "Darwin" ]; then
   if which rbenv > /dev/null; then
     export RBENV_ROOT=/usr/local/var/rbenv
     eval "$(rbenv init -)";
-    export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/shims:$PATH"
   fi
 
   #homebrew git autocompletions
@@ -427,7 +427,7 @@ fi
 # }}}
 # }}}
 # rvm setup {{{
-if [ -e $HOME/.rvm/scripts/rvm ]; then 
+if [ -e $HOME/.rvm/scripts/rvm ]; then
   source $HOME/.rvm/scripts/rvm
   PATH=$PATH:$HOME/.rvm/bin
 fi
