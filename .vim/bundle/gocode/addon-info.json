@@ -1,7 +1,0 @@
-{
-    "name": "vim-gocode",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Blackrush/vim-gocode.git"
-    }
-}
