@@ -2,7 +2,7 @@ bling/vim-airline
 tpope/vim-dispatch
 scrooloose/nerdtree
 kien/ctrlp.vim
-nsf/gocode
+fatih/vim-go
 kienairblade/vim-gitgutter
 # solarized
 # slim
