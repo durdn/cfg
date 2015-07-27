@@ -434,6 +434,14 @@ date: "2015-MM-DD 06:00"
 author: "author"
 categories: ["cat1","cat2"]
 ---
+
+## Conclusions
+
+In any case if you found this interesting at all and want more why not follow
+me at [@durdn] or my awesome team at [@atlassiandev]?
+
+[@atlassiandev]: https://www.twitter.com/atlassiandev
+[@durdn]: https://www.twitter.com/durdn
 EOF
     echo "Created: $NEW_POST_DIR/index.md"
   }
