@@ -21,7 +21,7 @@ unlet s:TreeDirNode.activate
 function! s:TreeDirNode.activate(...)
     let opts = a:0 ? a:1 : {}
     call self.toggleOpen(opts)
-    call nerdtree#renderView()
+    call b:NERDTree.render()
     call self.putCursorHere(0, 0)
 endfunction
 
@@ -229,7 +229,7 @@ function! s:TreeDirNode._initChildren(silent)
     let globDir = dir.str({'format': 'Glob'})
 
     if version >= 703
-        let filesStr = globpath(globDir, '*', 1) . "\n" . globpath(globDir, '.*', 1)
+        let filesStr = globpath(globDir, '*', !g:NERDTreeRespectWildIgnore) . "\n" . globpath(globDir, '.*', !g:NERDTreeRespectWildIgnore)
     else
         let filesStr = globpath(globDir, '*') . "\n" . globpath(globDir, '.*')
     endif
@@ -246,12 +246,17 @@ function! s:TreeDirNode._initChildren(silent)
         "filter out the .. and . directories
         "Note: we must match .. AND ../ cos sometimes the globpath returns
         "../ for path with strange chars (eg $)
-        if i !~# '\/\.\.\/\?$' && i !~# '\/\.\/\?$'
-
+"        if i !~# '\/\.\.\/\?$' && i !~# '\/\.\/\?$'
+"
+        " Regular expression is too expensive. Use simply string comparison
+        " instead
+        if i[len(i)-3:2] != ".." && i[len(i)-2:2] != ".." && 
+         \ i[len(i)-2:1] != "." && i[len(i)-1] != "."
             "put the next file in a new node and attach it
             try
                 let path = g:NERDTreePath.New(i)
                 call self.createChild(path, 0)
+                call g:NERDTreePathNotifier.NotifyListeners('init', path, {})
             catch /^NERDTree.\(InvalidArguments\|InvalidFiletype\)Error/
                 let invalidFilesFound += 1
             endtry
@@ -404,8 +409,12 @@ function! s:TreeDirNode.refresh()
             "filter out the .. and . directories
             "Note: we must match .. AND ../ cos sometimes the globpath returns
             "../ for path with strange chars (eg $)
-            if i !~# '\/\.\.\/\?$' && i !~# '\/\.\/\?$'
+            "if i !~# '\/\.\.\/\?$' && i !~# '\/\.\/\?$'
 
+            " Regular expression is too expensive. Use simply string comparison
+            " instead
+            if i[len(i)-3:2] != ".." && i[len(i)-2:2] != ".." && 
+             \ i[len(i)-2:1] != "." && i[len(i)-1] != "."
                 try
                     "create a new path and see if it exists in this nodes children
                     let path = g:NERDTreePath.New(i)
@@ -438,6 +447,20 @@ function! s:TreeDirNode.refresh()
     endif
 endfunction
 
+"FUNCTION: TreeDirNode.refreshFlags() {{{1
+unlet s:TreeDirNode.refreshFlags
+function! s:TreeDirNode.refreshFlags()
+    call self.path.refreshFlags()
+    for i in self.children
+        call i.refreshFlags()
+    endfor
+endfunction
+
+"FUNCTION: TreeDirNode.refreshDirFlags() {{{1
+function! s:TreeDirNode.refreshDirFlags()
+    call self.path.refreshFlags()
+endfunction
+
 "FUNCTION: TreeDirNode.reveal(path) {{{1
 "reveal the given path, i.e. cache and open all treenodes needed to display it
 "in the UI
@@ -450,7 +473,7 @@ function! s:TreeDirNode.reveal(path)
 
     if self.path.equals(a:path.getParent())
         let n = self.findNode(a:path)
-        call nerdtree#renderView()
+        call b:NERDTree.render()
         call n.putCursorHere(1,0)
         return
     endif
@@ -489,7 +512,7 @@ endfunction
 "directory priority.
 "
 function! s:TreeDirNode.sortChildren()
-    let CompareFunc = function("nerdtree#compareNodes")
+    let CompareFunc = function("nerdtree#compareNodesBySortKey")
     call sort(self.children, CompareFunc)
 endfunction
 
@@ -500,7 +523,7 @@ function! s:TreeDirNode.toggleOpen(...)
     if self.isOpen ==# 1
         call self.close()
     else
-        if g:NERDTreeCasadeOpenSingleChildDir == 0
+        if g:NERDTreeCascadeOpenSingleChildDir == 0
             call self.open(opts)
         else
             call self.openAlong(opts)
