@@ -9,8 +9,18 @@ function! gitgutter#utility#warn(message)
   let v:warningmsg = a:message
 endfunction
 
+" Returns truthy when the buffer's file should be processed; and falsey when it shouldn't.
+" This function does not and should not make any system calls.
 function! gitgutter#utility#is_active()
-  return g:gitgutter_enabled && gitgutter#utility#exists_file()
+  return g:gitgutter_enabled && gitgutter#utility#exists_file() && gitgutter#utility#not_git_dir() && gitgutter#utility#not_help_file()
+endfunction
+
+function! gitgutter#utility#not_git_dir()
+  return gitgutter#utility#full_path_to_directory_of_file() !~ '[/\\]\.git\($\|[/\\]\)'
+endfunction
+
+function! gitgutter#utility#not_help_file()
+  return getbufvar(s:bufnr, '&filetype') != 'help'
 endfunction
 
 " A replacement for the built-in `shellescape(arg)`.
@@ -49,6 +59,10 @@ endfunction
 
 function! gitgutter#utility#extension()
   return fnamemodify(s:file, ':e')
+endfunction
+
+function! gitgutter#utility#full_path_to_directory_of_file()
+  return fnamemodify(s:file, ':p:h')
 endfunction
 
 function! gitgutter#utility#directory_of_file()
