@@ -20,9 +20,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#path should have durdn config bin folder
-export PATH=$HOME/.cfg/bin:$PATH
-
 # }}}
 # Tmux startup {{{
 #if which tmux 2>&1 >/dev/null; then
@@ -418,13 +415,28 @@ if [[ -e /etc/resolv.conf && $(cat /etc/resolv.conf | grep domain | col 2 | head
 fi
 # }}}
 # Atlassian config {{{
-if [[ $(hostname | cut -d. -f1) == "pother" ]]; then
+if [[ $(hostname | cut -d. -f1) == "reborn" ]]; then
   export PATH="$HOME/dev/apps/maven2/bin:$PATH"
   MAVEN_OPTS="-Xms256m -Xmx1g -XX:PermSize=128m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
   export MAVEN_OPTS
   source $HOME/.atlassian
   export VIRTUAL_ENV_DISABLE_PROMPT=1
   #source $HOME/dev/envs/generic/bin/activate
+  function new_post {
+
+    NEW_POST_TITLE="$(echo $@ | sed -e "s/ /-/g")"
+    NEW_POST_DIR="$HOME/p/developer.atlassian.com/app/posts/$(date +"%Y/%m")/$NEW_POST_TITLE"
+    mkdir -p  $NEW_POST_DIR
+    cat >> $NEW_POST_DIR/index.md << "EOF"
+---
+title: "Title"
+date: "2015-MM-DD 06:00"
+author: "author"
+categories: ["cat1","cat2"]
+---
+EOF
+    echo "Created: $NEW_POST_DIR/index.md"
+  }
 fi
 # }}}
 # }}}
@@ -450,3 +462,6 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; h
 # }}}
 export PATH=$HOME/jdk1.8.0_31/bin:$PATH
 export JAVA_HOME=$HOME/jdk1.8.0_31/
+
+#path should have durdn config bin folder first
+export PATH=$HOME/.cfg/bin:$PATH
