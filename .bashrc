@@ -376,6 +376,9 @@ me at [@durdn] or my awesome team at [@atlassiandev]?
 [@durdn]: https://www.twitter.com/durdn
 EOF
     echo "Created: $NEW_POST_DIR/index.md"
+    git checkout develop
+    git checkout -b $NEW_POST_TITLE
+    git add $NEW_POST_DIR/index.md
   }
 fi
 # }}}
