@@ -153,6 +153,8 @@
 
     #subtree add
     sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
+    #subtree update/pull
+    sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f" 
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
 
