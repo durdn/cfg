@@ -45,8 +45,8 @@ function! dispatch#windows#make(request) abort
     let exec =
           \ s:pid . pidfile .
           \ ' & ' . escape(a:request.expanded, '%#!') .
-          \ ' ' . dispatch#shellpipe(a:request.file) .
-          \ ' & cd . > ' . a:request.file . '.complete' .
+          \ ' > ' . a:request.file . ' 2>&1' .
+          \ ' & echo \%ERRORLEVEL\% > ' . a:request.file . '.complete' .
           \ ' & del ' . pidfile .
           \ ' & ' . dispatch#callback(a:request)
   endif
@@ -59,10 +59,12 @@ function! dispatch#windows#start(request) abort
     let exec = dispatch#prepare_start(a:request)
   else
     let pidfile = a:request.file.'.pid'
+    let pause = get({'always': ' & pause', 'never': ''},
+          \ get(a:request, 'wait'), ' || pause')
     let exec =
           \ s:pid . pidfile .
           \ ' & ' . a:request.command .
-          \ ' & cd . > ' . a:request.file . '.complete' .
+          \ pause .
           \ ' & del ' . pidfile
   endif
 

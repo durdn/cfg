@@ -37,10 +37,10 @@ function! dispatch#tmux#make(request) abort
         \ && a:request.format !~# '%\\[er]'
   let session = get(g:, 'tmux_session', '')
   let script = dispatch#isolate(['TMUX', 'TMUX_PANE'],
-        \ call('dispatch#prepare_make',
-        \ [a:request] + (pipepane ? [a:request.expanded] : [])))
+        \ call('dispatch#prepare_make', [a:request] +
+        \ (pipepane ? [a:request.expanded . '; echo $? > ' . a:request.file . '.complete'] : [])))
 
-  let title = shellescape(get(a:request, 'compiler', 'make'))
+  let title = shellescape(get(a:request, 'title', get(a:request, 'compiler', 'make')))
   if get(a:request, 'background', 0)
     let cmd = 'new-window -d -n '.title
   elseif has('gui_running') || empty($TMUX) || (!empty(''.session) && session !=# system('tmux display-message -p "#S"')[0:-2])
@@ -112,5 +112,5 @@ endfunction
 
 augroup dispatch_tmux
   autocmd!
-  autocmd VimResized * if !has('gui_running') | call dispatch#tmux#poll() | endif
+  autocmd VimResized * nested if !has('gui_running') | call dispatch#tmux#poll() | endif
 augroup END
