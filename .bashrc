@@ -123,6 +123,7 @@ export LANG=en_US.UTF-8
 # }}}
 #Global aliases  {{{
 alias vimo='vim -O '
+alias dpaste="curl -F 'content=<-' https://dpaste.de/api/"
 # }}}
 # Global functions (aka complex aliases) {{{
 function f {
