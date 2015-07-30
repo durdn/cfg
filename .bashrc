@@ -377,7 +377,7 @@ me at [@durdn] or my awesome team at [@atlassiandev]?
 EOF
     echo "Created: $NEW_POST_DIR/index.md"
     git checkout develop
-    git checkout -b $NEW_POST_TITLE
+    git checkout -b blog/$NEW_POST_TITLE
     git add $NEW_POST_DIR/index.md
   }
 fi
