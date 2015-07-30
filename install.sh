@@ -12,7 +12,7 @@ fi
 cfgname=".cfg";
 bkpname="backup.cfg";
 gitrepo="git@bitbucket.org:durdn/cfg.git";
-gitrepo_ro="git://bitbucket.org/durdn/cfg.git";
+gitrepo_ro="https://bitbucket.org/durdn/cfg.git";
 ignored="install.py|install.pyc|install.sh|.git$|.gitmodule|.gitignore|README|bin";
 
 #----debug setup----
@@ -29,21 +29,6 @@ md5prog() {
   fi
   if [ $(uname) = "Linux" ]; then
     md5sum $1 | awk {'print $1'}
-  fi
-}
-
-update_submodules() {
-  return;
-  if [ $debug == true ];
-    then
-      cd $cfg_folder
-      echo "|-> initializing submodules [fake]"
-      echo "|-> updating submodules [fake]"
-    else
-      echo "|-> initializing submodules"
-      cd $cfg_folder && git submodule -q init
-      echo "|-> updating submodules"
-      cd $cfg_folder && git submodule update
   fi
 }
 
@@ -107,6 +92,14 @@ link_assets() {
   done
 }
 
+download_archive() {
+  echo "|* ssh not available downloading zip file from backup repo..."
+  curl -LsO https://github.com/durdn/cfg/archive/master.tar.gz
+  tar zxvf master.tar.gz
+  mv cfg-master $home/.cfg
+  rm master.tar.gz
+}
+
 echo "|* cfg version" $version
 echo "|* debug is" $debug
 echo "|* home is" $home
@@ -120,45 +113,42 @@ fi
 #clone config folder if not present, update if present
 if [ ! -e $cfg_folder ];
   then 
-    if [ -z $(command -v git) ]
+    if [ -z $(command -v ssh) ]
       then
-        #git is not available, juzt unpack the zip file
-        echo "|* git not available downloading zip file from backup repo..."
-        curl -LsO https://github.com/durdn/cfg/archive/master.tar.gz
-        tar zxvf master.tar.gz
-        mv cfg-master $home/.cfg
-        rm master.tar.gz
+        download_archive
     else
-      #git is available, clone from repo
-      echo "|-> git clone from repo $gitrepo"
-      git clone --recursive $gitrepo $cfg_folder;
-      if [ ! -e $cfg_folder ];
+      if [ -z $(command -v git) ]
         then
-          echo "!!! ssh key not installed on Bitbucket for this box, cloning read only repo"
-          git clone --recursive $gitrepo_ro $cfg_folder
-          echo "|* changing remote origin to read/write repo: $gitrepo"
-          cd $cfg_folder && git config remote.origin.url $gitrepo
-          if [ -e $home/id_rsa.pub  ];
-            then
-              echo "|* please copy your public key below to Bitbucket or you won't be able to commit";
-              echo
-              cat $home/.ssh/id_rsa.pub
-            else
-              echo "|* please generate your public/private key pair with the command:"
-              echo
-              echo "ssh-keygen"
-              echo
-              echo "|* and copy the public key to Bitbucket"
-          fi
-        else
-          update_submodules
+          download_archive
+      else
+        #git is available, clone from repo
+        echo "|-> git clone from repo $gitrepo"
+        git clone $gitrepo $cfg_folder;
+        if [ ! -e $cfg_folder ];
+          then
+            echo "!!! ssh key not installed on Bitbucket for this box, cloning read only repo"
+            git clone $gitrepo_ro $cfg_folder
+            echo "|* changing remote origin to read/write repo: $gitrepo"
+            cd $cfg_folder && git config remote.origin.url $gitrepo
+            if [ -e $home/.ssh/id_rsa.pub  ];
+              then
+                echo "|* please copy your public key below to Bitbucket or you won't be able to commit";
+                echo
+                cat $home/.ssh/id_rsa.pub
+              else
+                echo "|* please generate your public/private key pair with the command:"
+                echo
+                echo "ssh-keygen"
+                echo
+                echo "|* and copy the public key to Bitbucket"
+            fi
+        fi
       fi
     fi
   else
     echo "|-> cfg already cloned to $cfg_folder"
     echo "|-> pulling origin master"
     cd $cfg_folder && git pull origin master
-    update_submodules
 fi
 
 assets=$(ls -A1 $cfg_folder | egrep -v $ignored | xargs);
