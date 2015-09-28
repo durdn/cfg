@@ -228,6 +228,10 @@ function scratch {
 function markdowneac {
 curl -Lks -u npaolucci https://@extranet.atlassian.com/rest/prototype/1/content/$1  | xmlstarlet sel -I -t -v "/content/body" | xmlstarlet unesc | pandoc -f html -t markdown --atx-headers --no-wrap --reference-links
 }
+# link all Go folders into projects folder
+function lngo {
+  ls -1 | xargs -I{} ln -s $(pwd)/{} /Users/np/p/
+}
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
