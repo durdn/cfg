@@ -285,6 +285,10 @@ if [ $(uname) == "Darwin" ]; then
   alias fnd='open -a Finder'
   alias gitx='open -a GitX'
   alias grp='grep -RIi'
+  alias dm='docker-machine'
+  alias dc='docker-compose'
+  alias dk='docker'
+  alias dn='docker network'
 
   #open macvim
   function gvim {
