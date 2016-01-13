@@ -139,8 +139,8 @@
     #apply patch from other local repo
     lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
 
-    #open files edited in last commit
-    last = "!gvim $(git show HEAD --format="" --name-only | xargs)"
+    #open markdown files edited in last commit
+    last = "!gvim $(git show HEAD --format="" --name-only | grep -e .*md$ | xargs)"
 
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
@@ -155,6 +155,9 @@
     done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
     #add bitbucket remote
     ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
+    # }}}
+    # worktree list {{{
+    wl = worktree list
     # }}}
 # }}}
 [rerere]
