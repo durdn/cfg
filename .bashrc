@@ -371,9 +371,9 @@ if [[ $(hostname | cut -d. -f1) == "reborn" ]]; then
     cat >> $NEW_POST_DIR/index.md << "EOF"
 ---
 title: "Title"
-date: "2015-MM-DD 06:00"
-author: "author"
-categories: ["cat1","cat2"]
+date: "2016-12-31 06:00"
+author: "npaolucci"
+categories: ["Docker","Git"]
 ---
 
 ## Conclusions
@@ -387,6 +387,35 @@ EOF
     echo "Created: $NEW_POST_DIR/index.md"
     git checkout develop
     git checkout -b blog/$NEW_POST_TITLE
+    git add $NEW_POST_DIR/index.md
+  }
+
+  function new_post_worktree {
+
+    NEW_POST_TITLE="$(echo $@ | sed -e "s/ /-/g")"
+    cd $HOME/p/developer.atlassian.com
+    git checkout master
+    git worktree add -b blog/$NEW_POST_TITLE $NEW_POST_TITLE 
+    cd $NEW_POST_TITLE
+    NEW_POST_DIR="app/posts/$(date +"%Y/%m")/$NEW_POST_TITLE"
+    mkdir -p  $NEW_POST_DIR
+    cat >> $NEW_POST_DIR/index.md << "EOF"
+---
+title: "Title"
+date: "2016-12-31 06:00"
+author: "npaolucci"
+categories: ["Docker","Git"]
+---
+
+## Conclusions
+
+In any case if you found this interesting at all and want more why not follow
+me at [@durdn] or my awesome team at [@atlassiandev]?
+
+[@atlassiandev]: https://www.twitter.com/atlassiandev
+[@durdn]: https://www.twitter.com/durdn
+EOF
+    echo "Created: $NEW_POST_DIR/index.md"
     git add $NEW_POST_DIR/index.md
   }
 fi
