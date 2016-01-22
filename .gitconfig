@@ -37,7 +37,7 @@
 # }}}
 # push/pull/diff/options {{{
 [push]
-    default = upstream
+    default = current
 [pull]
     default = current
 [diff]

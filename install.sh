@@ -125,7 +125,7 @@ fi
 
 #clone config folder if not present, update if present
 if [ ! -e $cfg_folder ];
-  then 
+  then
     if [ -z $(command -v ssh) ]
       then
         download_archive
