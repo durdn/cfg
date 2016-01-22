@@ -14,6 +14,7 @@ bkpname="backup.cfg";
 gitrepo="git@bitbucket.org:durdn/cfg.git";
 gitrepo_ro="https://bitbucket.org/durdn/cfg.git";
 ignored="install.py|install.pyc|install.sh|.git$|.gitmodule|.gitignore|README|bin";
+merge=".atom";
 
 #----debug setup----
 #home=$1
@@ -50,9 +51,21 @@ link_assets() {
             if [ -h $home/$asset ];
               then echo "Id[ignore dir] $home/$asset";
               else
-                echo "Cd[conflict dir] $home/$asset";
-                mv $home/$asset $backup_folder/$asset;
-                ln -s $cfg_folder/$asset $home/$asset;
+                if [ $asset = $merge ];
+                  then
+                    echo "Md[conflict dir] $home/$asset";
+                    conflicting=$(ls -A1 $cfg_folder/$asset | xargs);
+                    for cf in $conflicting ;
+                    do
+                      mkdir -p $backup_folder/$asset;
+                      mv $home/$asset/$cf $backup_folder/$asset/$cf;
+                      ln -s $cfg_folder/$asset/$cf $home/$asset/$cf;
+                    done
+                  else
+                    echo "Cd[conflict dir] $home/$asset";
+                    mv $home/$asset $backup_folder/$asset;
+                    ln -s $cfg_folder/$asset $home/$asset;
+                fi
             fi
           else
             ha=$(md5prog $home/$asset);
