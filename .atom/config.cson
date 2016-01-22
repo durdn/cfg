@@ -1,0 +1,30 @@
+"*":
+  "autocomplete-plus": {}
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "symbols-view"
+      "metrics"
+    ]
+    themes: [
+      "one-dark-ui"
+      "solarized-dark-syntax"
+    ]
+  editor:
+    fontFamily: "Droid Sans Mono"
+    invisibles: {}
+    tabLength: 4
+  "exception-reporting":
+    userId: "26b7c093-fbd0-485a-f7f3-10516d053aa3"
+  "go-plus":
+    goPath: "~/go"
+  "markdown-preview":
+    useGitHubStyle: true
+  "sourcegraph-atom":
+    highlightReferencesInFile: false
+    srcTimeout: 60000
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
+editor:
+  softWrap: true
