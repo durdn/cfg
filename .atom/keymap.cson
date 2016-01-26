@@ -33,3 +33,4 @@
   ', f': 'pane:split-down'
   ', w': 'editor:toggle-soft-wrap'
   ', s': 'window:toggle-invisibles'
+  '; w': 'core:save'
