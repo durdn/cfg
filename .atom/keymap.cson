@@ -34,3 +34,4 @@
   ', w': 'editor:toggle-soft-wrap'
   ', s': 'window:toggle-invisibles'
   '; w': 'core:save'
+  ', d': 'tree-view:toggle'
