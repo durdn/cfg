@@ -35,3 +35,9 @@
   ', s': 'window:toggle-invisibles'
   '; w': 'core:save'
   ', d': 'tree-view:toggle'
+
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  'g q': 'autoflow:reflow-selection'
+
+'atom-text-editor.vim-mode.operator-pending-mode, atom-text-editor.vim-mode.visual-mode':
+  'g q': 'autoflow:reflow-selection'
