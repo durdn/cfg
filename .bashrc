@@ -436,8 +436,8 @@ shopt -s histappend
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 # }}}
 # Java setup {{{
-export PATH=$HOME/jdk1.8.0_31/bin:$PATH
-export JAVA_HOME=$HOME/jdk1.8.0_31/
+# export PATH=$HOME/jdk1.8.0_31/bin:$PATH
+# export JAVA_HOME=$HOME/jdk1.8.0_31/
 # }}}
 # Set .cfg/bin in PATH and it should be first {{{
 export PATH=$HOME/.cfg/bin:$PATH
