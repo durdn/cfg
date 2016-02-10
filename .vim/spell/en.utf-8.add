@@ -85,3 +85,6 @@ db
 postgres
 bitbucket
 nginx
+Clojure
+struct
+JSON
