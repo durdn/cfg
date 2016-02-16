@@ -21,6 +21,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 # }}}
 # durdn/cfg related commands {{{
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 function dur {
   case $1 in
   create|cr)
