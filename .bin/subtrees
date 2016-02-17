@@ -8,7 +8,6 @@
 #
 # Source this to update your vim git subtrees:
 #
-# cd $HOME/.cfg
 # source .subtrees
 # git subtree pull --prefix .vim/bundle/project $vim_project master --squash
 

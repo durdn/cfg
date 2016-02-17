@@ -33,12 +33,6 @@ function dur {
   clone|cl)
     git clone git@bitbucket.org:durdn/$2.git
     ;;
-  install|i)
-    $HOME/.cfg/install.sh
-    ;;
-  reinstall|re)
-    curl -Ls https://raw.github.com/durdn/cfg/master/install.sh | bash
-    ;;
   move|mv)
     git remote add bitbucket git@bitbucket.org:durdn/$(basename $(pwd)).git
     git push --all bitbucket
@@ -440,6 +434,6 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; h
 # export PATH=$HOME/jdk1.8.0_31/bin:$PATH
 # export JAVA_HOME=$HOME/jdk1.8.0_31/
 # }}}
-# Set .cfg/bin in PATH and it should be first {{{
-export PATH=$HOME/.cfg/bin:$PATH
+# Set .bin in PATH and it should be first {{{
+export PATH=$HOME/.bin:$PATH
 # }}}
