@@ -1,16 +1,16 @@
 # Dotfiles for [@durdn](http://twitter.com/durdn)
 
+## Requirements
+
+- Git
+- Curl
+
+## Install
+
 Install config tracking in your $HOME by running:
 
-  curl -Lks https://bitbucket.org/durdn/cfg/raw/master/install.sh | bash
+  curl -Lks bit.do/config-install | /bin/bash
 
-Or in a shorter form:
+The expanded url is at:
 
-  curl -Lks http://j.mp/install-cfg | bash
-
-Or:
-
-  wget -q0 - http://j.mp/install-cfg | sh
-
-Your configuration is stored by default in ~/.cfg and symlinked to $HOME from
-there.
+https://bitbucket.org/snippets/nicolapaolucci/7rE9K
