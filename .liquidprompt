@@ -360,16 +360,18 @@ _lp_connection()
         echo ssh
     else
         # TODO check on *BSD
-        local sess_src=$(who am i | sed -n 's/.*(\(.*\))/\1/p')
-        local sess_parent=$(ps -o comm= -p $PPID)
-        if [[ -z "$sess_src" || "$sess_src" = ":"* ]] ; then
-            echo lcl  # Local
-        elif [[ "$sess_parent" = "su" || "$sess_parent" = "sudo" ]] ; then
-            echo su   # Remote su/sudo
-        else
-            echo tel  # Telnet
-        fi
-    fi
+#       local sess_src=$(who am i | sed -n 's/.*(\(.*\))/\1/p')
+#       local sess_parent=$(ps -o comm= -p $PPID)
+#       if [[ -z "$sess_src" || "$sess_src" = ":"* ]] ; then
+#           echo lcl  # Local
+#       elif [[ "$sess_parent" = "su" || "$sess_parent" = "sudo" ]] ; then
+#           echo su   # Remote su/sudo
+#       else
+#           echo tel  # Telnet
+#       fi
+#   fi
+#   disabled because it breaks on alpine
+    echo disabled
 }
 
 # Put the hostname if not locally connected
