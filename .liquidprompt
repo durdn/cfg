@@ -369,9 +369,9 @@ _lp_connection()
 #       else
 #           echo tel  # Telnet
 #       fi
-#   fi
 #   disabled because it breaks on alpine
     echo disabled
+   fi
 }
 
 # Put the hostname if not locally connected
