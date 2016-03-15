@@ -161,8 +161,8 @@ set background=dark
 colorscheme solarized
 "font is antialiased Terminus
 " set noantialias
-" set guifont=Terminus\ (TTF):h14
-set guifont=Hack:h14
+set guifont=Terminus\ (TTF):h14
+" set guifont=Hack:h14
 "draw vertical column at 80
 if v:version > 703
   set colorcolumn=80
@@ -249,9 +249,9 @@ if has('gui_win32')
 endif
 if has("gui_macvim")
   set fuopt=maxvert
-  "set noantialias
-  "set guifont=Terminus\ (TTF):h14
-  set guifont=Hack:h14
+  set noantialias
+  set guifont=Terminus\ (TTF):h14
+  "set guifont=Hack:h14
   command! ToggleFullScreen if &fu|set noantialias|set gfn=Terminus\ (TTF):h14|set co=80|set nofu|else|set antialias|set gfn=Inconsolata:h22|set co=100|set fu|endif
   an <silent> Window.Toggle\ Full\ Screen\ Mode :ToggleFullScreen<CR>
 endif
