@@ -116,7 +116,7 @@
     assumed = "!git ls-files -v | grep ^h | cut -c 3-"
     # unassume all the assumed files
     unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
-    assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+    assumeall = "!git status -s | awk {'print $2'} | xargs git assume"
     # }}}
     # subtree {{{
     #   add
@@ -141,6 +141,8 @@
 
     #open markdown files edited in last commit
     last = "!gvim $(git show HEAD --format="" --name-only | grep -e .*md$ | xargs)"
+    #open just created markdown in working directory
+    newmd = "!gvim $(git status -s | awk {'print $2'})"
 
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
