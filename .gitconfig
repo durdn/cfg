@@ -1,7 +1,7 @@
 # core {{{
 [core]
     editor = /usr/bin/vim
-    excludesfile = /Users/npaolucci/.gitignore_global
+    excludesfile = /Users/np/.gitignore_global
     pager=less -x4
 
 #}}}
@@ -166,3 +166,7 @@
   enabled = false
 [rebase]
   autosquash = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
