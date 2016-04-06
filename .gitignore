@@ -16,3 +16,6 @@ xmonad.hi
 xmonad.o
 bin/docker*
 .git-sendemail*
+.bin/cliclick
+.bin/micro
+.bin/ngrok
