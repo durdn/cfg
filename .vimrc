@@ -36,16 +36,16 @@ aug nick
   " Remove all autocommands for the current group.
   au!
   " .md extension is markdown
-  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 wrap linebreak textwidth=0 wrapmargin=0
-  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 wrap linebreak textwidth=0 wrapmargin=0
+  au BufRead,BufNewFile *.md set ft=markdown foldlevel=2 wrap linebreak textwidth=0 wrapmargin=0 spell
+  au BufRead,BufNewFile *.wp set ft=markdown foldlevel=2 wrap linebreak textwidth=0 wrapmargin=0 spell
   if v:version > 703
     au BufRead,BufNewFile *.md set colorcolumn=80
     au BufRead,BufNewFile *.wp set colorcolumn=80
   endif
 
   " Spelling on markdown
-  au FileType markdown set spell
-  au FileType go set ts=4
+  au BufRead,BufNewFile *.md set spell
+  au BufRead,BufNewFile *.go set ts=4
   " run go test on Dispatch
   au FileType go let b:dispatch = 'go build'
   " javascript tabstop 2 expandtab
