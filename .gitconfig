@@ -59,7 +59,7 @@
     cl = clone
     ci = commit
     co = checkout
-    br = branch 
+    br = branch
     r = reset
     cp = cherry-pick
     gr = grep -Ii
@@ -124,9 +124,9 @@
     # }}}
     # subtree {{{
     #   add
-    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
+    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
     #   update/pull
-    sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f" 
+    sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
     # }}}
     # various useful {{{
     # last tag created
