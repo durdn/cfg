@@ -15,3 +15,4 @@ xmonad.errors
 xmonad.hi
 xmonad.o
 bin/docker*
+.git-sendemail*

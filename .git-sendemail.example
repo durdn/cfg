@@ -1,0 +1,8 @@
+# sendemail {{{
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = smtp.gmail.com
+    smtpUser = email@domain.local
+    smtpServerPort = 587
+# }}}
+

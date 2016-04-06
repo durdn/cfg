@@ -11,6 +11,10 @@
     name = Nicola Paolucci
 
 #}}}
+# include sendemail config {{{
+[include]
+    path = ~/.git-sendemail
+# }}}
 # color {{{
 [color]
     branch = auto
