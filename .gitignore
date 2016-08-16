@@ -1,9 +1,15 @@
 .DS_Store
+.bin/cliclick
+.bin/micro
+.bin/ngrok
+.git-sendemail*
 .vim-flavor/
 .vim/.netrwhist
 /doc/tags
+/doc/tags
 VimFlavor.lock
 bin/cliclick
+bin/docker*
 bin/fig
 bin/packer
 bin/packer-*
@@ -14,8 +20,3 @@ xmonad-i386-linux
 xmonad.errors
 xmonad.hi
 xmonad.o
-bin/docker*
-.git-sendemail*
-.bin/cliclick
-.bin/micro
-.bin/ngrok
