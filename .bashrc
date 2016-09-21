@@ -227,6 +227,10 @@ curl -Lks -u npaolucci https://@extranet.atlassian.com/rest/prototype/1/content/
 function lngo {
   ls -1 | xargs -I{} ln -s $(pwd)/{} /Users/np/p/
 }
+# cd into go source libraries
+gocd() {
+    cd `go list -f '{{.Dir}}' $1`
+}
 # }}}
 # Linux specific config {{{
 if [ $(uname) == "Linux" ]; then
