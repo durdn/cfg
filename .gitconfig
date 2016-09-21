@@ -164,6 +164,8 @@
     # }}}
     # worktree list {{{
     wl = worktree list
+    # undo from here http://megakemp.com/2016/08/25/git-undo/
+    undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
     # }}}
 # }}}
 [rerere]
