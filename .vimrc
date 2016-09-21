@@ -2,10 +2,6 @@
 " Author: Nicola Paolucci <nick@durdn.com>
 " Source: https://bitbucket.org/durdn/cfg/src
 
-" Preamble with Pathogen   "{{{
-
-execute pathogen#infect()
-"}}}
 " Basic settings and variables"{{{
 
 filetype plugin indent on
@@ -229,23 +225,21 @@ nnoremap <leader>gt :Dispatch<CR>
 " End Plugins configuration"}}}
 " Platform specific configuration {{{
 if has('gui_win64')
-  "set noantialias
-  "set guifont=Terminus:h12
-  set guifont=Hack:h12
+  set noantialias
+  set guifont=Terminus:h12
   set lines=85
-  nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
+  nmap <silent> <leader>ev :e $HOME/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
-  nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
+  nmap <silent> <leader>rv :source $HOME/_vimrc<CR>
 endif
 if has('gui_win32')
-  "set noantialias
-  "set guifont=Terminus:h12
-  set guifont=Hack:h12
+  set noantialias
+  set guifont=Terminus:h12
   set lines=85
   "overwrite mapping to edit the .vimrc"
-  nmap <silent> <leader>ev :e $VIM/_vimrc<CR>
+  nmap <silent> <leader>ev :e $HOME/_vimrc<CR>
   "overwrite mapping to reload the .vimrc"
-  nmap <silent> <leader>rv :source $VIM/_vimrc<CR>
+  nmap <silent> <leader>rv :source $HOME/_vimrc<CR>
 endif
 if has("gui_macvim")
   set fuopt=maxvert
