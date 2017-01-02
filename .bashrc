@@ -296,6 +296,13 @@ if [ $(uname) == "Darwin" ]; then
       else touch $@ && open -a MacVim $@;
     fi
   }
+  #open visual studio code
+  function vsc {
+    if [ -e $1 ];
+      then open -a Visual\ Studio\ Code $@;
+      else touch $@ && -a Visual\ Studio\ Code $@;
+    fi
+  }
 
   #setup rbenv {{{
   if which rbenv > /dev/null; then
