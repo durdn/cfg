@@ -266,6 +266,11 @@ if [ $(uname) == "Linux" ]; then
     export PATH="/usr/local/var/rbenv/shims:$PATH"
     eval "$(rbenv init -)";
   fi
+
+  # golang setup {{{
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOPATH/bin
+  # }}}
 fi
 
 
@@ -276,7 +281,7 @@ if [ $(uname) == "Darwin" ]; then
   export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python3/3.4.1/bin:$HOME/bin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 
-  #aliases
+  #aliases {{{
   alias ls='ls -G'
   alias ll='ls -ltrG'
   alias la='ls -alG'
@@ -288,6 +293,7 @@ if [ $(uname) == "Darwin" ]; then
   alias dc='docker-compose'
   alias dk='docker'
   alias dn='docker network'
+  # }}}
 
   #open macvim
   function gvim {
@@ -325,7 +331,7 @@ if [ $(uname) == "Darwin" ]; then
 #  export VIRTUALENV_USE_DISTRIBUTE=1
 #  [[ -n "/usr/local/bin/virtualenvwrapper.sh" ]] && source virtualenvwrapper.sh
 
-# golang setup {{{
+  # golang setup {{{
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOPATH/bin
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
