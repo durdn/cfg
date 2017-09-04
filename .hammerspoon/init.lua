@@ -46,30 +46,25 @@ end)
 
 -- center
 centered = 0
-hs.hotkey.bind({"cmd"}, "c", function()
+hs.hotkey.bind({"alt"}, "c", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
   if centered == 0 then
-    f.x = max.x
-    f.y = max.y
-    f.w = max.w
-    f.h = max.h
-  elseif centered == 1 then
     f.x = max.x + max.w * 1 / 3
     f.y = max.y
     f.w = max.w/2
     f.h = max.h
-  elseif centered == 2 then
+  elseif centered == 1 then
     f.x = max.x + max.w * 1 / 3
     f.y = max.y
     f.w = max.w/2
     f.h = max.h/2
   end 
   win:setFrame(f)
-  centered = (centered + 1) % 3
+  centered = (centered + 1) % 2
 end)
 
 -- reload
