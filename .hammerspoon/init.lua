@@ -3,7 +3,7 @@
 -- end)
 
 -- half left
-hs.hotkey.bind({"cmd"}, "h", function()
+hs.hotkey.bind({"alt"}, "h", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -17,7 +17,7 @@ hs.hotkey.bind({"cmd"}, "h", function()
 end)
 
 -- half right
-hs.hotkey.bind({"cmd"}, "l", function()
+hs.hotkey.bind({"alt"}, "l", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -31,7 +31,7 @@ hs.hotkey.bind({"cmd"}, "l", function()
 end)
 
 -- maximise
-hs.hotkey.bind({"cmd"}, "m", function()
+hs.hotkey.bind({"alt"}, "m", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
