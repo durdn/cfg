@@ -3,6 +3,7 @@
 # Source: http://github.com/durdn/cfg/.bashrc
 
 #Global options {{{
+export SHELL_SESSION_HISTORY=0
 export HISTFILESIZE=999999
 export HISTSIZE=999999
 export HISTCONTROL=ignoredups:ignorespace
