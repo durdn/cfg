@@ -65,6 +65,9 @@ end)
 
 -- maximise
 hs.hotkey.bind({"alt"}, "m", function()
+  rightjust = 0
+  leftjust = 0
+  centered = 0
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
